@@ -1,0 +1,110 @@
+%
+% Header die benutzt werden sollen
+%
+\documentclass[
+  pdftex,
+  fontsize=12pt,          % Schriftgroesse
+  DIV10,                  % Angabe bzgl Bestimmung der Seitenabstaende
+  ngerman,                % fuer Umlaute, Silbentrennung etc.
+  paper=a4,               % Papierformat
+  twoside=false,          % einseitiges Dokument
+  titlepage,              % es wird eine Titelseite verwendet
+  parskip=half,           % Abstand zwischen Absaetzen (halbe Zeile)
+  headings=normal,        % Groesse der Ueberschriften verkleinern
+  listof=nochaptergap,  % Verzeichnisse im Inhaltsverzeichnis auffuehren.
+  bibliography=totoc, % Literaturverzeichnis im Inhaltsverzeichnis auffuehren
+  index=totoc,            % Index im Inhaltsverzeichnis auffuehren
+  captions=tableheading,  % Beschriftung von Tabellen oberhalb ausgeben
+  bookmarksopen,
+  bookmarksnumbered,
+  final                 % Status des Dokuments (final/draft)
+]{scrreprt} 
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{palatino}
+
+% Zeilenabstand
+\usepackage[onehalfspacing]{setspace}
+
+% Code
+\usepackage{listings}
+\lstdefinestyle{sharpc}{float,
+	language=[sharp]C, 
+	frame=single,  
+	keywordstyle=\bfseries\color{green!40!black},
+	commentstyle=\itshape\color{purple!40!black},
+	identifierstyle=\color{blue},
+	stringstyle=\color{orange}, 
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily}
+
+%Tabellen
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{supertabular}
+\usepackage{longtable}
+
+%Grafiken
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+\usepackage[svgnames]{xcolor}
+\usepackage{float}
+\usepackage{pdfpages}
+
+%Sprache und Anführungszeichen
+\usepackage[ngerman]{babel}
+\usepackage[babel,german=quotes]{csquotes}
+\usepackage{eurosym}
+
+%Abstände
+\usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm ]{geometry}
+
+% Pakete um Textteile drehen zu können, oder eine Seite Querformat anzeigen kann.
+\usepackage{rotating}
+\usepackage{lscape}
+
+%Literaturverweise
+%\usepackage{biblatex}
+%\usepackage[round]{natbib}
+%\usepackage{cite}
+\usepackage[style=numeric, backend=biber, citestyle=numeric, dashed=false]{biblatex}
+
+% Hurenkinder und Schusterjungen verhindern
+% http://projekte.dante.de/DanteFAQ/Silbentrennung
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+%Abkürzungsverzeichnis
+\usepackage[printonlyused]{acronym}
+
+% Fussnoten
+\usepackage[hang, multiple, stable]{footmisc}
+
+\usepackage[%
+%	pdftitle={\pdftitel},
+%	pdfauthor={\autor},
+%	pdfsubject={\arbeit},
+%	pdfcreator={pdflatex, LaTeX with KOMA-Script},
+%	pdfpagemode=UseOutlines, % Beim Oeffnen Inhaltsverzeichnis anzeigen
+%	pdfdisplaydoctitle=true, % Dokumenttitel statt Dateiname anzeigen.
+%	pdflang=de % Sprache des Dokuments.
+]{hyperref}
+\usepackage[all]{hypcap}
+
+
+% Nummerierung ohne Kapitel-Nr.
+\usepackage{chngcntr}
+\counterwithout{figure}{chapter}
+\counterwithout{equation}{chapter}
+\counterwithout{footnote}{chapter}
+\counterwithout{table}{chapter}
+%
+% EOF
+%

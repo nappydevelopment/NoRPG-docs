@@ -178,3 +178,8 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~[0-9]*
+TeX/Vorlage/images/.svn/text-base/firma.png.svn-base
+TeX/Vorlage/images/.svn/text-base/dhbw-logo.png.svn-base
+*.svn-base
+TeX/Vorlage/images/.svn/all-wcprops
+TeX/Vorlage/images/.svn/entries

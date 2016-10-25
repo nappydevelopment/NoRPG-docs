@@ -1,0 +1,79 @@
+\input{header}
+\addbibresource{lib.bib}
+\begin{document}
+\renewcommand{\bibname}{Literaturverzeichnis}  
+
+%Glossar
+
+\setlength{\parindent}{0mm}
+
+%mindestens 3 Zeilen auf der Seite
+\widowpenalties 3 10000 10000 100
+\clubpenalties 3 10000 10000 100 
+
+%Stil der Quellangaben
+%\bibliographystyle{alphadin}
+
+%Deckblatt
+\include{deckblatt}
+
+\renewcommand{\thepage}{\Roman{page}}
+\setcounter{page}{1}
+% Formale Erklärungen
+\include{erklaerung}
+%Abstract
+
+% Inhaltsverzeichnis
+
+\tableofcontents
+\newpage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+\include{abkuerzungsverzeichnis}
+\newpage
+\listoffigures
+%\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+%\newpage
+%\listoftables
+%\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\newpage
+\counterwithout{lstlisting}{chapter}
+\lstlistoflistings
+%\addcontentsline{toc}{chapter}{Listings}
+
+%--> Speichern der Zahl fürs umsetzten zurück auf römische 
+\newcounter{SeitenzahlSpeicher}
+\setcounter{SeitenzahlSpeicher}{\value{page}}
+
+%\newpage
+\newpage
+
+%Arabische Nummerierung
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}
+	
+%Kapitel
+\include{chapter/einleitung}
+\include{chapter/1}
+\include{chapter/2}
+\include{chapter/fazit}
+
+%Römische Nummerierung --> SeitenzahlSpeicher
+\stepcounter{SeitenzahlSpeicher}
+\renewcommand{\thepage}{\Roman{page}}
+\setcounter{page}{\theSeitenzahlSpeicher}
+
+\setlength
+\bibitemsep{12pt}
+
+\printbibliography
+
+%Anhang
+\newpage
+\newpage
+\phantomsection
+\addcontentsline{toc}{chapter}{\protect{}Anhang}
+\include{anhang}
+
+\end{document}
