@@ -110,9 +110,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35355339"
-     inkscape:cx="2153.2172"
-     inkscape:cy="-1941.2801"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="2710.031"
+     inkscape:cy="-1721.2825"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -120,8 +120,8 @@
      inkscape:object-paths="false"
      inkscape:object-nodes="false"
      inkscape:snap-smooth-nodes="false"
-     inkscape:window-width="1600"
-     inkscape:window-height="838"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -136,7 +136,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -146,7 +146,7 @@
      id="layer1"
      transform="translate(0,47.63782)">
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2586.1695,3049.3933)"
+       transform="matrix(1.2816659,0,0,1.4352157,2702.5133,2680.2836)"
        id="g3169-3-8-2-9"
        style="opacity:1">
       <ellipse
@@ -174,14 +174,14 @@
            id="tspan4582">games</tspan></text>
     </g>
     <rect
-       style="fill:none;stroke:#000000;stroke-width:1.43734252;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:1.12283862;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2985"
-       width="699.43677"
-       height="1252.0334"
-       x="2538.6704"
-       y="2332.9587"
-       rx="0.24309658"
-       ry="0.19954756" />
+       width="602.17053"
+       height="887.48096"
+       x="2538.5132"
+       y="2332.8015"
+       rx="0.20929068"
+       ry="0.14144561" />
     <g
        id="g3759"
        transform="matrix(0.33901919,0,0,0.33901919,1518.7497,2163.4281)"
@@ -299,7 +299,7 @@
          x="1743.4098"
          y="2387.0793">dev frontend</tspan></text>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,1513.5312,1951.1294)"
+       transform="matrix(1.2816659,0,0,1.4352157,1513.5312,1959.1294)"
        id="g3169-5"
        style="opacity:1">
       <ellipse
@@ -323,7 +323,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">add game</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,1513.5312,2047.1294)"
+       transform="matrix(1.2816659,0,0,1.4352157,1513.5312,2055.1294)"
        id="g3169-5-8"
        style="opacity:1">
       <ellipse
@@ -347,7 +347,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">...</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,1832.7514,1951.1294)"
+       transform="matrix(1.2816659,0,0,1.4352157,1832.7514,1959.1294)"
        id="g3169-5-9"
        style="opacity:0.40100002;stroke-width:0.99980128;stroke-miterlimit:4;stroke-dasharray:none">
       <ellipse
@@ -371,7 +371,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';stroke-width:0.99980128;stroke-miterlimit:4;stroke-dasharray:none">view progress</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,1832.7514,2047.1294)"
+       transform="matrix(1.2816659,0,0,1.4352157,1832.7514,2055.1294)"
        id="g3169-5-8-2"
        style="opacity:0.40100002">
       <ellipse
@@ -397,16 +397,16 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2849.5083"
+       x="2800.7178"
        y="2353.9238"
        id="text3555-0"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3557-1"
-         x="2849.5083"
+         x="2800.7178"
          y="2353.9238">NoRPG</tspan></text>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2856.6917,3087.376)"
+       transform="matrix(1.2816659,0,0,1.4352157,2733.8568,2314.2276)"
        id="g3169-3-8"
        style="opacity:1">
       <ellipse
@@ -434,7 +434,7 @@
            id="tspan4576" /></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2825.3482,2934.0754)"
+       transform="matrix(1.2816659,0,0,1.4352157,2702.5133,2160.927)"
        id="g3169-39-3"
        style="opacity:1">
       <ellipse
@@ -458,7 +458,7 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">synchronize</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2346.9909,2934.0754)"
+       transform="matrix(1.2816659,0,0,1.4352157,2702.5133,2468.7992)"
        id="g3169-39-2"
        style="opacity:1">
       <ellipse
@@ -487,7 +487,7 @@
            id="tspan4602">interaction</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2586.1695,2934.0754)"
+       transform="matrix(1.2816659,0,0,1.4352157,2702.5133,2564.5414)"
        id="g3169-39-7"
        style="opacity:1">
       <ellipse
@@ -553,7 +553,7 @@
        id="path3468"
        inkscape:connector-curvature="0" />
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2424.2518,2769.837)"
+       transform="matrix(1.2816659,0,0,1.4352157,2406.1698,2575.245)"
        id="g3169-3-8-2-9-3"
        style="opacity:1">
       <ellipse
@@ -576,31 +576,7 @@
            id="tspan4582-8">view progress</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2424.2519,2348.5652)"
-       id="g3169-50"
-       style="opacity:1">
-      <ellipse
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.21453726;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="path3171-3"
-         transform="matrix(0.85507246,0,0,0.79282151,-13.262744,110.39865)"
-         cx="290.92392"
-         cy="290.70715"
-         rx="69.700523"
-         ry="34.345188" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         x="235.49832"
-         y="345.77304"
-         id="text3173-8"><tspan
-           sodipodi:role="line"
-           x="235.49832"
-           y="345.77304"
-           id="tspan4383-4"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">open menu</tspan></text>
-    </g>
-    <g
-       transform="matrix(1.2816659,0,0,1.4352157,2455.5954,2607.1839)"
+       transform="matrix(1.2816659,0,0,1.4352157,2437.5133,2414.8901)"
        id="g3169-3-8-6"
        style="opacity:1">
       <ellipse
@@ -628,7 +604,7 @@
            id="tspan4576-9" /></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2787.0767,2359.6053)"
+       transform="matrix(1.2816659,0,0,1.4352157,2768.9946,2166.1624)"
        id="g3169-39-36"
        style="opacity:1">
       <ellipse
@@ -651,7 +627,7 @@
            id="tspan5235-0">show colors</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2424.2519,2448.8831)"
+       transform="matrix(1.2816659,0,0,1.4352157,2406.1698,2257.7386)"
        id="g3169-39-3-6"
        style="opacity:1">
       <ellipse
@@ -674,77 +650,19 @@
            id="tspan4383-7-7-4"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'">open map</tspan></text>
     </g>
-    <g
-       id="g9409"
-       transform="translate(-21.480469,576.78356)">
-      <g
-         id="g9594"
-         transform="translate(11,-55)">
-        <ellipse
-           ry="39.080357"
-           rx="76.386002"
-           cy="2316.0144"
-           cx="3056.8994"
-           id="path3171-0-7-5-4-0-5"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1.35626948;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
-        <text
-           id="text3173-0-9-0-3-7-09"
-           y="2196.9956"
-           x="3234.8367"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24.41285133px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           xml:space="preserve"
-           transform="scale(0.94499353,1.0582083)"><tspan
-             id="tspan9342"
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-             y="2196.9956"
-             x="3234.8367"
-             sodipodi:role="line">view Math</tspan></text>
-      </g>
-    </g>
-    <g
-       id="g9394"
-       transform="matrix(1.2816659,0,0,1.4352157,2741.1037,2348.8863)">
-      <ellipse
-         style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:0.99999994;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="path3171-0-7-5-4-0-5-9"
-         cx="238.2175"
-         cy="410.55121"
-         rx="59.598995"
-         ry="27.229605" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;text-anchor:middle;opacity:1;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         x="238.2175"
-         y="415.14008"
-         id="text3173-0-9-0-3-7-09-3"><tspan
-           sodipodi:role="line"
-           x="238.2175"
-           y="415.14008"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan9342-0">view English</tspan></text>
-    </g>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-4-3"
-       width="630.96027"
-       height="644.8407"
-       x="2572.5195"
-       y="2702.238"
-       rx="0.2192969"
-       ry="0.1027739" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2834.2109"
-       y="2722.136"
+       x="2677.4854"
+       y="2655.3135"
        id="text3559-0-4-5-5"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3561-1-0-0-4"
-         x="2834.2109"
-         y="2722.136">Menu</tspan></text>
+         x="2677.4854"
+         y="2655.3135">Menu</tspan></text>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2744.5887,2669.5192)"
+       transform="matrix(1.2816659,0,0,1.4352157,2406.1698,2674.4136)"
        id="g3169-3-8-2-9-3-7"
        style="opacity:1">
       <ellipse
@@ -764,93 +682,10 @@
            x="235.49832"
            y="331.30029"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan4582-8-3">account</tspan></text>
+           id="tspan4582-8-3">settings</tspan></text>
     </g>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-4-3-1"
-       width="271.17194"
-       height="591.70569"
-       x="2590.4958"
-       y="2739.7114"
-       rx="0.094248675"
-       ry="0.094305322" />
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2744.5887,2769.837)"
-       id="g3169-3-8-2-9-3-7-2"
-       style="opacity:1">
-      <ellipse
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="path3171-0-7-5-4-1-8-6"
-         cx="235.49829"
-         cy="326.94229"
-         rx="59.598999"
-         ry="27.229605" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         x="235.49832"
-         y="331.30029"
-         id="text3173-0-9-0-3-8-0-1"><tspan
-           sodipodi:role="line"
-           x="235.49832"
-           y="331.30029"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan4582-8-3-2">game</tspan></text>
-    </g>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-4-3-1-8"
-       width="271.56317"
-       height="275.31311"
-       x="2910.6372"
-       y="2739.5159"
-       rx="0.094384655"
-       ry="0.043879062" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-4-3-1-8-4"
-       width="271.52527"
-       height="300.73102"
-       x="2910.656"
-       y="3030.8628"
-       rx="0.094371475"
-       ry="0.047930136" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2692.8647"
-       y="2759.7502"
-       id="text3559-0-4-5-5-8"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3561-1-0-0-4-2"
-         x="2692.8647"
-         y="2759.7502">Game</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2999.8311"
-       y="3051.0784"
-       id="text3559-0-4-5-5-3"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3561-1-0-0-4-9"
-         x="2999.8311"
-         y="3051.0784">Settings</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2988.6692"
-       y="2760.1899"
-       id="text3559-0-4-5-5-3-8"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3561-1-0-0-4-9-3"
-         x="2988.6692"
-         y="2760.1899">Standards</tspan></text>
-    <g
-       transform="matrix(1.2816659,0,0,1.4352157,2766.5133,2018.653)"
+       transform="matrix(1.2816659,0,0,1.4352157,2702.5133,1997.1295)"
        id="g3169-3-8-2-9-3-7-0"
        style="opacity:1">
       <ellipse
@@ -870,63 +705,15 @@
            x="235.49832"
            y="322.75034"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan4582-8-3-7">choose</tspan><tspan
+           id="tspan9701">create</tspan><tspan
            sodipodi:role="line"
            x="235.49832"
            y="343.48737"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan9701">character</tspan></text>
+           id="tspan4344">character</tspan></text>
     </g>
     <g
-       transform="matrix(1.2816659,0,0,1.4352157,2766.5133,2118.9708)"
-       id="g3169-3-8-2-9-3-7-2-3"
-       style="opacity:1">
-      <ellipse
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="path3171-0-7-5-4-1-8-6-3"
-         cx="235.49829"
-         cy="326.94229"
-         rx="59.598999"
-         ry="27.229605" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         x="235.49832"
-         y="322.75034"
-         id="text3173-0-9-0-3-8-0-1-0"><tspan
-           sodipodi:role="line"
-           x="238.41446"
-           y="322.75034"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan4582-8-3-2-4">choose </tspan><tspan
-           sodipodi:role="line"
-           x="235.49832"
-           y="343.48737"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan9703">name</tspan></text>
-    </g>
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect2985-4-3-1-8-4-0"
-       width="271.52527"
-       height="300.73102"
-       x="2932.5808"
-       y="2379.9966"
-       rx="0.094371475"
-       ry="0.047930136" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2981.7712"
-       y="2400.2122"
-       id="text3559-0-4-5-5-3-3"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3561-1-0-0-4-9-8"
-         x="2981.7712"
-         y="2400.2122">Create Account</tspan></text>
-    <g
-       transform="matrix(1.2816659,0,0,1.4352157,2406.1698,2018.6531)"
+       transform="matrix(1.2816659,0,0,1.4352157,2406.1698,1997.1295)"
        id="g3169-3-8-2-9-3-7-0-7"
        style="opacity:1">
       <ellipse
@@ -948,66 +735,26 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
            id="tspan9701-4">login</tspan></text>
     </g>
-    <g
-       transform="matrix(1.2816659,0,0,1.4352157,2406.1698,2118.9709)"
-       id="g3169-3-8-2-9-3-7-2-3-7"
-       style="opacity:1">
-      <ellipse
-         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-         id="path3171-0-7-5-4-1-8-6-3-5"
-         cx="235.49829"
-         cy="326.94229"
-         rx="59.598999"
-         ry="27.229605" />
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans Bold';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-         x="235.49832"
-         y="331.30029"
-         id="text3173-0-9-0-3-8-0-1-0-6"><tspan
-           sodipodi:role="line"
-           x="235.49832"
-           y="331.30029"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.5896225px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans'"
-           id="tspan9703-5">register</tspan></text>
-    </g>
     <rect
-       style="fill:none;stroke:#000000;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:#000000;stroke-width:1.36784124;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect2985-4-3-1-8-4-0-6"
-       width="271.52527"
-       height="300.73102"
-       x="2572.2373"
-       y="2380.1816"
-       rx="0.094371475"
-       ry="0.047930136" />
+       width="271.65744"
+       height="249.95149"
+       x="2572.1711"
+       y="2366.1428"
+       rx="0.094417408"
+       ry="0.039836958" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="2643.0212"
-       y="2400.0869"
+       y="2386.1143"
        id="text3559-0-4-5-5-3-3-4"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3561-1-0-0-4-9-8-3"
          x="2643.0212"
-         y="2400.0869">Startscreen</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88748682;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend)"
-       d="m 2784.6875,2588.2036 c 146.1607,0 146.1607,0 146.1607,0"
-       id="path9856"
-       inkscape:connector-curvature="0" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:22.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="2807.3428"
-       y="2584.4492"
-       id="text3559-0-4-5-5-3-3-9"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3561-1-0-0-4-9-8-1"
-         x="2807.3428"
-         y="2584.4492"
-         style="font-size:15px">&lt;&lt;include&gt;&gt;</tspan></text>
+         y="2386.1143">Startscreen</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.1050297;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow2Lend-0)"
        d="m 2310.0528,2383.8318 c 226.5973,0 226.5973,0 226.5973,0"
@@ -1025,5 +772,14 @@
          x="2371.0574"
          y="2380.0774"
          style="font-size:15px">&lt;&lt;exclude&gt;&gt;</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:2.04043198;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect2985-4-3-1-8-4-0-6-7"
+       width="270.98483"
+       height="557.57745"
+       x="2572.5076"
+       y="2635.9751"
+       rx="0.094183639"
+       ry="0.088866003" />
   </g>
 </svg>
