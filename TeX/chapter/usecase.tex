@@ -6,15 +6,23 @@
 \section{Allgemeine Beschreibung}
 	NoRPG ist eine spielbasierte Lernspielplattform für Android. NoRPG selbst ist wie ein Rollenspiel aufgebaut, jedoch stellt es kein Rollenspiel dar. In NoRPG werden unterschiedliche Lernspiele zum herunterladen angeboten.
 	
-	NoRPG unterstützt die Global Goals, 4. Ziel Quality Education. Paar Worte dazu verlieren.		
+	NoRPG unterstützt die Global Goals, 4. Ziel Quality Education. Paar Worte dazu verlieren.	
 	
 	Weitere Informationen in Kapitel 4 über die Gedanken für die Story, Design etc.
 	
 	\subsection{Benutzermerkmale}
-		Die Kinder sollten Erfahrungen mit der Verwendung eines Smartphones, insbesondere mit einem Android-System, haben. Wissen wie in Google Play Spiele gedownloaded werden. Und Erfahrungen im Lesen und Schreiben für die Registrierung, Anmeldung und durchführen von NPC-Kommunikation zum verstehen des ablaufes der Plattform.
+		NoRPG richtet sich größtenteils an Kinder, denen die Möglichkeit in die Schule zu gehen nicht ermöglicht werden. Jedoch werden keine anderen Benutzergruppen ausgeschlossen.
+		
+		Die Benutzer sollten Erfahrungen mit der Verwendung eines Smartphones, insbesondere mit Android-Systemen haben. Dazu zählt die Bedienung der Android-Oberfläche (Starten einer App, Herunterladen von Updates, Verwendung des Google Play Stores). 
+		
+		Dazu sollten die Benutzer englische Texte lesen können, für die Registrierung, Anmeldung und durchführen von NPC-Kommunikation zum verstehen des ablaufes der Plattform.
 	
 	\subsection{Beschränkungen} 
-		Zum spielen wird keine Internetverbindung vorausgesetzt. Es gibt Funktionen wie bspw. Synchronisierung, Download oder andere die jedoch eine Internetverbindung voraussetzten.  
+		Zum Herunterladen von NoRPG und den angebotenen Lernspielen wird eine aktive Internetverbindung vorausgesetzt.
+		
+		Zum Spielen wird keine durchgehende Internetverbindung benötigt. 
+		
+		Spiel zunächst nur in Englisch und Deutsch verfügbar. Jedoch bleibt es erweiterbar.
 
 \section{Funktionalitäten}
 	Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen.
@@ -43,58 +51,84 @@
 			Benutzer angemeldet, kann online oder offline weiterspieleny
 	
 	\subsection{Create character}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte.
 			
 		\subsubsection{Ereignisablauf}
+			Wenn der Benutzer sich zum ersten mal anmeldet hat er die Möglichkeit seinen Charakter zu erstellen. Dafür wählt der Benutzer sich zunächst sein Geschlecht aus und wählt anschließend den passenden Charakter.
+			
+			Zum Abschluss vergibt der Benutzer seinen Charakter einen Namen.
 	
 		\subsubsection{Vorbedingungen}
+			Der Account meldet sich das erste mal in der App an.
 			
 		\subsubsection{Nachbedingungen}
+			Nach der Erstellung beginnt das Spiel und der Charakter ist gespeichert. Bei erneuter Anmeldung muss der Benutzer nicht erneut einen Charakter erstellen.
 	
 	\subsection{Player interaction}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		Dieser Use Case beschreibt den Anwendungsfall: Benutzer interaktionen, wie Bewegen oder Bestätigen.
 			
 		\subsubsection{Ereignisablauf}
+			Klickt auf Pfeiltasten, Charakter bewegt sich in diese Richtung
+			
+			Klickt auf A, Charakter bestätigt
+			
+			Klickt auf B, Charakter lehnt ab
+			
+			(Bild Mockup)
 			
 		\subsubsection{Vorbedingungen}
+			Spieler befindet sich im Spiel (nicht loading screen und menü ist geschlossen)
 			
 		\subsubsection{Nachbedingungen}
+			Charakter bewegt sich, bestätigt oder lehnt ab
 	
 	\subsection{NPC interaction}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich in einer Interaktion mit einem NPC befindet. NPC bedeutet Non-Player Charakter und stellt die programmierten Charaktere dar (Unterhaltungen mit NPC, Storytelling)
 			
 		\subsubsection{Ereignisablauf}
+			Ereignisablauf etc.
 
 		\subsubsection{Vorbedingungen}
+			Ingame, nicht loading screen oder menü offen
 			
 		\subsubsection{Nachbedingungen}
+			Unterhaltung findet statt, etc.
 	
 	\subsection{Choose games}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer ein spiel zum downloaden auswählt
 			
 		\subsubsection{Ereignisablauf}
+			Der Benutzer kann sich (wenn vorhanden) zwischen mehrere Spielen auswählen um den Kurs abzuschließen.
 
 		\subsubsection{Vorbedingungen}
+			Internetverbindung, darf die SPiele nach dem Standard spielen
 			
 		\subsubsection{Nachbedingungen}
+			Weiterleitung auf Google Play Store
 
 	\subsection{Open map}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Karte öffnet. Die Karte dient zur Orientierung der Welt und beinhaltet Symbole etc. um herauszufinden was so ist
 			
 		\subsubsection{Ereignisablauf}
+			Benutzer öffnet Menü und klickt auf "Map" ...
 	
 		\subsubsection{Vorbedingungen}
+			Menü offen, Benutzer befindet sich nicht in einer NPC Interaktion
 			
 		\subsubsection{Nachbedingungen}
+			Eine Karte von der aktuellen Welt wird geöffnet
 	
 	\subsection{Show games}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		Dieser Use Case beschreibt den Anwendungsfall: Liste der gespielten und heruntergeladneen Spiele wird angezeigt. Zuordnung zu den Standards. Aus NoRPG das Spiel starten können.
 			
 		\subsubsection{Ereignisablauf}
+			Benuter öffnet Menü und klickt auf "Games" ...
 
 		\subsubsection{Vorbedingungen}
+			Menü offen, Benutzer befindet sich nicht in einer NPC interaktion
 			
 		\subsubsection{Nachbedingungen}
+			Eine Liste wird angezeigt
 	
 	\subsection{Show colors}
 		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
