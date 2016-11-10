@@ -1,28 +1,24 @@
 \chapter{Software Requirements Specification}
-	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation von einer Software. Die Struktur und der Inhalt des SRS ist im Standard IEEE Std 830-1998 festgehalten.
+	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Die Struktur eines SRS ist im Standard IEEE Std 830-1998 festgehalten.
 	
-	Das SRS beschreibt den Projektumfang und die Anforderungen an die Software. Dabei beschreibt der Verfasser unter anderem die Funktionalität, die externen Schnittstellen und die Performanz\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholders und Entwickler. 
+	Das SRS beschreibt den Projektumfang und die Anforderungen an die Software. Dabei beschreibt der Verfasser beispielsweise die Funktionalität, die externen Schnittstellen und die Performanz\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholders und Entwickler. 
 	
-	In den folgenden Kapitel wird auf der Inhalt eines SRS beschrieben.
+	In den folgenden Kapitel wird der Inhalt des SRS beschrieben.
 	
 \section{Allgemeine Beschreibung}
-	Bei NoRPG handelt es sich um eine spielbasierte Lernspielplattform für Android. 
-
-
-	NoRPG selbst ist wie ein Rollenspiel aufgebaut, jedoch stellt es kein Rollenspiel dar. In NoRPG werden unterschiedliche Lernspiele zum herunterladen angeboten.
-	
+	NoRPG sieht wie ein Rollenspiel aus und ist auch dementsprechend aufgebaut. Allerdings stellt NoRPG kein Rollenspiel dar, sondern es handelt sich um eine spielbasierte Lernspielplattform für Android.  	
 	
 	Weitere Informationen in Kapitel 4 über die Gedanken für die Story, Design etc.
 	
 	\subsection{Benutzermerkmale}
-		NoRPG richtet sich größtenteils an Kinder, denen die Möglichkeit in die Schule zu gehen nicht ermöglicht werden. Jedoch werden keine anderen Benutzergruppen ausgeschlossen.
+		Grundsätzlich richtet sich die App NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen oder zusätzlich lernen wollen. Jedoch werden keine anderen Benutzergruppen für diese App ausgeschlossen.
 		
-		Die Benutzer sollten Erfahrungen mit der Verwendung eines Smartphones, insbesondere mit Android-Systemen haben. Dazu zählt die Bedienung der Android-Oberfläche (Starten einer App, Herunterladen von Updates, Verwendung des Google Play Stores). 
+		Der Benutzer sollte Erfahrung mit der Verwendung eines Smartphones, insbesondere mit Android-Systemen, haben. Dazu zählt die Bedienung der Android-Oberfläche und insbesondere die Bedienung des Google Play Stores.
 		
-		Dazu sollten die Benutzer englische Texte lesen können, für die Registrierung, Anmeldung und durchführen von NPC-Kommunikation zum verstehen des ablaufes der Plattform.
+		Da es sich bei den Benutzern in den meisten Fällen um Kinder handelt, sollten diese englische Texte lesen und verstehen können. Denn zum voranschreiten muss der Benutzer die Unterhaltungen mit NPC zum herunterladen von Spielen verstehen können um die richtige Aktion auszuwählen.
 	
 	\subsection{Beschränkungen} 
-		Zum Herunterladen von NoRPG und den angebotenen Lernspielen wird eine aktive Internetverbindung vorausgesetzt.
+		Für das Herunterladen von NoRPG und den angebotenen Lernspielen wird ein Android Smarthphone mit einem gültigen Google Play Account und einer aktiven Internetverbindung vorausgesetzt. 
 		
 		Zum Spielen wird keine durchgehende Internetverbindung benötigt. 
 		
@@ -41,21 +37,21 @@
 	Das rechte System NoRPG stellt die zu entwickelnde App dar. Diese dient als Frontend für das Kind. Es gibt viele Use Cases. Die Use Cases werden in unterschiedliche Gruppen zusammengefasst. Die nächsten Unterkapitel sind die einzelnen Gruppierungen.
 	
 	\subsection{Login}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich bei NoRPG anmelden möchte. Eine Anmeldung ist notwendig um NoRPG zu starten. 
+		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich bei NoRPG anmelden möchte. Eine Anmeldung ist notwendig um NORPG zu starten. Die Besonderheit bei der Anmeldung  ist, dass der Account des Benutzers auch für die Anmeldung bei Hone benötigt wird. Der Benutzer kann sich in NoRPG im Startbildschirm anmelden und anschließend das Spiel zu starten.
 			
 		\subsubsection{Ereignisablauf}
 			Eingeben von Benutzername und Passwort.	Klicke auf Login.
 			
-			Alternativer Ablauf: Abbruch
+			Alternativer Ablauf: Abbruch oder Spiel Beenden
 			
 		\subsubsection{Vorbedingungen}
-			Benutzer ist registriert, Während der Anmeldung ist eine Internetverbindung vorhanden, Kombination von Benutzername und Passwort existiert
+			Benutzer ist registriert, Während der Anmeldung ist eine Internetverbindung vorhanden, Kombination von Benutzername und Passwort existiert, es ist kein anderer Benutzer auf dem Gerät angemeldet
 			
 		\subsubsection{Nachbedingungen}
-			Benutzer angemeldet, kann online oder offline weiterspieleny
+			Benutzer angemeldet, kann online oder offline weiterspielen. Beim nächsten Start der App ist der Benutzer automatisch angemeldet
 	
 	\subsection{Create character}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte.
+		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dies ist eine einmalige Aktion, die beim ersten Anmelden durchlaufen wird. 
 			
 		\subsubsection{Ereignisablauf}
 			Wenn der Benutzer sich zum ersten mal anmeldet hat er die Möglichkeit seinen Charakter zu erstellen. Dafür wählt der Benutzer sich zunächst sein Geschlecht aus und wählt anschließend den passenden Charakter.
