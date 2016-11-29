@@ -1,84 +1,52 @@
 \chapter{Software Requirements Specification}
 	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Die Struktur eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
 	
-	Das SRS beschreibt den Projektumfang und die Anforderungen an die Software. Dabei beschreibt der Verfasser beispielsweise die Funktionalität, die externen Schnittstellen und die Performanz\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholder und Entwickler. 
-	
-	In den folgenden Kapitel wird der Inhalt des SRS beschrieben. Die verwendete Struktur entspricht dem des Standards.
+	Der weitere Aufbau dieses Kapitels entspricht dem des Standards.
 	
 \section{Einführung}
-	The introduction of the SRS should provide an overview of the entire SRS.
+	Dieses Unterkapitel des SRS stellt einen Überblick über das gesamte SRS bereit.
 	
 	\subsection{Zweck}
-		Delineate the purpose of the SRS
-		
-		Specify the intended audience for the SRS
+		Das SRS beschreibt den Projektumfang und die Anforderungen an die Software. Dabei beschreibt der Verfasser beispielsweise die Funktionalität, die externen Schnittstellen und die Performanz\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. 
 	
+		Die Zielgruppe des SRSs sind zunächst alle, die in irgendeiner Verbindung mit der Software stehen oder jene, die Interesse an der Umsetzung interessiert sind. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholder und Entwickler.
+		
 	\subsection{Umfang}
-		Identify the software product(s) to be produced by name (e.g., Host DBMS, Report Generator, etc.);
+		Dieses SRS handelt von dem Software Produkt NoRPG. Bei NoRPG handelt es sich um eine Gamifizierung einer Lernspielbibliothek für Android. Allgemein stellt NoRPG nur Lernspiele bereit. Jedoch ist NoRPG wie ein Rollenspiel aufgebaut und erfordert das Spielen von Lernspielen, um weitere Spiele freizuschalten. Jedoch ist es kein Rollenspiel im üblichen Sinne.
 		
-		Explain what the software product(s) will, and, if necessary, will not do;
-			NoRPG sieht wie ein Rollenspiel aus und ist auch dementsprechend aufgebaut. Allerdings stellt NoRPG kein Rollenspiel dar, sondern es handelt sich um eine spielbasierte Lernspielplattform für Android.
+		NoRPG richtet sich an Kinder und soll durch den Aufbau eines Rollenspiels die Benutzer dazu anregen, weitere Spiele herunterzuladen und zu spielen. Im nächsten Kapitel werden unter anderem die Gedanken zur Gestaltung und weitere Ziele von NoRPG genauer betrachtet.
 		
-		Describe the application of the software being specified, including relevant benefits, objectives, and goals;
-
-		Be consistent with similar statements in higher-level speciÞcations (e.g., the system requirements specification), if they exist.
-
-	\subsection{Überblick}	
-		Describe what the rest of the SRS contains
-		
-		Explain how the SRS is organized.
-
 \section{Allgemeine Beschreibung}
-	This section of the SRS should describe the general factors that affect the product and its requirements. This section does not state speciÞc requirements. Instead, it provides a background for those requirements, which are deÞned in detail in Section 3 of the SRS, and makes them easier to understand.
+	In diesem Unterkapitel werden die allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel behandelt nicht die spezifischen Anforderungen sondern stellt den Hintergrund für diese Anforderungen dar. 
 
 	\subsection{Produktperspektive}
-		This subsection of the SRS should put the product into perspective with other related products. If the product
-is independent and totally self-contained, it should be so stated here.
-
+		In diesem Unterabschnitt des SRS wird das Produkt in unterschiedlichen Perspektiven mit verwandten Produkten betrachtet, denn bei NoRPG handelt es sich nicht um ein selbstständiges abgeschlossenes Projekt.
+		
+		For each interface:
+		Discussion of the purpose of the interfacing software as related to this software product
+		
+		Definition of the interface in terms of message content and format. It is not necessary to detail any well-documented interface, but a reference to the document defining the interface is required.
+		
 		\subsubsection{System interfaces}
-			This should list each system interface and identify the functionality of the software to accomplish the system
-requirement and the interface description to match the system.
+			Hone ist das Frontend für Spielentwickler und für Benutzer. Spielentwickler können ihre Spiele bei Hone zur Verfügung stellen und die Benutzer können auf der Webplattform unterschiedliche Lernspiele herunterladen.
+		
+			NoRPG stellt das verbesserte und kindgerechte Frontend der Benutzer bereit. Der Benutzer kann alle Aktionen aus der App steuern. Jedoch können sich die Benutzer weiterhin auf der Webplattform anmelden. 
 		
 		\subsubsection{User interfaces}
-			This should specify the following:
 			The logical characteristics of each interface between the software product and its users. This includes those conÞguration characteristics (e.g., required screen formats, page or window layouts, content of any reports or menus, or availability of programmable function keys) necessary to accomplish the software requirements.
 			
 			All the aspects of optimizing the interface with the person who must use the system. This may simply comprise a list of do's and don'ts on how the system will appear to the user. One example may be a requirement for the option of long or short error messages.
 		
 		\subsubsection{Hardware interfaces}
-			This should specify the logical characteristics of each interface between the software product and the hardware components of the system. This includes conÞguration characteristics (number of ports, instruction sets, etc.). It also covers such matters as what devices are to be supported, how they are to be supported, and protocols. For example, terminal support may specify full-screen support as opposed to line-by-line support.
+			This should specify the logical characteristics of each interface between the software product and the hardware components of the system. This includes conÞguration characteristics (number of ports, instruction sets, etc.).
+			
+			It also covers such matters as what devices are to be supported, how they are to be supported, and protocols. For example, terminal support may specify full-screen support as opposed to line-by-line support.
 		
 		\subsubsection{Software interfaces}
-			This should specify the use of other required software products (e.g., a data management system, an operating system, or a mathematical package), and interfaces with other application systems (e.g., the linkage between an accounts receivable system and a general ledger system). For each required software product, the following should be provided:Name,Mnemonic, SpeciÞcation number, Version number and Source.
-			
-		For each interface, the following should be provided
-		Discussion of the purpose of the interfacing software as related to this software product
-		
-		DeÞnition of the interface in terms of message content and format. It is not necessary to detail any well-documented interface, but a reference to the document deÞning the interface is required.
-		
-		\subsubsection{Communications interfaces}
-			This should specify the various interfaces to communications such as local network protocols, etc
+			This should specify the use of other required software products (e.g., a data management system, an operating system, or a mathematical package), and interfaces with other application systems (e.g., the linkage between an accounts receivable system and a general ledger system). For each required software product, the following should be provided:Name, Specification number, Version number and Source.
 		
 		\subsubsection{Memory constraints}
 			This should specify any applicable characteristics and limits on primary and secondary memory
-		
-		\subsubsection{Operations}
-			This should specify the normal and special operations required by the user such as
-			
-			The various modes of operations in the user organization (e.g., user-initiated operations);
-			
-			Periods of interactive operations and periods of unattended operations;
-			
-			Data processing support functions;
-			
-			Backup and recovery operations.
-		
-		\subsubsection{Site adaptation requirements}
-			This should
-			
-			Define the requirements for any data or initialization sequences that are speciÞc to a given site, mission, or operational mode (e.g., grid values, safety limits, etc.);
-			
-			Specify the site or mission-related features that should be modiÞed to adapt the software to a particular installation.
 		
 	\subsection{Produktfunktionen}
 		This subsection of the SRS should provide a summary of the major functions that the software will perform. For example, an SRS for an accounting program may use this part to address customer account maintenance, customer statement, and invoice preparation without mentioning the vast amount of detail that each of those functions requires.
@@ -88,8 +56,6 @@ requirement and the interface description to match the system.
 		Textual or graphical methods can be used to show the different functions and their relationships. Such a diagram is not intended to show a design of a product, but simply shows the logical relationships among variables.
 	
 	\subsection{Benutzermerkmale}
-		This subsection of the SRS should describe those general characteristics of the intended users of the product including educational level, experience, and technical expertise. It should not be used to state speciÞc requirements, but rather should provide the reasons why certain speciÞc requirements are later speciÞed in Section 3 of the SRS.
-		
 		Grundsätzlich richtet sich die App NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen oder zusätzlich lernen wollen. Jedoch werden keine anderen Benutzergruppen für diese App ausgeschlossen.
 		
 		Der Benutzer sollte Erfahrung mit der Verwendung eines Smartphones, insbesondere mit Android-Systemen, haben. Dazu zählt die Bedienung der Android-Oberfläche und insbesondere die Bedienung des Google Play Stores.
@@ -103,9 +69,6 @@ requirement and the interface description to match the system.
 	
 	\subsection{Annahmen und Abhängigkeiten}
 		This subsection of the SRS should list each of the factors that affect the requirements stated in the SRS. These factors are not design constraints on the software but are, rather, any changes to them that can affect the requirements in the SRS. For example, an assumption may be that a speciÞc operating system will be available on the hardware designated for the software product. If, in fact, the operating system is not available, the SRS would then have to change accordingly.
-	
-	\subsection{Aufteilung von Anforderungen}
-		This subsection of the SRS should identify requirements that may be delayed until future versions of the system.
 
 \section{Spezifische Anforderungen}
 	This section of the SRS should contain all of the software requirements to a level of detail sufÞcient to enable designers to design a system to satisfy those requirements, and testers to test that the system satisÞes those requirements. Throughout this section, every stated requirement should be externally perceivable by users, operators, or other external systems. These requirements should include at a minimum a description of
