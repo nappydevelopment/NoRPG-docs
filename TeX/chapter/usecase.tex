@@ -1,210 +1,359 @@
 \chapter{Software Requirements Specification}
-	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Die Struktur eines SRS ist im Standard IEEE Std 830-1998 festgehalten.
+	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Die Struktur eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
 	
-	Das SRS beschreibt den Projektumfang und die Anforderungen an die Software. Dabei beschreibt der Verfasser beispielsweise die Funktionalität, die externen Schnittstellen und die Performanz\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholders und Entwickler. 
+	Das SRS beschreibt den Projektumfang und die Anforderungen an die Software. Dabei beschreibt der Verfasser beispielsweise die Funktionalität, die externen Schnittstellen und die Performanz\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholder und Entwickler. 
 	
-	In den folgenden Kapitel wird der Inhalt des SRS beschrieben.
+	In den folgenden Kapitel wird der Inhalt des SRS beschrieben. Die verwendete Struktur entspricht dem des Standards.
 	
+\section{Einführung}
+	The introduction of the SRS should provide an overview of the entire SRS.
+	
+	\subsection{Zweck}
+		Delineate the purpose of the SRS
+		
+		Specify the intended audience for the SRS
+	
+	\subsection{Umfang}
+		Identify the software product(s) to be produced by name (e.g., Host DBMS, Report Generator, etc.);
+		
+		Explain what the software product(s) will, and, if necessary, will not do;
+			NoRPG sieht wie ein Rollenspiel aus und ist auch dementsprechend aufgebaut. Allerdings stellt NoRPG kein Rollenspiel dar, sondern es handelt sich um eine spielbasierte Lernspielplattform für Android.
+		
+		Describe the application of the software being specified, including relevant benefits, objectives, and goals;
+
+		Be consistent with similar statements in higher-level speciÞcations (e.g., the system requirements specification), if they exist.
+
+	\subsection{Überblick}	
+		Describe what the rest of the SRS contains
+		
+		Explain how the SRS is organized.
+
 \section{Allgemeine Beschreibung}
-	NoRPG sieht wie ein Rollenspiel aus und ist auch dementsprechend aufgebaut. Allerdings stellt NoRPG kein Rollenspiel dar, sondern es handelt sich um eine spielbasierte Lernspielplattform für Android.  	
-	
-	Weitere Informationen in Kapitel 4 über die Gedanken für die Story, Design etc.
+	This section of the SRS should describe the general factors that affect the product and its requirements. This section does not state speciÞc requirements. Instead, it provides a background for those requirements, which are deÞned in detail in Section 3 of the SRS, and makes them easier to understand.
+
+	\subsection{Produktperspektive}
+		This subsection of the SRS should put the product into perspective with other related products. If the product
+is independent and totally self-contained, it should be so stated here.
+
+		\subsubsection{System interfaces}
+			This should list each system interface and identify the functionality of the software to accomplish the system
+requirement and the interface description to match the system.
+		
+		\subsubsection{User interfaces}
+			This should specify the following:
+			The logical characteristics of each interface between the software product and its users. This includes those conÞguration characteristics (e.g., required screen formats, page or window layouts, content of any reports or menus, or availability of programmable function keys) necessary to accomplish the software requirements.
+			
+			All the aspects of optimizing the interface with the person who must use the system. This may simply comprise a list of do's and don'ts on how the system will appear to the user. One example may be a requirement for the option of long or short error messages.
+		
+		\subsubsection{Hardware interfaces}
+			This should specify the logical characteristics of each interface between the software product and the hardware components of the system. This includes conÞguration characteristics (number of ports, instruction sets, etc.). It also covers such matters as what devices are to be supported, how they are to be supported, and protocols. For example, terminal support may specify full-screen support as opposed to line-by-line support.
+		
+		\subsubsection{Software interfaces}
+			This should specify the use of other required software products (e.g., a data management system, an operating system, or a mathematical package), and interfaces with other application systems (e.g., the linkage between an accounts receivable system and a general ledger system). For each required software product, the following should be provided:Name,Mnemonic, SpeciÞcation number, Version number and Source.
+			
+		For each interface, the following should be provided
+		Discussion of the purpose of the interfacing software as related to this software product
+		
+		DeÞnition of the interface in terms of message content and format. It is not necessary to detail any well-documented interface, but a reference to the document deÞning the interface is required.
+		
+		\subsubsection{Communications interfaces}
+			This should specify the various interfaces to communications such as local network protocols, etc
+		
+		\subsubsection{Memory constraints}
+			This should specify any applicable characteristics and limits on primary and secondary memory
+		
+		\subsubsection{Operations}
+			This should specify the normal and special operations required by the user such as
+			
+			The various modes of operations in the user organization (e.g., user-initiated operations);
+			
+			Periods of interactive operations and periods of unattended operations;
+			
+			Data processing support functions;
+			
+			Backup and recovery operations.
+		
+		\subsubsection{Site adaptation requirements}
+			This should
+			
+			Define the requirements for any data or initialization sequences that are speciÞc to a given site, mission, or operational mode (e.g., grid values, safety limits, etc.);
+			
+			Specify the site or mission-related features that should be modiÞed to adapt the software to a particular installation.
+		
+	\subsection{Produktfunktionen}
+		This subsection of the SRS should provide a summary of the major functions that the software will perform. For example, an SRS for an accounting program may use this part to address customer account maintenance, customer statement, and invoice preparation without mentioning the vast amount of detail that each of those functions requires.
+		
+		Sometimes the function summary that is necessary for this part can be taken directly from the section of the higher-level speciÞcation (if one exists) that allocates particular functions to the software product. Note that for the sake of clarity The functions should be organized in a way that makes the list of functions understandable to the customer or to anyone else reading the document for the first time.
+		
+		Textual or graphical methods can be used to show the different functions and their relationships. Such a diagram is not intended to show a design of a product, but simply shows the logical relationships among variables.
 	
 	\subsection{Benutzermerkmale}
+		This subsection of the SRS should describe those general characteristics of the intended users of the product including educational level, experience, and technical expertise. It should not be used to state speciÞc requirements, but rather should provide the reasons why certain speciÞc requirements are later speciÞed in Section 3 of the SRS.
+		
 		Grundsätzlich richtet sich die App NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen oder zusätzlich lernen wollen. Jedoch werden keine anderen Benutzergruppen für diese App ausgeschlossen.
 		
 		Der Benutzer sollte Erfahrung mit der Verwendung eines Smartphones, insbesondere mit Android-Systemen, haben. Dazu zählt die Bedienung der Android-Oberfläche und insbesondere die Bedienung des Google Play Stores.
 		
 		Da es sich bei den Benutzern in den meisten Fällen um Kinder handelt, sollten diese englische Texte lesen und verstehen können. Denn zum voranschreiten muss der Benutzer die Unterhaltungen mit NPC zum herunterladen von Spielen verstehen können um die richtige Aktion auszuwählen.
 	
-	\subsection{Beschränkungen} 
-		Für das Herunterladen von NoRPG und den angebotenen Lernspielen wird ein Android Smarthphone mit einem gültigen Google Play Account und einer aktiven Internetverbindung vorausgesetzt. 
-		
-		Zum Spielen wird keine durchgehende Internetverbindung benötigt. 
-		
-		Spiel zunächst nur in Englisch und Deutsch verfügbar. Jedoch bleibt es erweiterbar.
+	\subsection{Einschränkungen} 
+		Einschränkungen für den Entwickler
+				
+		Regulatory policies, Hardware limitations, Interfaces to other applications, Parallel operation, Audit functions, Control functions, Higher-order language requirements, Signal handshake protocols, Reliability requirements, Criticality of the application and Safety and security considerations
+	
+	\subsection{Annahmen und Abhängigkeiten}
+		This subsection of the SRS should list each of the factors that affect the requirements stated in the SRS. These factors are not design constraints on the software but are, rather, any changes to them that can affect the requirements in the SRS. For example, an assumption may be that a speciÞc operating system will be available on the hardware designated for the software product. If, in fact, the operating system is not available, the SRS would then have to change accordingly.
+	
+	\subsection{Aufteilung von Anforderungen}
+		This subsection of the SRS should identify requirements that may be delayed until future versions of the system.
 
-\section{Funktionalitäten}
-	Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen.
-	
-	\begin{center}
-		\includegraphics[width=\textwidth]{pics/OUCD.pdf}
-		\captionof{figure}{Overall Use Case Diagramm} 
-	\end{center}
-	
-	In der Grafik sind 2 Systeme zu sehen. Links das vorhandene System Hone welches ein Frontend für die Entwickler und für die Kinder darstellt. Die Kinder sollen nicht mehr über Hone die Spiele herunterladen sondern nur noch die App NoRPG verwenden. Die Ansicht wird jedoch weiterhin genutzt und soll den Eltern der Kinder die Möglichkeit geben, den Fortschritt des Kindes nachzuschauen. Hone soll von den Rollen Entwickler und Eltern entwickelt werden.
-	
-	Das rechte System NoRPG stellt die zu entwickelnde App dar. Diese dient als Frontend für das Kind. Es gibt viele Use Cases. Die Use Cases werden in unterschiedliche Gruppen zusammengefasst. Die nächsten Unterkapitel sind die einzelnen Gruppierungen.
-	
-	\subsection{Login}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich bei NoRPG anmelden möchte. Eine Anmeldung ist notwendig um NORPG zu starten. Die Besonderheit bei der Anmeldung  ist, dass der Account des Benutzers auch für die Anmeldung bei Hone benötigt wird. Der Benutzer kann sich in NoRPG im Startbildschirm anmelden und anschließend das Spiel zu starten.
-			
-		\subsubsection{Ereignisablauf}
-			Eingeben von Benutzername und Passwort.	Klicke auf Login.
-			
-			Alternativer Ablauf: Abbruch oder Spiel Beenden
-			
-		\subsubsection{Vorbedingungen}
-			Benutzer ist registriert, Während der Anmeldung ist eine Internetverbindung vorhanden, Kombination von Benutzername und Passwort existiert, es ist kein anderer Benutzer auf dem Gerät angemeldet
-			
-		\subsubsection{Nachbedingungen}
-			Benutzer angemeldet, kann online oder offline weiterspielen. Beim nächsten Start der App ist der Benutzer automatisch angemeldet.
-			
-			Oder falls die eingegeben Daten nicht übereinstimmen, Fehlermeldung anzeigen
-	
-	\subsection{Create character}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dies ist eine einmalige Aktion, die beim ersten Anmelden durchlaufen wird. 
-			
-		\subsubsection{Ereignisablauf}
-			Wenn der Benutzer sich zum ersten mal anmeldet hat er die Möglichkeit seinen Charakter zu erstellen. Dafür wählt der Benutzer sich zunächst sein Geschlecht aus und wählt anschließend den passenden Charakter.
-			
-			Zum Abschluss vergibt der Benutzer seinen Charakter einen Namen.
-	
-		\subsubsection{Vorbedingungen}
-			Der Account meldet sich das erste mal in der App an.
-			
-		\subsubsection{Nachbedingungen}
-			Nach der Erstellung beginnt das Spiel und der Charakter ist gespeichert. Bei erneuter Anmeldung muss der Benutzer nicht erneut einen Charakter erstellen.
-	
-	\subsection{Player interaction}
-		Dieser Use Case beschreibt den Anwendungsfall: Benutzer interaktionen, wie Bewegen oder Bestätigen.
-			
-		\subsubsection{Ereignisablauf}
-			Klickt auf Pfeiltasten, Charakter bewegt sich in diese Richtung
-			
-			Klickt auf A, Charakter bestätigt
-			
-			Klickt auf B, Charakter lehnt ab
-			
-			(Bild Mockup)
-			
-		\subsubsection{Vorbedingungen}
-			Spieler befindet sich im Spiel (nicht loading screen und menü ist geschlossen)
-			
-		\subsubsection{Nachbedingungen}
-			Charakter bewegt sich, bestätigt oder lehnt ab
-	
-	\subsection{NPC interaction}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich in einer Interaktion mit einem NPC befindet. NPC bedeutet Non-Player Charakter und stellt die programmierten Charaktere dar (Unterhaltungen mit NPC, Storytelling)
-			
-		\subsubsection{Ereignisablauf}
-			Ereignisablauf etc.
+\section{Spezifische Anforderungen}
+	This section of the SRS should contain all of the software requirements to a level of detail sufÞcient to enable designers to design a system to satisfy those requirements, and testers to test that the system satisÞes those requirements. Throughout this section, every stated requirement should be externally perceivable by users, operators, or other external systems. These requirements should include at a minimum a description of
+every input (stimulus) into the system, every output (response) from the system, and all functions performed by the system in response to an input or in support of an output. As this is often the largest and most important part of the SRS, the following principles apply:
 
-		\subsubsection{Vorbedingungen}
-			Ingame, nicht loading screen oder menü offen
-			
-		\subsubsection{Nachbedingungen}
-			Unterhaltung findet statt, etc.
+	SpeciÞc requirements should be stated in conformance with all the characteristics described in 4.3.
 	
-	\subsection{Choose games}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer ein spiel zum downloaden auswählt
-			
-		\subsubsection{Ereignisablauf}
-			Der Benutzer kann sich (wenn vorhanden) zwischen mehrere Spielen auswählen um den Kurs abzuschließen.
+	SpeciÞc requirements should be cross-referenced to earlier documents that relate
+	
+	All requirements should be uniquely identiÞable
+	
+	Careful attention should be given to organizing the requirements to maximize readability
+	
+	\subsection{Externe Schnittstellen}
 
-		\subsubsection{Vorbedingungen}
-			Internetverbindung, darf die SPiele nach dem Standard spielen
+	\subsection{Funktionale Anforderungen}
+		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen.
+	
+		\begin{center}
+			\includegraphics[width=\textwidth]{pics/OUCD.pdf}
+			\captionof{figure}{Overall Use Case Diagramm} 
+		\end{center}
+	
+		In der Grafik sind 2 Systeme zu sehen. Links das vorhandene System Hone welches ein Frontend für die Entwickler und für die Kinder darstellt. Die Kinder sollen nicht mehr über Hone die Spiele herunterladen sondern nur noch die App NoRPG verwenden. Die Ansicht wird jedoch weiterhin genutzt und soll den Eltern der Kinder die Möglichkeit geben, den Fortschritt des Kindes nachzuschauen. Hone soll von den Rollen Entwickler und Eltern entwickelt werden.
+	
+		Das rechte System NoRPG stellt die zu entwickelnde App dar. Diese dient als Frontend für das Kind. Es gibt viele Use Cases. Die Use Cases werden in unterschiedliche Gruppen zusammengefasst. Die nächsten Unterkapitel sind die einzelnen Gruppierungen.
+	
+		\subsubsection{Login}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich bei NoRPG anmelden möchte. Eine Anmeldung ist notwendig um NORPG zu starten. Die Besonderheit bei der Anmeldung  ist, dass der Account des Benutzers auch für die Anmeldung bei Hone benötigt wird. Der Benutzer kann sich in NoRPG im Startbildschirm anmelden und anschließend das Spiel zu starten.
 			
-		\subsubsection{Nachbedingungen}
-			Weiterleitung auf Google Play Store
+			\paragraph{Ereignisablauf}
+				Eingeben von Benutzername und Passwort.	Klicke auf Login.
+			
+				Alternativer Ablauf: Abbruch oder Spiel Beenden
+			
+			\paragraph{Vorbedingungen}
+				Benutzer ist registriert, Während der Anmeldung ist eine Internetverbindung vorhanden, Kombination von Benutzername und Passwort existiert, es ist kein anderer Benutzer auf dem Gerät angemeldet
+			
+			\paragraph{Nachbedingungen}
+				Benutzer angemeldet, kann online oder offline weiterspielen. Beim nächsten Start der App ist der Benutzer automatisch angemeldet.
+			
+				Oder falls die eingegeben Daten nicht übereinstimmen, Fehlermeldung anzeigen
+	
+		\subsubsection{Create character}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dies ist eine einmalige Aktion, die beim ersten Anmelden durchlaufen wird. 
+			
+			\paragraph{Ereignisablauf}
+				Wenn der Benutzer sich zum ersten mal anmeldet hat er die Möglichkeit seinen Charakter zu erstellen. Dafür wählt der Benutzer sich zunächst sein Geschlecht aus und wählt anschließend den passenden Charakter.
+			
+				Zum Abschluss vergibt der Benutzer seinen Charakter einen Namen.
+	
+			\paragraph{Vorbedingungen}
+				Der Account meldet sich das erste mal in der App an.
+			
+			\paragraph{Nachbedingungen}
+				Nach der Erstellung beginnt das Spiel und der Charakter ist gespeichert. Bei erneuter Anmeldung muss der Benutzer nicht erneut einen Charakter erstellen.
+	
+		\subsubsection{Player interaction}
+			Dieser Use Case beschreibt den Anwendungsfall: Benutzer interaktionen, wie Bewegen oder Bestätigen.
+			
+			\paragraph{Ereignisablauf}
+				Klickt auf Pfeiltasten, Charakter bewegt sich in diese Richtung
+			
+				Klickt auf A, Charakter bestätigt
+			
+				Klickt auf B, Charakter lehnt ab
+			
+				(Bild Mockup)
+			
+			\paragraph{Vorbedingungen}
+				Spieler befindet sich im Spiel (nicht loading screen und menü ist geschlossen)
+			
+			\paragraph{Nachbedingungen}
+				Charakter bewegt sich, bestätigt oder lehnt ab
+	
+		\subsubsection{NPC interaction}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich in einer Interaktion mit einem NPC befindet. NPC bedeutet Non-Player Charakter und stellt die programmierten Charaktere dar (Unterhaltungen mit NPC, Storytelling)
+			
+			\paragraph{Ereignisablauf}
+				Ereignisablauf etc.
 
-	\subsection{Open map}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Karte öffnet. Die Karte dient zur Orientierung der Welt und beinhaltet Symbole etc. um herauszufinden was so ist
+			\paragraph{Vorbedingungen}
+				Ingame, nicht loading screen oder menü offen
 			
-		\subsubsection{Ereignisablauf}
+			\paragraph{Nachbedingungen}
+				Unterhaltung findet statt, etc.
+	
+		\subsubsection{Choose games}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer ein spiel zum downloaden auswählt
+			
+			\paragraph{Ereignisablauf}
+				Der Benutzer kann sich (wenn vorhanden) zwischen mehrere Spielen auswählen um den Kurs abzuschließen.
+
+			\paragraph{Vorbedingungen}
+				Internetverbindung, darf die SPiele nach dem Standard spielen
+			
+			\paragraph{Nachbedingungen}
+				Weiterleitung auf Google Play Store
+
+		\subsubsection{Open map}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Karte öffnet. Die Karte dient zur Orientierung der Welt und beinhaltet Symbole etc. um herauszufinden was so ist
+			
+			\paragraph{Ereignisablauf}
 			Benutzer öffnet Menü und klickt auf "Map" ...
 	
-		\subsubsection{Vorbedingungen}
-			Menü offen, Benutzer befindet sich nicht in einer NPC Interaktion
+			\paragraph{Vorbedingungen}
+				Menü offen, Benutzer befindet sich nicht in einer NPC Interaktion
 			
-		\subsubsection{Nachbedingungen}
-			Eine Karte von der aktuellen Welt wird geöffnet
+			\paragraph{Nachbedingungen}
+				Eine Karte von der aktuellen Welt wird geöffnet
 	
-	\subsection{Show games}
-		Dieser Use Case beschreibt den Anwendungsfall: Liste der gespielten und heruntergeladneen Spiele wird angezeigt. Zuordnung zu den Standards. Aus NoRPG das Spiel starten können.
+		\subsubsection{Show games}
+			Dieser Use Case beschreibt den Anwendungsfall: Liste der gespielten und heruntergeladneen Spiele wird angezeigt. Zuordnung zu den Standards. Aus NoRPG das Spiel starten können.
 			
-		\subsubsection{Ereignisablauf}
-			Benuter öffnet Menü und klickt auf "Games" ...
+			\paragraph{Ereignisablauf}
+				Benuter öffnet Menü und klickt auf "Games" ...
 
-		\subsubsection{Vorbedingungen}
-			Menü offen, Benutzer befindet sich nicht in einer NPC interaktion
+			\paragraph{Vorbedingungen}
+				Menü offen, Benutzer befindet sich nicht in einer NPC interaktion
 			
-		\subsubsection{Nachbedingungen}
-			Eine Liste wird angezeigt
+			\paragraph{Nachbedingungen}
+				Eine Liste wird angezeigt
 	
-	\subsection{Show colors}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		\subsubsection{View progress}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
 			
-		\subsubsection{Ereignisablauf}
+			\paragraph{Ereignisablauf}
+	
+			\paragraph{Vorbedingungen}
+			
+			\paragraph{Nachbedingungen}
+	
+		\subsubsection{Settings}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+			
+			\paragraph{Ereignisablauf}
+	
+			\paragraph{Vorbedingungen}
+			
+			\paragraph{Nachbedingungen}
+	
+		\subsubsection{Synchronize}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+			
+			\paragraph{Ereignisablauf}
+	
+			\paragraph{Vorbedingungen}
+			
+			\paragraph{Nachbedingungen}
+	
+		\subsubsection{Save local}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+			
+			\paragraph{Ereignisablauf}
+	
+			\paragraph{Vorbedingungen}
+			
+			\paragraph{Nachbedingungen}
+	
+	\subsection{Performance requirements}
+		This subsection should specify both the static and the dynamic numerical requirements placed on the software or on human interaction with the software as a whole. Static numerical requirements may include the following
+		
+		The number of terminals to be supported, The number of simultaneous users to be supported, Amount and type of information to be handled
+		
+	\subsection{Logical database requirements}
+		This should specify the logical requirements for any information that is to be placed into a database. This may include the following:
+		
+		Types of information used by various functions
+		
+		Frequency of use
+		
+		Accessing capabilities
+		
+		Data entities and their relationships
+		
+		Integrity constraints
+		
+		Data retention requirements.
+	
+	\subsection{Design constraints}
+		This should specify design constraints that can be imposed by other standards, hardware limitations, etc.
+		
+		Standards compliance: This subsection should specify the requirements derived from existing standards or regulations. They may include the following: 
+		
+		Report format, Data naming, Accounting procedures and Audit tracing.
+	
+	\subsection{Software system attributes}
+		There are a number of attributes of software that can serve as requirements. It is important that required attributes be speciÞed so that their achievement can be objectively veriÞed. Subclauses 5.3.6.1 through 5.3.6.5 provide a partial list of examples.
+	
+	\subsection{Usability}
 
-		\subsubsection{Vorbedingungen}
-			
-		\subsubsection{Nachbedingungen}
+	\subsection{Reliability}
+		This should specify the factors required to establish the required reliability of the software system at time of delivery.
 	
-	\subsection{View progress}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
-			
-		\subsubsection{Ereignisablauf}
+	\subsection{Availability}
+		This should specify the factors required to guarantee a deÞned availability level for the entire system such as checkpoint, recovery, and restart. 
 	
-		\subsubsection{Vorbedingungen}
-			
-		\subsubsection{Nachbedingungen}
-	
-	\subsection{Settings}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
-			
-		\subsubsection{Ereignisablauf}
-	
-		\subsubsection{Vorbedingungen}
-			
-		\subsubsection{Nachbedingungen}
-	
-	\subsection{Synchronize}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
-			
-		\subsubsection{Ereignisablauf}
-			
-		\subsubsection{Vorbedingungen}
-			
-		\subsubsection{Nachbedingungen}
-	
-	\subsection{Save local}
-		Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
-			
-		\subsubsection{Ereignisablauf}
-			
-		\subsubsection{Vorbedingungen}
-			
-		\subsubsection{Nachbedingungen}	
-	
-\section{Benutzbarkeit}
-hier steht noch ein bisschen text und so, das und das
-	
-	\subsection{Anlernzeit}
-		asdfasf
-	
-	\subsection{Hardware Anforderungen}
-		keine Ahnung
-	
-	\subsection{Software Anforderungen}
-		Android 4.4 mind
+	\subsection{Security}
+		This should specify the factors that protect the software from accidental or malicious access, use, modiÞcation, destruction, or disclosure. SpeciÞc requirements in this area could include the need to
 		
-\section{Zuverlässigkeit}
+		Utilize certain cryptographical techniques; 
+		
+		Keep speciÞc log or history data sets;
+		
+		Assign certain functions to different modules;
+		
+		Restrict communications between some areas of the program;
+		
+		Check data integrity for critical variables.
 	
-	\subsection{Verfügbarkeit}
-		Offlien verfügbar etc. etc.
-		
-	\subsection{Performanz}
-		Response Time 
+	\subsection{Maintainability}
+		This should specify attributes of software that relate to the ease of maintenance of the software itself. There may be some requirement for certain modularity, interfaces, complexity, etc. Requirements should not be placed here just because they are thought to be good design practices.
 	
-\section{Schnittstellen}
-hgierasoujdas asdjkoiiasjd asdhjukasdjn asm,dhasjkd
-
-	\subsection{Benutzer Schnittstellen}
-		MockUps etc.
+	\subsection{Portability}
+		This should specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems. This may include the following:
 		
-	\subsection{Hardware Schnittstellen}
-		Server? Datenbank?		
+		Percentage of components with host-dependent code;
 		
-	\subsection{Software Schnittstellen}
-		Zu Hone
+		Percentage of code that is host dependent;
+		
+		Use of a proven portable language; 
+		
+		Use of a particular compiler or language subset;
+		
+		Use of a particular operating system.
+	
+	\subsection{Organizing the speciÞc requirements}
+		For anything but trivial systems the detailed requirements tend to be extensive. For this reason, it is recommended that careful consideration be given to organizing these in a manner optimal for understanding. There is no one optimal organization for all systems. Different classes of systems lend themselves to different organizations of requirements in Section 3 of the SRS. Some of these organizations are described in 5.3.7.1 through 5.3.7.7.
+	
+	\subsection{System mode}
+		Some systems behave quite differently depending on the mode of operation. For example, a control system may have different sets of functions depending on its mode: training, normal, or emergency. When organizing this section by mode, the outline in A.1 or A.2 should be used. The choice depends on whether interfaces and performance are dependent on mode.
+	
+	\subsection{User class}
+		Some systems provide different sets of functions to different classes of users. For example, an elevator control system presents different capabilities to passengers, maintenance workers, and Þre Þghters. When organizing this section by user class, the outline in A.3 should be used.
+	
+	\subsection{Objects}
+		Objects are real-world entities that have a counterpart within the system. For example, in a patient monitoring system, objects include patients, sensors, nurses, rooms, physicians, medicines, etc. Associated with each object is a set of attributes (of that object) and functions (performed by that object). These functions are also called services, methods, or processes. When organizing this section by object, the outline in A.4 should be used. Note that sets of objects may share attributes and services. These are grouped together as classes.
+	
+	\subsection{Feature}
+		A feature is an externally desired service by the system that may require a sequence of inputs to effect the desired result. For example, in a telephone system, features include local call, call forwarding, and conference call. Each feature is generally described in a sequence of stimulus-response pairs. When organizing this section by feature, the outline in A.5 should be used.
+	
+	\subsection{Stimulus}
+		Some systems can be best organized by describing their functions in terms of stimuli. For example, the functions of an automatic aircraft landing system may be organized into sections for loss of power, wind shear, sudden change in roll, vertical velocity excessive, etc. When organizing this section by stimulus, the outline in A.6 should be used.
+	
+	\subsection{Response}
+		Some systems can be best organized by describing all the functions in support of the generation of a response. For example, the functions of a personnel system may be organized into sections corresponding to all functions associated with generating paychecks, all functions associated with generating a current list of employees, etc. The outline in A.6 (with all occurrences of stimulus replaced with response) should be used.
+	
+	\subsection{Functional hierarchy}
+		When none of the above organizational schemes prove helpful, the overall functionality can be organized into a hierarchy of functions organized by either common inputs, common outputs, or common internal data access. Data ßow diagrams and data dictionaries can be used to show the relationships between and among the functions and data. When organizing this section by functional hierarchy, the outline in A.7 should be
+used.
+	
