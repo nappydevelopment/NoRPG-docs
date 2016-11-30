@@ -16,6 +16,8 @@
 		
 		NoRPG richtet sich an Kinder und soll durch den Aufbau eines Rollenspiels die Benutzer dazu anregen, weitere Spiele herunterzuladen und zu spielen. Im nächsten Kapitel werden unter anderem die Gedanken zur Gestaltung und weitere Ziele von NoRPG genauer betrachtet.
 		
+	\subsection{Übersicht}
+		
 \section{Allgemeine Beschreibung}
 	In diesem Unterkapitel werden die allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel behandelt nicht die spezifischen Anforderungen sondern stellt den Hintergrund für diese Anforderungen dar. 
 
@@ -33,6 +35,10 @@
 			NoRPG stellt das verbesserte und kindgerechte Frontend der Benutzer bereit. Der Benutzer kann alle Aktionen aus der App steuern. Jedoch können sich die Benutzer weiterhin auf der Webplattform anmelden. 
 		
 		\subsubsection{User interfaces}
+			It should include both content and format as follows:
+			
+			Name of item; Description of purpose; Source of input or destination of output; Valid range, accuracy, and/or tolerance; Units of measure; Timing; Relationships to other inputs/outputs; Screen formats/organization; Window formats/organization; Data formats; Command formats; End messages.
+		
 			The logical characteristics of each interface between the software product and its users. This includes those conÞguration characteristics (e.g., required screen formats, page or window layouts, content of any reports or menus, or availability of programmable function keys) necessary to accomplish the software requirements.
 			
 			All the aspects of optimizing the interface with the person who must use the system. This may simply comprise a list of do's and don'ts on how the system will appear to the user. One example may be a requirement for the option of long or short error messages.
@@ -81,8 +87,6 @@ every input (stimulus) into the system, every output (response) from the system,
 	All requirements should be uniquely identiÞable
 	
 	Careful attention should be given to organizing the requirements to maximize readability
-	
-	\subsection{Externe Schnittstellen}
 
 	\subsection{Funktionale Anforderungen}
 		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen.
@@ -228,12 +232,12 @@ every input (stimulus) into the system, every output (response) from the system,
 			
 			\paragraph{Nachbedingungen}
 	
-	\subsection{Performance requirements}
+	\subsection{Performanz Anforderungen}
 		This subsection should specify both the static and the dynamic numerical requirements placed on the software or on human interaction with the software as a whole. Static numerical requirements may include the following
 		
 		The number of terminals to be supported, The number of simultaneous users to be supported, Amount and type of information to be handled
 		
-	\subsection{Logical database requirements}
+	\subsection{Datenbank Anforderungen}
 		This should specify the logical requirements for any information that is to be placed into a database. This may include the following:
 		
 		Types of information used by various functions
@@ -248,25 +252,22 @@ every input (stimulus) into the system, every output (response) from the system,
 		
 		Data retention requirements.
 	
-	\subsection{Design constraints}
+	\subsection{Entwurfsbeschränkungen}
 		This should specify design constraints that can be imposed by other standards, hardware limitations, etc.
 		
 		Standards compliance: This subsection should specify the requirements derived from existing standards or regulations. They may include the following: 
 		
 		Report format, Data naming, Accounting procedures and Audit tracing.
 	
-	\subsection{Software system attributes}
-		There are a number of attributes of software that can serve as requirements. It is important that required attributes be speciÞed so that their achievement can be objectively veriÞed. Subclauses 5.3.6.1 through 5.3.6.5 provide a partial list of examples.
-	
-	\subsection{Usability}
+	\subsection{Benuzterfreundlichkeit}
 
-	\subsection{Reliability}
+	\subsection{Zuverlässigkeit}
 		This should specify the factors required to establish the required reliability of the software system at time of delivery.
 	
-	\subsection{Availability}
+	\subsection{Verfügbarkeit}
 		This should specify the factors required to guarantee a deÞned availability level for the entire system such as checkpoint, recovery, and restart. 
 	
-	\subsection{Security}
+	\subsection{Sicherheit}
 		This should specify the factors that protect the software from accidental or malicious access, use, modiÞcation, destruction, or disclosure. SpeciÞc requirements in this area could include the need to
 		
 		Utilize certain cryptographical techniques; 
@@ -279,10 +280,10 @@ every input (stimulus) into the system, every output (response) from the system,
 		
 		Check data integrity for critical variables.
 	
-	\subsection{Maintainability}
+	\subsection{Wartbarkeit}
 		This should specify attributes of software that relate to the ease of maintenance of the software itself. There may be some requirement for certain modularity, interfaces, complexity, etc. Requirements should not be placed here just because they are thought to be good design practices.
 	
-	\subsection{Portability}
+	\subsection{Portabilität}
 		This should specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems. This may include the following:
 		
 		Percentage of components with host-dependent code;
@@ -294,29 +295,3 @@ every input (stimulus) into the system, every output (response) from the system,
 		Use of a particular compiler or language subset;
 		
 		Use of a particular operating system.
-	
-	\subsection{Organizing the speciÞc requirements}
-		For anything but trivial systems the detailed requirements tend to be extensive. For this reason, it is recommended that careful consideration be given to organizing these in a manner optimal for understanding. There is no one optimal organization for all systems. Different classes of systems lend themselves to different organizations of requirements in Section 3 of the SRS. Some of these organizations are described in 5.3.7.1 through 5.3.7.7.
-	
-	\subsection{System mode}
-		Some systems behave quite differently depending on the mode of operation. For example, a control system may have different sets of functions depending on its mode: training, normal, or emergency. When organizing this section by mode, the outline in A.1 or A.2 should be used. The choice depends on whether interfaces and performance are dependent on mode.
-	
-	\subsection{User class}
-		Some systems provide different sets of functions to different classes of users. For example, an elevator control system presents different capabilities to passengers, maintenance workers, and Þre Þghters. When organizing this section by user class, the outline in A.3 should be used.
-	
-	\subsection{Objects}
-		Objects are real-world entities that have a counterpart within the system. For example, in a patient monitoring system, objects include patients, sensors, nurses, rooms, physicians, medicines, etc. Associated with each object is a set of attributes (of that object) and functions (performed by that object). These functions are also called services, methods, or processes. When organizing this section by object, the outline in A.4 should be used. Note that sets of objects may share attributes and services. These are grouped together as classes.
-	
-	\subsection{Feature}
-		A feature is an externally desired service by the system that may require a sequence of inputs to effect the desired result. For example, in a telephone system, features include local call, call forwarding, and conference call. Each feature is generally described in a sequence of stimulus-response pairs. When organizing this section by feature, the outline in A.5 should be used.
-	
-	\subsection{Stimulus}
-		Some systems can be best organized by describing their functions in terms of stimuli. For example, the functions of an automatic aircraft landing system may be organized into sections for loss of power, wind shear, sudden change in roll, vertical velocity excessive, etc. When organizing this section by stimulus, the outline in A.6 should be used.
-	
-	\subsection{Response}
-		Some systems can be best organized by describing all the functions in support of the generation of a response. For example, the functions of a personnel system may be organized into sections corresponding to all functions associated with generating paychecks, all functions associated with generating a current list of employees, etc. The outline in A.6 (with all occurrences of stimulus replaced with response) should be used.
-	
-	\subsection{Functional hierarchy}
-		When none of the above organizational schemes prove helpful, the overall functionality can be organized into a hierarchy of functions organized by either common inputs, common outputs, or common internal data access. Data ßow diagrams and data dictionaries can be used to show the relationships between and among the functions and data. When organizing this section by functional hierarchy, the outline in A.7 should be
-used.
-	
