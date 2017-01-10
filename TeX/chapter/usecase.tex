@@ -1,54 +1,66 @@
 \chapter{Software Requirements Specification}
-	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Die Struktur eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
+	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Der Inhalt eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
 	
 \section{Einführung}
-	Das erste Unterkapitel des SRS erhält eine Beschreibung und eine Übersicht über alles, was im SRS enthalten ist.
+	Das erste Kapitel des SRS enthält eine Beschreibung und eine Übersicht über alles, was im SRS enthalten ist.
 	
-	\subsection{Zweck}	
-		Das SRS beschreibt den Projektumfang und die Anforderungen an die Software NoRPG. Es illustriert den Zweck und die vollständige Erklärung für die Entwicklung der Software. Dabei wird es auch Systemeinschränkungen, Schnittstellen und Interaktionen mit externen Schnittstellen erklären\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. 
+	\subsection{Zweck}
+		Das SRS beschreibt den kompletten Projektumfang und die Anforderungen an die Software NoRPG. Es illustriert den Zweck und die vollständige Erklärung für die Entwicklung der Software. Dabei werden Systemeinschränkungen, Schnittstellen und Interaktionen mit externen Schnittstellen thematisiert\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. 
 	
-		Die Zielgruppe des SRSs sind zunächst alle, die in irgendeiner Verbindung mit der Software stehen oder jene, die Interesse an der Umsetzung haben. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholder und Entwickler.
+		Die Zielgruppe des SRS sind zunächst alle, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben. Zudem dient die Spezifikation zur Kommunikation zwischen den Stakeholdern und den Entwicklern.
 		
 	\subsection{Umfang}
-		Dieses SRS handelt von dem Software Produkt NoRPG. Bei NoRPG handelt es sich um eine Gamifizierung einer Lernspielbibliothek für Android. NoRPG stellt unterschiedlichste Lernspiele bereit und ist dabei wie ein Rollenspiel aufgebaut und besitzt auch dieselben charakteristischen Eigenschaften eines Rollenspiels. Zu den charakteristischen Eigenschaften gehören, dass der Spielende in die Rollen realer Menschen, fiktiver Figuren, Tiere oder auch Gegenstände übernehmen\footnote{vgl. Warwitz & Rudolf \cite{rpgSinn} Seite 78ff.}.
+		Dieses SRS handelt von der Software NoRPG. Bei NoRPG handelt es sich um eine Gamifizierung einer Lernspielplattform für Android. NoRPG stellt unterschiedlichste Lernspiele bereit und ist dabei wie ein Rollenspiel aufgebaut und besitzt auch dieselben charakteristischen Eigenschaften eines Rollenspiels. Eine charakteristische Eigenschaft von Rollenspielen ist, dass der Spielende in die Rolle realer Menschen, fiktiver Figuren, Tiere oder auch Gegenstände übernimmt\footnote{vgl. Warwitz & Rudolf \cite{rpgSinn} Seite 78ff.}. 
 		
-		NoRPG richtet sich an Kinder und soll durch die Eigenschaften eines Rollenspiels die Spieler dazu anregen, weitere Lernspiele herunterzuladen und zu spielen. Im nächsten Kapitel werden unter anderem die Gedanken zur Gestaltung und weitere Ziele von NoRPG genauer betrachtet. %VIELLEICHT HIER NOCH BISSCHEN MEHR VORWEG NEHMEN
+		Jedoch handelt es sich bei NoRPG letztendlich nicht um ein klassisches Rollenspiel sondern immer noch um eine Lernspielplattform und bietet Lernspiele zum Herunterladen an. NoRPG soll durch die Eigenschaften eines Rollenspiels die Spieler dazu anregen, weitere Lernspiele herunterzuladen und zu spielen. Dabei wird die Software die Lernspiele in einer festgelegten Reihenfolge anbieten und mit Hilfe einer Anzeige, den aktuellen Fortschritt des Spielers festhalten.		
+		
+		Diese Beschreibung sollte für den Zweck des SRS ausreichen. Im nächsten Kapitel werden die Gedanken und Ziele von NoRPG genauer betrachtet.
 		
 	\subsection{Übersicht}
-		Der Rest des SRS enthält zwei weitere Kapitel. Das zweite Kapitel bietet einen Überblick über die Systemfunktionalität und die Systeminteraktion mit anderen Systemen. Dieses Kapitel stellt auch verschiedene Arten von Stakeholdern und deren Interaktion mit dem System vor. Darüber hinaus werden auch die Einschränkungen des Systems und die Annahmen über das Produkt erwähnt.
+		Der Rest des SRS enthält zwei weitere Kapitel. Das zweite Kapitel bietet einen Überblick über die Systemfunktionalität und die Interaktion mit anderen Systemen. Dieses Kapitel stellt auch verschiedene Arten von Stakeholdern und deren Interaktion mit dem System vor. Darüber hinaus werden auch die Einschränkungen des Systems und die Annahmen über das Produkt erwähnt.
 	
 		Das letzten Kapitel des SRS enthält ausführlich die Anforderungsspezifikation und eine Beschreibung der unterschiedlichen Systemschnittstellen. Es werden verschiedene Spezifikationstechniken verwendet, um die Anforderungen für unterschiedliche Zielgruppen genau festzulegen.
 	
-		Die Struktur dieses Kapitels entspricht dem im Standard beschriebenen. Nicht benötigte Kapitel des SRS wurden nicht aufgenommen.
+		Die Struktur des SRS entspricht der Struktur, die im Standard beschriebenen wird. Nicht benötigte Kapitel des SRS werden nicht aufgenommen und nicht erwähnt.
 		
 \section{Allgemeine Beschreibung}
-	In diesem Unterkapitel werden die allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel behandelt nicht die spezifischen Anforderungen sondern stellt den Hintergrund für diese Anforderungen dar. 
+	Im zweiten Kapitel des SRS werden die allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel behandelt nicht die spezifischen Anforderungen sondern stellt den Hintergrund für diese Anforderungen dar. 
 
 	\subsection{Produktperspektive}
-		In diesem Unterabschnitt des SRS wird das Produkt in unterschiedlichen Perspektiven mit verwandten Produkten betrachtet, denn bei NoRPG handelt es sich nicht um ein selbstständiges abgeschlossenes Projekt.
+		%Bei NoRPG handelt es sich nicht um ein selbstständiges abgeschlossenes Projekt. 
+	
+		%In diesem Unterabschnitt des SRS wird das Produkt in unterschiedlichen Perspektiven mit verwandten Produkten betrachtet, denn bei NoRPG handelt es sich nicht um ein selbstständiges abgeschlossenes Projekt.
 		
-		Es wird zwischen verschiendenen Schnittstellentypen unterschieden. Beispielsweise gibt es System-, Benutzer-, Hardware- oder Softwareschnittstellen. 
+		%Es wird zwischen verschiedenen Schnittstellentypen unterschieden. Beispielsweise gibt es System-, Benutzer-, Hardware- oder Softwareschnittstellen. 
 		
-		Systemschnittstellen: each system interface and identify the functionality of the software to accomplish the system
-requirement and the interface description to match the system. Bei NoRPG gibt es keine Systemschnittstellen. (Oder etwa Android???)
+		%Systemschnittstellen: each system interface and identify the functionality of the software to accomplish the system requirement and the interface description to match the system. Bei NoRPG gibt es keine Systemschnittstellen. (Oder etwa Android???)
 
-		Benutzerschnittstellen: each interface between the software product and its users. Bei NoRPG ist es die Benutzeroberfläche/GUI, das Head up Display/HUD im Spiel.
+		%Benutzerschnittstellen: each interface between the software product and its users. Bei NoRPG ist es die Benutzeroberfläche/GUI, das Head up Display/HUD im Spiel.
 		
-		Hardwareschnittstellen: each interface between the software product and the hardware components of the system. This includes conÞguration characteristics. Bei NoRPG Smartphone und seine Komponenten (Touchscreen, Speaker, ...). Dann noch Datenbank
+		%Hardwareschnittstellen: each interface between the software product and the hardware components of the system. This includes configuration characteristics. Bei NoRPG Smartphone und seine Komponenten (Touchscreen, Speaker, ...). Dann noch Datenbank
 		
-		Softwareschnittstellen: use of other required software products and interfaces with other application systems. Bei NoRPG Android, Google Play Store, ... Dann noch Datenbank
+		%Softwareschnittstellen: use of other required software products and interfaces with other application systems. Bei NoRPG Android, Google Play Store, ... Dann noch Datenbank
 
 	\subsection{Produktfunktionen}
-		This subsection of the SRS should provide a summary of the major functions that the software will perform. 
+		In diesem Unterkapitel werden die wichtigsten Funktionen von NoRPG zusammengefasst.
 		
-		The functions should be organized in a way that makes the list of functions understandable to the customer or to anyone else reading the document for the first time.
+		Hauptzweck und Hauptfunktion von NoRPG: Lernspiele zum Herunterladen anzeigen. Diese Spiele sind in einer festgelegten Reihenfolge verfügbar. Die Reihenfolge und der Grund dafür wird im nächsten Kapitel beschrieben
 		
-		Hauptfunktion anbieten von Lernspielen nach einem Standard (grobes Vorgehen vorgegeben)
-		Spieler kann seinen erstellten Charakter durch die Spielwelt steuern. Im Spiel kann er mit Elementen interagieren. Je nach Element starten unterschiedliche Aktionen. Zum Beispiel die Interaktion mit einem Mensch startet eine Unterhaltung, wodurch der Spieler mehr über das Spiel und das Konzept herausfinden kann. Die Interaktion mit einer Verschlossenen Truhe zeigt die Lernspiele, die gespielt werden müssen um die Truhe zu öffnen. Die Interaktion mit einer Truhe nach dem Spielen des Lernspieles ermöglicht dem Spieler die Truhe zu öffnen und dann Collectables zu sammeln.
+		Spieler kann einmalig bei der Registrierung seinen eigenen Charakter erstellten 
 		
-		Menüfunktionen, neben kleineren Funktionen wie Spieloptionen (Sprach-, Grafikeinstellungen, ...) gibt es die Möglichkeit den Lernfortschritt des Spielers zu betrachten. Lernfortschritt funktion erklären ...
+		Nach erfolgreicher Anmeldung kann er seinen Charakter durch die Spielwelt steuern, mit Elementen im Spiel interagieren. Je nach Element werden unterschiedliche Aktionen ausgeführt. 
 		
-		%Graifk wo die Funktionen in Beziehungen stehen
+		\begin{itemize}
+			\item{Die Interaktion mit NPC's starten eine Unterhaltung, wodurch der Spieler mehr über das Spiel erfahren kann.}
+			\item{Die Interaktion mit einer Verschlossenen Truhe zeigt die Lernspiele, die gespielt werden müssen um die Truhe öffnen zu können.}
+			\item{Die Interaktion mit einer freigespielten True, ermöglicht dem Spieler die Truhe zu öffnen.}
+			\item{Die Interaktion mit Collectables, die durch das Suchen/Reisen gefunden werden können, sammelt diese.}
+			\item{Die Interaktion mit der Umwelt (Tiere, Bäume, etc.) startet keine Aktion.}
+		\end{itemize}
+		
+		Menü mit mehreren Funktionen: Neben kleineren Funktionen wie Spieloptionen gibt es die Möglichkeit den Lernfortschritt zu betrachten, etc.
+		
+		%Graifk wo die Funktionen in Beziehungen stehen, vielleicht Interaktion bisschen kürzer fassen
 	
 	\subsection{Benutzermerkmale}
 		NoRPG hat zwei unterschiedliche Benutzertypen: Kinder und Administratoren.
@@ -344,14 +356,14 @@ requirement and the interface description to match the system. Bei NoRPG gibt es
 		This should specify the factors required to establish the required reliability of the software system at time of delivery.
 	
 	\subsection{Verfügbarkeit}
-		This should specify the factors required to guarantee a deÞned availability level for the entire system such as checkpoint, recovery, and restart. 
+		This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart. 
 	
 	\subsection{Sicherheit}
-		This should specify the factors that protect the software from accidental or malicious access, use, modiÞcation, destruction, or disclosure. SpeciÞc requirements in this area could include the need to
+		This should specify the factors that protect the software from accidental or malicious access, use, modification, destruction, or disclosure. Specific requirements in this area could include the need to
 		
 		Utilize certain cryptographical techniques; 
 		
-		Keep speciÞc log or history data sets;
+		Keep specific log or history data sets;
 		
 		Assign certain functions to different modules;
 		
