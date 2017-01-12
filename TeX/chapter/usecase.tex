@@ -1,6 +1,8 @@
 \chapter{Software Requirements Specification}
 	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Der Inhalt eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
 	
+	Die Struktur des SRS entspricht der Struktur, die im Standard beschriebenen wird. Einige Kapitel des SRS werden nicht auftauchen und nicht erwähnt, da sie keine Relevanz für NoRPG haben oder an einer anderer Stelle in diesem Dokument haben.
+	
 \section{Einführung}
 	Das erste Kapitel des SRS enthält eine Beschreibung und eine Übersicht über alles, was im SRS enthalten ist.
 	
@@ -10,21 +12,10 @@
 		Die Zielgruppe des SRS sind zunächst alle, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben. Zudem dient die Spezifikation zur Kommunikation zwischen den Stakeholdern und den Entwicklern.
 		
 	\subsection{Umfang}
-		Dieses SRS handelt von der Software NoRPG. Bei NoRPG handelt es sich um eine Gamifizierung einer Lernspielplattform für Android. NoRPG stellt unterschiedlichste Lernspiele bereit und ist dabei wie ein Rollenspiel aufgebaut und besitzt auch dieselben charakteristischen Eigenschaften eines Rollenspiels. Eine charakteristische Eigenschaft von Rollenspielen ist, dass der Spielende in die Rolle realer Menschen, fiktiver Figuren, Tiere oder auch Gegenstände übernimmt\footnote{vgl. Warwitz & Rudolf \cite{rpgSinn} Seite 78ff.}. 
-		
-		Jedoch handelt es sich bei NoRPG letztendlich nicht um ein klassisches Rollenspiel sondern immer noch um eine Lernspielplattform und bietet Lernspiele zum Herunterladen an. NoRPG soll durch die Eigenschaften eines Rollenspiels die Spieler dazu anregen, weitere Lernspiele herunterzuladen und zu spielen. Dabei wird die Software die Lernspiele in einer festgelegten Reihenfolge anbieten und mit Hilfe einer Anzeige, den aktuellen Fortschritt des Spielers festhalten.		
-		
-		Diese Beschreibung sollte für den Zweck des SRS ausreichen. Im nächsten Kapitel werden die Gedanken und Ziele von NoRPG genauer betrachtet.
-		
-	\subsection{Übersicht}
-		Der Rest des SRS enthält zwei weitere Kapitel. Das zweite Kapitel bietet einen Überblick über die Systemfunktionalität und die Interaktion mit anderen Systemen. Dieses Kapitel stellt auch verschiedene Arten von Stakeholdern und deren Interaktion mit dem System vor. Darüber hinaus werden auch die Einschränkungen des Systems und die Annahmen über das Produkt erwähnt.
-	
-		Das letzten Kapitel des SRS enthält ausführlich die Anforderungsspezifikation und eine Beschreibung der unterschiedlichen Systemschnittstellen. Es werden verschiedene Spezifikationstechniken verwendet, um die Anforderungen für unterschiedliche Zielgruppen genau festzulegen.
-	
-		Die Struktur des SRS entspricht der Struktur, die im Standard beschriebenen wird. Nicht benötigte Kapitel des SRS werden nicht aufgenommen und nicht erwähnt.
+		Dieses SRS handelt von der in Kapitel 2 beschrieben Software NoRPG. 
 		
 \section{Allgemeine Beschreibung}
-	Im zweiten Kapitel des SRS werden die allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel behandelt nicht die spezifischen Anforderungen sondern stellt den Hintergrund für diese Anforderungen dar. 
+	Im zweiten Kapitel des SRS werden die allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel bietet einen Überblick über die Systemfunktionalitäten und stellt verschiedene Arten von Stakeholdern und deren interaktion mit dem System vor. Dieses Kapitel behandelt nicht die spezifischen Anforderungen sondern stellt den Hintergrund für diese Anforderungen dar. 
 
 	\subsection{Produktperspektive}
 		Bei NoRPG handelt es sich zunächst um ein selbstständiges abgeschlossenes Projekt, denn es bildet den Anfang für die Entwicklung eines ganzen Bildungssystems. Daher ist es besonders wichtig, das Produkt in unterschiedlichen Perspektiven mit verwandten und geplanten Produkten zu betrachten. 
@@ -100,6 +91,8 @@
 
 \section{Spezifische Anforderungen}
 	Das letzte Kapitel des SRS dient dazu alle Softwareanforderungen detailliert zu beschreiben. Dies ermöglicht es Designern ein System zu entwickeln, welches allen Anforderungen entspricht, und Testern das System ausreichend zu testen.
+	
+	Das letzten Kapitel des SRS enthält ausführlich die Anforderungsspezifikation und eine Beschreibung der unterschiedlichen Systemschnittstellen. Es werden verschiedene Spezifikationstechniken verwendet, um die Anforderungen für unterschiedliche Zielgruppen genau festzulegen.
 	
 	\subsection{Externe Schnittstellen}
 		Dieser Abschnitt ist die detaillierte Beschreibung aller Ein- und Ausgänge von NoRPG. Die Beschreibung ergänzt und vervollständigt die Schnittstellenbeschreibung von Kapitel 2.2.1. 
@@ -181,48 +174,32 @@
 			Data mangement system, Android OS
 
 	\subsection{Funktionale Anforderungen}
-		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen.
+		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen. %quelle
+		
+		Use Cases verwenden Activity UML um anzuzeigen, wie der Benutzer vorgehen muss. Ein Aktivitätsdiagramm ist ein Verhaltensdiagramm der Unified Modeling Language (UML) und stellt die Vernetuzung von elementaren Aktionen und deren Verbindungen mit Kontroll- und Datenflüssen grafisch dar.
 	
 		\begin{center}
-			\includegraphics[width=\textwidth]{pics/OUCD.pdf}
+			\includegraphics[width=10cm]{pics/OUCD.pdf}
 			\captionof{figure}{Overall Use Case Diagramm} 
 		\end{center}
-	
-		In der Grafik sind 2 Systeme zu sehen. Links das vorhandene System Hone welches ein Frontend für die Entwickler und für die Kinder darstellt. Die Kinder sollen nicht mehr über Hone die Spiele herunterladen sondern nur noch die App NoRPG verwenden. Die Ansicht wird jedoch weiterhin genutzt und soll den Eltern der Kinder die Möglichkeit geben, den Fortschritt des Kindes nachzuschauen. Hone soll von den Rollen Entwickler und Eltern entwickelt werden.
-	
-		Das rechte System NoRPG stellt die zu entwickelnde App dar. Diese dient als Frontend für das Kind. Es gibt viele Use Cases. Die Use Cases werden in unterschiedliche Gruppen zusammengefasst. Die nächsten Unterkapitel sind die einzelnen Gruppierungen.
-	
-		\subsubsection{Login}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich bei NoRPG anmelden möchte. Eine Anmeldung ist notwendig um NORPG zu starten. Die Besonderheit bei der Anmeldung  ist, dass der Account des Benutzers auch für die Anmeldung bei Hone benötigt wird. Der Benutzer kann sich in NoRPG im Startbildschirm anmelden und anschließend das Spiel zu starten.
-			
-			\paragraph{Ereignisablauf}
-				Eingeben von Benutzername und Passwort.	Klicke auf Login.
-			
-				Alternativer Ablauf: Abbruch oder Spiel Beenden
-			
-			\paragraph{Vorbedingungen}
-				Benutzer ist registriert, Während der Anmeldung ist eine Internetverbindung vorhanden, Kombination von Benutzername und Passwort existiert, es ist kein anderer Benutzer auf dem Gerät angemeldet
-			
-			\paragraph{Nachbedingungen}
-				Benutzer angemeldet, kann online oder offline weiterspielen. Beim nächsten Start der App ist der Benutzer automatisch angemeldet.
-			
-				Oder falls die eingegeben Daten nicht übereinstimmen, Fehlermeldung anzeigen
+		
+		Das abgebildete System stellt die zu entwickelnde App für die User dar. Die App stellt die Graphische Oberfläche und somit die beschrieben Benutzerschnittstellen dar. Es sind nur die Funktionalitäten enthalten, die der Benutzer ausführen kann, also jene die über die Benutzerschnittstellen angesprochen werden können. Use Cases wie Login oder Registrierung sind im Overall Use Case Diagramm nicht enthalten, da diese im Vergleich zu anderen Use Cases primitiv sind. 
 	
 		\subsubsection{Create character}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dies ist eine einmalige Aktion, die beim ersten Anmelden durchlaufen wird. 
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dieser Use Case wird pro Account genau einmal nach der Registrierung ausgeführt und zählt noch zum Prozess der Registrierung.
 			
-			\paragraph{Ereignisablauf}
-				Wenn der Benutzer sich zum ersten mal anmeldet hat er die Möglichkeit seinen Charakter zu erstellen. Dafür wählt der Benutzer sich zunächst sein Geschlecht aus und wählt anschließend den passenden Charakter.
-			
-				Zum Abschluss vergibt der Benutzer seinen Charakter einen Namen.
+			Nach erfolgreicher Registrierung kann der Spieler seinen Charakter erstellen. Der User kann seinem Charakter einen Namen geben, das Geschlecht auswählen und anschließend das Aussehen bestimmen. Anschließend wird dem User der Hinweis angezeigt, dass es sich um eine einmalige Aktion handelt. Nachdem diese bestätigt wurde, wird der Charakter erstellt und gespeichert.
+				
+			\begin{center}
+				\includegraphics[width=10cm]{pics/CreateCharacter.pdf}
+				\captionof{figure}{Create Character Activity UML} 
+			\end{center}
 	
-			\paragraph{Vorbedingungen}
-				Der Account meldet sich das erste mal in der App an.
+			Bevor jedoch dieser Use Case ausgeführt werden kann, muss die Registrierung vollständig und erfolgreich abgeschlossen werden. Die Registrierung ist erfolgreich, wenn alle benötigte Daten eingetragen wurden und der Account noch nicht existiert. Für den gesamten Registrierungsprozess wird eine aktive Internetverbindung benötigt.
 			
-			\paragraph{Nachbedingungen}
-				Nach der Erstellung beginnt das Spiel und der Charakter ist gespeichert. Bei erneuter Anmeldung muss der Benutzer nicht erneut einen Charakter erstellen.
-	
-		\subsubsection{Player interaction}
+			Nach erfolgreicher Erstellung des Charakters, wird dieser in die Datenbank gespeichert und der User kann sich nun anmelden und in die Rolle seines Charakters schlüpfen.
+				
+		\subsubsection{Character control}
 			Dieser Use Case beschreibt den Anwendungsfall: Benutzer interaktionen, wie Bewegen oder Bestätigen.
 			
 			\paragraph{Ereignisablauf}
@@ -240,7 +217,7 @@
 			\paragraph{Nachbedingungen}
 				Charakter bewegt sich, bestätigt oder lehnt ab
 	
-		\subsubsection{NPC interaction}
+		\subsubsection{game interaction}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich in einer Interaktion mit einem NPC befindet. NPC bedeutet Non-Player Charakter und stellt die programmierten Charaktere dar (Unterhaltungen mit NPC, Storytelling)
 			
 			\paragraph{Ereignisablauf}
@@ -252,17 +229,6 @@
 			\paragraph{Nachbedingungen}
 				Unterhaltung findet statt, etc.
 	
-		\subsubsection{Choose games}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer ein spiel zum downloaden auswählt
-			
-			\paragraph{Ereignisablauf}
-				Der Benutzer kann sich (wenn vorhanden) zwischen mehrere Spielen auswählen um den Kurs abzuschließen.
-
-			\paragraph{Vorbedingungen}
-				Internetverbindung, darf die SPiele nach dem Standard spielen
-			
-			\paragraph{Nachbedingungen}
-				Weiterleitung auf Google Play Store
 
 		\subsubsection{Open map}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Karte öffnet. Die Karte dient zur Orientierung der Welt und beinhaltet Symbole etc. um herauszufinden was so ist
