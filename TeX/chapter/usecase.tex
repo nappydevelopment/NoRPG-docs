@@ -102,32 +102,27 @@
 			Kommandoformat
 		
 		\subsubsection{Benutzerschnittstellen}
-			Die Benutzerschnittstellen, die user interfaces, sind der Punkt, an dem der Benutzer mit der Software interagiert. Zur Beschreibung der Benutzerschnittstellen werden logische Eigenschaften sowie Aspekte zur Optimierung formuliert.
+			Die Benutzerschnittstellen, die user interfaces, sind der Punkt, an dem der Benutzer mit der Software interagiert. Zur Beschreibung der Benutzerschnittstellen werden logische Eigenschaften sowie Aspekte zur Optimierung formuliert. Zur Demonstration werden Mockups verwendet. Mockups stellen dar, wie die Oberfläche aussehen kann. Die am Projektende implementierte Oberfläche kann sich von den Mockups unterscheiden.
 			
 			Einem Benutzer, der NoRPG zum ersten Mal startet oder der nicht angemeldet ist, wird der Login-Screen präsentiert. Auf dem Login-Screen hat der Benutzer die Möglichkeit sich mit seinem Benutzernamen und seinem Passwort anzumelden oder sich, falls noch nicht geschehen, bei NoRPG zu registrieren. Das Smartphone muss Quer gehalten werden, da alle Elemente des Bildschirms vertikal angeordnet sind. Diese Eigenschaft trifft auch auf alle anderen Benutzerschnittstellen zu. Das Layout des Login-Screens ist ein Border-Pane, in dem die Bestandteile in einer einzigen Spalte angeordnet sind. Zur Optimierung der Nutzung werden kurze Fehlermeldungen ausgegeben, wenn der Benutzer falsche Login-Daten eingibt.
 			\begin{center}
-				\includegraphics[width=10cm]{pics/Login_Mockup.png}
+				\includegraphics[width=10cm]{pics/Login.png}
 				\captionof{figure}{Login-Screen Mockup} 
 			\end{center}
 			
 			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies in der App zu machen. Dazu klickt der Benutzer im Login-Screen auf den Register-Button. Anschließend öffnet sich der Register-Screen. Die Elemente sind im Tabellen Layout angeordnet, wodurch der Benutzer weiß, welche Daten in welches Feld eingetragen werden müssen. Die Registrierung ist notwendig, damit der Spielstand, somit der Fortschritt in einer Relation mit dem Benutzer steht. Zur weiteren Optimierung werden kurze Fehlermeldungen ausgegeben, damit ich der Benutzer weiß, in welchem Feld ein Fehler ist.
 			
 			\begin{center}
-				\includegraphics[width=10cm]{pics/Register_Mockup.png}
-				\captionof{figure}{Register-Screen Mockup} 
+				\includegraphics[width=\textwidth]{pics/Registerprozess.png}
+				\captionof{figure}{Registerprozess: Registrierung und Create Character Mockup} 
 			\end{center}
 			
 			Nach der Registrierung kann der Spieler einmalig seinen Charakter für den angelegten Account erstellen. Dazu bestimmt der Benutzer den Namen, das Geschlecht und das Aussehen des Charakters.
 			
-			\begin{center}
-				\includegraphics[width=10cm]{pics/Register_Mockup.png}
-				\captionof{figure}{Register-Screen Mockup} 
-			\end{center}
-			
 			NoRPG startet, nachdem alles geladen wurde und der Benutzer angemeldet ist. Das Spiele-Screen besteht aus der Spielewelt (Grafik) und dem Head-Up Display, kurz HUD. Das HUD ist eine Methode, mit der Informationen visuell als Teil der Benutzeroberfläche eines Spiels vermittelt werden. Während die Informationen, die auf dem HUD angezeigt werden, stark vom Spiel abhängen, gibt es viele Eigenschaften, die Spieler über viele Spiele erkennen. Die meisten von ihnen sind statisch auf dem Bildschirm, so dass sie während des Spiels sichtbar bleiben. 
 			
 			\begin{center}
-				\includegraphics[width=11cm]{pics/HUD_Mockup.png}
+				\includegraphics[width=10cm]{pics/HUD.png}
 				\captionof{figure}{HUD Mockup} 
 			\end{center}
 			
@@ -136,15 +131,15 @@
 			Das Menü, welches sich in der oberen linken Ecke befindet, kann geöffnet werden. Dadurch wird das laufende Spiel pausiert und es werden weitere Optionen bzw. Interaktionen mit dem Spiel möglich. Diese HUD Elemente werden nur dann sichtbar, wenn der Spieler das Menü öffnet. Dadurch rückt das Spiel und die anderen Elemente in den Hintergrund. Das bedeutet nicht, dass die Elemente ausgeblendet werden, sondern dass der Benutzer diese Elemente nicht benutzen kann solange das Menü offen ist.
 			
 			\begin{center}
-				\includegraphics[width=11cm]{pics/HUD_Mockup.png}
+				\includegraphics[width=10cm]{pics/Menu.png}
 				\captionof{figure}{HUD offenes Menü Mockup} 
 			\end{center}
 			
 			Einige der Menü-Elemente öffnen wiederum einen anderen Screen. Diese werden dann über das aktuelle Spiel geöffnet. Das Spiel befindet sich im Hintergrund und kann nicht gesehen bzw. angeklickt werden. Der neu geöffnete Screen muss erst geschlossen werden um das Spiel fortsetzen zu können. Ein Beispiel dafür ist der Fortschritt-Screen. Hier kann der Benutzer seinen Lern- bzw. Spielfortschritt betrachten.
 			
 			\begin{center}
-				\includegraphics[width=10cm]{pics/Fortschritt_Mockup.png}
-				\captionof{figure}{Fortschritt-Screen Mockup} 
+				\includegraphics[width=\textwidth]{pics/NewWindows.png}
+				\captionof{figure}{Spieleliste-, Fortschritt- und Karte-Fenster Mockup} 
 			\end{center}
 			
 			Die Auflistung aller Screens würde den Rahmen dieser Arbeit überschreiten. Daher befinden sich die Mockups für die restlichen Screens im Anhang.
