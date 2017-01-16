@@ -9,7 +9,7 @@
 	\subsection{Zweck}
 		Das SRS beschreibt den kompletten Projektumfang und die Anforderungen an die Software NoRPG. Es illustriert den Zweck und die vollständige Erklärung für die Entwicklung der Software. Dabei werden unter anderem Systemeinschränkungen, Schnittstellen und Interaktionen mit externen Schnittstellen thematisiert\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. 
 	
-		Die Zielgruppe des SRS sind zunächst alle Personen und Gruppen, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben \footnote{vgl. Tripp \cite{rozanski2011}(2011) Seite 6}, den sogenannten Stakeholdern. Zudem dient die Spezifikation zur Kommunikation zwischen den Stakeholdern und den Entwicklern.
+		Die Zielgruppe des SRS sind zunächst alle Personen und Gruppen, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben\footnote{vgl. Rozanski \cite{rozanski2011}(2011) Seite 6}, den sogenannten Stakeholdern. Zudem dient die Spezifikation zur Kommunikation zwischen den Stakeholdern und den Entwicklern.
 		
 	\subsection{Umfang}
 		Dieses SRS handelt von der in Kapitel 2 beschrieben Software NoRPG. 
@@ -20,75 +20,51 @@
 	\subsection{Produktperspektive}
 		Das zu beschreibende vollständige System NoRPG besteht aus mehreren Komponenten, die auf unterschiedlichsten weisen mit den St akeholdern kommunizieren. Daher ist es besonders wichtig, das Produkt in unterschiedlichen Perspektiven mit verwandten und geplanten Produkten zu betrachten. Aufgrund dessen werden die System-, Benutzer-, Hardware- und Softwareschnittstellen von NoRPG betrachtet. Neben den vier genannten Schnittstellentypen gibt es weitere, sind jedoch nicht weiter von Bedeutung.
 		
-		Folgende Grafik stellt dabei die High-Level-View von NoRPG und seinen Komponenten dar. Dabei sind auch die einzelnen Schnittstellen mit anderen Produkten enthalten. (FEHLT NOCH)
+		Folgende Grafik stellt dabei die High-Level-View von NoRPG und seinen Komponenten dar. Die Grafik stellt die Schnittstellen zwischen den Komponenten und mit anderen Produkten dar.
 		
 		\begin{center}
 			\includegraphics[width=10cm]{pics/HighLevelView.png}
-			\captionof{figure}{System High-Level-View} 
+			\captionof{figure}{High-Level-View von NoRPG} 
 		\end{center}
 		
-		Wie aus der Grafik entnommen werden kann, besteht NoRPG aus 3 Kernkomponenten. Zunächst die App, die dem Benutzer als grafische Benutzeroberfläche dient. Dies stellt die Benutzerschnittstelle des Systems dar. Die Benutzerschnittstellen beschreiben die Kommunikation zwischen NoRPG und dem User. Der User kann mit NoRPG nur über die Benutzeroberfläche der App interagieren.
+		NoRPG besteht aus zwei Kernkomponenten. Die erste Kernkomponente ist die App, die aus der Graphical User Interface (GUI) und einer eingebetteten lokalen Datenbank besteht. Die zweite Kernkomponente ist eine Datenbank auf einem Server.
 		
-		Die zweite Kernkomponenten ist die eingebettete lokale Datenbank. Diese ermöglicht es dem User, das Spiel auch ohne eine aktive Internetverbindung zu spielen.
-
-		Die dritte Kernkomponente ist eine Datenbank auf einem Server, welche in zwei Partitionen unterteilt ist. Die eine Partition ist für die Haltung der Spielerdaten und die zweite Partition für die Spieldaten. Die Datenbanken werden in einem späteren Abschnitt spezifiziert. Die Datenbank auf dem Server ermöglicht das Spielen auf mehreren Geräten, benötigt jedoch eine aktive Internetverbindung. Bei aktiver Internetverbindung wird immer als erstes die Datenbank auf dem Server synchronisiert, da der User auch ohne Internetverbindung weitergespielt hat. Zudem bietet die Speicherung der Daten auf einem Server die Möglichkeit, die Daten zu analysieren.
+		Die Schnittstelle zwischen der App und dem Betriebssystem Android ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und die Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 13}.
 		
-		Bei diesen beiden Komponenten handelt es sich um Softwareschnittstellen. Softwareschnittstellen bilden den Übergang zwischen unterschiedlichen Programmen und ermöglichen dadurch den Android + Google play
-	
-		Jede Systemschnittstelle beschreibt und identifiziert die Funktionalität der Software, um ... to accomplish the system requirement and the interface description to match the system. Dieses Projekt hat in diesem Stadium nicht vor, mit anderen Systemen zu interagieren. Jedoch ist dies nicht hundertprozentig abstreitbar und wird deswegen hier erwähnt.
-
-		Jede Schnittstelle zwischen NoRPG und Hardwarekomponenten des Systems werden als Hardwareschnittstellen bezeichnet. Dazu gehören auch Konfigurationsmerkmale. Das Smartphone und seine Komponenten ist größte Hardwareschnittstelle. Zum Smartphone gehört das Touchscreen, die Lautsprecher oder der WiFi-Adapter. %wenn Datenbank/Server physikalisch vorhanden, dann kommt das dazu
+		Bei der Schnittstelle zwischen dem User und der Benutzeroberfläche der App handelt es sich um die Benutzerschnittstellen des Systems. Die Benutzerschnittstellen beschreiben die Kommunikation zwischen NoRPG und dem User. Der User kann mit NoRPG nur über die GUI der App interagieren.
+		
+		Jede Schnittstelle zwischen NoRPG und Hardwarekomponenten des Systems werden als Hardwareschnittstellen bezeichnet. Das Smartphone und seine Komponenten sind einzige Hardwarekomponente. Zu einem Smartphone gehört das Touchscreen, die Lautsprecher oder der WLAN-Adapter. Die Hardwarekomponente wird in der Abbildung durch das Smartphone dargestellt.
+		
+		Die App muss mit der lokalen und der serverseitigen Datenbank kommunizieren. Dabei handelt es sich um Softwareschnittstellen. Sie bilden den Übergang zwischen unterschiedlichen Programmen und ermöglichen dadurch das Nutzen derer Funktionalitäten. 
 
 	\subsection{Produktfunktionen}
-		In diesem Unterkapitel werden die wichtigsten Funktionen von NoRPG zusammengefasst.
+		In diesem Unterkapitel werden die wichtigsten Funktionen von NoRPG zusammengefasst. Das Ziel von NoRPG wie in Kapitel 2 schon beschrieben ist es, Lernspiele in einer festgelegten standardisierten Reihenfolge zum Herunterladen anzubieten. Dieses Ziel macht das Herunterladen von Spielen zu seiner Hauptfunktion. Um jedoch diese simple Funktionalität attraktiver zu gestalten, wird es die Funktion geben Collectables, zu Deutsch Sammelgegenstände, zu sammeln und mit Elementen im Spiel zu interagieren.
 		
-		Ziel von NoRPG: Lernspiele zum Herunterladen in der vorgegebenen Reihenfolge anzeigen.
+		Neben dieser Hauptfunktion gibt es weitere Produktfunktionen, um den Spieler zu identifizieren und das Spielerlebnis zu verbessern. Um den User zu identifizieren wird es eine Anmelde- und Registrierungsfunktion geben. In der Registrierung wird es möglich sein, einen personalisierten Charakter zu erstellen. 
 		
-		Spieler kann einmalig bei der Registrierung seinen eigenen Charakter erstellten 
+		Im Spiel selbst wird es neben Spieloptionen wie Qualitäts- und Audioeinstellungen noch Features geben, die das Spielerlebnis verbessern. Der User wird in der Lage sein eine Karte von der Spielwelt zu öffnen, eine Liste von allen heruntergeladenen Spielen zu verwalten und seinen Fortschritt zu betrachten.
 		
-		Nach erfolgreicher Anmeldung kann er seinen Charakter durch die Spielwelt steuern, mit Elementen im Spiel interagieren.
-		
-		\begin{itemize}
-			\item{Die Interaktion mit NPC's starten eine Unterhaltung, wodurch der Spieler mehr über das Spiel erfahren kann.}
-			\item{Die Interaktion mit einer Verschlossenen Truhe zeigt die Lernspiele, die gespielt werden müssen um die Truhe öffnen zu können.}
-			\item{Die Interaktion mit einer freigespielten True, ermöglicht dem Spieler die Truhe zu öffnen.}
-			\item{Die Interaktion mit Collectables, die durch das Suchen/Reisen gefunden werden können, sammelt diese.}
-			\item{Die Interaktion mit der Umwelt (Tiere, Bäume, etc.) startet keine Aktion.}
-		\end{itemize}
-		
-		Menü mit mehreren Funktionen: Neben kleineren Funktionen wie Spieloptionen gibt es die Möglichkeit den Lernfortschritt zu betrachten, etc.
-		
-		%Graifk wo die Funktionen in Beziehungen stehen, vielleicht Interaktion bisschen kürzer fassen
+		Die App speichert den Fortschritt in der lokalen eingebetteten Datenbank und synchronisiert diese Daten, wenn eine aktive Internetverbindung besteht, mit der Datenbank auf dem Server.
 	
 	\subsection{Benutzermerkmale}
 		In diesem Projekt wird zwischen zwei Benutzergruppen unterschieden.
 		
-		Die erste Benutzergruppe sind die Spieler, die User bzw. die Kinder. Grundsätzlich richtet sich NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen. Jedoch werden keine Benutzergruppen für diese App ausgeschlossen. Egal ob jung oder alt sowie männlich oder weiblich. %religion, herkunft, ... aufzählen oder to much? :D		
-		Der Spieler sollte Erfahrung mit der Verwendung eines Smartphones, insbesondere eines Android-Systems, haben. Dazu zählt die Bedienung der Android-Oberfläche und die des Google Play Stores, da die. Zudem sollte der Spieler die englische Sprache verstehen können, da NoRPG zunächst nur in Englisch erscheinen wird. Jedoch wird das Spiel in jedem Land verfügbar sein, denn bei den vermittelten Standards handelt es sich um international geltende.
+		Die erste Benutzergruppe sind die User, viel mehr die Spieler. Grundsätzlich richtet sich NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen. Jedoch werden keine Benutzergruppen für diese App ausgeschlossen. Egal ob jung oder alt, sowie männlich oder weiblich. Der Spieler sollte nur eine Neugier zum Lernen mitbringen. 
 		
-		Bei der Implementierung ist es wichtig, dass die englischen Texte einfach zu lesen und zu verstehen sind. Denn bei den meisten Benutzern handelt es sich um Kinder zwischen der ersten und fünften Klasse. Zum Voranschreiten ist es notwendig, dass der Spieler den Inhalt von NoRPG versteht. Aus diesem Grund ist eine einfache Sprache ohne Fachjargon notwendig.
+		Der Spieler benötigt Erfahrung mit der Verwendung eines Smartphones, insbesondere mit einem Android-Systems. Dazu zählt die Bedienung der Android-Oberfläche und die des Google Play Stores. Zudem sollten die User englische Texte verstehen können, da NoRPG zunächst nur in der englischen Sprache erscheinen wird.
 		
-		Die zweite Benutzergruppe sind die Administratoren.	Administratoren wollen Daten analysieren und daraus Aktionen ableiten. Welche Daten wie gespeichert werden, werden in den spezifischen Anforderungen genauer definiert. 
+		Die zweite Benutzergruppe sind die Administratoren.	Die Administratoren wollen Daten analysieren und daraus Aktionen ableiten. Für diese Benutzergruppe wird in diesem Projekt keine Benutzeroberfläche implementiert, jedoch wird eine Schnittstelle vorgesehen. 
 			
 	\subsection{Einschränkungen}
-		Bei den Einschränkungen wird zwischen Einschränkungen der Entwickler und Einschränkungen der Spieler unterschieden.
+		Es wird zwischen Einschränkungen für die Entwickler und für die Spieler unterschieden.
 		
-		%Einschränkung Entwickler
-		Entwickler müssen sich an regulatorische Richtlinien, wie beispielsweise die Datenschutzerklärung von Google oder das IT-Sicherheitsgesetz, halten.
-				
-		Da NoRPG sich an Kinder in bildungsfernen Ländern richtet, darf NoRPG keine hohen Hardwareressourcen anfordern. Als Maßstab wird das Smartphone Samsung Galaxy S4 genommen %HIER BEGRÜNDUNG WIESO DAS SMARTPHONE und QUELLE. 
-		Das Samsung Galaxy S4 kostet 250€\footnote{Stand 04.01.2017 Quelle: sdaqdsa} und hat einen Quadcore?? mit 1,6GHz und 2GB RAM sowie 16GB internen Speicher. Es ist die Android Version 5.0 Lollipop standardmäßig von Samsung installiert.
+		Entwickler müssen sich grundsätzlich zunächst an die regulatorischen Richtlinien, wie beispielsweise an die Datenschutzerklärung von Google oder an das IT-Sicherheitsgesetz halten.
 		
-		Schnittstellen anbieten, wenn eine Webapplikation für Administratoren entwickelt wird um Daten besser auszuwerten. Oder Schnittstellen für Spielentwickler. (Bestätigen, dass das Kind den Kurs erfolgreich abgeschlossen hat)
-				
-		Verfügbar- und Zuverlässigkeit: Spiel muss Offline spiel und -startbar sein. Das Spiel muss sicherstellen, dass ein Kurs vollständig absolviert wird, damit keine verfälschten Daten gesendet werden. 
-
-		Daten der Spieler werden anonymisiert gespeichert um anschließend Analysen zu machen, um rauszufinden in welchen Ländern, Stadtteilen oder Gegenden die meisten Kinder aktiv sind. Daher sollten nur relevante und notwendige Informationen gespeichert werden um diese dann analysieren zu können.
+		Da NoRPG sich an Kinder in bildungsfernen Ländern richtet ist es besonders wichtig, dass die Texte in NoRPG einfach zu verstehen sind. Da das Spiel zunächst nur in Englisch erscheinen wird, dürfen die englischen Texte kein Fachjargon oder ähnliches beinhalten. Die App darf keine hohen Mindestanforderungen an Hardwareressourcen haben, da der Smartphonestandard in bildungsfernen Ländern geringer ist. Das bedeutet für die Entwickler das Spiel so gut wie möglich Ressourcen-schonend umzusetzen. Des Weiteren gilt es bei der Implementierung zu beachten, dass NoRPG ohne eine aktive Internetverbindung soweit wie möglich spielbar bleiben muss.
 		
-		%Einschränkung Spieler
-		Internet zum Downloaden von Spielen, von NoRPG, installieren von Updates, Synchronisieren, Registrieren, Einloggen, Ausloggen (da Synchronisiert wird) 
+		Allerdings gibt es auch Einschränkungen, die für die Spieler gelten oder zumindest temporär. Wie schon öfter erwähnt wurde, wird das Spiel zunächst nur in Englisch erscheinen. 
 		
-		Genügend Speicherplatz, RAM und andere Ressourcen
+		Für die Anmeldung, die Registrierung, das Herunterladen von Spielen, das Synchronisieren und installieren von Updates wird eine aktive Internetverbindung vorausgesetzt. Des Weiteren benötigt der Spieler ein Android System, welches die Mindestanforderungen von NoRPG erfüllt.
 				
 	\subsection{Annahmen und Abhängigkeiten}
 		Eine Annahme von NoRPG ist, dass es immer auf Smartphones, die genügend Leistung haben, verwendet wird. Wenn das Telefon nicht über genügend Hardwareressourcen für die Anwendung verfügt, kann es Szenarien geben, in denen die Anwendung nicht wie beabsichtigt oder überhaupt nicht funktioniert.
@@ -279,11 +255,21 @@
 			Vorbedingungen: Spieler befindet sich im Spiel (nicht loading screen und menü ist geschlossen)
 			
 			Nachbedingungen: Charakter bewegt sich, bestätigt oder lehnt ab
+				
+		%\begin{itemize}
+		%	\item{Die Interaktion mit NPC's starten eine Unterhaltung, wodurch der Spieler mehr über das Spiel erfahren kann.}
+		%	\item{Die Interaktion mit einer Verschlossenen Truhe zeigt die Lernspiele, die gespielt werden müssen um die Truhe öffnen zu können.}
+		%	\item{Die Interaktion mit einer freigespielten True, ermöglicht dem Spieler die Truhe zu öffnen.}
+		%	\item{Die Interaktion mit Collectables, die durch das Suchen/Reisen gefunden werden können, sammelt diese.}
+		%	\item{Die Interaktion mit der Umwelt (Tiere, Bäume, etc.) startet keine Aktion.}
+		%\end{itemize}
 	
 	\subsection{Performanz Anforderungen}
 		This subsection should specify both the static and the dynamic numerical requirements placed on the software or on human interaction with the software as a whole. Static numerical requirements may include the following
 		
 		The number of terminals to be supported, The number of simultaneous users to be supported, Amount and type of information to be handled
+		
+		Als Maßstab werden dabei die Hardware des Smartphones Samsung Galaxy S4 genommen. Das Samsung Galaxy S4 kostet ungefähr 250€\footnote{Stand 04.01.2017 \url{https://www.amazon.de/Samsung-Smartphone-Touch-Display-Speicher-Android-Schwarz/dp/B00BTCE2M0}} und hat das Betriebssystem Android 5.0 Lollipop vorinstalliert und besitzt ausreichend gute Hardwarekomponenten. Die Auflösung des Displays mit 1080 x 1920 Pixel ist ausreichend, die 2 GByte Arbeitsspeicher sind notwendig und die 16 GByte interner Speicher sind ausreichend. Bei dem Prozessor handelt es sich um ein Qualcomm Snapdragon 600, mit vier Kernen und einer 32-bit Architektur\footnote{für mehr Informationen: \url{http://www.samsung.com/de/consumer/mobile-devices/smartphones/galaxy-s/GT-I9506ZKADTM}}.
 		
 	\subsection{Datenbank Anforderungen}
 		This should specify the logical requirements for any information that is to be placed into a database. This may include the following:
