@@ -149,14 +149,18 @@
 			%Aspekte Optimierung: comprise a list of do's and don'ts on how the system will appear to the user: long or short error messages
 		
 		\subsubsection{Hardwareschnittstellen}
-			Die Hardwareschnittstellen spezifiziert die logischen Eigenschaften jeder Schnittstelle zwischen NoRPG und den Hardwarekomponenten des Systems.
+			Die Hardwareschnittstellen spezifiziert die logischen Eigenschaften jeder Schnittstelle zwischen NoRPG und den Hardwarekomponenten des Systems. Die App hat eine  Hardwareschnittstelle mit dem Smartphone und seinen Komponenten.
 			
-			NoRPG besitzt keine direkten Hardwareschnittstellen: Verbunden mit Lautsprechern für Soundausgaben, Touchscreen für Eingaben/Interaktionen, WLAN für die Verbindung mit dem Server/Synchronisierung, Verbindung zum Datenbank Server
+			Ein Smartphone besteht aus sehr vielen Hardwarekomponenten. Jede einzelne Komponente wird benötigt, damit das Smartphone mit seinem kompletten Funktionsumfang funktioniert. Jedoch spielen einige Hardwarekomponenten eine besondere Rolle. Zu einem der Touchscreen eines Smartphones -> Toucheingaben für die Steuerung des Charakters, Interaktion mit dem Spiel, Menü, etc --> die einzige Benutzerschnittstelle
+			
+			WLAN-Adapter - verbindung mit dem Internet um mit dem Server zu kommunizieren
 			
 		\subsubsection{Softwareschnittstellen}
 			This should specify the use of other required software products and interfaces with other application systems 
 			
-			Data mangement system, Android OS
+			Data mangement system, Google Play Store, 
+			
+			Software - Kommunikation mit GUI, kommunikation mit DB, ggf. logging
 
 	\subsection{Funktionale Anforderungen}
 		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen. %quelle
@@ -269,8 +273,6 @@
 		
 		The number of terminals to be supported, The number of simultaneous users to be supported, Amount and type of information to be handled
 		
-		Als Maßstab werden dabei die Hardware des Smartphones Samsung Galaxy S4 genommen. Das Samsung Galaxy S4 kostet ungefähr 250€\footnote{Stand 04.01.2017 \url{https://www.amazon.de/Samsung-Smartphone-Touch-Display-Speicher-Android-Schwarz/dp/B00BTCE2M0}} und hat das Betriebssystem Android 5.0 Lollipop vorinstalliert und besitzt ausreichend gute Hardwarekomponenten. Die Auflösung des Displays mit 1080 x 1920 Pixel ist ausreichend, die 2 GByte Arbeitsspeicher sind notwendig und die 16 GByte interner Speicher sind ausreichend. Bei dem Prozessor handelt es sich um ein Qualcomm Snapdragon 600, mit vier Kernen und einer 32-bit Architektur\footnote{für mehr Informationen: \url{http://www.samsung.com/de/consumer/mobile-devices/smartphones/galaxy-s/GT-I9506ZKADTM}}.
-		
 	\subsection{Datenbank Anforderungen}
 		This should specify the logical requirements for any information that is to be placed into a database. This may include the following:
 		
@@ -292,40 +294,50 @@
 		Standards compliance: This subsection should specify the requirements derived from existing standards or regulations. They may include the following: 
 		
 		Report format, Data naming, Accounting procedures and Audit tracing.
+		
+		Als Maßstab werden dabei die Hardware des Smartphones Samsung Galaxy S4 genommen. Das Samsung Galaxy S4 kostet ungefähr 250€\footnote{Stand 04.01.2017 \url{https://www.amazon.de/Samsung-Smartphone-Touch-Display-Speicher-Android-Schwarz/dp/B00BTCE2M0}} und hat das Betriebssystem Android 5.0 Lollipop vorinstalliert und besitzt ausreichend gute Hardwarekomponenten. Die Auflösung des Displays mit 1080 x 1920 Pixel ist ausreichend, die 2 GByte Arbeitsspeicher sind notwendig und die 16 GByte interner Speicher sind ausreichend. Bei dem Prozessor handelt es sich um ein Qualcomm Snapdragon 600, mit vier Kernen und einer 32-bit Architektur\footnote{für mehr Informationen: \url{http://www.samsung.com/de/consumer/mobile-devices/smartphones/galaxy-s/GT-I9506ZKADTM}}.
 	
 	\subsection{Benuzterfreundlichkeit}
+		Kindgerecht
+		Einfach, simpel, nicht zu voll,
+		
+		Bsp: sichtbares Steuerkreuz anstatt Ziehfunktion wie bei anderen RPGs (vielleicht ein Bild hier um den Unterschied zu verdeutlichen)
 
 	\subsection{Zuverlässigkeit}
-		This should specify the factors required to establish the required reliability of the software system at time of delivery.
+		%This should specify the factors required to establish the required reliability of the software system at time of delivery.
+		
+		Richtige Implementierung der Standards (Reihenfolge). 
 	
 	\subsection{Verfügbarkeit}
-		This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart. 
-	
+		%This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart. 
+		
+		Da bei jeder App eine lokale Datenbank mit vorhanden ist, muss der Server nicht ganze Zeit verfügbar sein. Das gilt jedoch nur für die Benutzer, die NoRPG schon heruntergeladen und sich registriert sowie angemeldet haben. Wenn diese Bedingungen erfüllt sind, wird der ganze Fortschritt lokal gespeichert werden und kann mit dem Server manuell oder vor dem Ausloggen automatisch synchronisiert werden, muss es allerdings nicht. Denn der Server ist da, falls der User sich an einem anderen Gerät anmelden möchte, dass der Spielstand dort gleich ist. 
+		
+		System Availability: MUST: 98\%, PLAN: 99\% und WISH: 100\%
+		
+		Server Availability: MUST: 80\%, PLAN: 99\% und WISH: 100\%
+		
+		Internet Connection: Die App sollte mit dem Internet verbunden sein, jedoch muss es nicht
+		
 	\subsection{Sicherheit}
-		This should specify the factors that protect the software from accidental or malicious access, use, modification, destruction, or disclosure. Specific requirements in this area could include the need to
+		Bei der Sicherheit wird zwischen zwei unterschiedliche Typen unterschieden: Security ist der Schutz vor absichtlichen Bedrohungen und Safety ist der Schutz vor zufälligen Bedrohungen. Vertraulichkeit, Verfügbarkeit und Integrität sind die Ziele, die die Sicherheit verfolgt.
 		
-		Utilize certain cryptographical techniques; 
+		Spieler müssen sich an die durch den Standard vorgegeben Reihenfolge halten. Eine mögliche Verletzung kann durch die Manipulation der lokalen eingebetteten Datenbank entstehen. Der Fortschritt darf nicht außerhalb manipuliert werden und muss deshalb verschlüsselt abgespeichert werden, da dies als Schummeln oder Cheaten bezeichnet wird.
 		
-		Keep specific log or history data sets;
+		Die Daten der User müssen verschlüsselt gespeichert werden. Das Passwort der User darf nicht in Klartext gespeichert werden und darf nur mittels One-Way-Functions verschlüsselt gespeichert und verglichen werden. Unautorisierte Nutzer haben keinen Zugriff auf NoRPG. Für die Nutzung ist die Registrierung erforderlich. Die Registrierung muss auch sichergestellt werden.
 		
-		Assign certain functions to different modules;
+		Für den Fall, dass die gespeicherten Daten (Fortschritt, etc.) analysiert werden sollen, dürfen die Daten nur anonymisiert zur Verfügung gestellt werden.
 		
-		Restrict communications between some areas of the program;
-		
-		Check data integrity for critical variables.
+		Die Synchronisierung mit dem Server muss verschlüsselt werden (symmetrisches möglich, ansonsten asymm) 
 	
 	\subsection{Wartbarkeit}
-		This should specify attributes of software that relate to the ease of maintenance of the software itself. There may be some requirement for certain modularity, interfaces, complexity, etc. Requirements should not be placed here just because they are thought to be good design practices.
+		Erweiterbarkeit der App. Der Code sollte so geschrieben werden, dass er die Umsetzung neuer Funktionen begünstigt. Das bedeuted auch Komplexität niedriger halten durch entsprechende Methoden. Schnittstellen anbieten für weitere Tools wie die Weboberfläche für die Administratoren. Oder Wenn selbst entwickelte Spiele mit NoRPG kommunizieren möchten. (GENAUER)
+		
+		Testumgebungen sollten für die Anwendung erstellt werden, um das Testen der Anwendungen auf unterschiedliche Funktionen zu ermöglichen
 	
 	\subsection{Portabilität}
-		This should specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems. This may include the following:
+		Die App NoRPG ist zunächst nur für Android geplant. Andere Betriebssysteme, wie Windows Phone von Microsoft oder iOS von Apple, sind vorerst nicht vorgesehen. 
 		
-		Percentage of components with host-dependent code;
+		Bei der vorhanden Breite an Varianten von Android-Smartphones ist sehr wichtig, dass die Portabilität innerhalb von Android Smartphones gewährleistet wird. Neben bekannten Smartphoneherstellern wie Samsung, LG oder HTC gibt es zahlreiche weitere Hersteller die auf das Android Betriebssystem setzen. Jeder Hersteller hat dabei eine große Palette an Smartphone-Modellen, wie bei Samsung die Samsung Galaxy S-Reihe, welches aktuell in der siebten Genration erhältlich ist\footnote{Vgl. \url{http://www.computerbild.de/artikel/cb-News-Handy-Samsung-Galaxy-S-S2-S3-S4-S5-S6-S7-11332036.html}}, oder die Samsung Galaxy Note-Reihe. Die App NoRPG muss auf allen Android-Smartphones funktionieren, solange diese die Mindestanforderungen an Software und Hardware erfüllen. Dabei muss sich die App beispielsweise an die Auflösung oder XXX anpassen.
 		
-		Percentage of code that is host dependent;
-		
-		Use of a proven portable language; 
-		
-		Use of a particular compiler or language subset;
-		
-		Use of a particular operating system.
+		Die Portabilität beschreibt nicht nur die technische Sicht sondern auch in welchen Ländern und in welchen Sprachen NoRPG verfügbar sein wird. Der Release findet in allen Ländern statt, in denen der Google Play Store verfügbar ist. Zunächst wird NoRPG nur in Englisch verfügbar sein, welches jedoch kein weiteres Problem darstellt.
