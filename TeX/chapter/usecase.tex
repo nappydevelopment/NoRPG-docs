@@ -173,6 +173,8 @@
 		\end{center}
 		
 		Das abgebildete System stellt die zu entwickelnde App für die User dar. Die App stellt die Graphische Oberfläche und somit die beschrieben Benutzerschnittstellen dar. Es sind nur die Funktionalitäten enthalten, die der Benutzer ausführen kann, also jene die über die Benutzerschnittstellen angesprochen werden können. Use Cases wie Login oder Registrierung sind im Overall Use Case Diagramm nicht enthalten, da diese im Vergleich zu anderen Use Cases primitiv sind. 
+		
+		Es werden nur die Use Cases des Players betrachtet, da die Use Cases des zweiten Benutzers, den Administratoren, zunächst nicht implementiert sondern nur entsprechende Vorkehrungen für die Implementierung getroffen werden.
 	
 		\subsubsection{Create character}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dieser Use Case wird pro Account genau einmal nach der Registrierung ausgeführt und zählt noch zum Prozess der Registrierung.
@@ -243,7 +245,7 @@
 			Nachbedingungen
 		
 		\subsubsection{Character control}
-			Dieser Use Case beschreibt den Anwendungsfall: Benutzer interaktionen, wie Bewegen oder Bestätigen.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Spieler seinen Charakter in NoRPG durch die Spielwelt kontrolliert.
 			
 			Ereignisablauf
 			
@@ -305,8 +307,9 @@
 
 	\subsection{Zuverlässigkeit}
 		%This should specify the factors required to establish the required reliability of the software system at time of delivery.
+		Alle implementierte Funktionen sollten zur Auslieferung korrekt und zuverlässig funktionieren. Dazu zählt auch, dass die Funktionen in vertretbaren Zeiten terminieren. Beispielsweise sollte die Anmeldung funktionieren, wenn der Spieler registriert ist und die richtigen Benutzerdaten eingegeben hat, oder die Benutzereingaben für die Charaktersteuerung sollen korrekt interpretiert werden.
 		
-		Richtige Implementierung der Standards (Reihenfolge). 
+		Eine besondere Wichtigkeit hat die Implementierung der in Kapitel 2 beschriebenen Common Core State Standards. Diese sind wichtig für die Reihenfolge der spielbaren Lernspiele, damit ein Spieler mit einem Skilllevel der ersten Klasse in Geometrie keine Lernspiele für die fünfte Klasse angezeigt kriegt. Erst dadurch wird gewährleistet und kann sichergestellt werden, dass der Spieler die Lerninhalte korrekt vermittelt kriegt.
 	
 	\subsection{Verfügbarkeit}
 		%This should specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart. 
@@ -320,21 +323,19 @@
 		Internet Connection: Die App sollte mit dem Internet verbunden sein, jedoch muss es nicht
 		
 	\subsection{Sicherheit}
-		Bei der Sicherheit wird zwischen zwei unterschiedliche Typen unterschieden: Security ist der Schutz vor absichtlichen Bedrohungen und Safety ist der Schutz vor zufälligen Bedrohungen. Vertraulichkeit, Verfügbarkeit und Integrität sind die Ziele, die die Sicherheit verfolgt.
+		Bei Sicherheit wird zwischen zwei unterschiedlichen Typen unterschieden: Security und Safety. Security ist der Schutz vor absichtlichen Bedrohungen, wenn ein Angreifer absichtlich das Systems angreift. Im Gegensatz dazu ist Safety der Schutz vor unbeabsichtigten Bedrohungen, wenn der Benutzer durch Zufall die Sicherheitsmechanismen umgeht indem er etwas nicht beabsichtigtes ausführt.
 		
-		Spieler müssen sich an die durch den Standard vorgegeben Reihenfolge halten. Eine mögliche Verletzung kann durch die Manipulation der lokalen eingebetteten Datenbank entstehen. Der Fortschritt darf nicht außerhalb manipuliert werden und muss deshalb verschlüsselt abgespeichert werden, da dies als Schummeln oder Cheaten bezeichnet wird.
+		Die Kommunikation mit dem Server und mit der lokalen eingebetteten Datenbank müssen verschlüsselt werden, damit die Credentials bei den Anmeldung oder bei der Registrierung nicht mitgelesen werden können. Des Weiteren müssen die Daten auf der lokalen Datenbank validiert werden, bevor der Server synchronisiert wird, denn es wird unter anderem auch der Spielfortschritt der Benutzer synchronisiert. Die Veränderung des Spielfortschritts wird als Schummeln bzw. Cheaten behandelt.
 		
-		Die Daten der User müssen verschlüsselt gespeichert werden. Das Passwort der User darf nicht in Klartext gespeichert werden und darf nur mittels One-Way-Functions verschlüsselt gespeichert und verglichen werden. Unautorisierte Nutzer haben keinen Zugriff auf NoRPG. Für die Nutzung ist die Registrierung erforderlich. Die Registrierung muss auch sichergestellt werden.
+		Die Anmeldung bzw. Registrierung ist notwendig, um NoRPG spielen zu können. Deswegen müssen die Accounts der Benutzer verschlüsselt gespeichert werden und die Passwörter dürfen bei der Anmeldung nur mittels One-Way-Functions vergleichen werden. Nicht registrierte bzw. unautorisierte Benutzer erlangen keinen Zugriff auf das System.
 		
-		Für den Fall, dass die gespeicherten Daten (Fortschritt, etc.) analysiert werden sollen, dürfen die Daten nur anonymisiert zur Verfügung gestellt werden.
+		Die gespeicherte Daten dürfen an andere Tools nur anonymisiert weitergegeben werden, für beispielsweise Analysezwecke. Diese Kommunikation mit anderen System oder Applikationen darf nur verschlüsselt geschehen.
 		
-		Die Synchronisierung mit dem Server muss verschlüsselt werden (symmetrisches möglich, ansonsten asymm) 
-	
 	\subsection{Wartbarkeit}
-		Erweiterbarkeit der App. Der Code sollte so geschrieben werden, dass er die Umsetzung neuer Funktionen begünstigt. Das bedeuted auch Komplexität niedriger halten durch entsprechende Methoden. Schnittstellen anbieten für weitere Tools wie die Weboberfläche für die Administratoren. Oder Wenn selbst entwickelte Spiele mit NoRPG kommunizieren möchten. (GENAUER)
+		Der Code von NoRPG sollte so geschrieben werden, dass der Code die Umsetzung neuer Funktionen begünstigt. Deshalb sollte die Komplexität des Codes so gering wie möglich gehalten werden, indem entsprechende Methoden wie das Model-View-Controller Pattern umgesetzt werden. Des Weiteren sollte das System von NoRPG Schnittstellen jeglicher Art anbieten, um das System durch weitere Komponenten wie ein Web-Tool für Administratoren zu erweitern.
 		
-		Testumgebungen sollten für die Anwendung erstellt werden, um das Testen der Anwendungen auf unterschiedliche Funktionen zu ermöglichen
-	
+		Neben der Erweiterbarkeit sollte NoRPG für Fehlerfälle eine Testumgebung anbieten, um das Testen der Anwendung auf unterschiedliche Funktionen zu ermöglichen und gegebenenfalls Fehler wiederholen und simulieren zu können.
+		
 	\subsection{Portabilität}
 		Die App NoRPG ist zunächst nur für Android geplant. Andere Betriebssysteme, wie Windows Phone von Microsoft oder iOS von Apple, sind vorerst nicht vorgesehen. 
 		
