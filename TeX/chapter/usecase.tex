@@ -1,7 +1,7 @@
 \chapter{Software Requirements Specification}
 	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Der Inhalt eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
 	
-	Die Aufbau dieses Kapitels entspricht der Struktur, die in dem Standard beschriebenen wird. Einige Kapitel des SRS werden jedoch nicht behandelt, da sie keine Relevanz für NoRPG haben oder an einer anderer Stelle in diesem Dokument auftauchen.
+	Die Aufbau dieses Kapitels entspricht der Struktur, die in dem Standard beschriebenen wird. Einige Kapitel des SRS werden allerdings nicht behandelt, da sie keine Relevanz für NoRPG haben oder an einer anderer Stelle in diesem Dokument auftauchen.
 	
 \section{Einführung}
 	Das erste Kapitel des SRS enthält eine Beschreibung und eine Übersicht über alles, was im SRS enthalten ist.
@@ -9,7 +9,7 @@
 	\subsection{Zweck}
 		Das SRS beschreibt den kompletten Projektumfang und die Anforderungen an die Software NoRPG. Es illustriert den Zweck und die vollständige Erklärung für die Entwicklung der Software. Dabei werden unter anderem Systemeinschränkungen, Schnittstellen und Interaktionen mit externen Schnittstellen thematisiert\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. 
 	
-		Die Zielgruppe des SRS sind zunächst alle Personen und Gruppen, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben\footnote{vgl. Rozanski \cite{rozanski2011}(2011) Seite 6}, den sogenannten Stakeholdern. Zudem dient die Spezifikation zur Kommunikation zwischen den Stakeholdern und den Entwicklern.
+		Die Zielgruppe des SRS bzw. die Stakeholder des Projektes sind alle Personen und Personengruppen, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben\footnote{vgl. Rozanski \cite{rozanski2011}(2011) Seite 6}. Zudem dient die Spezifikation zur Kommunikation zwischen den Stakeholdern und den Entwicklern.
 		
 	\subsection{Umfang}
 		Dieses SRS handelt von der in Kapitel 2 beschrieben Software NoRPG. 
@@ -18,7 +18,7 @@
 	Im zweiten Kapitel des SRS werden allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel bietet einen Überblick über die Systemfunktionalitäten und stellt verschiedene Arten von Stakeholdern und deren Interaktionen mit dem System vor. Dieses Kapitel behandelt jedoch nicht die spezifischen Anforderungen, sondern stellt den Hintergrund für diese Anforderungen dar. 
 
 	\subsection{Produktperspektive}
-		Das zu beschreibende vollständige System NoRPG besteht aus mehreren Komponenten, die auf unterschiedlichsten weisen mit den St akeholdern kommunizieren. Daher ist es besonders wichtig, das Produkt in unterschiedlichen Perspektiven mit verwandten und geplanten Produkten zu betrachten. Aufgrund dessen werden die System-, Benutzer-, Hardware- und Softwareschnittstellen von NoRPG betrachtet. Neben den vier genannten Schnittstellentypen gibt es weitere, sind jedoch nicht weiter von Bedeutung.
+		Das zu beschreibende vollständige System NoRPG besteht aus mehreren Komponenten, die auf unterschiedlichsten weisen mit den Stakeholdern kommunizieren. Daher ist es besonders wichtig, das Produkt in unterschiedlichen Perspektiven mit verwandten und geplanten Produkten zu betrachten. Aufgrund dessen werden die System-, Benutzer-, Hardware- und Softwareschnittstellen von NoRPG betrachtet. Neben den vier genannten Schnittstellentypen gibt es weitere, sind jedoch nicht weiter von Bedeutung.
 		
 		Folgende Grafik stellt dabei die High-Level-View von NoRPG und seinen Komponenten dar. Die Grafik stellt die Schnittstellen zwischen den Komponenten und mit anderen Produkten dar.
 		
@@ -27,42 +27,40 @@
 			\captionof{figure}{High-Level-View von NoRPG} 
 		\end{center}
 		
-		NoRPG besteht aus zwei Kernkomponenten. Die erste Kernkomponente ist die App, die aus der Graphical User Interface (GUI) und einer eingebetteten lokalen Datenbank besteht. Die zweite Kernkomponente ist eine Datenbank auf einem Server.
+		NoRPG besteht aus zwei Kernkomponenten. Die erste Kernkomponente ist die App, die aus der Benutzerschnittstelle und einer eingebetteten lokalen Datenbank besteht. Die zweite Kernkomponente ist eine Datenbank auf einem Server.
 		
 		Die Schnittstelle zwischen der App und dem Betriebssystem Android ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und die Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 13}.
 		
-		Bei der Schnittstelle zwischen dem User und der Benutzeroberfläche der App handelt es sich um die Benutzerschnittstellen des Systems. Die Benutzerschnittstellen beschreiben die Kommunikation zwischen NoRPG und dem User. Der User kann mit NoRPG nur über die GUI der App interagieren.
+		Bei der Schnittstelle zwischen dem User und der Benutzeroberfläche der App handelt es sich um die Benutzerschnittstellen des Systems. Die Schnittstellen beschreiben die Kommunikation zwischen NoRPG und dem User. Die GUI ist die einzige Möglichkeit für den Anwender mit dem System zu interagieren.
 		
 		Jede Schnittstelle zwischen NoRPG und Hardwarekomponenten des Systems werden als Hardwareschnittstellen bezeichnet. Das Smartphone und seine Komponenten sind einzige Hardwarekomponente. Zu einem Smartphone gehört das Touchscreen, die Lautsprecher oder der WLAN-Adapter. Die Hardwarekomponente wird in der Abbildung durch das Smartphone dargestellt.
 		
-		Die App muss mit der lokalen und der serverseitigen Datenbank kommunizieren. Dabei handelt es sich um Softwareschnittstellen. Sie bilden den Übergang zwischen unterschiedlichen Programmen und ermöglichen dadurch das Nutzen derer Funktionalitäten. 
+		Die App muss mit der lokalen Datenbank sowie mit der Datenbank auf dem Server kommunizieren. Dabei handelt es sich um Softwareschnittstellen. Sie bilden den Übergang zwischen unterschiedlichen Programmen und ermöglichen dadurch das Nutzen derer Funktionalitäten. 
 
 	\subsection{Produktfunktionen}
-		In diesem Unterkapitel werden die wichtigsten Funktionen von NoRPG zusammengefasst. Das Ziel von NoRPG wie in Kapitel 2 schon beschrieben ist es, Lernspiele in einer festgelegten standardisierten Reihenfolge zum Herunterladen anzubieten. Dieses Ziel macht das Herunterladen von Spielen zu seiner Hauptfunktion. Um jedoch diese simple Funktionalität attraktiver zu gestalten, wird es die Funktion geben Collectables, zu Deutsch Sammelgegenstände, zu sammeln und mit Elementen im Spiel zu interagieren.
+		In diesem Unterkapitel werden die wichtigsten Funktionen von NoRPG zusammengefasst. Wie in Kapitel 2 beschrieben ist das Hauptziel von NoRPG Lernspiele in einer standardisierten Reihenfolge zum Herunterladen anzubieten. Dieses Ziel macht das Downloaden von Spielen zu der Hauptfunktion. 
 		
-		Neben dieser Hauptfunktion gibt es weitere Produktfunktionen, um den Spieler zu identifizieren und das Spielerlebnis zu verbessern. Um den User zu identifizieren wird es eine Anmelde- und Registrierungsfunktion geben. In der Registrierung wird es möglich sein, einen personalisierten Charakter zu erstellen. 
+		Neben dieser Hauptfunktion gibt es weitere Produktfunktionen, um NoRPG attraktiver zu gestalten und das Spielerlebnis zu verbessern. Der Spieler wird in der Lage sein mit Elementen im Spiel zu interagieren und dabei Spielgegenstände zu sammeln. Um dem Anwender zu identifizieren wird NoRPG über eine Anmelde- und Registrierungsfunktion verfügen. In dem Registrierungsprozess wird es dem Spieler möglich sein, seinen eigenen persönlichen Charakter zu erstellen.
 		
-		Im Spiel selbst wird es neben Spieloptionen wie Qualitäts- und Audioeinstellungen noch Features geben, die das Spielerlebnis verbessern. Der User wird in der Lage sein eine Karte von der Spielwelt zu öffnen, eine Liste von allen heruntergeladenen Spielen zu verwalten und seinen Fortschritt zu betrachten.
+		Im Spiel selbst wird es neben Spieloptionen wie Qualitäts- und Audioeinstellungen noch Features geben, die das Spielerlebnis verbessern sollen. Der User wird in der Lage sein eine Karte von der Spielwelt zu öffnen, eine Liste von allen herunterladbaren Spielen zu verwalten und seinen Fortschritt zu betrachten.
 		
 		Die App speichert den Fortschritt in der lokalen eingebetteten Datenbank und synchronisiert diese Daten, wenn eine aktive Internetverbindung besteht, mit der Datenbank auf dem Server.
 	
 	\subsection{Benutzermerkmale}
-		In diesem Projekt wird zwischen zwei Benutzergruppen unterschieden.
+		Im Rahmen dieser Studienarbeit wird zunächst nur eine Benutzergruppe vollständig implementiert.
 		
-		Die erste Benutzergruppe sind die User, viel mehr die Spieler. Grundsätzlich richtet sich NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen. Jedoch werden keine Benutzergruppen für diese App ausgeschlossen. Egal ob jung oder alt, sowie männlich oder weiblich. Der Spieler sollte nur eine Neugier zum Lernen mitbringen. 
+		Die zu implementierende Benutzergruppe sind die User, viel mehr die Spieler. Grundsätzlich richtet sich NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen. Jedoch werden keine Benutzergruppen für diese App ausgeschlossen. Egal ob jung oder alt, sowie männlich oder weiblich. Der Spieler sollte nur eine Neugier zum Lernen mitbringen. 
 		
 		Der Spieler benötigt Erfahrung mit der Verwendung eines Smartphones, insbesondere mit einem Android-Systems. Dazu zählt die Bedienung der Android-Oberfläche und die des Google Play Stores. Zudem sollten die User englische Texte verstehen können, da NoRPG zunächst nur in der englischen Sprache erscheinen wird.
-		
-		Die zweite Benutzergruppe sind die Administratoren.	Die Administratoren wollen Daten analysieren und daraus Aktionen ableiten. Für diese Benutzergruppe wird in diesem Projekt keine Benutzeroberfläche implementiert, jedoch wird eine Schnittstelle vorgesehen. 
 			
 	\subsection{Einschränkungen}
 		Es wird zwischen Einschränkungen für die Entwickler und für die Spieler unterschieden.
 		
 		Entwickler müssen sich grundsätzlich zunächst an die regulatorischen Richtlinien, wie beispielsweise an die Datenschutzerklärung von Google oder an das IT-Sicherheitsgesetz halten.
 		
-		Da NoRPG sich an Kinder in bildungsfernen Ländern richtet ist es besonders wichtig, dass die Texte in NoRPG einfach zu verstehen sind. Da das Spiel zunächst nur in Englisch erscheinen wird, dürfen die englischen Texte kein Fachjargon oder ähnliches beinhalten. Die App darf keine hohen Mindestanforderungen an Hardwareressourcen haben, da der Smartphonestandard in bildungsfernen Ländern geringer ist. Das bedeutet für die Entwickler das Spiel so gut wie möglich Ressourcen-schonend umzusetzen. Des Weiteren gilt es bei der Implementierung zu beachten, dass NoRPG ohne eine aktive Internetverbindung soweit wie möglich spielbar bleiben muss.
+		Da NoRPG sich an Kinder in bildungsfernen Ländern richtet ist es besonders wichtig, dass die Texte in NoRPG einfach zu verstehen sind. Da das Spiel zunächst nur in Englisch erscheinen wird, dürfen die englischen Texte kein Fachjargon oder ähnliches beinhalten. Die App darf keine hohen Mindestanforderungen an Hardwareressourcen haben, da der technische Standard in bildungsfernen Ländern geringer ist. Das bedeutet für die Entwickler das Spiel so gut wie möglich Ressourcen-schonend umzusetzen. Des Weiteren gilt es bei der Implementierung zu beachten, dass NoRPG ohne eine aktive Internetverbindung soweit wie möglich spielbar bleiben muss.
 		
-		Allerdings gibt es auch Einschränkungen, die für die Spieler gelten oder zumindest temporär. Wie schon öfter erwähnt wurde, wird das Spiel zunächst nur in Englisch erscheinen. 
+		Allerdings gibt es auch Einschränkungen, welche für die Spieler gelten oder zumindest temporär. Wie schon öfter erwähnt wurde, wird das Spiel zunächst nur in Englisch erscheinen. 
 		
 		Für die Anmeldung, die Registrierung, das Herunterladen von Spielen, das Synchronisieren und installieren von Updates wird eine aktive Internetverbindung vorausgesetzt. Des Weiteren benötigt der Spieler ein Android System, welches die Mindestanforderungen von NoRPG erfüllt.
 				
@@ -95,12 +93,14 @@
 	%	l) End messages.
 	
 		\subsubsection{Systemschnittstellen}
-			Name: Android 
-			Beschreibung und Zweck: Betriebssystem des Smartphones
-			Gültigkeitsbereich: Nur für die App von NoRPG
-			Datenformat
-			Kommandoformat
-		
+			NoRPG hat genau eine Schnittstelle mit einem anderen System und zwar mit Android. Android ist das Betriebssystem von Google für mobile Geräte, welches aktuell in der Version 7.0 Nougat zu erhalten ist. Viele Smartphone-Hersteller nutzen Android als Basis für ihr eigenes auf Android aufbauendes Betriebssystem. 
+			
+			Die vorinstallierte Software Google Play Store ist eine Plattform, die Musik, E-Books, Filme, Serien und insbesondere Apps anbietet. NoRPG wird die Plattform nutzen, damit die Spieler Lernspiele herunterladen können.
+			
+			Der Gültigkeitsbereich der Systemschnittstelle ist auf die App begrenzt und hat keinerlei direkte Auswirkung auf den Server. 
+			
+			Das Datenformat von Android ist das Android Application Package (APK) und wird für die Verteilung und Installation von mobilen Apps verwendet. Eine APK-Datei enthält den gesamten Programmcode, Ressourcen, Assets, Zertifikate und Manifest-Dateien. Vergleichen kann das Datenformat von Google mit einem ZIP-Archiv\footnote{vgl. \url{https://sites.google.com/site/io/inside-the-android-application-framework}}. Auch NoRPG muss dieses Format erfüllen.
+			
 		\subsubsection{Benutzerschnittstellen}
 			Die Benutzerschnittstellen, die user interfaces, sind der Punkt, an dem der Benutzer mit der Software interagiert. Zur Beschreibung der Benutzerschnittstellen werden logische Eigenschaften sowie Aspekte zur Optimierung formuliert. Zur Demonstration werden Mockups verwendet. Mockups stellen dar, wie die Oberfläche aussehen kann. Die am Projektende implementierte Oberfläche kann sich von den Mockups unterscheiden.
 			
