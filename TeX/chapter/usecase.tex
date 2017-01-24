@@ -99,60 +99,57 @@
 			
 			Der Gültigkeitsbereich der Systemschnittstelle ist auf die App begrenzt und hat keinerlei direkte Auswirkung auf den Server. 
 			
-			Das Datenformat von Android ist das Android Application Package (APK) und wird für die Distribution und Installation von mobilen Apps verwendet. Eine APK-Datei enthält den gesamten Programmcode, Ressourcen, Assets, Zertifikate und Manifest-Dateien. Verglichen kann das Datenformat von Google mit einem ZIP-Archiv\footnote{vgl. \url{https://sites.google.com/site/io/inside-the-android-application-framework}}. Dieses Format muss NoRPG erfüllen, um unabhängig von den zu implementierenden Funktionen auf einem Android Smartphone laufen zu können.
+			Das Datenformat von Android ist das Android Application Package (APK) und wird für die Distribution und Installation von mobilen Apps verwendet. Eine APK-Datei enthält den gesamten Programmcode, Ressourcen, Assets, Zertifikate und Metadaten. Verglichen kann das Datenformat von Google mit einem ZIP-Archiv\footnote{vgl. \url{https://sites.google.com/site/io/inside-the-android-application-framework}}. Dieses Format muss NoRPG erfüllen, um unabhängig von den zu implementierenden Produktfunktionen auf einem Android Smartphone laufen zu können.
 			
 		\subsubsection{Benutzerschnittstellen}
-			Die Benutzerschnittstellen bzw. User Interfaces (UI) sind der Punkt, an dem der Benutzer mit der Software interagiert. Zur Beschreibung der Benutzerschnittstellen werden logische Eigenschaften sowie Aspekte zur Optimierung formuliert. Für die Veranschaulichung werden Mockups verwendet. Mockups stellen dar, wie die Oberfläche aussehen kann. Die am Projektende implementierte Benutzeroberfläche kann sich von den Mockups unterscheiden.
+			Die Benutzerschnittstellen bzw. User Interfaces (UI) sind der Punkt, an dem die Benutzer mit der Software interagieren. Zur Beschreibung der Benutzerschnittstellen werden logische Eigenschaften und Aspekte zur Optimierung formuliert. Für die Veranschaulichung werden Mockups verwendet. Diese stellen dar, wie die Oberfläche aussehen kann. Die am Projektende implementierte Benutzeroberfläche kann sich von den Mockups unterscheiden.
 			
-			Wenn der Benutzer NoRPG zum ersten Mal startet oder der nicht angemeldet ist, wird ihm der Login-Screen präsentiert. Auf dem Login-Screen hat der Benutzer die Möglichkeit sich mit seinem Benutzernamen und seinem Passwort anzumelden oder sich, falls noch nicht geschehen, bei NoRPG zu registrieren. Das Smartphone muss Quer gehalten werden, da alle Elemente des Bildschirms vertikal angeordnet sind. Diese Eigenschaft trifft auch auf alle anderen Benutzerschnittstellen zu. Das Layout des Login-Screens ist ein Border-Pane, in dem die Bestandteile in einer einzigen Spalte angeordnet sind. Zur Optimierung der Nutzung werden kurze Fehlermeldungen ausgegeben, wenn der Benutzer falsche Login-Daten eingibt.
+			Wenn der Benutzer NoRPG das erste Mal startet oder nicht angemeldet ist, wird ihm die Login-Oberfläche präsentiert. Auf dieser Oberfläche hat der Benutzer die Möglichkeit sich mit seinem Benutzernamen und  Passwort anzumelden oder sich, falls noch nicht geschehen, bei NoRPG zu registrieren. Das Smartphone muss Quer gehalten werden, da alle Elemente des Bildschirms für diese Ausrichtung angeordnet sind. Diese Eigenschaft betrifft auch alle anderen Benutzerschnittstellen.  
+			
+			Die Hauptelemente des Login-Screens sind die Eingabefelder für Benutzername und Passwort, der Login- und Registrierungsbutton sowie ein Ladebalken, der den aktuellen Status von NoRPG zeigt. Wenn das Spiel aktualisiert wird kann hier der Status abgelesen werden. Zur Optimierung der Nutzung ist das Layout der Login-Oberfläche ein Border-Pane, in dem die Bestandteile in einer einzigen Spalte angeordnet sind. Fehler werden in einem kleinen Fenster dargestellt, wenn beispielsweise der Benutzer falsche Login-Daten eingibt oder die Internetverbindung während des Aktualisierungsprozesses abbricht.
 			
 			\begin{center}
 				\includegraphics[width=10cm]{pics/Login.png}
-				\captionof{figure}{Login-Screen Mockup} 
+				\captionof{figure}{Mockup: Login-Screen} 
 			\end{center}
 			
-			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies in der App zu machen. Dazu klickt der Benutzer im Login-Screen auf den Register-Button. Anschließend öffnet sich der Register-Screen. Die Elemente sind im Tabellen Layout angeordnet, wodurch der Benutzer weiß, welche Daten in welches Feld eingetragen werden müssen. Die Registrierung ist notwendig, damit der Spielstand, somit der Fortschritt in einer Relation mit dem Benutzer steht. Zur weiteren Optimierung werden kurze Fehlermeldungen ausgegeben, damit ich der Benutzer weiß, in welchem Feld ein Fehler ist.
+			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies direkt in der App zu machen. Dazu klickt der Benutzer den Register-Button auf der Login-Oberfläche. Anschließend öffnet sich die Register-Oberfläche. Der vollständige Registrierungsprozess setzt sich aus zwei Schritten zusammen. Im ersten Schritt muss der Spieler das Registrierungsformular ausfüllen und bestätigen. Die Elemente des Formulars sind als Tabellen-Layout angeordnet, welches die Lesbarkeit verbessert. Felder, die nicht der erwarteten Eingabe entsprechen, werden als Falsch markiert und visuell hervorgehoben. Wenn das Anlegen des Accounts erfolgreich war, hat der Spieler die Möglichkeit im zweiten Schritt seinen eigenen Charakter zu erstellen. Dazu bestimmt der Benutzer den Namen, das Geschlecht und das Aussehen des Charakters.
 			
 			\begin{center}
 				\includegraphics[width=\textwidth]{pics/Registerprozess.png}
-				\captionof{figure}{Registerprozess: Registrierung und Create Character Mockup} 
+				\captionof{figure}{Mockups: Registrierungsformular und Charaktererstellung} 
 			\end{center}
-			
-			Nach der Registrierung kann der Spieler einmalig seinen Charakter für den angelegten Account erstellen. Dazu bestimmt der Benutzer den Namen, das Geschlecht und das Aussehen des Charakters.
-			
-			NoRPG startet, nachdem alles geladen wurde und der Benutzer angemeldet ist. Das Spiele-Screen besteht aus der Spielewelt (Grafik) und dem Head-Up Display, kurz HUD. Das HUD ist eine Methode, mit der Informationen visuell als Teil der Benutzeroberfläche eines Spiels vermittelt werden. Während die Informationen, die auf dem HUD angezeigt werden, stark vom Spiel abhängen, gibt es viele Eigenschaften, die Spieler über viele Spiele erkennen. Die meisten von ihnen sind statisch auf dem Bildschirm, so dass sie während des Spiels sichtbar bleiben. 
+
+			NoRPG startet erst, nachdem alles geladen wurde und der Benutzer angemeldet ist. Das Bildschirm von NoRPG besteht aus der Spielwelt (Grafik) und dem Head-Up Display (HUD). Das HUD ist eine Methode, mit der Informationen visuell als Teil der Benutzeroberfläche eines Spiels vermittelt werden. Während die Informationen, die auf dem HUD angezeigt werden, stark vom Spiel abhängen, gibt es viele Eigenschaften, die Spieler über viele Spiele erkennen. Die meisten von ihnen sind statisch auf dem Bildschirm, so dass sie während des Spiels sichtbar bleiben\footnote{gibt keine bessere Quelle als wikipedia :/}.  
 			
 			\begin{center}
 				\includegraphics[width=10cm]{pics/HUD.png}
-				\captionof{figure}{HUD Mockup} 
+				\captionof{figure}{Mockup: Head-Up Display} 
 			\end{center}
 			
-			Das Mockup 3 enthält alle direkt sichtbaren HUD Elemente, die während des Spieles aktiv sind. Die Elemente sind an die Ecken gebunden, so befindeen sich beispielsweise die Pfeiltasten zur Bewegung des Charakters in der linken unteren Ecke des Bildschirms (siehe Graifk). Es sind so wenig Elemente wie möglich auf dem Bildschirm angeordnet und die verwendeten Symbole sind aus anderen bekannten Spielen und Konsolen übernommen und sind quasi ein Standard. Durch diese bekannte Anordnung der Elemente kann der User Informationen schneller verstehen und schneller reagieren. %vllt bisschen noch was zu dieser Anordnung labern
+			Das Mockup in Abbildung 4 enthält alle direkt sichtbaren HUD Elemente, die während des Spieles aktiv sind. Diese Elemente sind an die Ecken des Bildschirmes gebunden, so befinden sich beispielsweise die Pfeiltasten zur Bewegung des Charakters in der linken unteren Ecke des Bildschirms oder die Buttons zur Interaktion mit dem Spiel in der unteren rechten Ecke. 
 			
-			Das Menü, welches sich in der oberen linken Ecke befindet, kann geöffnet werden. Dadurch wird das laufende Spiel pausiert und es werden weitere Optionen bzw. Interaktionen mit dem Spiel möglich. Diese HUD Elemente werden nur dann sichtbar, wenn der Spieler das Menü öffnet. Dadurch rückt das Spiel und die anderen Elemente in den Hintergrund. Das bedeutet nicht, dass die Elemente ausgeblendet werden, sondern dass der Benutzer diese Elemente nicht benutzen kann solange das Menü offen ist.
+			Das Menü, welches sich in der oberen linken Ecke befindet, kann geöffnet werden. Dadurch wird das laufende Spiel pausiert und Optionen bzw. Möglichkeiten zur Interaktion öffnen sich. Diese HUD Elemente werden nur dann sichtbar, wenn der Spieler das Menü öffnet. Dadurch rückt das Spiel und die anderen Elemente in den Hintergrund. Solange das Menü offen ist können keine anderen HUD Elemente
 			
 			\begin{center}
 				\includegraphics[width=10cm]{pics/Menu.png}
-				\captionof{figure}{HUD offenes Menü Mockup} 
+				\captionof{figure}{Mockup: Menü} 
 			\end{center}
 			
-			Einige der Menü-Elemente öffnen wiederum einen anderen Screen. Diese werden dann über das aktuelle Spiel geöffnet. Das Spiel befindet sich im Hintergrund und kann nicht gesehen bzw. angeklickt werden. Der neu geöffnete Screen muss erst geschlossen werden um das Spiel fortsetzen zu können. Ein Beispiel dafür ist der Fortschritt-Screen. Hier kann der Benutzer seinen Lern- bzw. Spielfortschritt betrachten.
+			Es wird zwischen zwei Arten von Menü-Funktionen unterschieden. Eine Funktionen können direkt im Menü durchgeführt werden, wie beispielsweise die Qualitätseinstellung. Einige der Funktionen öffnen wiederum ein Fenster. Das zu öffnende Fenster geht in den Vordergrund, wodurch sich das Spiel im Hintergrund befindet und nicht angeklickt werden kann. Die Fenster müssen erst geschlossen werden um das Spiel fortsetzen zu können. Beispiele sind in der folgenden Abbildung 6 als Mockups zu betrachten.
 			
 			\begin{center}
 				\includegraphics[width=\textwidth]{pics/NewWindows.png}
-				\captionof{figure}{Spieleliste-, Fortschritt- und Karte-Fenster Mockup} 
+				\captionof{figure}{Mockups: Spieleliste, Fortschrittanzeige und Karte} 
 			\end{center}
-			
-			Die Auflistung aller Screens würde den Rahmen dieser Arbeit überschreiten. Daher befinden sich die Mockups für die restlichen Screens im Anhang.
-						
-			%logische Eigenschaften:  required screen formats, page or window layouts, content of any reports or menus, or availability of programmable function keys
-			
-			%Aspekte Optimierung: comprise a list of do's and don'ts on how the system will appear to the user: long or short error messages
 		
 		\subsubsection{Hardwareschnittstellen}
-			Die Hardwareschnittstellen spezifiziert die logischen Eigenschaften jeder Schnittstelle zwischen NoRPG und den Hardwarekomponenten des Systems. Die App hat eine  Hardwareschnittstelle mit dem Smartphone und seinen Komponenten.
+			Hardwareschnittstellen spezifizieren die logischen Eigenschaften jeder Schnittstelle zwischen NoRPG und den Hardwarekomponenten des Systems. 
 			
-			Ein Smartphone besteht aus sehr vielen Hardwarekomponenten. Jede einzelne Komponente wird benötigt, damit das Smartphone mit seinem kompletten Funktionsumfang funktioniert. Jedoch spielen einige Hardwarekomponenten eine besondere Rolle. Zu einem der Touchscreen eines Smartphones -> Toucheingaben für die Steuerung des Charakters, Interaktion mit dem Spiel, Menü, etc --> die einzige Benutzerschnittstelle
+			Ein Smartphone besteht aus sehr vielen Hardwarekomponenten. Jede einzelne Komponente wird benötigt, damit das Smartphone mit seinem kompletten Funktionsumfang funktioniert. Jedoch spielen einige Hardwarekomponenten eine besondere Rolle für NoRPG. Neben unverzichtbaren und nicht extra erwähnenswerten Komponenten wie den Prozessor, Speicher oder Akku zählen zu den Kernkomponenten der Touchscreen, WLAN-Adapter und
+			
+			
+			Zu einem der Touchscreen eines Smartphones -> Toucheingaben für die Steuerung des Charakters, Interaktion mit dem Spiel, Menü, etc --> die einzige Benutzerschnittstelle
 			
 			WLAN-Adapter - verbindung mit dem Internet um mit dem Server zu kommunizieren
 			
