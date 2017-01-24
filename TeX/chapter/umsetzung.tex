@@ -2,25 +2,124 @@
 	Nachstehend werden die technischen Grundlagen erläutert und es wird kurz auf diese eingegangen. Dabei wird mit den Entwicklungsumgebungen begonnen.
 
 \section{Unity3D}
+Bei Unity3D handet es sich um eine Entwicklungs- und Laufzeitumgebung, mit deren Hilfe graphisch aufwändige Projekte umgesetzt werden können. Dazu gehören unter anderem Videospiele, aber auch Lernprogramme oder Apps können damit umgesetzt werden. Dazu können in Unity3D 3D-Projekte, aber auch 2D beziehungsweise 2,5D Projekte umgesetzt werden. Dank Unity sind diese Projekte nach der Entwicklung Plattformübergreifend einsetzbar.\footnote{vgl. Unity3D \cite{unity1} (2017)} Die Entwicklungsumgebung teilt sich dabei in verschiedene Bereiche auf. Diese sind dabei an einen 3D-Editor angelegt.
 
-Unity3D ist eine Entwicklungs- und Laufzeitumgebung, die viel in der Spieleindustrie verwendet wird, aber auch in anderen Industrien immer mehr zum Einsatz kommt. Mit diesem Programm können 3D Anwendungen erstellt werden, aber auch 2D oder 2,5D Anwendungen sind möglich. Diese Anwendungen können dank Unity3D plattformübergreifend entwickelt werden.\footnote{Unity3D. Build One Deploy Anywhere. English. Jan. 2016. URL: https://unity3d.
-com/unity/multiplatform} Die Entwicklungsumgebung ist dabei an einen 3D-Editor angelegt. Das User Interface (UI) besteht dabei aus verschiedenen Fenstern, um verschiedene Einstellungen der Szenen in Unity3D zu bearbeiten. 
+Das „Scene” Fenster ist in den Standarteinsetellungen in der Mitte des Bildschirms zu sehen.( Siehe Abbildung \ref{scene} )\footnote{vgl. Unity3D \cite{unity2} (2017)} 
 
-Eines dieser Standardfenster ist das „Scene” Fenster, das in der Mitte von Abbildung \ref{scene} zu sehen ist.\footnote{Unity3D. The Scene View Window. English. Jan. 2016. URL: http://docs.unity3d.com/Manual/UsingTheSceneView.html} In diesem Fenster ist immer die aktuelle Szene dargestellt. Außerdem können Nutzer mit den Objekten aus der Szene interagieren und sie verändern, um sie beispielsweise in der Szene neu platzieren. Sobald ein Objekt in der Szene ausgewählt wurde, öffnen sich in dem Fenster „Inspector” weitere Einstellmöglichkeiten.\footnote{Unity3D. The InspectorWindow. English. Jan. 2016. URL: http://docs.unity3d.com/Manual/UsingTheInspector.html} Diese Einstellmöglichkeiten variieren je nach gewähltem Objekt. Hier können den Objekten zusätzliche Eigenschaften zugewiesen werden, um so ihr Verhalten nochmals zu ändern. Dabei können die visuellen als auch die physischen Eigenschaften der Objekte verändert werden.
+\begin{figure}[htbp]
+\centering 
+\label{scene}
+\includegraphics[width=0.9\textwidth]{images/unity3d_ui.png}
+\caption{Darstellung von Tablemappings}
+\end{figure}
 
-Durch das Markieren in dem „Hierarchy” Fenster werden Objekte zusätzlich ausgewählt und es können Eigenschaften zugewiesen werden.\footnote{Unity3D. The HierarchyWindow. English. Jan. 2016. URL: http://docs.unity3d.com/Manual/Hierarchy.html} Dort werden alle Objekte aus der Szene in einer Hierarchie angezeigt. Dabei sind die Objekte auf unterschiedlichen Ebenen dargestellt, um zu zeigen, welches Objekt mit anderen Objekten verknüpft ist. 
+Hier wird immer die aktuelle Szene dargestellt. Darüber hinaus kann hier mit Objekten der Szene interagiert werden, um diese zu verändern, zum Beispiel an eine andere Stelle platzieren oder die Skalierung vergrößern.
 
-Das Fenster „Project” dient dazu, alle Dateien, die in dem Projekt vorhanden sind, anzuzeigen.\footnote{Unity3D. The ProjectWindow. English. Jan. 2016. URL: http://docs.unity3d.com/Manual/ProjectView.html} Außerdem gibt es noch das „Game” Fenster.\footnote{Unity3D. The Game View. English. Jan. 2016. URL: http://docs.unity3d.com/Manual/GameView.html} In diesem Fenster können Ordner, sowie andere Dateien erstellt werden. Oben, in der Mitte der Benutzeroberfläche, befinden sich zudem jeweils ein Start, Pause und Vorlauf Button. Diese Buttons dienen dazu, das Programm im Vorfeld zu testen und in der Entwicklungsumgebung zu rendern. Der Code wird von Unity3D JustIn-Time (JIT) kompiliert, und anschließend auf Mono oder dem Microsoft .NET Framework ausgeführt. Der Code steht in sogenannten Skripten, die in C\#, UnitySkript (ähnlich JavaScript) oder Boo geschrieben sind.
+Wird ein Objekt in diesem Fenster ausgewählt, befinden sich im Fenster „Inspector” zusätzliche Einstellmöglichkeiten.\footnote{vgl. Unity3D \cite{unity3} (2017)} 
+Diese variieren je nach gewähltem Objekt. Auch hier können die Position oder die Skallierung eines Objektes verändert werden, allerdings werden hier auch darüber hinausgehende Eigenschaften der Objekte verändert. Dazu zählen die visuellen sowie die physischen Eigenschaften der Objekte. 
 
-Für den Fall, dass Fehler während des Kompilierens oder während der Laufzeit auftreten, gibt es ein „Console” Fenster. In diesem Fenster können aktuelle Fehlermeldungen ausgegeben werden. Zudem werden hier auch gezielte Meldungen, die in den Skripten programmiert wurden, eingeblendet. Um diesem Fall entgegenzuwirken, gibt es in Unity Tests, die die Szenen auf ihre Korrektheit testen. Die Integrationstests simulieren eine Szene. So können die verschiedenen Objekte auf ihre Eigenschaften geprüft werden. Bei den zuvor in Kapitel 2.1 genannten Prefabs handelt es sich um vorgefertigte Objekte, die in einer Szene verwendet werden können. Dabei sind dies meist Objekte, die mehrmals in einem Projekt verwendet werden können. Bei Skripten handelt es sich wiederum um die Logik, die ein Objekt hat. Kann ein Objekt beispielsweise seine Farbe ändern, wenn ein Nutzer mit diesem Objekt interagiert, steht die Logik dafür in einem Skript. Um diese Logik zu bearbeiten und anzupassen, wird eine geeignete Entwicklungsumgebung benötigt. Bei der Installation von Unity3D ist eine Version von Microsoft Visual Studio enthalten, die zum Bearbeiten von Skripten dient.
+Ein weiterer Weg, ein Objekt auszuwählen, ist das markieren im „Hierarchy” Fenster.\footnote{vgl. Unity3D \cite{unity4} (2017)} 
+In diesem Fenster werden alle Objekte der aktuellen Szene aufgelistet. Dabei wird zwischen unterschiedlichen Ebenen unterschieden, sodass genau gesehen werden kann welche Objekte zusammengehören. 
+
+Um alle Dateien zu sehen, die zu einem Projekt gehören, gibt es das „Project” Fenster.\footnote{vgl. Unity3D \cite{unity5} (2017)} Die Dateien werden dabei nach der vorliegenden Ordnerstrucktur angezeigt. In diesem Fenster können Ordner, sowie andere Dateien erstellt werden.
+
+Ein weiteres wichtiges Fenster ist das „Game” Fenster.\footnote{vgl. Unity3D \cite{unity6} (2017)} Hier kann sich sich das fertige Projekt angesehen werden. Dazu gibt es oben in der Mitte der Benutzeroberfläche, ein Start, Pause und Vorlauf Button. Mit hilfe derer kann das Programm, bevor es auf der Zielplattform abgespielt wird, in der Entwicklungsumgebung gerendert werden. Der Code wird von Unity3D JustIn-Time (JIT) kompiliert, und anschließend auf Mono oder dem Microsoft .NET Framework ausgeführt. Der Code steht in sogenannten Skripten, die in C\#, UnitySkript (ähnlich JavaScript) oder Boo geschrieben sind.
+
+Wenn während der Laufzeit oder im vorfeld beim Kompilieren ein Fehler auftritt, wird dieser im „Console” Fenster ausgegeben. Darüber hinaus werden hier Meldungen angezeigt, die explizit in den Skripten programmiert wurden.
+Damit es zu keinen Fehlern kommt, gibt es in Unity3D tests, die eine Szene auf korrektheit prüft.Die sogenannten Integrationstest simulieren eine Szene, damit verschiedene Objekte auf ihre Eigenschaften geprüft werden können. 
+
+Nachdem nun die Benutzeroberfläche ausführlich erklärt wurde, wird nun auf die Begriffe Prefabs und Skripte eingegangen, da diese Essentiel für den Umgenag mit Unity3D sind.
+
+\textbf{Prefabs}
+
+Bei Prefabs handelt es sich um fertige Objekte, die in Szenen verwendet werden können.\footnote{vgl Unity3D \cite{unity7} (2017)} Diese können dabei als Vorlage gesehen werden, damit nicht jedes Objekt mit gleichen eigenschaften erneut erstellt werden muss. 
+
+\textbf{Skripte}
+
+In Skripten befindet sich die Logik von Objekten.\footnote{vgl. Unity3D \cite{unity8} (2017)} Ein Beispiel dafür ist das öffnen einer Truhe. Wenn der benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, das sie sich öffnen soll. 
+
+Diese Logik kann mithilfe einer Entwicklungsumgebung angepasst werden. Die dazu geeignete Entwicklungsumgebung wird bei der Installation von Unity3D mitgeliefert. Dabei handelt es sich um Microsoft Visual Studio.
 
 \section{Visual Studio}
 
-Microsoft Visual Studio ist eine Entwicklungsumgebung für verschiedene Programmiersprachen.\footnote{Microsoft. Visual Studio-IDE. English. 2015. URL: https://msdn.microsoft.com/de-de/library/dn762121.aspx} Sie wird bei der Unity3D Installation zusätzlich installiert. Mit Visual Studio können die Skripte aus Unity3D bearbeitet werden. Dazu müssen diese Skripte nur mit Visual Studio geöffnet werden. Zusätzlich zu Visual Studio werden auch verschiedene Plug-ins für die IDE installiert. Dabei handelt es sich unter anderem um eine ausführliche Dokumentation von allen in Unity3D zur Verfügung stehenden Methoden und Klassen sowie um Testtools, um verschiedene Tests auszuführen. 
+Mit Microsoft Visual Studio ist es möglich in verschiedenen Programmiersprachen zu programmieren.\footnote{vgl. Microsoft \cite{microsoft1} (2015)} 
+Bei der Installation von Unity3D wird dieses dabei zusätzlich installiert. Dadurch können die Skripte aus Unity3D in Visual Studio geöffnet und bearbeitet werden. Zusätzlich zu Visual Studio werden auch verschiedene Plug-ins für die IDE installiert. Dabei handelt es sich unter anderem um eine ausführliche Dokumentation von allen in Unity3D zur Verfügung stehenden Methoden und Klassen sowie um Testtools, um verschiedene Tests auszuführen. 
 
 \section{C Sharp}
 
-C\# (gesprochen C Sharp) ist eine von Microsoft entwickelte Programmiersprache, die zusammen mit „.NET 1.0” 2002 in der Version 1 auf den Markt kam und mittlerweile in der Version 6 veröffentlicht ist.\footnote{Microsoft. Visual C\#. English. 2015. URL: https://msdn.microsoft.com/de-de/library/kx37x362.aspx} Dabei orientiert sich C\# an den Programmiersprachen Java, C, C++, Haskell und Delphi und nutzt deren grundlegende Konzepte. Aus diesem Grund ist C\# eine objektorientierte Programmiersprache. Die in Unity verwendeten C\# Skripts erben standardmäßig von der Klasse Mono-Behaviour wie in Listing 1 zu sehen. Diese Vererbung sorgt dafür, dass jede Klasse verschiedene Methoden zur Verfügung hat. Dazu zählt eine Start-Methode, die beim Laden eines Objekts mit dem Skript ausgeführt wird und eine Update-Methode, die bei jeder Frameaktualisierung ausgeführt wird. Des Weiteren können weitere Methoden genutzt werden. Außerdem sorgt die MonoBehavior Vererbung dafür, dass diese Skripte mit Objekten in Unity verknüpft werden können.
+C\# (gesprochen C Sharp) ist eine Programmiersprache welche von Microsoft entwickelt wurde. Sie wurde zusammen mit „.NET 1.0” 2002 in der Version 1 veröffentlich und ist mittlerweile in Version 6 verfügbar.\footnote{vgl. Microsoft \cite{microsoft2} (2015)} 
+
+C\# orientiert sich dabei an den Programmiersprachen C, C++, Java, Delphi und Haskell und nutzt deren grundlegenden Konzepte. Aufgrund der Ähnlichkeit zu diesen Sprachen handelt es sich bei C\# ebenfalls um eine Objektorientierte Sprache. 
+
+Nachfolgend wird nun auf die Grundlegenden Konventionen eingegangen, denen C\# zugrunde liegen. Danach wird auf die Verwendung in Unity3D Skripten eingegangen.
+
+\subsection{Allgemeiner aufbau C\#}
+
+Der allgemeine Aufbau von C\# wird hier am Beispiel von einem Hello World Programm in Listing \ref{lst:c_helloworld} dargestellt. 
+
+Dabei ist in Zeile eins ein Text zu sehen. Vor diesem stehen zwei Slashes. Damit wird der Text als Kommentar gekennzeichnet. Daruch wird dieser Abschnitt vom Compiler beim Compilieren ignoriert. In Zeile zwei wird das Schlüsselwort „using” gefolgt von einem Namen, in diesem Fall „System”, genutzt. Dieses dient dazu um das Package System in dem Programm zu nutzen.
+\newline
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Hello World in C\#, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+
+\begin{lstlisting}[label=lst:c_helloworld]
+// A Hello World! program in C#.
+using System;
+namespace HelloWorld
+{
+    class Hello 
+    {
+        static void Main() 
+        {
+            Console.WriteLine("Hello World!");
+
+            // Keep the console window open in debug mode.
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+        }
+    }
+}
+\end{lstlisting}
+\end{scriptsize}
+
+Als nächstes wird ein Namespace definiert. Innerhalb von diesem eine Klasse namens „Hello”. Innerhalb von dieser wiederum befindet sich der auszuführende Code.
+
+Dieser steht in einer Methode, die in Zeile sieben definiert wird. Bei dieser Methode handelt es sich um die Main() Methode. Diese wird beim Programmstart immer zuerst ausgeführt. In dieser Methode gibt es vier Zeilen Code, darunter ein Kommentar(in Zeile elf). Bei den anderen drei Zeilen handelt es sich um Konsolenausgaben bzw. Konsoleneingaben. Die Zeilen neun und zwölf geben jeweils Text auf der Konsole aus. In Zeile 13 wird dagegen ein Zeichen eingelesen, welches vom Benutzer eingegeben wird.
+
+\subsection{Unity3D Skripte}
+
+Die in Unity verwendeten C\# Skripts erben standardmäßig von der Klasse Mono-Behaviour wie in Listing \ref{lst:unity3Dc} zu sehen. Diese Vererbung sorgt dafür, dass jede Klasse verschiedene Methoden zur Verfügung hat. Dazu zählt eine Start-Methode, die beim Laden eines Objekts mit dem Skript ausgeführt wird und eine Update-Methode, die bei jeder Frameaktualisierung ausgeführt wird. Des Weiteren können weitere Methoden genutzt werden. Außerdem sorgt die MonoBehavior Vererbung dafür, dass diese Skripte mit Objekten in Unity verknüpft werden können.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Aufbau eines Unity3D Skriptes, 
+	language=[Sharp]C, 	
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+
+\begin{lstlisting}[label=lst:unity3Dc]
+//Hier muss noch code rein
+\end{lstlisting}
+\end{scriptsize}	
 
 \section{SQL}
 
