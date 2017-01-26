@@ -1,23 +1,14 @@
-%
-% Header die benutzt werden sollen
-%
 \documentclass[
-  pdftex,
   fontsize=12pt,          % Schriftgroesse
-  DIV10,                  % Angabe bzgl Bestimmung der Seitenabstaende
-  ngerman,                % fuer Umlaute, Silbentrennung etc.
+  DIV12,                  % Angabe bzgl Bestimmung der Seitenabstaende
   paper=a4,               % Papierformat
   twoside=false,          % einseitiges Dokument
-  titlepage,              % es wird eine Titelseite verwendet
   parskip=half,           % Abstand zwischen Absaetzen (halbe Zeile)
   headings=normal,        % Groesse der Ueberschriften verkleinern
   listof=nochaptergap,    % Verzeichnisse im Inhaltsverzeichnis auffuehren.
   bibliography=totoc,     % Literaturverzeichnis im Inhaltsverzeichnis auffuehren
   index=totoc,            % Index im Inhaltsverzeichnis auffuehren
   captions=tableheading,  % Beschriftung von Tabellen oberhalb ausgeben
-  bookmarksopen,
-  bookmarksnumbered,
-  final                   % Status des Dokuments (final/draft)
 ]{scrreprt} 
 
 \usepackage[T1]{fontenc}
@@ -59,7 +50,7 @@
 
 %Sprache und Anführungszeichen
 \usepackage[babel,german=quotes]{csquotes}
-\usepackage{eurosym}
+%\usepackage{eurosym}
 
 %Abstände
 \usepackage[left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm ]{geometry}
@@ -69,13 +60,13 @@
 \usepackage{lscape}
 
 %Literaturverweise
-\usepackage[style=numeric, backend=biber, citestyle=numeric, dashed=false]{biblatex}
+\usepackage[style=numeric, backend=biber, citestyle=numeric]{biblatex}
 
 % Hurenkinder und Schusterjungen verhindern
 % http://projekte.dante.de/DanteFAQ/Silbentrennung
-\clubpenalty=10000
-\widowpenalty=10000
-\displaywidowpenalty=10000
+%\clubpenalty=10000
+%\widowpenalty=10000
+%\displaywidowpenalty=10000
 
 %Abkürzungsverzeichnis
 \usepackage[printonlyused]{acronym}
@@ -96,11 +87,9 @@
 
 
 % Nummerierung ohne Kapitel-Nr.
+% Artikel nutzen und das hier drunter alles weg, Chapter fällt weg für section ++
 \usepackage{chngcntr}
 \counterwithout{figure}{chapter}
 \counterwithout{equation}{chapter}
 \counterwithout{footnote}{chapter}
 \counterwithout{table}{chapter}
-%
-% EOF
-%

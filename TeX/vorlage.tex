@@ -1,18 +1,8 @@
 \input{header}
 \addbibresource{lib.bib}
-
-\renewcommand{\bibname}{Literaturverzeichnis}  
-
-%Glossar
+\renewcommand{\bibname}{Literaturverzeichnis} 
 
 \setlength{\parindent}{0mm}
-
-%mindestens 3 Zeilen auf der Seite
-\widowpenalties 3 10000 10000 100
-\clubpenalties 3 10000 10000 100 
-
-%Stil der Quellangaben
-%\bibliographystyle{alphadin}
 
 \begin{document}
 %Deckblatt
@@ -29,25 +19,22 @@
 \tableofcontents
 \newpage
 \newpage
+
 \phantomsection
 \addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
 \include{abkuerzungsverzeichnis}
 \newpage
 \listoffigures
-%\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
-%\newpage
 %\listoftables
-%\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
 \newpage
 \counterwithout{lstlisting}{chapter}
 \lstlistoflistings
-%\addcontentsline{toc}{chapter}{Listings}
 
 %--> Speichern der Zahl fürs umsetzten zurück auf römische 
 \newcounter{SeitenzahlSpeicher}
 \setcounter{SeitenzahlSpeicher}{\value{page}}
 
-%\newpage
+
 \newpage
 
 %Arabische Nummerierung
@@ -71,7 +58,6 @@
 \printbibliography
 
 %Anhang
-\newpage
 \newpage
 \phantomsection
 \addcontentsline{toc}{chapter}{\protect{}Anhang}
