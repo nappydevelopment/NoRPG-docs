@@ -9,7 +9,7 @@ Das „Scene” Fenster ist in den Standarteinsetellungen in der Mitte des Bilds
 \begin{figure}[htbp]
 \centering 
 \label{scene}
-\includegraphics[width=0.9\textwidth]{images/unity3d_ui.png}
+\includegraphics[width=0.9\textwidth]{pics/unity3d_ui.png}
 \caption{Darstellung von Tablemappings}
 \end{figure}
 
@@ -117,30 +117,38 @@ Die in Unity verwendeten C\# Skripts erben standardmäßig von der Klasse Mono-B
 } 
 
 \begin{lstlisting}[label=lst:unity3Dc]
-//Hier muss noch code rein
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class test : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		
+	}
+}
 \end{lstlisting}
 \end{scriptsize}	
 
 \section{SQL}
 
-	--> Für die Datenbankverbindung innerhalb der App wichtig , was ist das? Wozu wird es benötight?
-
+SQL ist im Allgemeinen als Akronym für „Structured Query Language“ gesehen, obwohl SQL eine eigenständige Bezeichnung ist.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.8} SQL wird dazu verwendet, um Daten in relationalen Datenbanken zu bearbeiten, abzufragen und anzulegen.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.IX} Die Syntax von SQL orientiert sich an der englischen Sprache. Um unabhängig von einem Datenbanksystem zu sein, wird häufig SQL verwendet, da SQL von vielen Datenbanken unterstützt wird.\footnote{vgl. Adams, Ralf\cite{sql2} (2012) S. 63 ff.}
 
 \chapter{Umsetzung}
 
-	Nachdem im vorherigen Kapitel die technischen Grundlagen erläutert wurden, wird jetzt auf die Umsetzung eingegangen. Dabei wird diese in drei Teile unterteilt
+Nachdem im vorherigen Kapitel die technischen Grundlagen erläutert wurden, wird jetzt auf die Umsetzung eingegangen. Dabei wird diese in drei Teile unterteilt
 
 \section{App}
-	Google Anmeldung wird nicht genutzt, da wir nur ein paar spezielle Informationen von den Spielern brauchen und Google Daten geben??
-	
-	Vorteil an Android und Google Play Store: Google Play Store: große Anzahl an vielfältigen Apps, Schutz durch Google Play, da Apps Kriterien erfüllen müssen um aufgenommen zu werden
-	
-	HUD ELEMENTE: Es befinden sich so wenig HUD-Elemente wie möglich und sind so groß wie notwendig. Diese Einschränkungen sind erforderlich damit das Sichtfeld des Spieler so groß wie möglich ist. Die verwendeten Symbole sind aus anderen bekannten Spielen und Konsolen übernommen und sind quasi ein Standard. Durch diese bekannte Anordnung der Elemente kann der User Informationen schneller verstehen und schneller reagieren. Oft verwendete HUD elemente im unteren bereich, besser erreichbar und so 
+Google Anmeldung wird nicht genutzt, da wir nur ein paar spezielle Informationen von den Spielern brauchen und Google Daten geben??
+Vorteil an Android und Google Play Store: Google Play Store: große Anzahl an vielfältigen Apps, Schutz durch Google Play, da Apps Kriterien erfüllen müssen um aufgenommen zu werden
 
 \section{Datenbank auf dem Handy}
-	Wieso haben wir das gemacht? Vorteile? Nachteile?
+Wieso haben wir das gemacht? Vorteile? Nachteile?
 	
 \section{Datenbank auf dem Server}
-	virtuelle? was passiert wenn vr abstürzt, daten sind weg, backup
-	
-	Datenbanksynchronisationssoftware bspw. SymmetricDS
