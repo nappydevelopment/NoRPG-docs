@@ -155,12 +155,12 @@
 			
 			Damit die lokalen Datenbanken der Clients und die Datenbank auf dem Server immer synchronisiert bleiben wird eine Datenbanksynchronisationssoftware benötigt, welcher die Synchronisation bei aktiver Internetverbindung übernimmt. Dabei handelt es sich um eine Softwareschnittstelle, da NoRPG die Funktionalität dieser Software verwendet.
 			
-			Als letzte aufwändige Softwareschnittstelle ist das Datenbank Management System (DBMS). Das DBMS ist die Verwaltungssoftware der Datenbank. Sie organisiert intern die strukturierte Speicherung der Daten und kontrolliert alle lesenden und schreibenden Zugriffe auf die Datenbank.
+			Die letzte Softwareschnittstelle ist das Datenbank Management System (DBMS). Das DBMS ist die Verwaltungssoftware der Datenbank. Sie organisiert intern die strukturierte Speicherung der Daten und kontrolliert alle lesenden und schreibenden Zugriffe auf die Datenbank.
 
 	\subsection{Funktionale Anforderungen}
-		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht der Nutzer beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen. %quelle
+		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht des Nutzers beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen. %quelle
 		
-		Use Cases verwenden Activity UML um anzuzeigen, wie der Benutzer vorgehen muss. Ein Aktivitätsdiagramm ist ein Verhaltensdiagramm der Unified Modeling Language (UML) und stellt die Vernetuzung von elementaren Aktionen und deren Verbindungen mit Kontroll- und Datenflüssen grafisch dar.
+		Use Cases verwenden Activity Diagramme. Ein Activity Diagramm ist ein Verhaltensdiagramm der Unified Modeling Language (UML) und stellt die Vernetzung von elementaren Aktionen und deren Verbindungen mit Kontroll- und Datenflüssen grafisch dar.
 	
 		\begin{figure}[htbp]
 			\centering 
@@ -176,7 +176,7 @@
 		\subsubsection{Create character}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dieser Use Case wird pro Account genau einmal im Registrierungsprozess ausgeführt.
 			
-			Nach erfolgreicher Registrierung kann der Spieler seinen Charakter erstellen. Der User kann den Namen, das Geschlecht und das Aussehen des Charakters bestimmen. Der Ablauf dieses Prozesses kann aus Abbildung \ref{createCharakter} entnommen werden.
+			Nach erfolgreicher Registrierung kann der Spieler seinen Charakter erstellen. Der User kann den Namen, das Geschlecht und das Aussehen des Charakters bestimmen. Ein Ablauf des Erstellungsprozesses kann aus Abbildung \ref{createCharakter} entnommen werden.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -185,32 +185,32 @@
 				\caption{Activity Diagramm: Create Character}
 			\end{figure}
 		
-			Die Reihenfolge für die Bestimmung der Charaktereigenschaften kann sich von der im Activity Diagramm unterscheiden. Der Spieler kann erst das Geschlecht und Aussehen bestimmen und anschließend seinem Charakter einen Namen geben.
+			Der Ablauf des Prozesses kann allerdings variieren. Der Spieler kann beispielsweise erst das Geschlecht und das Aussehen bestimmen und anschließend seinem Charakter einen Namen geben.
 	
-			Bevor jedoch dieser Use Case ausgeführt werden kann, muss der Spieler die Registrierung vollständig und erfolgreich abschließen. Die Registrierung ist erfolgreich, wenn das Registrierungsformular vollständig aus gefüllt wird und der Account noch nicht existiert. Für den gesamten Registrierungsprozess ist eine aktive Internetverbindung notwendig.
+			Bevor jedoch dieser Use Case ausgeführt werden kann, muss der Spieler das Registrierungsformular vollständig ausfüllen und erfolgreich abschließen. Zudem darf Account noch nicht existiert. Für den gesamten Registrierungsprozess ist eine aktive Internetverbindung notwendig.
 			
-			Nach der erfolgreichen Erstellung des Charakters, wird dieser in die Datenbank gespeichert und der User kann sich nun anmelden und Spiel starten. Sollte die Erstellung allerdings fehlschlagen, aus welchen Gründen auch immer, wird der User wieder auf den Hauptbildschirm von NoRPG weitergeleitet.
+			Nach der erfolgreichen Erstellung des Charakters, wird dieser in die Datenbank gespeichert und der User kann sich nun anmelden und Spiel starten. Sollte die Erstellung allerdings fehlschlagen, wird der User wieder auf den Hauptbildschirm von NoRPG weitergeleitet. 
 			
 		\subsubsection{Open map}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Karte Spielwelt öffnet. Die Karte dient zur Orientierung und kennzeichnet den Aufenthalt des Spielers. Es wird allerdings nur die aktuelle Spielwelt angezeigt und nicht alle verfügbaren.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Karte der Spielwelt öffnet. Die Karte dient zur Orientierung und kennzeichnet den Aufenthalt des Spielers.
 			
-			Das Activity Diagramm (siehe Abbildung \ref{umlOpenMap}) dieses Use Cases besteht darin, dass der Anwender die Karte durch einen Klick auf die Mini-Map öffnet und die Karte mit einem Klick wieder schließen kann. 
+			Der Anwender kann die Karte der aktuellen Spielwelt durch einen Klick auf die Mini-Map öffnen. Das Acitivity Diagramm in Abbildung \ref{umlOpenMap}) zeigt den vollständigen Ablauf.
+			
 			\begin{figure}[htbp]
 				\centering 
 				\label{umlOpenMap}
 				\includegraphics[width=10cm]{pics/OpenMap.pdf}
 				\caption{Activity Diagramm: Open Map}
 			\end{figure}
-			%Vollständigkeitshalber befindet sich das Activity Diagramm im Anhang dieser Arbeit (siehe Abbildung ).
 			
 			Die Vorbedingungen für diesen Use Case sind, dass der Spieler sich im Spiel befindet, das Menü geschlossen ist und der Spieler sich in keiner aktiven Non-Player Character (NPC) Interaktion befindet.
 			
 			In einem Fehlerfall sollte die Karte sich schließen und der Benutzer wieder zum Spiel weitergeleitet werden.
 	
-		\subsubsection{Show games}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Liste der freigeschalteten und spielbaren Spiele öffnet. Gefundene Spiele in NoRPG werden in diese Liste aufgenommen, so dass der Spieler einen zentralen Ort hat alle spielbaren Lernspiele anzuschauen. Die Liste enthält den Namen des Spiels, einen Download-Link sowie die Zuordnung zum entsprechenden Standard. Wenn der Benutzer den Download-Link klickt, öffnet sich der Google Play Store und der Spieler kann das angeforderte Spiel herunterladen.
+		\subsubsection{View games}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Liste der freigeschalteten und spielbaren Spiele öffnen will. Gefundene Spiele in NoRPG werden in diese Liste aufgenommen, so dass der Spieler an einem zentralen Ort alle spielbaren Lernspiele anschauen kann. Die Liste enthält den Namen des Spiels, einen Download-Link sowie die Zuordnung zum entsprechenden Standard.
 			
-			Das Activity Diagramm in Abbildung \ref{umlShowGames} hat diesmal, im Vergleich zu den bisherigen betrachteten Activity Diagrammen eine Besonderheit. Die Aktivität "Google Play Store öffnen" findet außerhalb von NoRPG statt und nach Beendigung kommt der Spieler wieder an die selbe Stelle im Spiel. Allerdings wenn der Prozess von NoRPG abgebrochen wird, startet das Spiel am letzten Speicherpunkt.
+			Das Activity Diagramm in Abbildung \ref{umlShowGames} hat im Vergleich zu den bisherigen betrachteten Activity Diagrammen eine Besonderheit. Die Aktivität "Google Play Store öffnen" findet außerhalb von NoRPG statt. Nach Beendigung diesen Schrittes wird der Spieler wieder zurück ins Spiel weitergeleitet. Allerdings wenn der Prozess von NoRPG währenddessen abgebrochen wird, startet das Spiel am letzten Speicherpunkt. Der Prozess beginnt indem der Spieler die Funktion im Menü aufruft.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -219,12 +219,12 @@
 				\caption{Activity Diagramm: Show Games}
 			\end{figure}
 
-			Der Benutzer muss eingeloggt und im Spiel sein und darf sich in keiner aktiven NPC Interaktion befinden bevor dieser Use Case ausgeführt werden kann.
-			
-			Auch hier gilt im Fehlerfall, dass der Spieler wieder zurück ins Spiel kommt.
+			Der Benutzer muss sich im Spiel befinden und darf in keiner aktiven NPC Interaktion sein. Zudem muss das Menü vorher offen sein bevor dieser Use Case ausgeführt werden kann. Auch hier gilt im Fehlerfall, dass der Spieler wieder zurück ins Spiel kommt.
 	
 		\subsubsection{View progress}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Fortschritt in NoRPG betrachten möchte. Dafür wird dem Spieler pro Schulfach jeweils ein Baumdiagramm präsentiert, der die Standards und deren Reihenfolge beinhaltet. Durch eine Kennzeichnung kann der Spieler sehen welche Standards abgeschlossen sind und fehlen.  
+			
+			Der Benutzer öffnet die Fortschrittsansicht im Menü. 
 			
 			Ereignisablauf \ref{umlViewProgess}
 			
