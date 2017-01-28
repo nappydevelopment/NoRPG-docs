@@ -224,32 +224,37 @@
 		\subsubsection{View progress}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Fortschritt in NoRPG betrachten möchte. Dafür wird dem Spieler pro Schulfach jeweils ein Baumdiagramm präsentiert, der die Standards und deren Reihenfolge beinhaltet. Durch eine Kennzeichnung kann der Spieler sehen welche Standards abgeschlossen sind und fehlen.  
 			
-			Der Benutzer öffnet die Fortschrittsansicht im Menü. 
-			
-			Ereignisablauf \ref{umlViewProgess}
+			Das Activity Diagramm in Abbildung \ref{umlViewProgess} ähnelt dem vom Use Case "View Games". Die einzige Ausnahme dabei ist, dass dieses Diagramm keine Aktion hat, die außerhalb von NoRPG stattfindet. Die Fortschrittsanzeige wird im Menü geöffnet. Nachdem die Anzeige offen ist kann der Spieler zwischen den Standards wechseln.
 			
 			\begin{figure}[htbp]
 				\centering 
 				\label{umlViewProgess}
 				\includegraphics[width=10cm]{pics/ViewProgress.pdf}
 				\caption{Activity Diagramm: View Progress}
-			\end{figure}1
+			\end{figure}
 	
-			Vorbedingungen
+			Auch hier gelten die gleichen Vorbedingungen. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven NPC Interaktion sein und das Menü ist vorher offen.
+	
+		\subsubsection{Achievements}
+			Neben dem Lernspielerfolg kann der Spieler seinen Sammelgegenstände betrachten. Diese Collactables sind in den einzelnen Spielwelten verteilt. Diese Ansicht zeigt alle gefundenen Gegenstände.
 			
+			Ereignisablauf \ref{umlAchievements}
+			
+			\begin{figure}[htbp]
+				\centering 
+				\label{umlAchievements}
+				\includegraphics[width=10cm]{pics/Achievements.pdf}
+				\caption{Activity Diagramm: Achievements}
+			\end{figure}
+			
+			
+		
+			Vorbedingungen
+		
 			Nachbedingungen
-	
+		
 		\subsubsection{Settings}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
-			
-			Ereignisablauf
-	
-			Vorbedingungen
-			
-			{Nachbedingungen
-	
-		\subsubsection{Synchronize}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer Einstellungen ändern möchte. 
 			
 			Ereignisablauf
 	
@@ -258,6 +263,15 @@
 			Nachbedingungen
 	
 		\subsubsection{Save local}
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
+		
+			Ereignisablauf
+		
+			Vorbedingungen
+		
+			Nachbedingungen
+		
+		\subsubsection{Synchronize}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer 
 			
 			Ereignisablauf
@@ -275,7 +289,7 @@
 			
 			Nachbedingungen: Charakter bewegt sich, bestätigt oder lehnt ab
 	
-		\subsubsection{game interaction}
+		\subsubsection{Game interaction}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich in einer Interaktion mit einem NPC befindet. NPC bedeutet Non-Player Charakter und stellt die programmierten Charaktere dar (Unterhaltungen mit NPC, Storytelling)
 			
 			Ereignisablauf
@@ -368,6 +382,6 @@
 	\subsection{Portabilität}
 		Die App NoRPG ist zunächst nur für Android geplant. Andere Betriebssysteme, wie Windows Phone von Microsoft oder iOS von Apple, sind vorerst nicht vorgesehen. 
 		
-		Bei der vorhanden Breite an Varianten von Android-Smartphones ist sehr wichtig, dass die Portabilität innerhalb von Android Smartphones gewährleistet wird. Neben bekannten Smartphoneherstellern wie Samsung, LG oder HTC gibt es zahlreiche weitere Hersteller die auf das Android Betriebssystem setzen. Jeder Hersteller hat dabei eine große Palette an Smartphone-Modellen, wie bei Samsung die Samsung Galaxy S-Reihe, welches aktuell in der siebten Genration erhältlich ist\footnote{vgl. Philippe Fischer, Michael Huch \cite{computerBildSamsung}}, oder die Samsung Galaxy Note-Reihe. Die App NoRPG muss auf allen Android-Smartphones funktionieren, solange diese die Mindestanforderungen an Software und Hardware erfüllen. Dabei muss sich die App beispielsweise an die Auflösung oder XXX anpassen.
+		Bei der vorhanden Breite an Varianten von Android-Smartphones ist sehr wichtig, dass die Portabilität innerhalb von Android Smartphones gewährleistet wird. Neben bekannten Smartphoneherstellern wie Samsung, LG oder HTC gibt es zahlreiche weitere Hersteller die auf das Android Betriebssystem setzen. Jeder Hersteller hat dabei eine große Palette an Smartphone-Modellen, wie bei Samsung die Samsung Galaxy S-Reihe, welches aktuell in der siebten Genration erhältlich ist\footnote{vgl. Philippe Fischer, Michael Huch \cite{computerBildSamsung}}, oder die Samsung Galaxy Note-Reihe. Die App NoRPG muss auf allen Android-Smartphones funktionieren, solange diese die Mindestanforderungen an Software und Hardware erfüllen. Dabei muss sich die App beispielsweise an die Auflösung des Smartphones anpassen.
 		
-		Die Portabilität beschreibt nicht nur die technische Sicht sondern auch in welchen Ländern und in welchen Sprachen NoRPG verfügbar sein wird. Der Release findet in allen Ländern statt, in denen der Google Play Store verfügbar ist. Zunächst wird NoRPG nur in Englisch verfügbar sein, welches jedoch kein weiteres Problem darstellt.
+		Die Portabilität beschreibt nicht nur die technische Sicht sondern auch in welchen Ländern und in welchen Sprachen NoRPG verfügbar sein wird. Der Release findet in allen Ländern statt, in denen der Google Play Store verfügbar ist. Zunächst wird NoRPG nur in Englisch verfügbar sein.
