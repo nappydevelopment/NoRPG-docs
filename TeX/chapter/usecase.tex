@@ -1,7 +1,7 @@
 \chapter{Software Requirements Specification}
 	Das Software Requirements Specification, kurz SRS, ist ein veröffentlichter Standard zur Spezifikation einer Software. Der Inhalt eines SRS ist vom Institute of Electrical and Electronics Engineers im Standard IEEE 830-1998 festgehalten.
 	
-	Die Aufbau dieses Kapitels entspricht der Struktur, die in dem Standard beschriebenen wird. Einige Kapitel des SRS werden allerdings nicht behandelt, da sie keine Relevanz für NoRPG haben oder an einer anderer Stelle in diesem Dokument auftauchen.
+	Der Aufbau dieses Kapitels entspricht der Struktur, die in dem Standard beschriebenen wird. Einige Kapitel des SRS werden allerdings nicht behandelt, da sie keine Relevanz für NoRPG haben oder an einer anderer Stelle in diesem Dokument erwähnt werden.
 	
 \section{Einführung}
 	Das erste Kapitel des SRS enthält eine Beschreibung und eine Übersicht über alles, was im SRS enthalten ist.
@@ -18,9 +18,9 @@
 	Im zweiten Kapitel des SRS werden allgemeinen Faktoren, die das Produkt und seine Anforderungen betreffen, beschrieben. Dieses Kapitel bietet einen Überblick über die Systemfunktionalitäten und stellt verschiedene Arten von Stakeholdern und deren Interaktionen mit dem System vor. Dieses Kapitel behandelt jedoch nicht die spezifischen Anforderungen, sondern stellt den Hintergrund für diese dar. 
 
 	\subsection{Produktperspektive}
-		Das zu beschreibende vollständige System NoRPG besteht aus mehreren Komponenten, die auf unterschiedlichsten weisen mit den Stakeholdern kommunizieren. Daher ist es besonders wichtig, das Produkt in unterschiedlichen Perspektiven mit verwandten und geplanten Produkten zu betrachten. Aus diesem Grund werden alle System-, Benutzer-, Hardware- und Softwareschnittstellen von NoRPG betrachtet. 
+		Das zu beschreibende vollständige System NoRPG besteht aus mehreren Komponenten, die auf unterschiedlichsten weisen mit den Stakeholdern kommunizieren. Daher ist es besonders wichtig, das Produkt in unterschiedlichen Perspektiven mit verwandten und geplanten Produkten zu betrachten. Aus diesem Grund werden alle System-, Benutzer-, Hardware- und Softwareschnittstellen von NoRPG definiert. 
 		
-		Folgende Grafik \ref{highlevelview} stellt dabei die High-Level-View von NoRPG und seinen Komponenten dar. Die Grafik stellt alle Schnittstellen zwischen NoRPG und mit anderen Produkten dar.
+		Folgende Grafik \ref{highlevelview} stellt dabei die High-Level-View von NoRPG und seinen Komponenten dar.
 
 		\begin{figure}[htbp]
 			\centering 
@@ -31,18 +31,18 @@
 		
 		Das vollständige System von NoRPG besteht aus zwei Kernkomponenten. Die erste Kernkomponente ist die Android App, welche sich aus dem Quellcode des Spieles und einer eingebetteten lokalen Datenbank zusammensetzt. Die zweite Kernkomponente ist eine Datenbank, die sich auf einem Server befindet.
 		
-		Die Schnittstelle zwischen der App und dem Betriebssystem Android ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 13}.
+		Die Schnittstelle zwischen der App und dem Betriebssystem des Smartphones ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 13}.
 		
-		Bei der App von NoRPG handelt es sich um die Benutzerschnittstelle des Systems. Benutzerschnittstellen beschreiben die Kommunikation zwischen NoRPG und dem User. Die Benutzeroberfläche der App ist die einzige Möglichkeit für den Anwender mit dem System zu interagieren.
+		Bei der App NoRPG handelt es sich um die Benutzerschnittstelle des Systems. Benutzerschnittstellen beschreiben die Kommunikation zwischen dem System und dem User. Die Benutzeroberfläche der App ist die einzige Möglichkeit für den Anwender mit dem System zu interagieren.
 		
-		Jede Schnittstelle zwischen NoRPG und Hardwarekomponenten des Systems werden als Hardwareschnittstellen bezeichnet. Das Smartphone mit all seinen Komponenten sind einzige Hardwarekomponente, zu der eine direkte  Schnittstelle existiert. Die Hardwarekomponenten eines Smartphones sind das Touchscreen, die Lautsprecher oder der WLAN-Adapter. Diese Komponenten werden in der Abbildung durch das Smartphone zusammengefasst. Eine weitere Hardwareschnittstelle gibt es zwischen dem Server und der Hardware, auf dem dieser installiert ist.
+		Jede Schnittstelle zwischen NoRPG und Hardwarekomponenten des Systems werden als Hardwareschnittstellen bezeichnet. Das Smartphone mit all seinen Komponenten sind Hardwarekomponente, zu der eine direkte  Schnittstelle existiert. Die Hardwarekomponenten eines Smartphones sind der Touchscreen, die Lautsprecher oder der WLAN-Adapter. Diese Komponenten werden in der Abbildung durch das Smartphone zusammengefasst. Eine weitere Hardwareschnittstelle gibt es zwischen dem Server und der Hardware, auf dem dieser installiert ist.
 		
 		Die App kommuniziert mit der lokalen sowie mit der serverseitigen Datenbank und verwendet dabei die Funktionen von anderen Softwareprodukten. Dabei handelt es sich um Softwareschnittstellen. Sie bilden den Übergang zwischen unterschiedlichen Programmen und ermöglichen dadurch das Nutzen derer Funktionalitäten. 
 
 	\subsection{Produktfunktionen}
 		In diesem Unterkapitel werden die wichtigsten Funktionen von NoRPG zusammengefasst. Wie in Kapitel 2 beschrieben ist das Hauptziel von NoRPG Lernspiele in einer standardisierten Reihenfolge zum Herunterladen anzubieten. Dieses Ziel macht das Downloaden von Spielen zu der Hauptfunktionalität von NoRPG. 
 		
-		Neben dieser Funktion gibt es allerdings weitere Produktfunktionen, um NoRPG attraktiver zu gestalten und um NoRPG zu personalisieren. Der Spieler wird in der Lage sein mit Elementen im Spiel zu interagieren und dabei Spielgegenstände zu sammeln. Um dem Anwender eindeutig identifizieren zu können, wird NoRPG über eine eigene Anmelde- und Registrierungsfunktion verfügen. In diesem Registrierungsprozess ist es dem Spieler möglich, seinen eigenen persönlichen Charakter zu erstellen.
+		Neben dieser Funktion gibt es allerdings weitere Produktfunktionen, um NoRPG attraktiver zu gestalten und zu personalisieren. Der Spieler wird in der Lage sein mit Elementen im Spiel zu interagieren und dabei Spielgegenstände zu sammeln. Um dem Anwender eindeutig identifizieren zu können, wird NoRPG über eine eigene Anmelde- und Registrierungsfunktion verfügen. In diesem Registrierungsprozess ist es dem Spieler möglich, seinen eigenen persönlichen Charakter zu erstellen.
 		
 		Im Spiel selbst wird es neben Spieloptionen wie Qualitäts- und Audioeinstellungen noch Features geben, die das Spielerlebnis verbessern sollen. Dazu zählen Funktionen wie das öffnen einer Karte der aktuellen Spielwelt oder das betrachten des Fortschritts im jeweiligen Standard.
 		
@@ -51,20 +51,18 @@
 	\subsection{Benutzermerkmale}
 		Im Rahmen dieser Studienarbeit wird zunächst nur eine Benutzergruppe vollständig implementiert und daher nur diese hier beschrieben.
 		
-		Die zu implementierende Benutzergruppe sind die User, viel mehr die Spieler. Grundsätzlich richtet sich NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen. Jedoch werden keine Benutzergruppen für diese App ausgeschlossen. Egal ob jung oder alt, männlich oder weiblich, er Spieler sollte nur eine Neugier zum Lernen mitbringen. 
+		Die zu implementierende Benutzergruppe sind die User, viel mehr die Spieler. Grundsätzlich richtet sich NoRPG an Kinder, die keine Möglichkeit haben eine Schule zu besuchen. Jedoch werden keine Benutzergruppen für diese App ausgeschlossen. Egal ob jung oder alt, männlich oder weiblich, der Spieler sollte nur eine Neugier zum Lernen mitbringen. 
 		
-		Der Spieler benötigt Erfahrung mit der Verwendung eines Smartphones, insbesondere mit einem Android-Systems. Dazu zählt die Bedienung der Android-Oberfläche und die des Google Play Stores. Zudem sollten die User englische Texte verstehen können, da NoRPG zunächst nur in der englischen Sprache erscheinen wird.
+		Der Anwender benötigt Erfahrung mit der Verwendung eines Smartphones, insbesondere mit einem Android-Systems. Dazu zählt die Bedienung der Android-Oberfläche und die des Google Play Stores. Zudem sollten die User englische Texte verstehen können, da NoRPG zunächst nur in der englischen Sprache erscheinen wird.
 			
 	\subsection{Einschränkungen}
-		Es wird zwischen Einschränkungen für Entwickler und für Spieler unterschieden.
+		Da das SRS für die Kommunikation zwischen Entwickler und Stakeholder dient, wird zwischen Einschränkungen für Entwickler und für Spieler unterschieden.
 		
 		Grundsätzlich müssen sich Entwickler an die vorgegebenen regulatorischen Richtlinien, wie beispielsweise an die Datenschutzerklärung von Google oder an das IT-Sicherheitsgesetz halten.
 		
-		Da NoRPG sich an Kinder in bildungsfernen Ländern richtet ist es besonders wichtig, dass die Texte in NoRPG einfach zu verstehen sind. Da das Spiel zunächst nur in Englisch erscheinen wird, dürfen die englischen Texte kein Fachjargon oder ähnliches beinhalten. Die App darf keine hohen Mindestanforderungen an Hardwareressourcen haben, da der technische Standard in bildungsfernen Ländern geringer ist. Das bedeutet für die Entwickler das Spiel so gut wie möglich Ressourcenschonend umzusetzen. Des Weiteren gilt es bei der Implementierung zu beachten, dass NoRPG soweit wie möglich ohne eine aktive Internetverbindung spielbar bleiben muss.
+		Da NoRPG sich an Kinder in bildungsfernen Ländern richtet ist es besonders wichtig, dass die Texte in NoRPG einfach zu verstehen sind. Da das Spiel zunächst nur in Englisch erscheinen wird, dürfen die englischen Texte kein Fachjargon oder ähnliches beinhalten. Die App darf keine hohen Mindestanforderungen an Hardwareressourcen haben, da der technische Standard in bildungsfernen Ländern geringer ist. Das bedeutet für die Entwickler das Spiel so gut wie möglich ressourcenschonend umzusetzen. Des Weiteren gilt es bei der Implementierung zu beachten, dass NoRPG soweit wie möglich ohne eine aktive Internetverbindung spielbar bleiben muss.
 		
-		Allerdings gibt es auch Einschränkungen, welche für die Spieler gelten oder zumindest temporär. Wie schon öfter erwähnt wurde, wird das Spiel zunächst nur in Englisch erscheinen. Dementsprechend benötigt der Spieler Englischkenntnisse um die Texte im Spiel lesen und verstehen zu können.
-		
-		Für die Anmeldung, die Registrierung, das Herunterladen von Spielen, das Synchronisieren und installieren von Updates wird eine aktive Internetverbindung vorausgesetzt. Des Weiteren benötigt der Spieler ein Android Smartphone, welches die Mindestanforderungen von NoRPG erfüllt.
+		Allerdings gibt es auch Einschränkungen, welche für die Spieler gelten oder zumindest temporär. Wie schon öfter erwähnt wurde, wird das Spiel zunächst nur in Englisch erscheinen. Dementsprechend benötigt der Spieler Englischkenntnisse um die Texte im Spiel lesen und verstehen zu können. Für die Anmeldung, die Registrierung, das Herunterladen von Spielen, das Synchronisieren und installieren von Updates wird eine aktive Internetverbindung vorausgesetzt. Des Weiteren benötigt der Spieler ein Android Smartphone, welches die Mindestanforderungen von NoRPG erfüllt.
 				
 	\subsection{Annahmen und Abhängigkeiten}
 		Eine Annahme von NoRPG ist, dass es immer auf Smartphones, die genügend Leistung haben, verwendet wird. Wenn das Telefon nicht über genügend Hardwareressourcen für die Anwendung verfügt, kann es Szenarien geben, in denen die Anwendung nicht wie beabsichtigt oder überhaupt nicht funktioniert.
@@ -83,7 +81,7 @@
 		\subsubsection{Systemschnittstellen}
 			NoRPG hat genau eine Schnittstelle mit einem anderen System und zwar mit Android. Android ist das Betriebssystem von Google für mobile Geräte, welches aktuell in der Version 7.0 Nougat zu erhalten ist. Viele Smartphone-Hersteller nutzen Android als Basis für ihr eigenes auf Android aufbauendes Betriebssystem. 
 			
-			Der Gültigkeitsbereich der Systemschnittstelle ist auf die App begrenzt und hat keinerlei direkte Auswirkung auf den Server. 
+			Der Gültigkeitsbereich der Systemschnittstelle ist auf die App begrenzt und hat keinerlei direkte Auswirkungen auf den Server. 
 			
 			Das Datenformat von Android ist das Android Application Package (APK) und wird für die Distribution und Installation von mobilen Apps auf Android Smartphones verwendet. Eine APK-Datei enthält den gesamten Programmcode, Ressourcen, Assets, Zertifikate und Metadaten. Verglichen kann das Datenformat von Google mit einem ZIP-Archiv\footnote{vgl. Dan Morrill (Google) \cite{google1}}. Dieses Format muss NoRPG erfüllen, um unabhängig von den zu implementierenden Produktfunktionen auf einem Android Smartphone laufen zu können.
 			
@@ -101,7 +99,7 @@
 				\caption{Mockup: Login-Screen}
 			\end{figure}
 			
-			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies direkt in der App zu machen. Dazu klickt der Benutzer den Register-Button auf der Login-Oberfläche. Anschließend öffnet sich die Register-Oberfläche. Der vollständige Registrierungsprozess (siehe Abbildung \ref{mockupsRegistrierung})setzt sich aus zwei Schritten zusammen. Im ersten Schritt muss der Spieler das Registrierungsformular ausfüllen und bestätigen. Die Elemente des Formulars sind als Tabellen-Layout angeordnet, welches die Lesbarkeit verbessert. Felder, die nicht der erwarteten Eingabe entsprechen, werden als Falsch markiert und visuell hervorgehoben. Wenn das Anlegen des Accounts erfolgreich war, hat der Anwender die Möglichkeit im zweiten Schritt seinen persönlichen Charakter zu erstellen. Dafür bestimmt der Benutzer den Namen, das Geschlecht und das Aussehen.
+			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies direkt in der App zu machen. Dazu klickt der Benutzer den Register-Button auf der Login-Oberfläche. Anschließend öffnet sich die Register-Oberfläche. Der vollständige Registrierungsprozess (siehe Abbildung \ref{mockupsRegistrierung}) setzt sich aus zwei Schritten zusammen. Im ersten Schritt muss der Spieler das Registrierungsformular ausfüllen und bestätigen. Die Elemente des Formulars sind als Tabellen-Layout angeordnet, welches die Lesbarkeit verbessert. Felder, die nicht der erwarteten Eingabe entsprechen, werden als Falsch markiert und visuell hervorgehoben. Wenn das Anlegen des Accounts erfolgreich war, hat der Anwender die Möglichkeit im zweiten Schritt seinen persönlichen Charakter zu erstellen. Dafür bestimmt der Benutzer den Namen, das Geschlecht und das Aussehen.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -110,7 +108,7 @@
 				\caption{Mockups: Registrierungsformular und Charaktererstellung}
 			\end{figure}
 		
-			NoRPG startet erst, nachdem alles geladen wurde und der Benutzer angemeldet ist. Das Bildschirm von NoRPG besteht aus der Spielwelt (Grafik) und dem Head-Up Display (HUD). Das HUD ist eine Methode, mit der Informationen visuell als Teil der Benutzeroberfläche eines Spiels vermittelt werden. Während die Informationen, die auf dem HUD angezeigt werden, stark vom Spiel abhängen, gibt es viele Eigenschaften, die Spieler über viele Spiele erkennen. Die meisten von ihnen sind statisch auf dem Bildschirm, so dass sie während des Spiels sichtbar bleiben.  
+			NoRPG startet erst, nachdem alles geladen wurde und der Benutzer angemeldet ist. Der Bildschirm von NoRPG besteht aus der Spielwelt (Grafik) und dem Head-Up Display (HUD). Das HUD ist eine Methode, mit der Informationen visuell als Teil der Benutzeroberfläche eines Spiels vermittelt werden. Während die Informationen, die auf dem HUD angezeigt werden, stark vom Spiel abhängen, gibt es viele Eigenschaften, die Spieler über viele Spiele erkennen. Die meisten von ihnen sind statisch auf dem Bildschirm, so dass sie während des Spiels sichtbar bleiben.  
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -119,9 +117,9 @@
 				\caption{Mockup: Head-Up Display}
 			\end{figure}
 			
-			Das Mockup in Abbildung \ref{mockupHUD} enthält alle direkt sichtbaren HUD Elemente, die während des Spieles aktiv sind. Diese Elemente sind an die Ecken des Bildschirmes gebunden, so befinden sich beispielsweise die Pfeiltasten zur Bewegung des Charakters in der linken unteren Ecke des Bildschirms oder die Buttons zur Interaktion mit dem Spiel in der unteren rechten Ecke. 
+			Das Mockup in Abbildung \ref{mockupHUD} enthält alle direkt sichtbaren HUD Elemente, die während des Spieles aktiv sind. Diese Elemente sind an die Ecken des Bildschirmes gebunden, so befinden sich beispielsweise die Pfeiltasten zur Bewegung des Charakters in der linken unteren Ecke des Bildschirms und die Buttons zur Interaktion mit dem Spiel in der unteren rechten Ecke. 
 			
-			Das Menü (siehe Abbildung \ref{mockupMenu}), welches sich in der oberen linken Ecke befindet, kann geöffnet werden. Dadurch verändert sich das HUD von NoRPG und es erscheinen neue Elemente, die der Spieler sehen und benutzen kann. NoRPG ist derweil pausiert. Die anderen Elemente hingegen werden überdeckt oder funktionieren nicht solange das Menü offen ist. Deshalb ergeben sich neue Optionen bzw. Möglichkeiten für den Spieler um mit NoRPG zu interagieren.
+			Das Menü (siehe Abbildung \ref{mockupMenu}), welches sich in der oberen linken Ecke befindet, kann geöffnet werden. Dadurch verändert sich das HUD von NoRPG und es erscheinen neue Elemente, die der Spieler sehen und benutzen kann. NoRPG ist derweil pausiert. Die anderen Elemente hingegen werden überdeckt oder reagieren nicht solange das Menü offen ist. Deshalb ergeben sich neue Optionen bzw. Möglichkeiten für den Spieler um mit NoRPG zu interagieren.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -130,7 +128,7 @@
 				\caption{Mockup: Menü}
 			\end{figure}
 			
-			Es wird zwischen zwei Typen von Menü-Funktionen unterschieden. Eine Funktionen können direkt im Menü durchgeführt werden, wie beispielsweise die Qualitätseinstellung. Einige der Funktionen öffnen wiederum ein Fenster, in dem die neuen Funktionalitäten zur Verfügung stehen. Die Fenster müssen erst geschlossen werden um das Spiel fortsetzen zu können. Beispiele sind in der folgenden Abbildung \ref{mockupFenster} als Mockups zu betrachten.
+			Es wird zwischen zwei Typen von Menü-Funktionen unterschieden. Eine Funktionen können direkt im Menü durchgeführt werden, wie beispielsweise die Qualitätseinstellung. Einige der Funktionen wiederum öffnen ein Fenster bzw. eine neue Ansicht, in dem die neuen Funktionalitäten zur Verfügung stehen. Die Fenster müssen erst geschlossen werden um das Spiel fortsetzen zu können. Beispiele sind in der folgenden Abbildung \ref{mockupFenster} als Mockups zu betrachten.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -144,7 +142,7 @@
 			
 			Ein Smartphone besteht aus sehr vielen Hardwarekomponenten. Jede einzelne Komponente wird benötigt, damit das Smartphone mit seinem kompletten Funktionsumfang funktioniert. Jedoch spielen einige Hardwarekomponenten eine besondere Rolle für NoRPG. Neben unverzichtbaren Komponenten wie den Prozessor, Speicher oder Akku zählen zu den Kernkomponenten der Touchscreen und der WLAN-Adapter.	Der Touchscreen wird benötigt um die Eingaben des Spielers an das Spiel zu kommunizieren. Se es die Steuerung des Charakters, das Ausfüllen des Registrierungsformulars oder das einfache betätigen eines Buttons. Ohne den Touchscreen können keine Eingaben ohne zusätzliche Peripherie an das Spiel kommuniziert werden. Der WLAN-Adapter ist zuständig für die Verbindung mit dem Internet. Ohne eine Internetverbindung ist nicht einmal der Login funktionsfähig bzw. es wäre nicht ohne Umstände möglich NoRPG aus dem Google Play Store herunterzuladen.
 			
-			Obwohl es sich bei dem Server um einen virtuellen bzw. simulierten Server handelt, weiß NoRPG nicht, dass keine physische Hardware direkt benutzt wird. 
+			Obwohl es sich bei dem Server um einen virtuellen bzw. simulierten Server handelt, weiß NoRPG nicht, dass keine physische Hardware direkt benutzt wird. Für die App scheint es, als ob es mit einem physischen Server kommuniziert. Auch hier sind alle Komponenten des Server, auch wenn diese Simuliert sind, Teil der Hardwareschnittstelle.
 			
 		\subsubsection{Softwareschnittstellen}
 			Softwareschnittstellen spezifizieren die Schnittstellen mit anderen benötigten Softwareprodukten, welche die Nutzung derer Funktionalitäten ermöglicht.
@@ -155,10 +153,10 @@
 			
 			Damit die lokalen Datenbanken der Clients und die Datenbank auf dem Server immer synchronisiert bleiben wird eine Datenbanksynchronisationssoftware benötigt, welcher die Synchronisation bei aktiver Internetverbindung übernimmt. Dabei handelt es sich um eine Softwareschnittstelle, da NoRPG die Funktionalität dieser Software verwendet.
 			
-			Die letzte Softwareschnittstelle ist das Datenbank Management System (DBMS). Das DBMS ist die Verwaltungssoftware der Datenbank. Sie organisiert intern die strukturierte Speicherung der Daten und kontrolliert alle lesenden und schreibenden Zugriffe auf die Datenbank.
+			Die letzte Softwareschnittstelle ist das Datenbank Management System (DBMS). Das DBMS ist die Verwaltungssoftware der Datenbank. Sie organisiert intern die strukturierte Speicherung der Daten und kontrolliert alle lesenden und schreibenden Zugriffe auf die Datenbank. Sie wird benötigt um den aktuellen Stand des Spieles zu speichern.
 
 	\subsection{Funktionale Anforderungen}
-		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht des Nutzers beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen. %quelle
+		Use Cases dokumentieren Funktionalitäten eines Systems auf Basis von einfachen Modellen. In einem Use Case wird das nach außen sichtbare Verhalten eines Systems aus der Sicht des Nutzers beschrieben. Ein Nutzer kann hierbei eine Person, eine Rolle oder ein anderes System sein. Dieser Nutzer tritt als Akteur mit dem System in Interaktion, um ein bestimmtes Ziel zu erreichen.
 		
 		Use Cases verwenden Activity Diagramme. Ein Activity Diagramm ist ein Verhaltensdiagramm der Unified Modeling Language (UML) und stellt die Vernetzung von elementaren Aktionen und deren Verbindungen mit Kontroll- und Datenflüssen grafisch dar.
 	
@@ -176,7 +174,7 @@
 		\subsubsection{Create character}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen Charakter erstellen möchte. Dieser Use Case wird pro Account genau einmal im Registrierungsprozess ausgeführt.
 			
-			Nach erfolgreicher Registrierung kann der Spieler seinen Charakter erstellen. Der User kann den Namen, das Geschlecht und das Aussehen des Charakters bestimmen. Ein Ablauf des Erstellungsprozesses kann aus Abbildung \ref{createCharakter} entnommen werden.
+			Nach erfolgreicher Registrierung kann der Spieler seinen Charakter erstellen. Der User kann den Namen, das Geschlecht und das Aussehen des Charakters bestimmen. Ein möglicher Ablauf des Erstellungsprozesses kann aus Abbildung \ref{createCharakter} entnommen werden.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -185,9 +183,9 @@
 				\caption{Activity Diagramm: Create Character}
 			\end{figure}
 		
-			Der Ablauf des Prozesses kann allerdings variieren. Der Spieler kann beispielsweise erst das Geschlecht und das Aussehen bestimmen und anschließend seinem Charakter einen Namen geben.
+			Der Ablauf des Prozesses kann allerdings variieren. Der Spieler kann beispielsweise erst das Geschlecht und das Aussehen bestimmen und anschließend seinem Charakter einen Namen geben. Die Variationen können allerdings nur bei den Charaktereigenschaften auftauchen.
 	
-			Bevor jedoch dieser Use Case ausgeführt werden kann, muss der Spieler das Registrierungsformular vollständig ausfüllen und erfolgreich abschließen. Zudem darf Account noch nicht existiert. Für den gesamten Registrierungsprozess ist eine aktive Internetverbindung notwendig.
+			Bevor jedoch dieser Use Case ausgeführt werden kann, muss der Spieler das Registrierungsformular vollständig ausfüllen und erfolgreich abschließen. Zudem darf Account noch nicht existiert. Für den gesamten Registrierungsprozess ist eine aktive Internetverbindung notwendig, damit der neu angelegte Account mit den Spielereigenschaften direkt mit dem Server synchronisiert werden kann.
 			
 			Nach der erfolgreichen Erstellung des Charakters, wird dieser in die Datenbank gespeichert und der User kann sich nun anmelden und Spiel starten. Sollte die Erstellung allerdings fehlschlagen, wird der User wieder auf den Hauptbildschirm von NoRPG weitergeleitet. 
 			
@@ -205,10 +203,10 @@
 			
 			Die Vorbedingungen für diesen Use Case sind, dass der Spieler sich im Spiel befindet, das Menü geschlossen ist und der Spieler sich in keiner aktiven Non-Player Character (NPC) Interaktion befindet.
 			
-			In einem Fehlerfall sollte die Karte sich schließen und der Benutzer wieder zum Spiel weitergeleitet werden.
+			In einem Fehlerfall sollte sich die Karte schließen und der Benutzer wieder zum Spiel weitergeleitet werden.
 	
 		\subsubsection{View games}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Liste der freigeschalteten und spielbaren Spiele öffnen will. Gefundene Spiele in NoRPG werden in diese Liste aufgenommen, so dass der Spieler an einem zentralen Ort alle spielbaren Lernspiele anschauen kann. Die Liste enthält den Namen des Spiels, einen Download-Link sowie die Zuordnung zum entsprechenden Standard.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer die Liste der freigeschalteten und spielbaren Spiele öffnen will. Gefundene Spiele in NoRPG werden in diese Liste aufgenommen, so dass der Spieler an einem zentralen Ort alle spielbaren Lernspiele anschauen kann. Die Liste enthält den Namen des Spiels, einen Download-Link sowie die Zuordnung zum entsprechenden Standard. Dadurch ist es möglich auch ohne eine aktive Internetverbindung in NoRPG voranschreiten zu könne.
 			
 			Das Activity Diagramm in Abbildung \ref{umlShowGames} hat im Vergleich zu den bisherigen betrachteten Activity Diagrammen eine Besonderheit. Die Aktivität "Google Play Store öffnen" findet außerhalb von NoRPG statt. Nach Beendigung diesen Schrittes wird der Spieler wieder zurück ins Spiel weitergeleitet. Allerdings wenn der Prozess von NoRPG währenddessen abgebrochen wird, startet das Spiel am letzten Speicherpunkt. Der Prozess beginnt indem der Spieler die Funktion im Menü aufruft.
 			
@@ -233,12 +231,12 @@
 				\caption{Activity Diagramm: View Progress}
 			\end{figure}
 	
-			Auch hier gelten die gleichen Vorbedingungen. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven NPC Interaktion sein und das Menü ist vorher offen.
+			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven NPC Interaktion sein und das Menü ist vorher offen.
 	
 		\subsubsection{Achievements}
-			Neben dem Lernspielerfolg kann der Spieler seinen Sammelgegenstände betrachten. Diese Collactables sind in den einzelnen Spielwelten verteilt. Diese Ansicht zeigt alle gefundenen Gegenstände.
+			Dieser use Case beschreibt den Anwendungsfalls, dass der Spieler seine Sammelgegenstände betrachten will. Neben den Standards kann der Anwender im Spiel Gegenstände finden, die ihn in der in Kapitel 2 beschriebenen Story weiterbringen. Diese Collectables sind auf den einzelnen Spielwelten verteilt und können dann, nachdem diese gefunden sind in der Ansicht zusammen mit den anderen betrachtet werden.
 			
-			Ereignisablauf \ref{umlAchievements}
+			Im Prinzip ist dieses Activity Diagramm der gleiche wie der von Use Case "View progress". Der Spieler will seinen Fortschritt betrachten. Dieses mal allerdings seinen Fortschritt in NoRPG. Hier kann der Spieler zwischen den Welten wechseln anstatt zwischen den Fächern und es wird keine Baumstruktur präsentiert.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -247,18 +245,14 @@
 				\caption{Activity Diagramm: Achievements}
 			\end{figure}
 			
-			
-		
-			Vorbedingungen
-		
-			Nachbedingungen
+			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven NPC Interaktion sein und das Menü ist vorher offen.
 		
 		\subsubsection{Settings}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer Einstellungen ändern möchte. In dem Rahmen dieser Studienarbeit wird es zwei Einstellungsmöglichkeiten geben. Der Spieler kann die Qualität des Spieles verändern. Ist die Option "High Quality" an, wird alles in höchster Qualität wiedergegeben. Ist jedoch diese Option aus, werden Hintergrundanimationen, die ressourcenaufwändig sind, nicht wiedergegeben. Diese Option ermöglicht es Smartphones mit schlechterer Hardwareausführung das Spiel ohne Probleme spielen zu können, bietet jedoch für neuere Smartphones die Möglichkeit NoRPG in vollen zu genießen.
 			
 			Die zweite Einstellungsmöglichkeit ist, dass der Spieler die Audioausgaben des Spieles verändern kann. Zu einem Spielerlebnis gehört die Musik und die Soundeffekte. Diese kann der Spieler je nach Wünschen ein- oder ausschalten.
 			
-			Die Spieloptionen können direkt im Menü durchgeführt werden. Es wird kein neues Fenster oder Ansicht dafür geöffnet. Der Vollständigkeit  halber ist der Ereignisablauf im Anhang in Abbildung \ref{umlSettings} zu sehen.
+			Die Spieloptionen können direkt im Menü durchgeführt werden. Es wird kein neues Fenster oder Ansicht dafür geöffnet. Der Vollständigkeit halber ist der Ereignisablauf im Anhang in Abbildung \ref{umlSettings} zu sehen.
 	
 			Die Vorbedingung zur Änderung der Spieleinstellungen sind, dass der Anwender sich im Spiel und sich in keiner aktiven NPC Interaktion befindet. Bei erfolgreicher Änderung sollten diese Einstellungen für diesen Account gespeichert werden, damit diese bei jedem Login, auch auf verschiedene Geräte, übernommen werden. Im Fehlerfall werden die Default-Optionen angewendet. 
 	
@@ -267,18 +261,14 @@
 			
 			Der Spieler kann diese Funktion direkt im Menü durchführen. Auch hier befindet der Vollständigkeit halber das Activity Diagramm im Anhang in Abbildung \ref{umlSave}.
 		
-			Auch hier gelten die gleichen Bedingungen, wie in jeder Funktionalität, die in dem Menü ausgeführt wird. 
-		
-			Wenn das Speichern erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist.
+			Wenn das Speichern erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Im Fehlerfall muss die Aktion erneut durchgeführt werden.
 		
 		\subsubsection{Synchronize}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen lokalen Speicherstand mit dem Server manuell synchronisieren möchte. NoRPG synchronisiert automatisch, wenn eine aktive Internetverbindung vorhanden ist beim Einloggen und vor dem Ausloggen. Die Synchronisation wird nicht so oft wie das Speichern ausgeführt, da der Vorgang länger dauert. Ebenfalls wird die Synchronisation nicht so häufig benötigt, da der Server als eine Art Back-Up verwendet wird. Also für den Fall, dass der Spieler sich mit einem anderen Gerät anmelden möchte.
 			
 			Der Spieler kann diese Funktion direkt im Menü durchführen. Auch hier befindet der Vollständigkeit halber das Activity Diagramm im Anhang in Abbildung \ref{umlSynchronize}.
 	
-			Auch hier gelten die gleichen Bedingungen, wie in jeder Funktionalität, die in dem Menü ausgeführt wird. 
-			
-			Wenn das Speichern erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Eine häufige Ursache für den Fehlschlag kann die fehlende Internetverbindung sein.
+			Wenn das Synchronisieren erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Eine häufige Ursache für den Fehlschlag kann die fehlende Internetverbindung sein.
 		
 		\subsubsection{Character control}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Spieler seinen Charakter in NoRPG durch die Spielwelt kontrollieren möchte. Dafür verwendet der Spieler das Steuerkreuz, welches sich in der linken unteren Ecke des HUD befindet (vgl. Abbildung \ref{mockupHUD}).
@@ -292,26 +282,32 @@
 				\caption{Activity Diagramm: Character Control}
 			\end{figure}
 		
-			Wenn der Spieler das Steuerkreuz nach oben bewegt, wird der Charakter des Spielers um eine Einheit nach vorne bewegt. Nach dem Abschluss dieser Aktion kann der Spieler den Charakter direkt weiter bewegen. 
+			Wenn der Spieler das Steuerkreuz nach oben bewegt, wird der Charakter des Spielers um eine Einheit nach vorne bewegt. Nach dem Abschluss dieser Aktion kann der Spieler den Charakter direkt weiter bewegen. Wenn der Touchscreen in eine Richtung gehalten wird, dann wird dieser Ablauf ganze Zeit durchgeführt, bis die Touchscreen losgelassen wird.
 			
 			Die Vorbedingung für diesen Use Case ist, dass der Spieler sich im Spiel befindet und das Menü geschlossen ist.
 	
 		\subsubsection{Game interaction}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer sich in einer Interaktion mit einem NPC befindet. NPC bedeutet Non-Player Charakter und stellt die programmierten Charaktere dar (Unterhaltungen mit NPC, Storytelling)
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer mit einen Element im Spiel interagieren möchte. Dafür hat der Spieler 2 Tasten auf dem HUD (vgl. Abbildung \ref{mockupHUD}), die dem Spieler die Möglichkeit gibt die Interaktion zu starten oder zu beenden.
 			
-			Ereignisablauf
+			In NoRPG wird es verschiedene Elemente geben, mit denen der Spieler interagieren kann.
 			
-			Vorbedingungen: Spieler befindet sich im Spiel (nicht loading screen und menü ist geschlossen)
+			\begin{itemize}
+				\item {\textbf{NPCs:} Der Spieler kann sich mit unterschiedlichsten NPCs unterhalten, die überall in allen Spielen vorkommen. Die NPCs helfen dem Spieler, indem diese Tipps und Hinweise in den Unterhaltungen nennen.}
+				\item {\textbf{Truhen:} Der Spieler kann mit Truhen interagieren. Die Truhen sind in den einzelnen Welten verteilt und enthalten die Sammelgegenstände. Durch die Interaktion öffnet sich die Truhe und der Sammelgegenstand erscheint. Nachdem die Truhe geöffnet wurde bleibt die Truhe offen und es kann nicht weiter mit ihr interagiert werden. Es handelt sich um eine einmalige Aktion.}
+				\item {\textbf{Spielehändler:} Spielehändler tauchen überall auf. Diese bieten die verschiedenen Lernspiele für Standards an. Die Spielehändler können menschliche Händler oder andere Formen annehmen um die verschiedene Welten zu repräsentieren. Durch die Interaktion startet der Spieler eine Unterhaltung in dem der Spieler Informationen über den Standard erhält und das Spiel freischaltet.}
+				\item {Die Interaktion mit der Umwelt (Bäume, Tiere, Gebäude) starten zunächst keine Aktion.}
+			\end{itemize}
 			
-			Nachbedingungen: Charakter bewegt sich, bestätigt oder lehnt ab
-				
-		%\begin{itemize}
-		%	\item{Die Interaktion mit NPC's starten eine Unterhaltung, wodurch der Spieler mehr über das Spiel erfahren kann.}
-		%	\item{Die Interaktion mit einer Verschlossenen Truhe zeigt die Lernspiele, die gespielt werden müssen um die Truhe öffnen zu können.}
-		%	\item{Die Interaktion mit einer freigespielten True, ermöglicht dem Spieler die Truhe zu öffnen.}
-		%	\item{Die Interaktion mit Collectables, die durch das Suchen/Reisen gefunden werden können, sammelt diese.}
-		%	\item{Die Interaktion mit der Umwelt (Tiere, Bäume, etc.) startet keine Aktion.}
-		%\end{itemize}
+			Eine Interaktion kann nur dem "A" Button gestartet werden. Wenn ein Element zur Interaktion vorhanden ist startet erst die Interaktion. Anschließend kann der Spieler mit dem "A" oder "B" Button reagieren. Der "B" Button ist zum Abbrechen der Interaktion und beendet diesen Prozess bzw. überspringt ihn. Zum Beispiel in der Interaktion mit dem Händler sorgt der "B" Button dafür, dass die Unterhaltung übersprungen wird und direkt die Spiele angezeigt werden. Mit dem "A" Button wird die Interaktion fortgeführt bis keine Aktion mehr vorhanden ist, also in unserem Händlerbeispiel keine Unterhaltung mehr gibt.
+			
+			\begin{figure}[htbp]
+				\centering 
+				\label{umlInteraction}
+				\includegraphics[width=10cm]{pics/GameInteraction.pdf}
+				\caption{Activity Diagramm: Game Interaction}
+			\end{figure}
+			
+			Die Vorbedingungen für diesen Use Case sind, dass der Spieler sich im Spiel befindet und das Menü sowie die Karte geschlossen sind. Je nach Element wird ein anderes Ergebnis erwartet. Beispielsweise wird bei einer Interaktion mit der Truhe das Ergebnis erwartet, dass die Truhe offen bleibt, der Sammelgegenstand in die Liste übernommen wurde und der Spielstand automatisch lokal gespeichert wird.
 	
 	\subsection{Performanz Anforderungen}
 		Dieser Abschnitt des SRS legt sowohl die statischen als auch die dynamischen numerischen Anforderungen an die Software. 
@@ -363,12 +359,12 @@
 		Schließlich gilt es die Erwachsenen Nutzer nicht zu vergessen! Gemeint sind Eltern, Erziehungsberechtigte, Lehrer und jeder, der mit der App interagieren kann. Erwachsene spielen genauso eine wichtige Rolle. Egal ob diese die Kinder unterstützen, überwachen oder selbst spielen. Es ist wichtig, dass sich Eltern an die Entwickler melden können, wenn sie etwas nicht kindgerecht halten oder wenn es Probleme gibt\footnote{vgl. Becky White \cite{smashMagazin}}.	
 
 	\subsection{Zuverlässigkeit}
-		Alle implementierte Produktfunktionen sollten zur Auslieferung korrekt und zuverlässig funktionieren. Dazu zählt auch, dass die Funktionen in vertretbaren Zeiten terminieren. Beispielsweise sollte die Anmeldung funktionieren, wenn der Spieler registriert ist und die richtigen Benutzerdaten eingegeben hat, oder die Benutzereingaben für die Charaktersteuerung sollen korrekt interpretiert werden.
+		Alle implementierten Produktfunktionen sollten zur Auslieferung korrekt und zuverlässig funktionieren. Dazu zählt auch, dass die Funktionen in vertretbaren Zeiten terminieren. Beispielsweise sollte die Anmeldung funktionieren, wenn der Spieler registriert ist und die richtigen Benutzerdaten eingegeben hat, oder die Benutzereingaben für die Charaktersteuerung sollen korrekt interpretiert werden.
 		
 		Eine besondere Wichtigkeit hat die Implementierung der in Kapitel 2 beschriebenen Common Core State Standards. Diese sind wichtig für die Reihenfolge der spielbaren Lernspiele, damit ein Spieler mit einem Skilllevel der ersten Klasse in Geometrie keine Lernspiele für die fünfte Klasse angezeigt kriegt. Erst dadurch wird gewährleistet und kann sichergestellt werden, dass der Spieler die Lerninhalte korrekt vermittelt kriegt.
 	
 	\subsection{Verfügbarkeit}
-		Da bei jeder App eine lokale Datenbank vorhanden ist, muss der Server nicht ganze Zeit verfügbar sein. Das gilt jedoch nur für die Benutzer, die NoRPG schon heruntergeladen und sich angemeldet haben. Wenn diese Bedingungen erfüllt sind, wird der ganze Fortschritt lokal gespeichert und kann mit dem Server manuell oder automatisch synchronisiert werden. Für den Fall, dass der Benutzer sich von einem anderen Gerät anmelden möchte, muss der Server verfügbar sein.
+		Da bei jeder App eine lokale Datenbank vorhanden ist, muss der Server nicht die ganze Zeit verfügbar sein. Das gilt jedoch nur für die Benutzer, die NoRPG schon heruntergeladen und sich angemeldet haben. Wenn diese Bedingungen erfüllt sind, wird der ganze Fortschritt lokal gespeichert und kann mit dem Server manuell oder automatisch synchronisiert werden. Für den Fall, dass der Benutzer sich von einem anderen Gerät anmelden möchte, muss der Server verfügbar sein.
 		
 		Daher werden nur die Verfügbarkeit des Logins bzw. Registrierung und der Synchronisation bewertet. Der Login muss eine Verfügbarkeit von 99\% haben, wohingegen bei der Synchronisation eine Verfügbarkeit von 90\% ausreicht.
 		
