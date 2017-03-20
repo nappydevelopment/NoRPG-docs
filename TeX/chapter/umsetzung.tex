@@ -10,11 +10,95 @@ Vorteil an Android und Google Play Store: Google Play Store: große Anzahl an vi
 
 \section{Datenbank auf dem Handy}
 Wieso haben wir das gemacht? Vorteile? Nachteile?
+Speicherung von Daten --> wieso nicht PlayerPrefs von Unity benutzen sondern Serialisieren? Doku, Paper, ... begründen und Beispiel zeigen. Gespeichert wird in einer .dat anstatt .txt, nicht einfach lesbar bearbeitbar (daten lesen etc.)
 	
 \section{Datenbank auf dem Server}
-virtuelle? was passiert wenn vr abstürzt, daten sind weg, backup
+Bei der Datenbank auf dem Server handelt es sich um eine MySQL Datenbank. In dieser sind die Daten der Registrierten User und deren Fortschritt in den Tabellen accounts und spielfortschritt gespeichert.
 
-Datenbanksynchronisationssoftware bspw. SymmetricDS
+\section{C\# Skripte}
+\subsection{Kamera}
+\subsection{Player}
+\subsection{Portale}
+\subsection{Datenimport aus JSON}
+\subsection{Datenimport aus / in Datenbank}
 
-\section{Punkte die mir eingefallen sind}
-Speicherung von Daten --> wieso nicht PlayerPrefs von Unity benutzen sondern Serialisieren? Doku, Paper, ... begründen und Beispiel zeigen. Gespeichert wird in einer .dat anstatt .txt, nicht einfach lesbar bearbeitbar (daten lesen etc.)
+Zum Senden der Daten der Registrierung wird das Skript SendDataToServer.cs genutzt. In diesem werden die Daten der Registrierung zwischengespeichert und am Ende an den Server gesendet. Dazu wird die Methode SendRegister() genutzt. In dieser wird die Methode RegisterUser() als Coroutine gestartet. Dazu werden zehn Parameter übergeben, der Username, die Email, das Passwort, der Vorname, der Nachname, das Geburtsdatum, das Geschlecht, der Herkunftsstaat, die native Sprache und der gewählte Charakter. Bei einer Coroutine handelt es sich um einen Thread, welcher beliebig gestarte, pausiert und beendet werden kann.
+
+Innerhalb dieser Methode wird zu Beginn ein Hash erstellt, welcher am Server genutzt wird, um zu überprüfen, ob die Anfrage gültig ist. Dieser besteht dabei aus teilen der Eingabe und einem zusätzlichen geheimen Schlüssel, welchem nur der App und dem Server bekannt sind.
+
+Nachdem der Hash erstellt wurde, werden alle Parameter in Form einer Url aneinander gehängt. Anschließend wird die URL an ein WWW Objekt übergeben und solange gewartet, bis es eine Antwort gibt. Sofern es keinen Fehler gab, wird ein Text ausgegeben, welche vom Server gesendet wird, andernfalls eine Fehlermeldung.
+
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Skript SendDataToServer.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:c_SendDataToServer]
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SendDataToServer : MonoBehaviour {
+
+    private static string secretKey = "norpg";
+    public static string registerURL = "http://norpg.it.dh-karlsruhe.de/register.php?";
+    public static string loginURL = "http://norpg.it.dh-karlsruhe.de/login.php?";
+
+	...
+	...
+
+    private void SendRegister() {
+        StartCoroutine(RegisterUser(userText, emailText, MD5Test.Md5Sum(passwordText), 
+        	firstnameText, lastnameText, birthdayText, genderText, 
+        	countryText, native_languageText, selected_characterText));
+    }
+
+    IEnumerator RegisterUser(string user, string email, string password, string firstname, 
+    	string lastname, string birthday, string gender, string country, 
+    	string native_language, string selected_character) {
+
+        string hash = MD5Test.Md5Sum(user + email + password 
+        	+ firstname + country 
+        	+ selected_character + secretKey);
+
+        string post_url = registerURL
+            + "user=" + WWW.EscapeURL(user)
+            + "&email=" + WWW.EscapeURL(email)
+            + "&password=" + WWW.EscapeURL(password)
+            + "&firstname=" + WWW.EscapeURL(firstname)
+            + "&lastname=" + WWW.EscapeURL(lastname)
+            + "&birthday=" + WWW.EscapeURL(birthday)
+            + "&gender=" + WWW.EscapeURL(gender)
+            + "&country=" + WWW.EscapeURL(country)
+            + "&native_language=" + WWW.EscapeURL(native_language)
+            + "&selected_character=" + WWW.EscapeURL(selected_character)
+            + "&hash=" + hash;
+        WWW hs_post = new WWW(post_url);
+        yield return hs_post;
+
+        if (hs_post.error != null) {
+            print("There was an error posting the high score: " + hs_post.error);
+        } else {
+            status.text = hs_post.text;
+        }
+    }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Auf dem Server läuft für die Datenannahme das PHP Skript register.php. Dieses nimmt die Daten aus der URL entgegen und speichert diese zunächst in Variablen ab. Anschließend wird auch in diesem Skript ein Hash gebildet und anschließend mit dem Mitgesendetem abgegleicht. Sollte es hier einen Fehler geben, sendet der Server einen Error zurück, wenn die Hashes identisch sind, wird eine Verbindung zu der Datenbank aufgabenaut und ein Eintrag in der accounts Tabelle erstellt. Anschließend wird eine erfolgreich Meldung an den Client gesendet.
+
+\subsection{Allgemein}
