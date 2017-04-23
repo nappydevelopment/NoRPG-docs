@@ -1,27 +1,54 @@
 \section{Die Benutzerschnittstelle}
-	In diesem Abschnitt dieses Kapitels wird auf die Implementierung der Benutzerschnittstelle eingegangen. Wie schon bereits im SRS erwähnt handelt es sich bei der Benutzerschnittstelle um die grafische Oberfläche der Android App. 
+	In diesem Abschnitt dieses Kapitels wird auf die Implementierung der Benutzerschnittstelle eingegangen. Wie schon bereits im SRS erwähnt handelt es sich bei der Benutzerschnittstelle um die grafische Oberfläche der Android App. Dafür werden zunächst die Möglichkeiten von Unity vorgestellt, dann auf das Ergebnis der Umsetzung eingegangen und abschließend die Auswertung des Usability Tests behandelt.
 	
 	\subsection{Grafische Oberfläche mit Unity}
-		Die grafische Oberfläche, zu englisch User Interface (UI), wird mit Unity's zur Verfügung gestelltem UI System implementiert. Der Canvas, zu deutsch Leinwand, stellt dabei die Elternkomponente dar. Dieser enthält alle UI Elemente. Der Canvas verwendet dabei das EventSystem Objekt von Unity. Das Event System  ist eine Möglichkeit, Events auf Objekte in der Anwendung, basierend auf den Eingaben des Spielers, zu senden\footnote{Vgl. \url{https://docs.unity3d.com/Manual/EventSystem.html}}. Erst durch die Verwendung des Event Systems werden die Touchscreen-Eingaben an die App weitergegeben.
+		Die grafische Oberfläche wird mit Unity's zur Verfügung gestelltem UI System implementiert. Der Canvas, zu deutsch Leinwand, stellt dabei die Hauptkomponente bzw. Elternkomponente dar. Alle UI Elemente sind Kinder des Canvas und erben somit die Eigenschaften des Canvas. Unity bietet standardmäßig eine große Anzahl an UI Elementen, wie beispielsweise Buttons, Toggle-Buttons, Dropdown-Listen und Eingabefelder\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UIInteractionComponents.html}}. Der Canvas verwendet das EventSystem Objekt von Unity. Das Event System ermöglicht es, alle Touchscreen-Eingaben an die korrekten UI Elemente in der App weiterzuleiten\footnote{Vgl. \url{https://docs.unity3d.com/Manual/EventSystem.html}}.
 		
-		All UI elements must be children of a GameObject that has a Canvas component attached. Zu den UI Elementen gehören: Unity bietet eine große Anzahl an vorgefertigten Standard Interaktionsobjekten. Dazu gehören zum Beispiel Buttons, ToggleButtons, Dropdown Listen, Input Felder und Scroll Views\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UIInteractionComponents.html}}.
-		
-		Der Canvas hat in Unity drei Render-Modi\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UICanvas.html}}. Je nachdem welcher Modus ausgewählt wurde, wird die grafische Oberfläche anders in das Spiel integriert.
+		Bei der Implementierung des Canvas wird zwischen drei unterschiedlichen Render-Modi unterschieden\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UICanvas.html}}. Je nachdem welcher Modus verwendet wird, ist die grafische Oberfläche anders in das Spiel integriert.
 		
 		\subsubsection{Screen Space - Overlay}
-			This render mode places UI elements on the screen rendered on top of the scene. If the screen is resized or changes resolution, the Canvas will automatically change size to match this.
+			Standardmäßig ist jedes Canvas als Screen Space - Overlay implementiert. Dieser Modus platziert die UI Elemente auf den Bildschirm über die komplette Szene. Die Benutzeroberfläche wird über alle anderen Grafiken, wie die Kamera-Ansicht, gezogen. Wenn die Auflösung geändert wird, passt der Canvas die Größe aller Kindelemente automatisch an die neue Auflösung an. Deshalb ist es besonders wichtig, dass alle UI Elemente unter dem Canvas hängen. 
 			
-			In this mode, the Canvas is scaled to fit the screen and then rendered directly without reference to the scene or a camera (the UI will be rendered even if there is no camera in the scene at all). If the screen’s size or resolution are changed then the UI will automatically rescale to fit. The UI will be drawn over any other graphics such as the camera view.
-		
+			Die folgende Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderOverlay} verdeutlicht, dass alle Elemente des Spieles hinter der Benutzeroberfläche positioniert sind.
+			
+			\begin{figure}[htbp]
+				\centering 
+				\label{renderOverlay}
+				\includegraphics[width=10cm]{pics/CanvasOverlay.png}
+				\caption{Render-Modus: Screen Space - Overlay}
+			\end{figure}
+			
+			Die wesentliche Nachteile vom Screen Space - Overlay ist, dass der sichtbare Bereich des Spieles durch die UI Elemente verdeckt wird. Deshalb ist es besonders wichtig nur die wichtigsten Elementen immer sichtbar im Vordergrund zu lassen. Dies hat Auswirkungen auf die Positionen, Größe, Farbe und Design. Ein weiterer Nachteil ist, dass Spielelemente nicht als Teil des User Interfaces verwendet werden können. 
+			
+			Auf der Gegenseite können keine UI Elemente oder wichtige Informationen von den Gegenständen im Spiel verdeckt werden und ein weiterer Vorteil ist, dass die Position auf dem Bildschirm immer an die Auflösung angepasst wird und sich nicht ändert, unabhängig davon welche Aktionen der Spieler im Spiel ausführt oder auf welcher Hardware NoRPG gespielt wird.
+
 		\subsubsection{Screen Space - Camera}
-			This is similar to Screen Space - Overlay, but in this render mode the Canvas is placed a given distance in front of a specified Camera. The UI elements are rendered by this camera, which means that the Camera settings affect the appearance of the UI. If the Camera is set to Perspective, the UI elements will be rendered with perspective, and the amount of perspective distortion can be controlled by the Camera Field of View. If the screen is resized, changes resolution, or the camera frustum changes, the Canvas will automatically change size to match as well.
+			Dieser Modus ähnelt dem ersten Modus sehr, aber in diesem Render-Modus wird der Canvas eine vorgegebene Distanz vor einer bestimmten Kamera platziert. Die UI Elemente werden von der bestimmen Kamera gerendert, was bedeutet, dass die Kameraeinstellungen das Erscheinungsbild der Benutzeroberfläche beeinflussen. Wenn sich die Auflösung des Bildschirms verkleinert, oder die Kameraposition und -winkel sich ändern, ändert sich der Canvas automatisch mit und passt die Größe der Elemente an.
 			
-			In this mode, the Canvas is rendered as if it were drawn on a plane object some distance in front of a given camera. The onscreen size of the UI does not vary with the distance since it is always rescaled to fit exactly within the camera frustum. If the screen’s size or resolution or the camera frustum are changed then the UI will automatically rescale to fit. Any 3D objects in the scene that are closer to the camera than the UI plane will be rendered in front of the UI, while objects behind the plane will be obscured.
+			Der größte Unterschied ist allerdings, wenn 3D-Objekte in der Szene näher an der Kamera sind als die UI Elemente, werden diese auch auf dem Bildschirm vor der Benutzeroberfläche platziert. Dieses Verhalten wird in der folgenden Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderCamera} deutlich.
+			
+			\begin{figure}[htbp]
+				\centering 
+				\label{renderCamera}
+				\includegraphics[width=10cm]{pics/CanvasCamera.png}
+				\caption{Render-Modus: Screen Space - Camera}
+			\end{figure}
+		
+			Wenn die 3D-Objekte näher als die UI-Elemente sind können Informationen und Elemente, wie Buttons, verdeckt werden und die Interaktion mit diesen Elementen ist nicht mehr möglich. Allerdings ermöglicht dieser Modus, dass Spielelemente als Teil der UI, auch wenn nur kurzfristig, funktionieren können. Trotz diesen Vorteils ist dieses Verhalten komplexer und fehleranfälliger.
 		
 		\subsubsection{World Space}
-			In this render mode, the Canvas will behave as any other object in the scene. The size of the Canvas can be set manually using its Rect Transform, and UI elements will render in front of or behind other objects in the scene based on 3D placement. This is useful for UIs that are meant to be a part of the world. This is also known as a “diegetic interface”.
+			In diesem Render-Modus wird der Canvas wie jedes andere Objekt in der Szene behandelt. Die Größe und Position kann manuell gesetzt werden und die UI Elemente werden basierend auf die 3D-Position entweder vor und hinter 3D-Objekten der Szene platziert. Dies ist nützlich für UIs, die dazu bestimmt sind, ein Teil der Welt zu sein. Dies wird auch als \"sterbliche\" Benutzeroberfläche bezeichnet, da diese nicht immer im Vordergrund sein muss. Im Gegensatz zum Screen Space - Camera Modus muss die UI Ebene nicht vor die Kamera platziert werden.
 			
-			This mode renders the UI as if it were a plane object in the scene. Unlike Screen Space - Camera mode, however, the plane need not face the camera and can be oriented however you like. The size of the Canvas can be set using its Rect Transform but its onscreen size will depend on the viewing angle and distance of the camera. Other scene objects can pass behind, through or in front of the Canvas.
+			Die Größe des Canvas kann manuell eingestellt werden, aber seine Größe auf dem Bildschirm wird von dem Winkel und der Entfernung der Kamera abhängen. Andere Szeneobjekte können hinter, mittendrin oder vor dem Canvas sein. Dieses Verhalten wird in folgender Grafik \footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderWorldSpace} deutlich.
+			
+			\begin{figure}[htbp]
+				\centering 
+				\label{renderWorldSpace}
+				\includegraphics[width=10cm]{pics/CanvasWorldSpace.png}
+				\caption{Render-Modus: World Space}
+			\end{figure}
+		
+			Vor und Nachteile noch
 			
 	\subsection{Die Umsetzung}	
 		Um die ergonomie zu erhöhen kann der linke joystick i einem festgelegten bereich überall angelegt werden
@@ -30,40 +57,27 @@
 		
 		\begin{figure}[htbp]
 			\centering 
-			\label{umlControl}
+			\label{alwaysOnUI}
 			\includegraphics[width=13cm]{pics/alwaysOnUI.png}
 			\caption{User Interface: Head-Up Display}
 		\end{figure}
 	
 		\begin{figure}[htbp]
 			\centering 
-			\label{umlControl}
-			\includegraphics[width=13cm]{pics/communicationUI.png}
-			\caption{User Interface: Aktive Kommunikation mit einem Non-Player Charakter}
-		\end{figure}
-
-		\begin{figure}[htbp]
-			\centering 
-			\label{umlControl}
-			\includegraphics[width=13cm]{pics/menuUI.png}
-			\caption{User Interface: Offenes Menu}
-		\end{figure}
-		
-		\begin{figure}[htbp]
-			\centering 
-			\label{umlControl}
-			\includegraphics[width=13cm]{pics/settingsUI.png}
-			\caption{User Interface: Einstellungen Fenster}
-		\end{figure}
-
-		\begin{figure}[htbp]
-			\centering 
-			\label{umlControl}
-			\includegraphics[width=13cm]{pics/settingsUI.png}
-			\caption{User Interface: Registrierung}
+			\label{userInterfaces}
+			\includegraphics[width=\textwidth]{pics/userInterface.png}
+			\caption{User Interfaces: Kommunikation, Menu und Einstellungen-Fenster}
 		\end{figure}
 	
-		Dialogebene max. 1, es öffnet sich max immer ein Dialog dieser dient zum Abbrechen, warnt vor bevorstehenden Aktionen
+		Menu fenster bildet die erste Dialogebene nach der Startebene. Nach diesem gibt es noch eine weitere Ebene. dieser Dialog dient zum Abbrechen, warnt vor bevorstehenden Aktionen. Die maximale Dialogebene ist also 2. 
+
+		\begin{figure}[htbp]
+			\centering 
+			\label{RegisterUI}
+			\includegraphics[width=13cm]{pics/RegisterUI.png}
+			\caption{User Interface: Registrierung}
+		\end{figure}
+
 	
 	\subsection{Usability Test}
 		Usability TEst faken? Kinder + Jugendliche --> Katalog mit Bewertung
