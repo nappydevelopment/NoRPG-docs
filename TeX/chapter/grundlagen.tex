@@ -1,128 +1,117 @@
 \chapter{Technische Grundlagen}
-	Nachstehend werden die technischen Grundlagen erläutert und es wird kurz auf diese eingegangen. Dabei wird mit den Entwicklungsumgebungen begonnen.
+	Im folgenden Abschnitt werden die technischen Grundlagen behandelt. Dabei wird mit den Entwicklungsumgebungen begonnen.
 
 \section{Unity}
-Bei Unity handelt es sich um eine Entwicklungs- und Laufzeitumgebung, mit deren Hilfe graphisch aufwändige Projekte umgesetzt werden können. Dazu gehören unter anderem Videospiele, aber auch Lernprogramme oder Apps können damit umgesetzt werden. Dazu können in Unity 3D-Projekte, aber auch 2D beziehungsweise 2,5D Projekte umgesetzt werden(Dabei handelt es sich um eine Mischung von 2D und 3D Spielen). Dank Unity sind diese Projekte nach der Entwicklung plattformübergreifend einsetzbar.\footnote{vgl. Unity3D \cite{unity1} (2017)} Die Entwicklungsumgebung teilt sich dabei in verschiedene Bereiche auf. Diese sind dabei an einen 3D-Editor angelegt.
+	Bei Unity handelt es sich um eine Entwicklungs- und Laufzeitumgebung, mit deren Hilfe graphisch aufwändige Projekte umgesetzt werden können. Dazu gehören unter anderem Videospiele, aber auch Lernprogramme oder Apps. Dazu können in Unity 3D-Projekte, aber auch 2D beziehungsweise 2,5D Projekte umgesetzt werden. Bei einer 2,5D Anwendung handelt es sich um eine Mischung von 2D und 3D Elementen. Dank Unity sind diese Projekte nach der Entwicklung plattformübergreifend einsetzbar.\footnote{vgl. Unity3D \cite{unity1} (2017)} Die Entwicklungsumgebung teilt sich dabei in verschiedene Bereiche auf. 
 
-Das „Scene” Fenster ist in den Standardeinstellungen in der Mitte des Bildschirms zu sehen(Siehe Abbildung \ref{scene} )\footnote{vgl. Unity3D \cite{unity2} (2017)}.
+	Das „Scene” Fenster ist in den Standardeinstellungen in der Mitte des Bildschirms zu sehen(Siehe Abbildung \ref{scene} )\footnote{vgl. Unity3D \cite{unity2} (2017)}. Hier wird immer die aktuelle Szene dargestellt. Darüber hinaus kann hier mit Objekten der Szene interagiert werden, um diese zu verändern, zum Beispiel an eine andere Stelle platzieren oder zu skalieren.
 
-\begin{figure}[htbp]
-\centering 
-\label{scene}
-\includegraphics[width=0.9\textwidth]{pics/unity3d_ui.png}
-\caption{Darstellung von Tablemappings}
-\end{figure}
+	\begin{figure}[htbp]
+		\centering 
+		\label{scene}
+		\includegraphics[width=\textwidth]{pics/unity3d_ui.png}
+		\caption{Darstellung von Tablemappings}
+	\end{figure}
 
-Hier wird immer die aktuelle Szene dargestellt. Darüber hinaus kann hier mit Objekten der Szene interagiert werden, um diese zu verändern, zum Beispiel an eine andere Stelle platzieren oder zu skalieren.
+	Wird ein Objekt in diesem Fenster ausgewählt, befinden sich im Bereich „Inspector” zusätzliche Einstellmöglichkeiten\footnote{vgl. Unity3D \cite{unity3} (2017)}. Diese variieren je nach gewähltem Objekt. Auch hier können die Position oder Skalierung eines Objektes verändert werden, allerdings werden hier auch darüber hinausgehende visuellen sowie die physischen Eigenschaften der Objekte verändert.
 
-Wird ein Objekt in diesem Fenster ausgewählt, befinden sich im Bereich „Inspector” zusätzliche Einstellmöglichkeiten\footnote{vgl. Unity3D \cite{unity3} (2017)}.
-Diese variieren je nach gewähltem Objekt. Auch hier können die Position oder die Skalierung eines Objektes verändert werden, allerdings werden hier auch darüber hinausgehende Eigenschaften der Objekte verändert. Dazu zählen die visuellen sowie die physischen Eigenschaften der Objekte. 
+	Objekte können des weiteren im „Hierarchy” Fenster\footnote{vgl. Unity3D \cite{unity4} (2017)} ausgewählt werden. In diesem Fenster werden alle Objekte der aktuellen Szene aufgelistet. Dabei wird zwischen unterschiedlichen Ebenen unterschieden, so dass genau gesehen werden kann welche Objekte zusammengehören. 
 
-Ein weiterer Weg, ein Objekt auszuwählen, ist das markieren im „Hierarchy” Fenster\footnote{vgl. Unity3D \cite{unity4} (2017)}. 
-In diesem Fenster werden alle Objekte der aktuellen Szene aufgelistet. Dabei wird zwischen unterschiedlichen Ebenen unterschieden, so dass genau gesehen werden kann welche Objekte zusammengehören. 
+	Um alle Dateien zu sehen, die zu einem Projekt gehören, gibt es das „Project” Fenster\footnote{vgl. Unity3D \cite{unity5} (2017)}. Die Dateien werden dabei nach der vorliegenden Ordnerstruktur angezeigt. In diesem Fenster können Ordner, sowie andere Dateien erstellt werden.
 
-Um alle Dateien zu sehen, die zu einem Projekt gehören, gibt es das „Project” Fenster\footnote{vgl. Unity3D \cite{unity5} (2017)}. Die Dateien werden dabei nach der vorliegenden Ordnerstruktur angezeigt. In diesem Fenster können Ordner, sowie andere Dateien erstellt werden.
+	Ein weiteres wichtiges Fenster ist das „Game” Fenster\footnote{vgl. Unity3D \cite{unity6} (2017)}. Hier kann das fertige Projekt angesehen und getestet werden. Dazu gibt es oben in der Mitte der Benutzeroberfläche, ein Start, Pause und Vorlauf Button. Mit Hilfe derer kann das Programm, bevor es auf der Zielplattform abgespielt wird, in der Entwicklungsumgebung gerendert werden. Der Code wird von Unity JustIn-Time (JIT) kompiliert, und anschließend auf Mono oder dem Microsoft .NET Framework ausgeführt. Der Code steht in sogenannten Skripten, die in C\#, UnitySkript (ähnlich JavaScript) oder Boo geschrieben sind.
 
-Ein weiteres wichtiges Fenster ist das „Game” Fenster\footnote{vgl. Unity3D \cite{unity6} (2017)}. Hier kann das fertige Projekt angesehen werden. Dazu gibt es oben in der Mitte der Benutzeroberfläche, ein Start, Pause und Vorlauf Button. Mit Hilfe derer kann das Programm, bevor es auf der Zielplattform abgespielt wird, in der Entwicklungsumgebung gerendert werden. Der Code wird von Unity JustIn-Time (JIT) kompiliert, und anschließend auf Mono oder dem Microsoft .NET Framework ausgeführt. Der Code steht in sogenannten Skripten, die in C\#, UnitySkript (ähnlich JavaScript) oder Boo geschrieben sind.
+	Wenn während der Laufzeit oder im Vorfeld beim Kompilieren ein Fehler auftritt, wird dieser im „Console” Fenster ausgegeben. Darüber hinaus werden hier Meldungen angezeigt, die explizit in den Skripten programmiert wurden. Damit es zu keinen Fehlern kommt, gibt es in Unity Tests, die eine Szene auf Korrektheit prüft. Die sogenannten Integrationstest simulieren eine Szene, damit verschiedene Objekte auf ihre Eigenschaften geprüft werden können. 
 
-Wenn während der Laufzeit oder im Vorfeld beim Kompilieren ein Fehler auftritt, wird dieser im „Console” Fenster ausgegeben. Darüber hinaus werden hier Meldungen angezeigt, die explizit in den Skripten programmiert wurden.
-Damit es zu keinen Fehlern kommt, gibt es in Unity Tests, die eine Szene auf Korrektheit prüft. Die sogenannten Integrationstest simulieren eine Szene, damit verschiedene Objekte auf ihre Eigenschaften geprüft werden können. 
+	Nachdem nun die Benutzeroberfläche ausführlich erklärt wurde, wird nun auf die Begriffe Prefabs und Skripte eingegangen, da diese Essentiell für den Umgenag mit Unity sind.
 
-Nachdem nun die Benutzeroberfläche ausführlich erklärt wurde, wird nun auf die Begriffe Prefabs und Skripte eingegangen, da diese Essentiell für den Umgenag mit Unity sind.
-
-\textbf{Prefabs}
-
-Bei Prefabs handelt es sich um fertige Objekte, die in Szenen verwendet werden können\footnote{vgl. Unity3D \cite{unity7} (2017)}. Diese können dabei als Vorlage gesehen werden, damit nicht jedes Objekt mit gleichen Eigenschaften erneut erstellt werden müssen. 
-
-\textbf{Skripte}
-
-In Skripten befindet sich die Logik von Objekten\footnote{vgl. Unity3D \cite{unity8} (2017)}. Ein Beispiel dafür ist das Öffnen einer Truhe. Wenn der Benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, das sie sich öffnen soll. 
-
-Diese Logik kann mithilfe einer Entwicklungsumgebung angepasst werden. Die dazu geeignete Entwicklungsumgebung wird bei der Installation von Unity mitgeliefert. Dabei handelt es sich um Microsoft Visual Studio.
+	\subsubsection{Prefabs}
+		Bei Prefabs handelt es sich um fertige Objekte, die in Szenen verwendet werden können\footnote{vgl. Unity3D \cite{unity7} (2017)}. Diese können dabei als Vorlage gesehen werden, damit nicht jedes Objekt mit gleichen Eigenschaften erneut erstellt werden müssen. 
+		
+	\subsubsection{Skripte}
+		In Skripten befindet sich die Logik von Objekten\footnote{vgl. Unity3D \cite{unity8} (2017)}. Ein Beispiel dafür ist das Öffnen einer Truhe. Wenn der Benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, das sie sich öffnen soll. 
 
 	\subsection{Grafische Oberflächen mit Unity}
-Die grafische Oberfläche wird mit Unity's zur Verfügung gestelltem UI System implementiert. Der Canvas, zu deutsch Leinwand, stellt dabei die Hauptkomponente bzw. Elternkomponente dar. Alle UI Elemente sind Kinder des Canvas und erben somit die Eigenschaften des Canvas. Unity bietet standardmäßig eine große Anzahl an UI Elementen, wie beispielsweise Buttons, Toggle-Buttons, Dropdown-Listen und Eingabefelder\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UIInteractionComponents.html}}. Der Canvas verwendet das EventSystem Objekt von Unity. Das Event System ermöglicht es, alle Touchscreen-Eingaben an die korrekten UI Elemente in der App weiterzuleiten\footnote{Vgl. \url{https://docs.unity3d.com/Manual/EventSystem.html}}.
+		Die grafische Oberfläche wird mit Unity's zur Verfügung gestelltem UI System implementiert. Der Canvas, zu deutsch Leinwand, stellt dabei die Hauptkomponente bzw. Elternkomponente dar. Alle UI Elemente sind Kinder des Canvas und erben somit die Eigenschaften des Canvas. Unity bietet standardmäßig eine große Anzahl an UI Elementen, wie beispielsweise Buttons, Toggle-Buttons, Dropdown-Listen und Eingabefelder\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UIInteractionComponents.html}}. Der Canvas verwendet das EventSystem Objekt von Unity. Das Event System ermöglicht es, alle Touchscreen-Eingaben an die korrekten UI Elemente in der App weiterzuleiten\footnote{Vgl. \url{https://docs.unity3d.com/Manual/EventSystem.html}}.
 
-Bei der Implementierung des Canvas wird zwischen drei unterschiedlichen Render-Modi unterschieden\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UICanvas.html}}. Je nachdem welcher Modus verwendet wird, ist die grafische Oberfläche anders in das Spiel integriert.
+		Bei der Implementierung des Canvas wird zwischen drei unterschiedlichen Render-Modi unterschieden\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UICanvas.html}}. Je nachdem welcher Modus verwendet wird, ist die grafische Oberfläche anders in das Spiel integriert.
 
-\subsubsection{Screen Space - Overlay}
-Standardmäßig ist jedes Canvas als Screen Space - Overlay implementiert. Dieser Modus platziert die UI Elemente auf den Bildschirm über die komplette Szene. Die Benutzeroberfläche wird über alle anderen Grafiken, wie die Kamera-Ansicht, gezogen. Wenn die Auflösung geändert wird, passt der Canvas die Größe aller Kindelemente automatisch an die neue Auflösung an. Deshalb ist es besonders wichtig, dass alle UI Elemente unter dem Canvas hängen. 
+		\subsubsection{Screen Space - Overlay}
+			Standardmäßig ist jedes Canvas als Screen Space - Overlay implementiert. Dieser Modus platziert die UI Elemente auf den Bildschirm über die komplette Szene. Die Benutzeroberfläche wird über alle anderen Grafiken, wie die Kamera-Ansicht, gezogen. Wenn die Auflösung geändert wird, passt der Canvas die Größe aller Kindelemente automatisch an die neue Auflösung an. Deshalb ist es besonders wichtig, dass alle UI Elemente unter dem Canvas hängen. 
 
-Die folgende Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderOverlay} verdeutlicht, dass alle Elemente des Spieles hinter der Benutzeroberfläche positioniert sind.
+			Die folgende Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderOverlay} verdeutlicht, dass alle Elemente des Spieles hinter der Benutzeroberfläche positioniert sind.
 
-\begin{figure}[htbp]
-	\centering 
-	\label{renderOverlay}
-	\includegraphics[width=10cm]{pics/CanvasOverlay.png}
-	\caption{Render-Modus: Screen Space - Overlay}
-\end{figure}
+			\begin{figure}[htbp]
+				\centering 
+				\label{renderOverlay}
+				\includegraphics[width=10cm]{pics/CanvasOverlay.png}
+				\caption{Render-Modus: Screen Space - Overlay}
+			\end{figure}
 
-Die wesentliche Nachteile vom Screen Space - Overlay ist, dass der sichtbare Bereich des Spieles durch die UI Elemente verdeckt wird. Deshalb ist es besonders wichtig nur die wichtigsten Elementen immer sichtbar im Vordergrund zu lassen. Dies hat Auswirkungen auf die Positionen, Größe, Farbe und Design. Ein weiterer Nachteil ist, dass Spielelemente nicht als Teil des User Interfaces verwendet werden können. 
+			Die wesentliche Nachteile vom Screen Space - Overlay ist, dass der sichtbare Bereich des Spieles durch die UI Elemente verdeckt wird. Deshalb ist es besonders wichtig nur die wichtigsten Elementen immer sichtbar im Vordergrund zu lassen. Dies hat Auswirkungen auf die Positionen, Größe, Farbe und Design. Ein weiterer Nachteil ist, dass Spielelemente nicht als Teil des User Interfaces verwendet werden können. 
 
-Auf der Gegenseite können keine UI Elemente oder wichtige Informationen von den Gegenständen im Spiel verdeckt werden und ein weiterer Vorteil ist, dass die Position auf dem Bildschirm immer an die Auflösung angepasst wird und sich nicht ändert, unabhängig davon welche Aktionen der Spieler im Spiel ausführt oder auf welcher Hardware NoRPG gespielt wird.
+			Auf der Gegenseite können keine UI Elemente oder wichtige Informationen von den Gegenständen im Spiel verdeckt werden und ein weiterer Vorteil ist, dass die Position auf dem Bildschirm immer an die Auflösung angepasst wird und sich nicht ändert, unabhängig davon welche Aktionen der Spieler im Spiel ausführt oder auf welcher Hardware NoRPG gespielt wird.
 
-\subsubsection{Screen Space - Camera}
-Dieser Modus ähnelt dem ersten Modus sehr, aber in diesem Render-Modus wird der Canvas eine vorgegebene Distanz vor einer bestimmten Kamera platziert. Die UI Elemente werden von der bestimmen Kamera gerendert, was bedeutet, dass die Kameraeinstellungen das Erscheinungsbild der Benutzeroberfläche beeinflussen. Wenn sich die Auflösung des Bildschirms verkleinert, oder die Kameraposition und -winkel sich ändern, ändert sich der Canvas automatisch mit und passt die Größe der Elemente an.
+		\subsubsection{Screen Space - Camera}
+			Dieser Modus ähnelt dem ersten Modus sehr, aber in diesem Render-Modus wird der Canvas eine vorgegebene Distanz vor einer bestimmten Kamera platziert. Die UI Elemente werden von der bestimmen Kamera gerendert, was bedeutet, dass die Kameraeinstellungen das Erscheinungsbild der Benutzeroberfläche beeinflussen. Wenn sich die Auflösung des Bildschirms verkleinert, oder die Kameraposition und -winkel sich ändern, ändert sich der Canvas automatisch mit und passt die Größe der Elemente an.
 
-Der größte Unterschied ist allerdings, wenn 3D-Objekte in der Szene näher an der Kamera sind als die UI Elemente, werden diese auch auf dem Bildschirm vor der Benutzeroberfläche platziert. Dieses Verhalten wird in der folgenden Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderCamera} deutlich.
+			Der größte Unterschied ist allerdings, wenn 3D-Objekte in der Szene näher an der Kamera sind als die UI Elemente, werden diese auch auf dem Bildschirm vor der Benutzeroberfläche platziert. Dieses Verhalten wird in der folgenden Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderCamera} deutlich.
 
-\begin{figure}[htbp]
-	\centering 
-	\label{renderCamera}
-	\includegraphics[width=10cm]{pics/CanvasCamera.png}
-	\caption{Render-Modus: Screen Space - Camera}
-\end{figure}
+			\begin{figure}[htbp]
+				\centering 
+				\label{renderCamera}
+				\includegraphics[width=10cm]{pics/CanvasCamera.png}
+				\caption{Render-Modus: Screen Space - Camera}
+			\end{figure}
 
-Wenn die 3D-Objekte näher als die UI-Elemente sind können Informationen und Elemente, wie Buttons, verdeckt werden und die Interaktion mit diesen Elementen ist nicht mehr möglich. Allerdings ermöglicht dieser Modus, dass Spielelemente als Teil der UI, auch wenn nur kurzfristig, funktionieren können. Trotz diesen Vorteils ist dieses Verhalten komplexer und fehleranfälliger.
+			Wenn die 3D-Objekte näher als die UI-Elemente sind können Informationen und Elemente, wie Buttons, verdeckt werden und die Interaktion mit diesen Elementen ist nicht mehr möglich. Allerdings ermöglicht dieser Modus, dass Spielelemente als Teil der UI, auch wenn nur kurzfristig, funktionieren können. Trotz diesen Vorteils ist dieses Verhalten komplexer und fehleranfälliger.
 
-\subsubsection{World Space}
-In diesem Render-Modus wird der Canvas wie jedes andere Objekt in der Szene behandelt. Die Größe und Position kann manuell gesetzt werden und die UI Elemente werden basierend auf die 3D-Position entweder vor und hinter 3D-Objekten der Szene platziert. Dies ist nützlich für UIs, die dazu bestimmt sind, ein Teil der Welt zu sein. Dies wird auch als \"sterbliche\" Benutzeroberfläche bezeichnet, da diese nicht immer im Vordergrund sein muss. Im Gegensatz zum Screen Space - Camera Modus muss die UI Ebene nicht vor die Kamera platziert werden.
+		\subsubsection{World Space}
+			In diesem Render-Modus wird der Canvas wie jedes andere Objekt in der Szene behandelt. Die Größe und Position kann manuell gesetzt werden und die UI Elemente werden basierend auf die 3D-Position entweder vor und hinter 3D-Objekten der Szene platziert. Dies ist nützlich für UIs, die dazu bestimmt sind, ein Teil der Welt zu sein. Dies wird auch als \"sterbliche\" Benutzeroberfläche bezeichnet, da diese nicht immer im Vordergrund sein muss. Im Gegensatz zum Screen Space - Camera Modus muss die UI Ebene nicht vor die Kamera platziert werden.
 
-Die Größe des Canvas kann manuell eingestellt werden, aber seine Größe auf dem Bildschirm wird von dem Winkel und der Entfernung der Kamera abhängen. Andere Szeneobjekte können hinter, mittendrin oder vor dem Canvas sein. Dieses Verhalten wird in folgender Grafik \footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderWorldSpace} deutlich.
+			Die Größe des Canvas kann manuell eingestellt werden, aber seine Größe auf dem Bildschirm wird von dem Winkel und der Entfernung der Kamera abhängen. Andere Szeneobjekte können hinter, mittendrin oder vor dem Canvas sein. Dieses Verhalten wird in folgender Grafik \footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderWorldSpace} deutlich.
 
-\begin{figure}[htbp]
-	\centering 
-	\label{renderWorldSpace}
-	\includegraphics[width=10cm]{pics/CanvasWorldSpace.png}
-	\caption{Render-Modus: World Space}
-\end{figure}
+			\begin{figure}[htbp]
+				\centering 
+				\label{renderWorldSpace}
+				\includegraphics[width=10cm]{pics/CanvasWorldSpace.png}
+				\caption{Render-Modus: World Space}
+			\end{figure}
 
-Vor und Nachteile noch
-
+			Vorteile dieses Modus sind, dass alle 3D Elemente als Teil der UI verwendet werden können. Nachteile ...
+			
 \section{Visual Studio}
 
-Mit Microsoft Visual Studio ist es möglich in verschiedenen Programmiersprachen zu programmieren\footnote{vgl. Microsoft \cite{microsoft1} (2015)}.
-Bei der Installation von Unity wird dieses dabei zusätzlich installiert. Dadurch können die Skripte aus Unity in Visual Studio geöffnet und bearbeitet werden. Zusätzlich zu Visual Studio werden auch verschiedene Plug-Ins für die IDE installiert. Dabei handelt es sich unter anderem um eine ausführliche Dokumentation von allen in Unity zur Verfügung stehenden Methoden und Klassen sowie um Testtools, um verschiedene Tests auszuführen. 
+	Mit Microsoft Visual Studio ist es möglich in verschiedenen Programmiersprachen zu programmieren\footnote{vgl. Microsoft \cite{microsoft1} (2015)}. Bei der Installation von Unity wird dieses dabei zusätzlich installiert. Dadurch können die Skripte aus Unity in Visual Studio geöffnet und bearbeitet werden. Zusätzlich zu Visual Studio werden auch verschiedene Plug-Ins für die IDE installiert. Dabei handelt es sich unter anderem um eine ausführliche Dokumentation von allen in Unity zur Verfügung stehenden Methoden und Klassen sowie um Testtools, um verschiedene Tests auszuführen. 
 
 \section{C Sharp}
 
-C\# (gesprochen C Sharp) ist eine Programmiersprache welche von Microsoft entwickelt wurde. Sie wurde zusammen mit „.NET 1.0” 2002 in der Version 1 veröffentlicht und ist mittlerweile in Version 6 verfügbar.\footnote{vgl. Microsoft \cite{microsoft2} (2015)} 
+	C\# (gesprochen C Sharp) ist eine Programmiersprache welche von Microsoft entwickelt wurde. Sie wurde zusammen mit „.NET 1.0” 2002 in der Version 1 veröffentlicht und ist mittlerweile in Version 6 verfügbar.\footnote{vgl. Microsoft \cite{microsoft2} (2015)} 
 
-C\# orientiert sich dabei an den Programmiersprachen C, C++, Java, Delphi und Haskell und nutzt deren grundlegenden Konzepte. Aufgrund der Ähnlichkeit zu diesen Sprachen handelt es sich bei C\# ebenfalls um eine Objektorientierte Sprache. 
+	C\# orientiert sich dabei an den Programmiersprachen C, C++, Java, Delphi und Haskell und nutzt deren grundlegenden Konzepte. Aufgrund der Ähnlichkeit zu diesen Sprachen handelt es sich bei C\# ebenfalls um eine Objektorientierte Sprache. 
 
-Nachfolgend wird nun auf die Grundlegenden Konventionen eingegangen, denen C\# zugrunde liegen. Danach wird auf die Verwendung in Unity Skripten eingegangen.
+	Nachfolgend wird nun auf die Grundlegenden Konventionen eingegangen, denen C\# zugrunde liegen. Danach wird auf die Verwendung in Unity Skripten eingegangen.
 
 \subsection{Allgemeiner aufbau C\#}
 
-Der allgemeine Aufbau von C\# wird hier am Beispiel von einem Hello World Programm in Listing \ref{lst:c_helloworld} dargestellt. 
+	Der allgemeine Aufbau von C\# wird hier am Beispiel von einem Hello World Programm in Listing \ref{lst:c_helloworld} dargestellt. 
 
-Dabei ist in Zeile eins ein Text zu sehen. Vor diesem stehen zwei Slashes. Damit wird der Text als Kommentar gekennzeichnet. Daruch wird dieser Abschnitt vom Compiler beim Compilieren ignoriert. In Zeile zwei wird das Schlüsselwort „using” gefolgt von einem Namen, in diesem Fall „System”, genutzt. Dieses dient dazu um das Package System in dem Programm zu nutzen.
+	Dabei ist in Zeile eins ein Text zu sehen. Vor diesem stehen zwei Slashes. Damit wird der Text als Kommentar gekennzeichnet. Daruch wird dieser Abschnitt vom Compiler beim Compilieren ignoriert. In Zeile zwei wird das Schlüsselwort „using” gefolgt von einem Namen, in diesem Fall „System”, genutzt. Dieses dient dazu um das Package System in dem Programm zu nutzen.
 
-\begin{scriptsize}
-\lstset{
-	float,
-	caption=Hello World in C\#, 
-	language=[Sharp]C, 
-	frame=single,  
-	showstringspaces=false, 
-	showspaces=false, 
-	numbers=left, 
-	captionpos=b, 
-	belowcaptionskip=4pt,
-	basicstyle=\ttfamily
-} 
-
-\begin{lstlisting}[label=lst:c_helloworld]
+	\begin{scriptsize}
+	\lstset{
+		float,
+		caption=Hello World in C\#, 
+		language=[Sharp]C, 
+		frame=single,  
+		showstringspaces=false, 
+		showspaces=false, 
+		numbers=left, 
+		captionpos=b, 
+		belowcaptionskip=4pt,
+		basicstyle=\ttfamily
+	} 
+	\begin{lstlisting}[label=lst:c_helloworld]
 // A Hello World! program in C#.
 using System;
 namespace HelloWorld
@@ -139,32 +128,31 @@ namespace HelloWorld
         }
     }
 }
-\end{lstlisting}
-\end{scriptsize}
+	\end{lstlisting}
+	\end{scriptsize}
 
-Als nächstes wird ein Namespace definiert. Innerhalb von diesem eine Klasse namens „Hello”. Innerhalb von dieser wiederum befindet sich der auszuführende Code.
+	Als nächstes wird ein Namespace definiert. Innerhalb von diesem eine Klasse namens „Hello”. Innerhalb von dieser wiederum befindet sich der auszuführende Code.
 
-Dieser steht in einer Methode, die in Zeile sieben definiert wird. Bei dieser Methode handelt es sich um die Main() Methode. Diese wird beim Programmstart immer zuerst ausgeführt. In dieser Methode gibt es vier Zeilen Code, darunter ein Kommentar(in Zeile elf). Bei den anderen drei Zeilen handelt es sich um Konsolenausgaben bzw. Konsoleneingaben. Die Zeilen neun und zwölf geben jeweils Text auf der Konsole aus. In Zeile 13 wird dagegen ein Zeichen eingelesen, welches vom Benutzer eingegeben wird.
+	Dieser steht in einer Methode, die in Zeile sieben definiert wird. Bei dieser Methode handelt es sich um die Main() Methode. Diese wird beim Programmstart immer zuerst ausgeführt. In dieser Methode gibt es vier Zeilen Code, darunter ein Kommentar(in Zeile elf). Bei den anderen drei Zeilen handelt es sich um Konsolenausgaben bzw. Konsoleneingaben. Die Zeilen neun und zwölf geben jeweils Text auf der Konsole aus. In Zeile 13 wird dagegen ein Zeichen eingelesen, welches vom Benutzer eingegeben wird.
 
 \subsection{Unity Skripte}
 
-Die in Unity verwendeten C\# Skripts erben standardmäßig von der Klasse Mono-Behaviour wie in Listing \ref{lst:unity3Dc} zu sehen. Diese Vererbung sorgt dafür, dass jede Klasse verschiedene Methoden zur Verfügung hat. Dazu zählt eine Start-Methode, die beim Laden eines Objekts mit dem Skript ausgeführt wird und eine Update-Methode, die bei jeder Frameaktualisierung ausgeführt wird. Des Weiteren können weitere Methoden genutzt werden. Außerdem sorgt die MonoBehavior Vererbung dafür, dass diese Skripte mit Objekten in Unity verknüpft werden können.
+	Die in Unity verwendeten C\# Skripts erben standardmäßig von der Klasse Mono-Behaviour wie in Listing \ref{lst:unity3Dc} zu sehen. Diese Vererbung sorgt dafür, dass jede Klasse verschiedene Methoden zur Verfügung hat. Dazu zählt eine Start-Methode, die beim Laden eines Objekts mit dem Skript ausgeführt wird und eine Update-Methode, die bei jeder Frameaktualisierung ausgeführt wird. Des Weiteren können weitere Methoden genutzt werden. Außerdem sorgt die MonoBehavior Vererbung dafür, dass diese Skripte mit Objekten in Unity verknüpft werden können.
 
-\begin{scriptsize}
-\lstset{
-	float,
-	caption=Aufbau eines Unity Skriptes, 
-	language=[Sharp]C, 	
-	frame=single,  
-	showstringspaces=false, 
-	showspaces=false, 
-	numbers=left, 
-	captionpos=b, 
-	belowcaptionskip=4pt,
-	basicstyle=\ttfamily
-} 
-
-\begin{lstlisting}[label=lst:unity3Dc]
+	\begin{scriptsize}
+	\lstset{
+		float,
+		caption=Aufbau eines Unity Skriptes, 
+		language=[Sharp]C, 	
+		frame=single,  
+		showstringspaces=false, 
+		showspaces=false, 
+		numbers=left, 
+		captionpos=b, 
+		belowcaptionskip=4pt,
+		basicstyle=\ttfamily
+	} 
+	\begin{lstlisting}[label=lst:unity3Dc]
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -181,9 +169,9 @@ public class test : MonoBehaviour {
 		
 	}
 }
-\end{lstlisting}
-\end{scriptsize}	
+	\end{lstlisting}
+	\end{scriptsize}	
 
 \section{SQL}
 
-SQL ist im Allgemeinen als Akronym für „Structured Query Language“ gesehen, obwohl SQL eine eigenständige Bezeichnung ist.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.8} SQL wird dazu verwendet, um Daten in relationalen Datenbanken zu bearbeiten, abzufragen und anzulegen.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.IX} Die Syntax von SQL orientiert sich an der englischen Sprache. Um unabhängig von einem Datenbanksystem zu sein, wird häufig SQL verwendet, da SQL von vielen Datenbanken unterstützt wird.\footnote{vgl. Adams, Ralf\cite{sql2} (2012) S. 63 ff.}
+	SQL ist im Allgemeinen als Akronym für „Structured Query Language“ gesehen, obwohl SQL eine eigenständige Bezeichnung ist.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.8} SQL wird dazu verwendet, um Daten in relationalen Datenbanken zu bearbeiten, abzufragen und anzulegen.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.IX} Die Syntax von SQL orientiert sich an der englischen Sprache. Um unabhängig von einem Datenbanksystem zu sein, wird häufig SQL verwendet, da SQL von vielen Datenbanken unterstützt wird.\footnote{vgl. Adams, Ralf\cite{sql2} (2012) S. 63 ff.}
