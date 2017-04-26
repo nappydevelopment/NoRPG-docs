@@ -151,8 +151,204 @@ public class CharacterControll : MonoBehaviour {
 Chests, Händler, etc....
 
 \subsection{Pfadfindungssystem Schiff}
+Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript EditorPathScript. (siehe Listing \ref{lst:c_patheditor})
 
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Skript EditorPathScript.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:c_patheditor]
 
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EditorPathScript : MonoBehaviour {
+
+    //Color of the lines betwwen the single points
+    public Color rayColor = Color.white;
+    //List of all points of the path
+    public List<Transform> path_objs = new List<Transform>();
+    //List of all transformobjects of every point in path
+    Transform[] transforms;
+
+    //Method to draw in the Unity Editor
+    void OnDrawGizmos () {
+        //Set Color of lines to selected color
+        Gizmos.color = rayColor;
+        //Get all transformobjects of childrends
+        transforms = GetComponentsInChildren<Transform>();
+        //Clear the list
+        path_objs.Clear();
+
+        //Foreach transformobject at it to list if it is not the parentobject
+        foreach (Transform path_obj in transforms) {
+            if (path_obj != this.transform) {
+                path_objs.Add(path_obj);
+            }
+        }
+        //Draw lines between every Point
+        for(int i = 0; i < path_objs.Count; i++) {
+            Vector3 position = path_objs[i].position;
+            if (i > 0) {
+                Vector3 previos = path_objs[i - 1].position;
+                Gizmos.DrawLine(previos, position);
+                Gizmos.DrawWireSphere(position, 0.3f);
+            }
+        }
+    }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Dieses sorgt dafür, das die Pfade grafisch im Unity Editor angezeigt werden. Dieses Skript zeichnet dabei von einem Startpunkt zum nächsten eine Linie, solange, bis der letzte Punkt erreicht wird. Dadurch wird es möglich die Pfade grafisch zu bearbeiten und erleichtert so die Arbeit. 
+Nun wird beschrieben, wie das Schiff dem Pfad folgt, sobald der Player den Pfad ausgewählt hat. Dabei wird auf den Pfad von Insel eins zu zwei eingegangen. Für alle anderen Pfade ist das vorgehen identisch.
+
+Über ein Userinterface wählt der Player den betroffenen Pfad aus. Dabei wird dieser über einen Button ausgewählt. Sobald dieser geklickt wurde wird eine Funktion in Listing \ref{lst:methode} ausgeführt. Diese selektiert den gewünschten Pfad aus den verfügbaren Pfaden und setzt den boolean playerOnShip auf true. 
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode selectFirstClass, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:methode]
+
+public void selectFirstClass () {
+//if player is not on the same Island
+ if (lastButtonClicked != "1") {
+  hud.SetActive(false);
+  // set path to the island on that the player is to island 1
+  path = GameObject.Find("Path" + lastButtonClicked + "_1").GetComponent<EditorPathScript>();
+  lastButtonClicked = "1";
+  playerOnShip = true;
+ }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode playerGetOnShip ausgeführt. Der Code ist in Listing \ref{lst:methode1} zu sehen. Durch diese Methode bewegt sich der Player mit dem Schiff in der selben Geschwindigkeit. Darüberhinaus blokiert diese Funktion die Eingabemöglichkeiten des Players während der Fahrt.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode playerGetOnShip, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:methode1]
+
+public void playerGetOnShip () {
+ if (!playerOnShip) {
+  cc.enabled = false;
+
+  player.GetComponent<Animator>().SetFloat("speed", 0.0f);
+  player.GetComponent<Animator>().SetFloat("direction", 0.0f);
+  player.transform.position = ship.transform.position;
+
+  player_mesh.SetActive(false);
+  player_text.SetActive(false);
+
+  follow.transform.parent = ship.transform;
+  follow.transform.position = ship.transform.position + new Vector3(2.25f, 18.07f, -7.07f);
+
+  minidot.SetActive(false);
+
+  hud.SetActive(true);
+ }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Des Weiteren wird die Funktion moveShip ausgeführt. Diese ist für die eigentliche Bewegung des Schiffes verantwortlich. Sobald playerOnShip auf true gesetzt ist, wird zuerst die Distanz zwischen dem ersten Punkt des Pfades und des Schiffes gespeichert und die Position des Schiffes an diese stelle verschoben. Anschließend wird die drehung des Schiffes an die Fahrtrichtung angepasst und gedreht. Sobald die Distanz zwischen der aktuellen Position des Schiffes und dem nächsten Punkt des Pfades kleiner ist wie eine minimale Distanz, wird die currentWayPointId um eins erhöhrt. Solange dieser Wert nicht größer ist wie die Anzahl der Punkte des Pfades werden diese Schritte wiedserholt und das Schiff bewegt sich entlang des Pfades.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode moveShip, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:methode2]
+
+public void moveShip () {
+ //if player is on the ship
+ if (playerOnShip) {
+  //get the distance between ship and the first point
+  float distance = Vector3.Distance(path.path_objs[currentWayPointId].position, transform.position);
+  //set the ship to the first point
+  transform.position = Vector3.MoveTowards(transform.position, path.path_objs[currentWayPointId].position, Time.deltaTime * speed);
+  //set the player on ship
+  player.transform.position = transform.position;
+
+  //rotate the ship in direction to the next point
+  var rotation = Quaternion.LookRotation(path.path_objs[currentWayPointId].position - transform.position);
+  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+  player.transform.rotation = ship.transform.rotation;
+
+  //if the distance between the ship and the point is less then reachDistance raise the currentwaypointid
+  if (distance <= reachDistance) {
+   currentWayPointId++;
+  }
+
+  //if the currentwaypoint is greater equal the size of the list
+  if (currentWayPointId >= path.path_objs.Count) {
+   //set ship to the last position
+   this.transform.position = path.path_objs[path.path_objs.Count-1].position;
+   //set playershipped status to true and make some other things
+   playerShipped = true;
+   cc.enabled = true;
+   playerOnShip = false;
+   player_mesh.SetActive(true);
+   player_text.SetActive(true);
+   follow.transform.parent = player.transform;
+   follow.transform.position = player.transform.position;
+
+   minidot.SetActive(true);
+   player.transform.position = new Vector3(path.path_objs[path.path_objs.Count - 1].position.x, 6.3f, path.path_objs[path.path_objs.Count - 1].position.z);
+                
+   currentWayPointId = 0;
+  }
+ }
+}
+    
+\end{lstlisting}
+\end{scriptsize}
 
 \subsection{Datenimport aus JSON}
 
