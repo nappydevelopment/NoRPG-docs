@@ -141,14 +141,17 @@ public class CharacterControll : MonoBehaviour {
 
 
 
-
-
 \subsection{Portale}
+
+
 
 \subsection{Minimap}
 
+
+
 \subsection{Interaktionsmöglichkeiten}
 Chests, Händler, etc....
+
 
 \subsection{Pfadfindungssystem Schiff}
 Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript EditorPathScript. (siehe Listing \ref{lst:c_patheditor})
@@ -349,6 +352,93 @@ public void moveShip () {
 
 \subsection{Datenimport aus JSON}
 
+Der Datenimport aus einer JSON-Datei wird genau zwei mal im Spiel verwendet. Die Standarts und die Texte der NPCs stehen in JSOn-Notation bereit. Dabei werden beide Dateien unterschiedlich ausgelesen und genutzt. Zuerst wird auf die Standarts eingegangen und anschleißend auf die Verarbeitung der Datei mit Text. 
+
+\subsubsection{Standarts JSON}
+Die JSON für die Standarts ist ein wichtiger Bestandteil des Spieles. In dieser Datei befinden sich alle wichtigen Infos zu den Standarts und deren dazugehörigen Spiele. Diese Datei liegt Zentral auf einem Server und kann dort gewartet und gepflegt werden. Dadurch ist es möglich, zusätzliche Standarts und Spiele einzufügen, ohne das der Nutzer die App aktuallisieren muss. Nun wird der grobe Ablauf, gefolgt von einer detailierten Beschreibung, erklärt und beschrieben.
+
+Damit der Nutzer die aktuelle Datei zur Verfügung hat, versucht das Spiel eine zu Beginn eine Verbindung zu dem Server aufzubauen. Gelingt dies, wird die Datei von Server geladen und auf dem Handy gespeichert. Nachdem die Datei gespeichert wurde, wird sie in das Spiel geladen. Dazu wird aus dem JSON eine Liste erstellt, welche überall im Spiel nutzbar ist.
+
+Für das Laden und verarbeiten sind fünf Klassen verantwortlich. Im Folgenden wird nur deatiliert auf die Klasse WebJSONConfigReader eingegangen. Die anderen Klassen sind im Anhang abgebildet und werden nur erwähnt.
+
+Die Klasse MappingStandardsToCourses ist die Datenhaltungsklasse. In dieser ist die Struktur der einzelnen Objekte geregelt. In der Klasse MappingStandardsToCoursesBean spiegelt die Struktur der JSON-Datei wieder. 
+
+Der WebJSONConfigReader wird in der Klasse LoadingScreen genutzt. Dort wird eine Instanz dieser Klasse erzeugt und es wird die Methode LoadSettings ausgeführt und in der Variable Settings gespeichert. Diese Methode ist in Listing \ref{lst:methode3} zu sehen.
+
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode LoadSettings, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:methode3]
+
+public MappingStandardsToCourses LoadSettings() {
+
+ WWW www = new WWW(settingsURL);
+ while (!www.isDone) { }
+  string json;
+  string LocalFilePath = Application.persistentDataPath + "/v1.json";
+
+  if (string.IsNullOrEmpty(www.error)) {
+   json = www.text;
+   File.WriteAllText(LocalFilePath, json);
+  } else if (File.Exists(LocalFilePath)) {
+   json = File.ReadAllText(LocalFilePath);
+  } else {
+   json = "";                
+   File.WriteAllText(LocalFilePath, json);
+  }
+  Debug.Log(json.ToString());
+  MappingStandardsToCoursesBean settingsBean = MappingStandardsToCoursesBean.CreateFromJSON(json);
+  string json2 = JsonUtility.ToJson(settingsBean);
+  Debug.Log(json2.ToString());
+
+  List<Classes> classes = new List<Classes>();
+  foreach (var classe in settingsBean.classes) {
+   List<Courses> courses = new List<Courses>();
+   foreach (var course in classe.courses) {
+    List<Standards> standards = new List<Standards>();
+    foreach (var standard in course.standards) {
+     List<Games> games = new List<Games>();
+     List<string> vor = new List<string>();
+     List<string> nach = new List<string>();
+     foreach (var game in standard.games) {
+      games.Add(new Games(game.id, game.name, game.url));
+     }
+     foreach (var vorbedingung in standard.vorbedingungen) {
+      vor.Add(vorbedingung);
+     }
+     foreach (var nachbedingung in standard.nachbedingungen) {
+      nach.Add(nachbedingung);
+     }
+     Games[] g = games.ToArray();
+     string[] v = vor.ToArray();
+     string[] n = nach.ToArray();
+     standards.Add(new Standards(standard.name, v, n, g));
+    }
+    Standards[] s = standards.ToArray();
+    courses.Add(new Courses(course.name, s));
+   }
+   Courses[] c = courses.ToArray();
+   classes.Add(new Classes(classe.name, c));
+  }
+  Classes[] cla = classes.ToArray();
+  return new MappingStandardsToCourses(cla);
+ }
+\end{lstlisting}
+\end{scriptsize}
+
+In dieser wird zu Beginn ein neues WWW Objekt erstellt. Dieses baut eine Verbindung zum Server auf. Anschließend wird in Zeile 9 überprüft, ob es zu einem Fehler beim Verbindungsaufbau gekommen ist. Wenn es zu keinem Fehler gekommen ist, wird der Inhalt des WWW Objekts in eine Datei geschrieben und gespeichert. Für den Fall das ein Fehler aufgetretten ist und das WWW Objekt keine Verbindung zum Server aufgebaut werden kann, wird geprüft ob bereits eine ältere Datei vorhanden ist, wenn ja, wird der Text aus dieser Datei zum Erzeugen des Objektes genutzt. Anschlißend wird in Zeile 19 aus dem Text eine JSON Struktur erzeugt. Aus dieser wird anschließend in mehreren Schritten ein mehrdimensionaler Array erzeugt und zurückgegeben.
+\subsubsection{NPCText JSON}
 
 \subsection{Datenimport aus / in Datenbank}
 
