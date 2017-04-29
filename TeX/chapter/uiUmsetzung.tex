@@ -1,17 +1,27 @@
 \section{Benutzerschnittstelle}
-	In diesem Abschnitt dieses Kapitels wird auf die Implementierung der Benutzerschnittstelle eingegangen. Wie schon bereits im SRS erwähnt handelt es sich bei der Benutzerschnittstelle um die grafische Oberfläche der Android Anwendung. Dafür wird zunächst auf die Umsetzung eingegangen und abschließend die Evaluation der Usabilty behandelt.
+	In diesem Abschnitt dieses Kapitels wird auf die Umsetzung der Benutzerschnittstelle eingegangen. Wie schon bereits im SRS erwähnt handelt es sich bei der Benutzerschnittstelle um die grafische Oberfläche der Anwendung. Dafür wird zunächst auf die Umsetzung der verschiedenen UI Elemente eingegangen sowie relevante Funktionalitäten beschrieben. Abschließend wird die Evaluation des Usability Tests behandelt. 
 		
 	\subsection{Benutzeroberfläche}	
-		Der Prozess für die Umsetzung der Benutzeroberfläche für NoRPG startet sehr früh in der Implementierung. 
+		Die Implementierung der Benutzeroberfläche ist von Anfang der Umsetzungsphase bis zum Ende ein kontinuierlicher, iterativer und wichtiger Entwicklungsprozess. Es beginnt mit einer ganz simplen Steuerung zum Testen von Funktionen bis zum Perfektionieren aller benötigter User Interface Elemente. Als erstes werden die Startbildschirme und der Registrierungsprozess behandelt. 
 		
 		\subsubsection{Startbildschirm und Registrierung}
-			Overlay und World
+			Das aller erste, was der Spieler von NoRPG sieht und womit er interagieren darf, ist der Startbildschirm. Dieser ist besonders wichtig, da hier die ersten Eindrücke schon gesammelt werden. Bei dem Startbildschirm wird zwischen zwei Varianten unterschieden. In der ersten Variante startet der Spieler NoRPG das erste mal oder ist nicht mit seinem Account angemeldet. In der zweiten Variante ist der Benutzer schon angemeldet. Diese beide Varianten sind im oberen Bereich der Grafik \ref{StartAndRegisterUI} dargestellt.
 			
-			Dialogebene = 1
+			Der Startbildschirm wurde nach dem Motiv "Weniger ist mehr" umgesetzt 
+		
+			Overlay
+			
+			Registrierung im Tabellen format für die schnelle übersicht
+			
+			und World
+			
+			Dialogebene = 1 (beim startbildschirm, falls passwort falsch oder so, beim registrieren beim abbrechen)
+			
+			Die Grafik \ref{StartAndRegisterUI} stellt beide Startbildschirme (oben) und einen Teil des Registrierungsprozesses (unten) dar. 
 			
 			\begin{figure}[htbp]
 				\centering 
-				\label{RegisterUI}
+				\label{StartAndRegisterUI}
 				\includegraphics[width=\textwidth]{pics/beforeGameStarts.png}
 				\caption{User Interface: Startbildschirm und Registrierung}
 			\end{figure}
@@ -62,6 +72,8 @@
 		
 		\subsubsection{Bewertung}
 			-- wurde als -2 gewertet bis ++ +2
+			
+			Häufigste Android Version, Marke
 			
 			Anteil Kinder (von 6 bis einschließlich 12 Jahre) am Gesamten.
 			Anteil Teenager (13 - 19)
