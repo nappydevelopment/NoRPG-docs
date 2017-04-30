@@ -11,7 +11,7 @@
 				\centering 
 				\label{startScreenUI}
 				\includegraphics[width=\textwidth]{pics/startbildschirmeScreen.png}
-				\caption{User Interface: Startbildschirm und Registrierung}
+				\caption{User Interface: Startbildschirm}
 			\end{figure}
 			
 			Beide Varianten ähneln sich nicht nur im aussehen sondern auch in der Implementierung. Die Startbildschirme wurden nach dem Gestaltungsprinzip Figure/Ground entworfen und umgesetzt. Figure/Ground unterteilt die Wahrnehmung visueller Informationen in Figure (Vordergrund) und Ground (Hintergrund). Dabei liegt der Fokus auf dem Vordergrund. Das Design und Aussehen der Komponenten ist dabei Clean und Simple, zu Deutsch sauber und einfach. Dieter Rams beschreibt in seinem Buch "Weniger, aber besser / Less but better" \cite{ramsDesign}, dass einfaches Design nicht über die Subtraktion von Dingen von einem Design handelt, sondern die Gesamteffektivität des Designs zu verbessern. Elemente in der Benutzeroberfläche haben so wenig Text und Farbe wie notwendig und werden, falls möglich, nur mit Symbole abgebildet. Dabei wird ein intuitives Design verwendet, welches die Spieler wahrscheinlich aus anderen Spielen schon kennen und nicht neu lernen müssen.
@@ -22,24 +22,22 @@
 			
 			Die Startbildschirme sind mit dem Standard Render-Modus Screen Space - Overlay umgesetzt worden. Dieser Modus unterstützt das Gestaltungsprinzip Figure/Ground, indem die UI Elemente vor den Hintergrund gerendert werden. Fernerhin kann der Spieler sich innerhalb des Startbildschirm nicht bewegen oder andere Interaktionen ausführen, sodass ein anderer Render-Modus notwendig wäre.
 
-			Auf Grund der Tatsache das es zwei Startbildschirme gibt, muss bevor der anzuzeigende Startbildschirm angezeigt wird eine Überprüfung stattfinden. Die aller erste Szene die in NoRPG geladen wird ist eine fast leere Szene, die nur aus dem Sternenhimmel, einem kleinen Textfeld und einem Skript besteht. Diese Szene ist minimal gestaltet, damit das Laden und somit das Ausführen des Skriptes sehr schnell durchgeführt werden kann, so dass der Spieler diese Szene erst gar nicht bemerkt. Das Skript prüft, ob die lokale Datei mit den Informationen über den Spielstand des Spielers vorhanden und vollständig ist. Ist dies der Fall, kann davon ausgegangen werden, dass der Spieler angemeldet ist und die zweite Variante des Startbildschirmes wird geladen. Der Sternenhimmel ist notwendig, falls die Ladezeit länger ist, damit der Spieler keinen weißen Hintergrund sieht. Das Textfeld in dieser Szene ist angebracht, damit im Fehlerfall der Spieler informiert wird.
+			Auf Grund der Tatsache das es zwei Startbildschirme gibt, muss bevor der anzuzeigende Startbildschirm angezeigt wird eine Überprüfung stattfinden. Die aller erste Szene die in NoRPG geladen wird, ist eine nahezu leere Szene, die nur aus dem Hintergrund, einem kleinen Textfeld und einem Skript besteht. Diese Szene ist deshalb so minimalistisch gestaltet, damit das Laden und somit das Ausführen des Skriptes sehr schnell durchgeführt werden kann, so dass der Spieler im besten Fall diese Szene erst gar nicht sieht und bemerkt. Das Skript prüft, ob die in Kapitel 5.1 beschriebene lokale Datei, mit den Informationen über den Spielstand des Spielers, vorhanden und vollständig ist. Ist dies der Fall, kann davon ausgegangen werden, dass der Spieler angemeldet ist und die zweite Variante des Startbildschirmes wird geladen. Der Hintergrund ist notwendig, falls das Laden länger braucht der Spieler keinen weißen beziehungsweise leeren Hintergrund sieht. Das Textfeld in dieser Szene ist angebracht, damit der Spieler im Fehlerfall informiert wird.
 			
-			Die nächste Benutzeroberfläche die der Spieler sehen kann ist die Registrierung. Ein Teil des Registrierungsprozesses ist in Abbildung \ref{registerUI} abgebildet.
-			
-			Tabellenformat
+			Die nächste Benutzeroberfläche, die behandelt wird, ist die Registrierung. Ein Teil des Registrierungsprozesses ist in Abbildung \ref{registerUI} abgebildet.
 			
 			\begin{figure}[htbp]
 				\centering 
 				\label{registerUI}
 				\includegraphics[width=\textwidth]{pics/registerScreen.png}
-				\caption{User Interface: Startbildschirm und Registrierung}
+				\caption{User Interface: Registrierung}
 			\end{figure}
+		
+			Es fällt auf, dass auch hier das Gestaltungsprinzip Ground/Figure umgesetzt wurde. Dies hat die gleichen Gründe wie bei den Startbildschirmen und die Konsistenz außerhalb des eigentlichen Spieles bleibt erhalten. Neben diesen Gestaltungsprinzip wurde versucht das Prinzip Simple und Clean weiter fortzuführen, allerdings handelt es sich bei der Registrierung um einen komplexeren Prozess. Daher wurde ein weiteres Gestaltungsprinzip verwendet. Die UI Elemente sind tabellarisch angeordnet und deren relative Abstände gruppieren einzelne Elemente. Dieses Prinzip wird Proximity genannt. Dadurch weiß der Spieler welche Eingabefelder zu welchen Textfeldern gehören und kann somit die korrekten Informationen angeben. Auch hier ist das User Interface in zwei Abschnitte unterteilt. Der erste Abschnitt ist in der Mitte des Bildschirms positioniert und bildet das Registrierungsformular ab. Der zweite Abschnitt ist am unteren Teil des Bildes und dient zur Navigation durch den gesamten Registrierungsprozess.
 			
-			und World (Animieren der Charaktere bei Auswahl)
+			Der größte Unterschied ist allerdings, dass diese Szene mit dem Render-Modus World Space implementiert wurde. Der letzte Schritt im Registrierungsprozess ist die Auswahl des Charakters. Damit die einzelnen Charaktere in die UI integriert werden konnten, musste dieser Modus umgesetzt werden. Dadurch wurde möglich, dass zunächst die 3D Objekte der Welt nicht von den UI Elementen verdeckt werden und anschließend kann der Spieler auf seinen gewünschten Charakter klicken und es wird eine Animation ausgeführt. 
 			
-			Dialogebene = 1 (beim startbildschirm, falls passwort falsch oder so, beim registrieren beim abbrechen)
-			
-			Ein ganz wichtiger Punkt bei den Startbildschirmen und Registrierung ist die Konsistenz
+			Im nächsten Unterkapitel wird die Benutzeroberfläche innerhalb des Spieles behandelt. 
 		
 		\subsubsection{Head Up Display im Spiel}
 			Um die ergonomie zu erhöhen kann der linke joystick i einem festgelegten bereich überall angelegt werden
