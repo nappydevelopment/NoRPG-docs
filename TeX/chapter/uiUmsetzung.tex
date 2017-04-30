@@ -5,26 +5,41 @@
 		Die Implementierung der Benutzeroberfläche ist von Anfang der Umsetzungsphase bis zum Ende ein kontinuierlicher, iterativer und wichtiger Entwicklungsprozess. Es beginnt mit einer ganz simplen Steuerung zum Testen von Funktionen bis zum Perfektionieren aller benötigter User Interface Elemente. Als erstes werden die Startbildschirme und der Registrierungsprozess behandelt. 
 		
 		\subsubsection{Startbildschirm und Registrierung}
-			Das aller erste, was der Spieler von NoRPG sieht und womit er interagieren darf, ist der Startbildschirm. Dieser ist besonders wichtig, da hier die ersten Eindrücke schon gesammelt werden. Bei dem Startbildschirm wird zwischen zwei Varianten unterschieden. In der ersten Variante startet der Spieler NoRPG das erste mal oder ist nicht mit seinem Account angemeldet. In der zweiten Variante ist der Benutzer schon angemeldet. Diese beide Varianten sind im oberen Bereich der Grafik \ref{StartAndRegisterUI} dargestellt.
-			
-			Der Startbildschirm wurde nach dem Motiv "Weniger ist mehr" umgesetzt 
-		
-			Overlay
-			
-			Registrierung im Tabellen format für die schnelle übersicht
-			
-			und World
-			
-			Dialogebene = 1 (beim startbildschirm, falls passwort falsch oder so, beim registrieren beim abbrechen)
-			
-			Die Grafik \ref{StartAndRegisterUI} stellt beide Startbildschirme (oben) und einen Teil des Registrierungsprozesses (unten) dar. 
+			Das aller erste, was der Spieler von NoRPG sieht und womit er interagieren darf, ist der Startbildschirm. Dieser ist besonders wichtig, da hier die ersten Eindrücke schon gesammelt werden. Bei dem Startbildschirm wird zwischen zwei Varianten unterschieden. In der ersten Variante startet der Spieler NoRPG das erste mal oder ist nicht mit seinem Account angemeldet. In der zweiten Variante ist der Benutzer schon angemeldet. Diese beide Varianten sind in der Grafik \ref{startScreenUI} dargestellt.
 			
 			\begin{figure}[htbp]
 				\centering 
-				\label{StartAndRegisterUI}
-				\includegraphics[width=\textwidth]{pics/beforeGameStarts.png}
+				\label{startScreenUI}
+				\includegraphics[width=\textwidth]{pics/startbildschirmeScreen.png}
 				\caption{User Interface: Startbildschirm und Registrierung}
 			\end{figure}
+			
+			Beide Varianten ähneln sich nicht nur im aussehen sondern auch in der Implementierung. Die Startbildschirme wurden nach dem Gestaltungsprinzip Figure/Ground entworfen und umgesetzt. Figure/Ground unterteilt die Wahrnehmung visueller Informationen in Figure (Vordergrund) und Ground (Hintergrund). Dabei liegt der Fokus auf dem Vordergrund. Das Design und Aussehen der Komponenten ist dabei Clean und Simple, zu Deutsch sauber und einfach. Dieter Rams beschreibt in seinem Buch "Weniger, aber besser / Less but better" \cite{ramsDesign}, dass einfaches Design nicht über die Subtraktion von Dingen von einem Design handelt, sondern die Gesamteffektivität des Designs zu verbessern. Elemente in der Benutzeroberfläche haben so wenig Text und Farbe wie notwendig und werden, falls möglich, nur mit Symbole abgebildet. Dabei wird ein intuitives Design verwendet, welches die Spieler wahrscheinlich aus anderen Spielen schon kennen und nicht neu lernen müssen.
+			
+			Der Vordergrund von beiden Varianten ist in zwei Abschnitte unterteilt. Der erste Abschnitt ist in der Mitte des Bildschirm positioniert und bindet die Aufmerksamkeit des Spielers. In der ersten Variante besteht dieser aus zwei Eingabefelder für die Benutzerdaten, dem Log-In Button und einem Textfeld, um sich zu registrieren. In der zweiten Variante allerdings besteht dieser Abschnitt nur aus einem Button zum Starten des Spieles und einem Textfeld für die Abmeldung. Der zweite Abschnitt ist an der unteren Seite des Bildes positioniert und besteht aus einem Button für die Einstellungen. Dabei öffnet sich kein Fenster, sondern werden Symbole für die Einstellungsmöglichkeiten ein- und ausgeblendet.
+			
+			Der Hintergrund setzt sich aus dem Logo und einem Sternenhimmel zusammen. Diese Hintergrundelemente sind 3D-Elemente, welche in der Spielwelt angebracht sind und durch eine Kamera aufgezeichnet werden. Neben diesen Hintergrundelementen gibt es ein weiteres Element, welches erst durch die Betätigung des Log-In Buttons auftaucht. Es handelt sich um ein drehendes Icon, dass den Ladeprozess darstellt und somit dem Spieler ein Feedback gibt. Der Hintergrund ist sehr schlicht aber farbenfroh gestaltet. Zudem sind die Sterne am Himmel animiert, welches einen besonders positiven Eindruck hinterlassen soll.
+			
+			Die Startbildschirme sind mit dem Standard Render-Modus Screen Space - Overlay umgesetzt worden. Dieser Modus unterstützt das Gestaltungsprinzip Figure/Ground, indem die UI Elemente vor den Hintergrund gerendert werden. Fernerhin kann der Spieler sich innerhalb des Startbildschirm nicht bewegen oder andere Interaktionen ausführen, sodass ein anderer Render-Modus notwendig wäre.
+
+			Auf Grund der Tatsache das es zwei Startbildschirme gibt, muss bevor der anzuzeigende Startbildschirm angezeigt wird eine Überprüfung stattfinden. Die aller erste Szene die in NoRPG geladen wird ist eine fast leere Szene, die nur aus dem Sternenhimmel, einem kleinen Textfeld und einem Skript besteht. Diese Szene ist minimal gestaltet, damit das Laden und somit das Ausführen des Skriptes sehr schnell durchgeführt werden kann, so dass der Spieler diese Szene erst gar nicht bemerkt. Das Skript prüft, ob die lokale Datei mit den Informationen über den Spielstand des Spielers vorhanden und vollständig ist. Ist dies der Fall, kann davon ausgegangen werden, dass der Spieler angemeldet ist und die zweite Variante des Startbildschirmes wird geladen. Der Sternenhimmel ist notwendig, falls die Ladezeit länger ist, damit der Spieler keinen weißen Hintergrund sieht. Das Textfeld in dieser Szene ist angebracht, damit im Fehlerfall der Spieler informiert wird.
+			
+			Die nächste Benutzeroberfläche die der Spieler sehen kann ist die Registrierung. Ein Teil des Registrierungsprozesses ist in Abbildung \ref{registerUI} abgebildet.
+			
+			Tabellenformat
+			
+			\begin{figure}[htbp]
+				\centering 
+				\label{registerUI}
+				\includegraphics[width=\textwidth]{pics/registerScreen.png}
+				\caption{User Interface: Startbildschirm und Registrierung}
+			\end{figure}
+			
+			und World (Animieren der Charaktere bei Auswahl)
+			
+			Dialogebene = 1 (beim startbildschirm, falls passwort falsch oder so, beim registrieren beim abbrechen)
+			
+			Ein ganz wichtiger Punkt bei den Startbildschirmen und Registrierung ist die Konsistenz
 		
 		\subsubsection{Head Up Display im Spiel}
 			Um die ergonomie zu erhöhen kann der linke joystick i einem festgelegten bereich überall angelegt werden
