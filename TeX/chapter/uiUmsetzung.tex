@@ -39,11 +39,8 @@
 			
 			Im nächsten Unterkapitel wird die Benutzeroberfläche innerhalb des Spieles behandelt. 
 		
-		\subsubsection{Head Up Display im Spiel}
-			Um die ergonomie zu erhöhen kann der linke joystick i einem festgelegten bereich überall angelegt werden
-			Da es sich um KOmponenten handelt die immer da sein müssen wurde sich für das normale UI Screen Space - OVerlay ausgewählt
-			
-			Dialogebene = 2. Menu fenster bildet die erste Dialogebene nach der Startebene. Nach diesem gibt es noch eine weitere Ebene. dieser Dialog dient zum Abbrechen, warnt vor bevorstehenden Aktionen. Die maximale Dialogebene ist also 2. 
+		\subsubsection{Head-Up Display im Spiel}
+			Das Head-Up Display ist das User Interface innerhalb des Spieles. Grundsätzlich kann das HUD in vier Abschnitte unterteilt werden, welche an die Ecken des Bildschirmes positioniert sind. Diese Positionierung hat den Vorteil, dass der Spieler nicht durch die UI Elemente abgelenkt wird und diese einfach mit den Händen zu erreichen sind. Abbildung \ref{alwaysOnUI} stellt die standardmäßige Ansicht von NoRPG dar.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -52,11 +49,23 @@
 				\caption{User Interface: Head-Up Display}
 			\end{figure}
 		
+			Das ganze HUD ist mit dem Render Modus Screen Space - Overlay implementiert. Das HUD steht nicht im Fokus, darf allerdings nicht durch 3D Objekte verdeckt werden. Die HUD Elemente dienen zur Steuerung des Spieles und sind genauso wichtig wie das Spiel selber.
+			
 			\paragraph{Joystick}
-			
+				Der Joystick befindet sich in der unteren linken Ecke. Der Spieler kann mit Hilfe des Joysticks sich im Spiel fortbewegen. Von allen UI Elementen die NoRPG implementiert wurden, ist der Joystick das einzige Elemente, welches nicht von Unity standardmäßig mitgeliefert wird. Bei dem Joystick handelt es sich um ein Asset, welches aus dem Unity Assetstore erworben wurde. Die Besonderheit ist, dass der Joystick aus drei Elementen besteht, welche übereinander liegen. 
+				
+				Das oberste Element ist der sogenannte Stick, das hellgraue Kreiselement. Der Spieler interagiert mit dem Stick und kann diesen in alle Richtungen bewegen. Diese Bewegungen werden dann anschließend an den Charakter übergeben. 
+				
+				Bei dem zweiten Element handelt es sich um die Basis des Joysticks. Dieser verändert seine Position nicht und dient zum einen der Orientierung und begrenzt den Radius des Sticks. 
+				
+				Das unterste Elemente wird als Touch Zone bezeichnet. Diese ermöglicht, dass der Spieler seinen Daumen in eine beliebige Position in einem Bereich setzen kann und der Joystick wird genau unter dem Daumen platziert. Dies erhöht die Ergonomie beim Spielen, da kleine und große Hände unterschiedliche Komfortzonen haben.
+				
+				Erst durch die Kombination aller drei Elemente wird die Steuerung intuitiv und gut.
+				
 			\paragraph{Interaktionbuttons}
-			
-			\paragraph{Menu und Karte}
+				Die Buttons für die Interaktionen mit den Spielelementen sind an der unteren rechten Ecke positioniert. Es wird zwischen zwei Buttons unterschieden. Der rechte Button, der A-Button, ist für das Starten der Interaktion verantwortlich. Wenn
+				
+				Es gibt auch Situationen in den beide Buttons die gleiche Funktion ausführen. Zum Beispiel bei einer längeren Konversation über mehrere Stufen.
 			
 				\begin{figure}[htbp]
 					\centering 
@@ -64,6 +73,18 @@
 					\includegraphics[width=\textwidth]{pics/userInterface.png}
 					\caption{User Interfaces: Kommunikation, Menu und Einstellungen-Fenster}
 				\end{figure}
+			
+			\paragraph{Menu}
+				Dialogebene = 2. Menu fenster bildet die erste Dialogebene nach der Startebene. Nach diesem gibt es noch eine weitere Ebene.
+				dieser Dialog dient zum Abbrechen, warnt vor bevorstehenden Aktionen. Die maximale Dialogebene ist also 2. 
+			
+			\paragraph{Karte}
+				Die Karte im oberen rechten Eck des Bildschirms wird als Mini Map bezeichnet. Sie bietet dem Spieler einen Überblick über seine aktuelle Position. Realisiert wurde diese Mini Map mit einer zweiten Kamera, die von oben auf den Spieler schaut.
+				
+				Da zwei Kameras, die alles aufnehmen viel zu Performance aufwändig wäre, wurden viele Einstellungen in der Mini Map Kamera geändert. Diese rendert nicht mit der gleichen Qualität wie die richtige Kamera und zeigt auch nicht alle Elemente an. Zudem werden Schatten in der Mini Map nicht gerendert. Die Mini Map ist am Player Objekt attached und bewegt sich mit dem Spieler mit.
+				
+				Beim klicken auf die Mini Map wird komplette Karte der aktuellen Spielwelt geöffnet. Diese komplett Übersicht der Welt wurde ebenfalls mit einer Kamera umgesetzt. Der Unterschied allerdings ist, dass diese Kamera nur eingeschaltet ist, wenn der Spieler auf die Mini Map klickt. Zudem ist diese Kamera nicht am Spieler angebracht sondern schwebt über der ganzen Szene und zeigt alle Elemente in diesem Bereich. Hier gilt auch, dass die Kamera nicht in gleicher Qualität aufzeichnet und Schatten werden auch nicht gerendert. Während die Karte offen ist kann der Spieler nicht das Menü öffnen oder eine Interaktion starten, allerdings kann er den Joystick verwenden und sich bewegen. Dies ist der Fall, falls der Spieler nicht weiß in welche Richtung er läuft die Karte eine Orientierung bietet. Die Karte kann während dem Laufen geöffnet und geschlossen werden.
+			
 		
 	\subsection{Usability Evaluation}
 		Ein Usability Test wird durchgeführt, um die Gebrauchstauglichkeit einer Software oder Hardware mit den potenziellen Benutzern zu überprüfen. Usability wird durch die Attribute Erlernbarkeit, Effizienz, Einprägsamkeit, Fehlerrate und Zufriedenheit\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 26} beschrieben. Unter dem Attribut Erlernbarkeit beschreibt Nielsen in seinem Buch, dass die Anwendung leicht zu erlernen sein muss, damit der Benutzer in kurzer Zeit beginnen kann das Spiel zu spielen. Dazu zählt beispielsweise die Steuerung. Diese ist wichtig, damit der Benutzer sich im Spiel intuitiv bewegen kann. So bald der Spieler das System gelernt und verstanden hat, soll ein hohes Maß an Produktivität möglich sein. Dies wird als Effizienz bezeichnet. Das System sollte allerdings leicht zu merken und einprägsam sein, so dass auch der Gelegenheitsbenutzer in der Lage ist, nach einer gewissen Zeit ohne Verwendung der Anwendung, in das Spiel zurückzukehren, ohne alles nochmals neu lernen zu müssen. Nielsen weißt zudem darauf hin, dass Fehler für den Benutzer sehr frustrierend sein können. Daher sollte das System eine geringe Fehlerquote haben, so dass Benutzer bei der Verwendung nur wenig Fehler machen und falls Probleme auftauchen, diese den Spaß am Spielen nicht einschränken. Das letzte Attribut beschreibt den Gesamteindruck\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 27ff.}.
