@@ -139,8 +139,52 @@ public class CharacterControll : MonoBehaviour {
 
 \subsection{Kamera}
 
+Bei der Kamera handelt es sich um ein Gameobject, welches dem Spieler folgt. Dafür ist an dem Spieler ein Objekt namens follow angehängt, auf das die Kamera ziegt und die Kamera hat eine Referenz auf das Skript ThirdPersonCamera.cs. In diesem wird das Verhalten der Kamera gesteuert. Dazu werden die Methoden aus dem Listing \ref{lst:lateupdate} verwendet. In LateUpdate wird dabei die Position der Kamera in bezug zum Spieler gesetzt. Dabei befindet sich die Kamera immer in einem Kreis, um dem Spieler herum, wodurch die Sicht nicht eingeschränkt wird.
 
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode LateUpdate aus ThirdPersonCamera.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:lateupdate]
 
+void LateUpdate() {
+  Vector3 characterOffset = follow.position +  new Vector3(0f, distanceUp, 0f);
+  lookDir = characterOffset - this.transform.position;
+  lookDir.y = 0;
+  lookDir.Normalize();
+  targetPosition = characterOffset + follow.up * distanceUp - lookDir * distanceAway;
+  CompensateForWalls(characterOffset, ref targetPosition);
+  smoothPosition(this.transform.position, targetPosition);
+  transform.LookAt(follow);
+}
+
+private void smoothPosition(Vector3 fromPos, Vector3 toPos) {
+  this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmopth, camSmoothDampTime);
+}
+
+private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget) {
+  RaycastHit wallHit = new RaycastHit();
+  if(Physics.Linecast(fromObject, toTarget, out wallHit)) {
+      toTarget = new Vector3(wallHit.point.x, toTarget.y, wallHit.point.z);
+  }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Darüber hinaus wird in LateUpdate unterbunden, dass die Kamera in Wänden verschwindet und durch Objekte geschaut werden kann. Dazu wird die Methode CompensateForWalls ausgeführt. In dieser wird getestet, ob zwischen der Kamera und dem Spieler ein Objekt vorhanden ist. Wenn das der Fall ist, wird die Kamera vor dieses Objekt gesetzt.
+
+Nach dem ersten Starten des Spieles startet eine kurze geskriptete Szene, in der der Spiele kurz in die Geschichte geführt wird. Dabei wird die Farbe der Startwelt entfernt  (siehe Kapitel \ref{geschichte}). Dazu wird ein Shader genutzt, welcher die Farbintensität von jedem Pixel verändert. Dieser Shader hat das Attribut intensität, welches die Stärke der Graustufen bestimmt. Dieser wird zu Beginn auf eins gesetzt und für jeden gefundenen Diamanten in den anderen Welten minimiert.
+    
 \subsection{Portale}
 
 
