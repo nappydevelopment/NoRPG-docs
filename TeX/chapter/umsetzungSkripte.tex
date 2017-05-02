@@ -1,0 +1,370 @@
+\section{C\# Skripte}
+	Nachfolgend wird auf die einzelnen C\# Skripte eingegangen, welche für die App benötigt werden. Darüber hinaus wird auf weitere, für die Skripte essentielle umgesetzte Teile der App eingegangen.
+
+\subsection{Player}
+	Der Player setzt sich aus mehreren einzelnen Objekten zusammen, darunter die Textur für den Spieler, ein Teil deiner Minimap und ein weiteres leeres Objekt, welches für die Kamera wichtig ist. An dem Player selbst befinden sich wiederum die Skripte und von Unity vorgefertigten Objekte. Ein sogenannter Rigedbody sorgt dafür, dass der Player Gravitation erfährt und nicht einfach durch die Luft schweben kann. Ein Character Controller fügt Eigenschaften wie eine Größe und höhe ein. Darüber hinaus besitzt der Player einen Animatoir. Dieser ist zusammen mit dem ThirdPersonController dafür verantwortlich, dass sich der Player in der Szene bewegt und die Animationen korrekt ausgeführt werden. Damit dies passiert, wird diesem Controller der Wert speed und direction übergeben. Daraus resultieren folgene Möglichkeiten der Animation
+
+ \begin{table}[htpb]
+ \begin{tabular}{|l|l|l|}
+ \hline
+  speed & direction & Ergebnis \\
+ \hline
+  0 & 0 & Animation Idle \\
+  >0 & 0 & Animation Walk \\
+  >0 & 0.3 & Animation Walk Right Short \\
+  >0 & 0.5 & Animation Walk Right Medium \\
+  >0 & -0.3 & Animation Walk Left Short \\
+  >0 & -0.5 & Animation Walk Left Medium \\
+  >0.5 & 0 & Animation Run \\
+  >0.5 & 0.3 & Animation Run Right Medium \\
+  >0.5 & 0.5 & Animation Run Right Wide \\
+  >0.5 & -0.3 & Animation Run Left Medium \\
+  >0.5 & -0.5 & Animation Run Left Wide \\ \hline
+ \end{tabular}
+  \caption{Mögliche Animationen je nach Wert speed und direction}
+ \label{tab:tabspeeddirection}
+ \end{table}
+ 
+	Durch diese vielzahl an Animationen ist gewährleistet, dass der Player zu jeder Zeit die richtige Animation ausführt und die Bewegung nicht unnatürlich aussieht. Die Werte speed und direction für diese Animation kommen dabei aus dem Skript CharacterControll.cs . Diese ist für die Steuerung des Players zuständig. Hier wird die Toucheingabe über den Joystick in Weltkoordinaten umgewandelt und der Player beginnt sich zu bewegen. Dazu ist die Update Methode genutzt worden. In dieser wird, sofern ein Animator an dem Player vorhanden ist, die horizontale und vertikale Bewegung des Joysticks in die direction und den speed umgewandelt. Das ganze passiert dabei in der Methode StickToWorldspace, welche die Transform vom Player, der Kamera, die direction und den speed, übergeben bekommt. Nachdem die Methode aufgerufen wurde und abgeschlossen ist, werden die Werte von direction und speed an den ThridPersonController übergeben und die Animation startet, wie zuvor beschrieben.
+
+	In der StickToWorldspace Methode wird zu Begin die rootDirection gesetzt, welche sich dabei aus der Z-Achsen Koordinate zusammensetzt. Anschließend wird die stickDirection gesetzt, durch den horizontalen und vertikalen Wert des Joysticks. Nun wird durch das quadrieren der beiden Werte der speed berechnet. Dieser liegt dabei zwischen Null und Eins.
+
+	Danach das ganze in bezug zu der Positionsrichtung der Kamera gesetzt, um die Bewegungsrichtung zu erhalten, um anschließend das Kreutzprodukt aus diesen beiden Werten zu berechen. Mit hilfe dessen kann bestimmt werden, ob sich der Player nach Rechts oder nach Links bewegen soll.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Skript CharacterController.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:c_charactercontroller]
+using UnityEngine;
+using CnControls;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.SceneManagement;
+
+public class CharacterControll : MonoBehaviour {
+
+	...
+
+    private float speed = 0.0f;
+    private float direction = 0f;
+    private float horizontal = 0.0f;
+    private float vertical = 0.0f;
+    private AnimatorStateInfo stateInfo;
+
+	...	
+	
+    void FixedUpdate() {
+        if(IsInLocomotion() && ((direction>=0 && horizontal>=0) 
+        	|| (direction <0 && horizontal < 0))) {
+        	
+            Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, 
+            rotationDegreePerSecound * (horizontal < 0f ? -1f : 1f), 0f), 
+            Mathf.Abs(horizontal));
+            	
+            Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
+            this.transform.rotation = (this.transform.rotation * deltaRotation);
+        }
+    }
+
+    public bool IsInLocomotion() {
+        return stateInfo.nameHash == m_LocomotionID;
+    }
+
+    void Update() {
+    
+        if (animator) {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            horizontal = CnInputManager.GetAxis("Horizontal");
+            vertical = CnInputManager.GetAxis("Vertical");
+            StickToWorldspace(this.transform, gamecam.transform, ref direction, ref speed);
+            animator.SetFloat("speed", speed);
+            animator.SetFloat("direction", direction, directionDumpTime, Time.deltaTime);
+        }
+    }
+    
+    ...
+
+    public void StickToWorldspace(Transform root, Transform camera, 
+    	ref float directionOut, ref float speedOut) {
+    	
+        Vector3 rootDirection = root.forward;
+        Vector3 stickDirection = new Vector3(horizontal, 0, vertical);
+        speedOut = stickDirection.sqrMagnitude;
+        Vector3 CameraDirection = camera.forward;
+        CameraDirection.y = 0.0f;
+        Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, 
+        	Vector3.Normalize(CameraDirection));
+        	
+        Vector3 moveDirection = referentialShift * stickDirection;
+        Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
+        float angleRootToMove = Vector3.Angle(rootDirection, moveDirection) * 
+        	(axisSign.y >= 0 ? -1f : 1f);      
+        	
+        angleRootToMove /= 180f;
+        directionOut = angleRootToMove * directionSpeed;
+    }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+\subsection{Kamera}
+	Bei der Kamera handelt es sich um ein Gameobject, welches dem Spieler folgt. Dafür ist an dem Spieler ein Objekt namens follow angehängt, auf das die Kamera ziegt und die Kamera hat eine Referenz auf das Skript ThirdPersonCamera.cs. In diesem wird das Verhalten der Kamera gesteuert. Dazu werden die Methoden aus dem Listing \ref{lst:lateupdate} verwendet. In LateUpdate wird dabei die Position der Kamera in bezug zum Spieler gesetzt. Dabei befindet sich die Kamera immer in einem Kreis, um dem Spieler herum, wodurch die Sicht nicht eingeschränkt wird.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode LateUpdate aus ThirdPersonCamera.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:lateupdate]
+
+void LateUpdate() {
+  Vector3 characterOffset = follow.position +  new Vector3(0f, distanceUp, 0f);
+  lookDir = characterOffset - this.transform.position;
+  lookDir.y = 0;
+  lookDir.Normalize();
+  targetPosition = characterOffset + follow.up * distanceUp - lookDir * distanceAway;
+  CompensateForWalls(characterOffset, ref targetPosition);
+  smoothPosition(this.transform.position, targetPosition);
+  transform.LookAt(follow);
+}
+
+private void smoothPosition(Vector3 fromPos, Vector3 toPos) {
+  this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmopth, camSmoothDampTime);
+}
+
+private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget) {
+  RaycastHit wallHit = new RaycastHit();
+  if(Physics.Linecast(fromObject, toTarget, out wallHit)) {
+      toTarget = new Vector3(wallHit.point.x, toTarget.y, wallHit.point.z);
+  }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Darüber hinaus wird in LateUpdate unterbunden, dass die Kamera in Wänden verschwindet und durch Objekte geschaut werden kann. Dazu wird die Methode CompensateForWalls ausgeführt. In dieser wird getestet, ob zwischen der Kamera und dem Spieler ein Objekt vorhanden ist. Wenn das der Fall ist, wird die Kamera vor dieses Objekt gesetzt.
+
+Nach dem ersten Starten des Spieles startet eine kurze geskriptete Szene, in der der Spiele kurz in die Geschichte geführt wird. Dabei wird die Farbe der Startwelt entfernt  (siehe Kapitel \ref{geschichte}). Dazu wird ein Shader genutzt, welcher die Farbintensität von jedem Pixel verändert. Dieser Shader hat das Attribut intensität, welches die Stärke der Graustufen bestimmt. Dieser wird zu Beginn auf eins gesetzt und für jeden gefundenen Diamanten in den anderen Welten minimiert.
+    
+\subsection{Portale}
+
+
+\subsection{Interaktionsmöglichkeiten}
+Chests, Händler, etc....
+
+
+\subsection{Pfadfindungssystem Schiff}
+Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript EditorPathScript. (siehe Listing \ref{lst:c_patheditor})
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Skript EditorPathScript.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\newpage
+\begin{lstlisting}[label=lst:c_patheditor]
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EditorPathScript : MonoBehaviour {
+
+    //Color of the lines betwwen the single points
+    public Color rayColor = Color.white;
+    //List of all points of the path
+    public List<Transform> path_objs = new List<Transform>();
+    //List of all transformobjects of every point in path
+    Transform[] transforms;
+
+    //Method to draw in the Unity Editor
+    void OnDrawGizmos () {
+        //Set Color of lines to selected color
+        Gizmos.color = rayColor;
+        //Get all transformobjects of childrends
+        transforms = GetComponentsInChildren<Transform>();
+        //Clear the list
+        path_objs.Clear();
+
+        //Foreach transformobject at it to list if it is not the parentobject
+        foreach (Transform path_obj in transforms) {
+            if (path_obj != this.transform) {
+                path_objs.Add(path_obj);
+            }
+        }
+        //Draw lines between every Point
+        for(int i = 0; i < path_objs.Count; i++) {
+            Vector3 position = path_objs[i].position;
+            if (i > 0) {
+                Vector3 previos = path_objs[i - 1].position;
+                Gizmos.DrawLine(previos, position);
+                Gizmos.DrawWireSphere(position, 0.3f);
+            }
+        }
+    }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Dieses sorgt dafür, das die Pfade grafisch im Unity Editor angezeigt werden. Dieses Skript zeichnet dabei von einem Startpunkt zum nächsten eine Linie, solange, bis der letzte Punkt erreicht wird. Dadurch wird es möglich die Pfade grafisch zu bearbeiten und erleichtert so die Arbeit. 
+Nun wird beschrieben, wie das Schiff dem Pfad folgt, sobald der Player den Pfad ausgewählt hat. Dabei wird auf den Pfad von Insel eins zu zwei eingegangen. Für alle anderen Pfade ist das vorgehen identisch.
+
+Über ein Userinterface wählt der Player den betroffenen Pfad aus. Dabei wird dieser über einen Button ausgewählt. Sobald dieser geklickt wurde wird eine Funktion in Listing \ref{lst:methode} ausgeführt. Diese selektiert den gewünschten Pfad aus den verfügbaren Pfaden und setzt den boolean playerOnShip auf true. 
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode selectFirstClass, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:methode]
+
+public void selectFirstClass () {
+//if player is not on the same Island
+ if (lastButtonClicked != "1") {
+  hud.SetActive(false);
+  // set path to the island on that the player is to island 1
+  path = GameObject.Find("Path" + lastButtonClicked + "_1").GetComponent<EditorPathScript>();
+  lastButtonClicked = "1";
+  playerOnShip = true;
+ }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode playerGetOnShip ausgeführt. Der Code ist in Listing \ref{lst:methode1} zu sehen. Durch diese Methode bewegt sich der Player mit dem Schiff in der selben Geschwindigkeit. Darüberhinaus blokiert diese Funktion die Eingabemöglichkeiten des Players während der Fahrt.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode playerGetOnShip, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:methode1]
+
+public void playerGetOnShip () {
+ if (!playerOnShip) {
+  cc.enabled = false;
+
+  player.GetComponent<Animator>().SetFloat("speed", 0.0f);
+  player.GetComponent<Animator>().SetFloat("direction", 0.0f);
+  player.transform.position = ship.transform.position;
+
+  player_mesh.SetActive(false);
+  player_text.SetActive(false);
+
+  follow.transform.parent = ship.transform;
+  follow.transform.position = ship.transform.position + new Vector3(2.25f, 18.07f, -7.07f);
+
+  minidot.SetActive(false);
+
+  hud.SetActive(true);
+ }
+}
+
+\end{lstlisting}
+\end{scriptsize}
+
+Des Weiteren wird die Funktion moveShip ausgeführt. Diese ist für die eigentliche Bewegung des Schiffes verantwortlich. Sobald playerOnShip auf true gesetzt ist, wird zuerst die Distanz zwischen dem ersten Punkt des Pfades und des Schiffes gespeichert und die Position des Schiffes an diese stelle verschoben. Anschließend wird die drehung des Schiffes an die Fahrtrichtung angepasst und gedreht. Sobald die Distanz zwischen der aktuellen Position des Schiffes und dem nächsten Punkt des Pfades kleiner ist wie eine minimale Distanz, wird die currentWayPointId um eins erhöhrt. Solange dieser Wert nicht größer ist wie die Anzahl der Punkte des Pfades werden diese Schritte wiedserholt und das Schiff bewegt sich entlang des Pfades.
+
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode moveShip, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:methode2]
+
+public void moveShip () {
+ //if player is on the ship
+ if (playerOnShip) {
+  //get the distance between ship and the first point
+  float distance = Vector3.Distance(path.path_objs[currentWayPointId].position, transform.position);
+  //set the ship to the first point
+  transform.position = Vector3.MoveTowards(transform.position, path.path_objs[currentWayPointId].position, Time.deltaTime * speed);
+  //set the player on ship
+  player.transform.position = transform.position;
+
+  //rotate the ship in direction to the next point
+  var rotation = Quaternion.LookRotation(path.path_objs[currentWayPointId].position - transform.position);
+  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+  player.transform.rotation = ship.transform.rotation;
+
+  //if the distance between the ship and the point is less then reachDistance raise the currentwaypointid
+  if (distance <= reachDistance) {
+   currentWayPointId++;
+  }
+
+  //if the currentwaypoint is greater equal the size of the list
+  if (currentWayPointId >= path.path_objs.Count) {
+   //set ship to the last position
+   this.transform.position = path.path_objs[path.path_objs.Count-1].position;
+   //set playershipped status to true and make some other things
+   playerShipped = true;
+   cc.enabled = true;
+   playerOnShip = false;
+   player_mesh.SetActive(true);
+   player_text.SetActive(true);
+   follow.transform.parent = player.transform;
+   follow.transform.position = player.transform.position;
+
+   minidot.SetActive(true);
+   player.transform.position = new Vector3(path.path_objs[path.path_objs.Count - 1].position.x, 6.3f, path.path_objs[path.path_objs.Count - 1].position.z);
+                
+   currentWayPointId = 0;
+  }
+ }
+}
+    
+\end{lstlisting}
+\end{scriptsize}

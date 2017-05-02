@@ -250,23 +250,17 @@
 		\subsubsection{Change settings}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer Einstellungen ändern möchte. In dem Rahmen dieser Studienarbeit wird es zwei Einstellungsmöglichkeiten geben. Der Spieler kann die Qualität des Spieles verändern. Ist die Option "High Quality" an, wird alles in höchster Qualität wiedergegeben. Ist jedoch diese Option aus, werden Hintergrundanimationen, die ressourcenaufwändig sind, nicht wiedergegeben. Diese Option ermöglicht es Smartphones mit schlechterer Hardwareausführung das Spiel ohne Probleme spielen zu können, bietet jedoch für neuere Smartphones die Möglichkeit NoRPG in vollen zu genießen.
 			
-			Die zweite Einstellungsmöglichkeit ist, dass der Spieler die Audioausgaben des Spieles verändern kann. Zu einem Spielerlebnis gehört die Musik und die Soundeffekte. Diese kann der Spieler je nach Wünschen ein- oder ausschalten.
-			
-			Die Spieloptionen können direkt im Menü durchgeführt werden. Es wird kein neues Fenster oder Ansicht dafür geöffnet. Der Vollständigkeit halber ist der Ereignisablauf im Anhang in Abbildung \ref{umlSettings} zu sehen.
-	
+			Die zweite Einstellungsmöglichkeit ist, dass der Spieler die Audioausgaben des Spieles verändern kann. Zu einem Spielerlebnis gehört die Musik und Soundeffekte. Diese kann der Spieler je nach Wunsch ein- oder ausschalten.
+
 			Die Vorbedingung zur Änderung der Spieleinstellungen sind, dass der Anwender sich im Spiel und sich in keiner aktiven NPC Interaktion befindet. Bei erfolgreicher Änderung sollten diese Einstellungen für diesen Account gespeichert werden, damit diese bei jedem Login, auch auf verschiedene Geräte, übernommen werden. Im Fehlerfall werden die Default-Optionen angewendet. 
 	
 		\subsubsection{Save local}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen aktuellen Fortschritt manuell speichern möchte. NoRPG speichert bei bestimmten Ereignissen automatisch. Beispielsweise wenn der Spieler in eine andere Welt reist oder eine Truhe findet. Allerdings kann der Spieler seinen aktuellen Stand speichern. Es werden neben Fortschritt, Erfolge oder Charaktereigenschaften noch die Spieleinstellungen und sogar der aktuelle Standort des Spielers gespeichert.
-			
-			Der Spieler kann diese Funktion direkt im Menü durchführen. Auch hier befindet der Vollständigkeit halber das Activity Diagramm im Anhang in Abbildung \ref{umlSave}.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen aktuellen Fortschritt manuell speichern möchte. NoRPG speichert bei bestimmten Ereignissen automatisch. Beispielsweise wenn der Spieler in eine andere Welt reist oder eine Truhe findet. Allerdings kann der Spieler seinen aktuellen Stand speichern. Es werden neben Fortschritt, Erfolge oder Charaktereigenschaften noch die Spieleinstellungen und sogar der aktuelle Standort des Spielers gespeichert. Der Spieler kann diese Funktion direkt im Menü durchführen.
 		
 			Wenn das Speichern erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Im Fehlerfall muss die Aktion erneut durchgeführt werden.
 		
 		\subsubsection{Synchronize}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen lokalen Speicherstand mit dem Server manuell synchronisieren möchte. NoRPG synchronisiert automatisch, wenn eine aktive Internetverbindung vorhanden ist beim Einloggen und vor dem Ausloggen. Die Synchronisation wird nicht so oft wie das Speichern ausgeführt, da der Vorgang länger dauert. Ebenfalls wird die Synchronisation nicht so häufig benötigt, da der Server als eine Art Back-Up verwendet wird. Also für den Fall, dass der Spieler sich mit einem anderen Gerät anmelden möchte.
-			
-			Der Spieler kann diese Funktion direkt im Menü durchführen. Auch hier befindet der Vollständigkeit halber das Activity Diagramm im Anhang in Abbildung \ref{umlSynchronize}.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen lokalen Speicherstand mit dem Server manuell synchronisieren möchte. NoRPG synchronisiert automatisch, wenn eine aktive Internetverbindung vorhanden ist beim Einloggen und vor dem Ausloggen. Die Synchronisation wird nicht so oft wie das Speichern ausgeführt, da der Vorgang länger dauert. Ebenfalls wird die Synchronisation nicht so häufig benötigt, da der Server als eine Art Back-Up verwendet wird. Also für den Fall, dass der Spieler sich mit einem anderen Gerät anmelden möchte. Der Spieler kann diese Funktion direkt im Menü durchführen.
 	
 			Wenn das Synchronisieren erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Eine häufige Ursache für den Fehlschlag kann die fehlende Internetverbindung sein.
 		

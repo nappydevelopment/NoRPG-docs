@@ -3,33 +3,34 @@
 
 \section{Unity}
 	Bei Unity handelt es sich um eine Entwicklungs- und Laufzeitumgebung, mit deren Hilfe graphisch aufwändige Projekte umgesetzt werden können. Dazu gehören unter anderem Videospiele, aber auch Lernprogramme oder Apps. Dazu können in Unity 3D-Projekte, aber auch 2D beziehungsweise 2,5D Projekte umgesetzt werden. Bei einer 2,5D Anwendung handelt es sich um eine Mischung von 2D und 3D Elementen. Dank Unity sind diese Projekte nach der Entwicklung plattformübergreifend einsetzbar.\footnote{vgl. Unity3D \cite{unity1} (2017)} Die Entwicklungsumgebung teilt sich dabei in verschiedene Bereiche auf. 
-
-	Das „Scene” Fenster ist in den Standardeinstellungen in der Mitte des Bildschirms zu sehen(Siehe Abbildung \ref{scene} )\footnote{vgl. Unity3D \cite{unity2} (2017)}. Hier wird immer die aktuelle Szene dargestellt. Darüber hinaus kann hier mit Objekten der Szene interagiert werden, um diese zu verändern, zum Beispiel an eine andere Stelle platzieren oder zu skalieren.
-
-	\begin{figure}[htbp]
-		\centering 
-		\label{scene}
-		\includegraphics[width=\textwidth]{pics/unity3d_ui.png}
-		\caption{Darstellung von Tablemappings}
-	\end{figure}
-
-	Wird ein Objekt in diesem Fenster ausgewählt, befinden sich im Bereich „Inspector” zusätzliche Einstellmöglichkeiten\footnote{vgl. Unity3D \cite{unity3} (2017)}. Diese variieren je nach gewähltem Objekt. Auch hier können die Position oder Skalierung eines Objektes verändert werden, allerdings werden hier auch darüber hinausgehende visuellen sowie die physischen Eigenschaften der Objekte verändert.
-
-	Objekte können des weiteren im „Hierarchy” Fenster\footnote{vgl. Unity3D \cite{unity4} (2017)} ausgewählt werden. In diesem Fenster werden alle Objekte der aktuellen Szene aufgelistet. Dabei wird zwischen unterschiedlichen Ebenen unterschieden, so dass genau gesehen werden kann welche Objekte zusammengehören. 
-
-	Um alle Dateien zu sehen, die zu einem Projekt gehören, gibt es das „Project” Fenster\footnote{vgl. Unity3D \cite{unity5} (2017)}. Die Dateien werden dabei nach der vorliegenden Ordnerstruktur angezeigt. In diesem Fenster können Ordner, sowie andere Dateien erstellt werden.
-
-	Ein weiteres wichtiges Fenster ist das „Game” Fenster\footnote{vgl. Unity3D \cite{unity6} (2017)}. Hier kann das fertige Projekt angesehen und getestet werden. Dazu gibt es oben in der Mitte der Benutzeroberfläche, ein Start, Pause und Vorlauf Button. Mit Hilfe derer kann das Programm, bevor es auf der Zielplattform abgespielt wird, in der Entwicklungsumgebung gerendert werden. Der Code wird von Unity JustIn-Time (JIT) kompiliert, und anschließend auf Mono oder dem Microsoft .NET Framework ausgeführt. Der Code steht in sogenannten Skripten, die in C\#, UnitySkript (ähnlich JavaScript) oder Boo geschrieben sind.
-
-	Wenn während der Laufzeit oder im Vorfeld beim Kompilieren ein Fehler auftritt, wird dieser im „Console” Fenster ausgegeben. Darüber hinaus werden hier Meldungen angezeigt, die explizit in den Skripten programmiert wurden. Damit es zu keinen Fehlern kommt, gibt es in Unity Tests, die eine Szene auf Korrektheit prüft. Die sogenannten Integrationstest simulieren eine Szene, damit verschiedene Objekte auf ihre Eigenschaften geprüft werden können. 
-
-	Nachdem nun die Benutzeroberfläche ausführlich erklärt wurde, wird nun auf die Begriffe Prefabs und Skripte eingegangen, da diese Essentiell für den Umgenag mit Unity sind.
-
-	\subsubsection{Prefabs}
-		Bei Prefabs handelt es sich um fertige Objekte, die in Szenen verwendet werden können\footnote{vgl. Unity3D \cite{unity7} (2017)}. Diese können dabei als Vorlage gesehen werden, damit nicht jedes Objekt mit gleichen Eigenschaften erneut erstellt werden müssen. 
-		
-	\subsubsection{Skripte}
-		In Skripten befindet sich die Logik von Objekten\footnote{vgl. Unity3D \cite{unity8} (2017)}. Ein Beispiel dafür ist das Öffnen einer Truhe. Wenn der Benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, das sie sich öffnen soll. 
+	
+	\subsection{Komponenten der Entwickungsumgebung}
+		Das „Scene” Fenster ist in den Standardeinstellungen in der Mitte des Bildschirms zu sehen(Siehe Abbildung \ref{scene} )\footnote{vgl. Unity3D \cite{unity2} (2017)}. Hier wird immer die aktuelle Szene dargestellt. Darüber hinaus kann hier mit Objekten der Szene interagiert werden, um diese zu verändern, zum Beispiel an eine andere Stelle platzieren oder zu skalieren.
+	
+		\begin{figure}[htbp]
+			\centering 
+			\label{scene}
+			\includegraphics[width=\textwidth]{pics/unity3d_ui.png}
+			\caption{Darstellung von Tablemappings}
+		\end{figure}
+	
+		Wird ein Objekt in diesem Fenster ausgewählt, befinden sich im Bereich „Inspector” zusätzliche Einstellmöglichkeiten\footnote{vgl. Unity3D \cite{unity3} (2017)}. Diese variieren je nach gewähltem Objekt. Auch hier können die Position oder Skalierung eines Objektes verändert werden, allerdings werden hier auch darüber hinausgehende visuellen sowie die physischen Eigenschaften der Objekte verändert.
+	
+		Objekte können des weiteren im „Hierarchy” Fenster\footnote{vgl. Unity3D \cite{unity4} (2017)} ausgewählt werden. In diesem Fenster werden alle Objekte der aktuellen Szene aufgelistet. Dabei wird zwischen unterschiedlichen Ebenen unterschieden, so dass genau gesehen werden kann welche Objekte zusammengehören. 
+	
+		Um alle Dateien zu sehen, die zu einem Projekt gehören, gibt es das „Project” Fenster\footnote{vgl. Unity3D \cite{unity5} (2017)}. Die Dateien werden dabei nach der vorliegenden Ordnerstruktur angezeigt. In diesem Fenster können Ordner, sowie andere Dateien erstellt werden.
+	
+		Ein weiteres wichtiges Fenster ist das „Game” Fenster\footnote{vgl. Unity3D \cite{unity6} (2017)}. Hier kann das fertige Projekt angesehen und getestet werden. Dazu gibt es oben in der Mitte der Benutzeroberfläche, ein Start, Pause und Vorlauf Button. Mit Hilfe derer kann das Programm, bevor es auf der Zielplattform abgespielt wird, in der Entwicklungsumgebung gerendert werden. Der Code wird von Unity JustIn-Time (JIT) kompiliert, und anschließend auf Mono oder dem Microsoft .NET Framework ausgeführt. Der Code steht in sogenannten Skripten, die in C\#, UnitySkript (ähnlich JavaScript) oder Boo geschrieben sind.
+	
+		Wenn während der Laufzeit oder im Vorfeld beim Kompilieren ein Fehler auftritt, wird dieser im „Console” Fenster ausgegeben. Darüber hinaus werden hier Meldungen angezeigt, die explizit in den Skripten programmiert wurden. Damit es zu keinen Fehlern kommt, gibt es in Unity Tests, die eine Szene auf Korrektheit prüft. Die sogenannten Integrationstest simulieren eine Szene, damit verschiedene Objekte auf ihre Eigenschaften geprüft werden können. 
+	
+		Nachdem nun die Benutzeroberfläche ausführlich erklärt wurde, wird nun auf die Begriffe Prefabs und Skripte eingegangen, da diese Essentiell für den Umgenag mit Unity sind.
+	
+		\subsubsection{Prefabs}
+			Bei Prefabs handelt es sich um fertige Objekte, die in Szenen verwendet werden können\footnote{vgl. Unity3D \cite{unity7} (2017)}. Diese können dabei als Vorlage gesehen werden, damit nicht jedes Objekt mit gleichen Eigenschaften erneut erstellt werden müssen. 
+			
+		\subsubsection{Skripte}
+			In Skripten befindet sich die Logik von Objekten\footnote{vgl. Unity3D \cite{unity8} (2017)}. Ein Beispiel dafür ist das Öffnen einer Truhe. Wenn der Benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, das sie sich öffnen soll. 
 
 	\subsection{Grafische Oberflächen mit Unity}
 		Die grafische Oberfläche wird mit Unity's zur Verfügung gestelltem UI System implementiert. Der Canvas, zu deutsch Leinwand, stellt dabei die Hauptkomponente bzw. Elternkomponente dar. Alle UI Elemente sind Kinder des Canvas und erben somit die Eigenschaften des Canvas. Unity bietet standardmäßig eine große Anzahl an UI Elementen, wie beispielsweise Buttons, Toggle-Buttons, Dropdown-Listen und Eingabefelder\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UIInteractionComponents.html}}. Der Canvas verwendet das EventSystem Objekt von Unity. Das Event System ermöglicht es, alle Touchscreen-Eingaben an die korrekten UI Elemente in der App weiterzuleiten\footnote{Vgl. \url{https://docs.unity3d.com/Manual/EventSystem.html}}.
@@ -77,8 +78,6 @@
 				\includegraphics[width=10cm]{pics/CanvasWorldSpace.png}
 				\caption{Render-Modus: World Space}
 			\end{figure}
-
-			Vorteile dieses Modus sind, dass alle 3D Elemente als Teil der UI verwendet werden können. Nachteile ...
 			
 \section{Visual Studio}
 
@@ -171,7 +170,3 @@ public class test : MonoBehaviour {
 }
 	\end{lstlisting}
 	\end{scriptsize}	
-
-\section{SQL}
-
-	SQL ist im Allgemeinen als Akronym für „Structured Query Language“ gesehen, obwohl SQL eine eigenständige Bezeichnung ist.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.8} SQL wird dazu verwendet, um Daten in relationalen Datenbanken zu bearbeiten, abzufragen und anzulegen.\footnote{vgl. Beaulieu, Alan\cite{sql1} (2009) S.IX} Die Syntax von SQL orientiert sich an der englischen Sprache. Um unabhängig von einem Datenbanksystem zu sein, wird häufig SQL verwendet, da SQL von vielen Datenbanken unterstützt wird.\footnote{vgl. Adams, Ralf\cite{sql2} (2012) S. 63 ff.}
