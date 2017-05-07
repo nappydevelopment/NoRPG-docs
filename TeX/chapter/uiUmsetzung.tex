@@ -36,8 +36,6 @@
 			Es fällt auf, dass auch hier das Gestaltungsprinzip Ground/Figure umgesetzt wurde. Dies hat die gleichen Gründe wie bei den Startbildschirmen und die Konsistenz außerhalb des eigentlichen Spieles bleibt erhalten. Neben diesen Gestaltungsprinzip wurde versucht das Prinzip Simple und Clean weiter fortzuführen, allerdings handelt es sich bei der Registrierung um einen komplexeren Prozess. Daher wurde ein weiteres Gestaltungsprinzip verwendet. Die UI Elemente sind tabellarisch angeordnet und deren relative Abstände gruppieren einzelne Elemente. Dieses Prinzip wird Proximity genannt. Dadurch weiß der Spieler welche Eingabefelder zu welchen Textfeldern gehören und kann somit die korrekten Informationen angeben. Auch hier ist das User Interface in zwei Abschnitte unterteilt. Der erste Abschnitt ist in der Mitte des Bildschirms positioniert und bildet das Registrierungsformular ab. Der zweite Abschnitt ist am unteren Teil des Bildes und dient zur Navigation durch den gesamten Registrierungsprozess.
 			
 			Der größte Unterschied ist allerdings, dass diese Szene mit dem Render-Modus World Space implementiert wurde. Der letzte Schritt im Registrierungsprozess ist die Auswahl des Charakters. Damit die einzelnen Charaktere in die UI integriert werden konnten, musste dieser Modus umgesetzt werden. Dadurch wurde möglich, dass zunächst die 3D Objekte der Welt nicht von den UI Elementen verdeckt werden und anschließend kann der Spieler auf seinen gewünschten Charakter klicken und es wird eine Animation ausgeführt. 
-			
-			Im nächsten Unterkapitel wird die Benutzeroberfläche innerhalb des Spieles behandelt. 
 		
 		\subsubsection{Head-Up Display im Spiel}
 			Das Head-Up Display bildet das User Interface innerhalb des Spieles ab. Grundsätzlich kann das HUD in vier Abschnitte unterteilt werden. Die Abschnitte sind an den Ecken des Bildschirmes positioniert. Diese Positionierung hat den Vorteil, dass die UI Elemente nicht vom Spiel ablenken und Informationen verdecken, sowie der Spieler die Elemente einfach mit den Händen erreichen kann. Abbildung \ref{alwaysOnUI} stellt die standardmäßige Ansicht von NoRPG dar.
@@ -77,9 +75,7 @@
 			\paragraph{Das Menü}
 				Der Button für das Menü befindet sich in der oberen linken Ecke. Dieser ist im oberen Teil des Bildschirms positioniert, da die Häufigkeit der Benutzung wesentlich geringer ist, als bei den bisher besprochenen UI Elementen.
 				
-				Bei der Verwendung des Buttons öffnet sich das Menü im linken Teil des Bildschirms. Dies im unteren linken Bild der Abbildung \ref{userInterfaces} abgebildet. Das geöffnete Fenster beinhaltet alle restlichen Funktionen, die nicht direkt über das HUD erreicht werden können. Beispielsweise findet der Spieler die Einstellungen oder kann seinen Fortschritt öffnen. Diese Funktionen sind in dem Menü, da die Informationen nicht immer benötigt werden und deshalb nicht die ganze Zeit sichtbar sein müssen. 
-				
-				Während das Menü offen ist können keine anderen UI Elemente, wie die Buttons zur Interaktion verwendet werden. Der Spieler muss erst das Menü schließen um wieder mit dem Spiel fortfahren zu können. 
+				Bei der Verwendung des Buttons öffnet sich das Menü im linken Teil des Bildschirms. Dies im unteren linken Bild der Abbildung \ref{userInterfaces} abgebildet. Das geöffnete Fenster beinhaltet alle restlichen Funktionen, die nicht direkt über das HUD erreicht werden können. Beispielsweise findet der Spieler die Einstellungen oder kann seinen Fortschritt öffnen. Diese Funktionen sind in dem Menü, da die Informationen nicht immer benötigt werden und deshalb nicht die ganze Zeit sichtbar sein müssen. Während das Menü offen ist können keine anderen UI Elemente, wie die Buttons zur Interaktion verwendet werden. Der Spieler muss erst das Menü schließen um wieder mit dem Spiel fortfahren zu können. 
 				
 				Es wird zwischen zwei Varianten von Funktionen im Menü unterschieden. Einige der Funktionen öffnen ein weiteres Fenster, wie in der Abbildung \ref{userInterfaces} im unteren rechten Bild abgebildet, und andere werden direkt im Menü ausgeführt. So wird beispielsweise für die Einstellungen ein weiteres Fenster geöffnet, wohingegen das Speichern direkt im Menü durchgeführt wird, ohne das sich ein Fenster öffnet.
 			
@@ -95,7 +91,7 @@
 				Während die Karte offen ist kann der Spieler nicht das Menü öffnen oder eine Interaktion starten, allerdings kann sich der Spieler mit dem Joystick bewegen. Die Kamera dient zur Orientierung in der Spielwelt, deshalb darf der Spieler sich bewegen. Die Karte kann während dem Laufen geöffnet und geschlossen werden.
 			
 	\subsection{Usability Evaluation}
-		Ein Usability Test wird durchgeführt, um die Gebrauchstauglichkeit einer Software oder Hardware mit den potenziellen Benutzern zu überprüfen. Usability wird durch die Attribute Erlernbarkeit, Effizienz, Einprägsamkeit, Fehlerrate und Zufriedenheit\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 26} beschrieben. Unter dem Attribut Erlernbarkeit beschreibt Nielsen in seinem Buch, dass die Anwendung leicht zu erlernen sein muss, damit der Benutzer in kurzer Zeit beginnen kann das Spiel zu spielen. Dazu zählt beispielsweise die Steuerung. Diese ist wichtig, damit der Benutzer sich im Spiel intuitiv bewegen kann. So bald der Spieler das System gelernt und verstanden hat, soll ein hohes Maß an Produktivität möglich sein. Dies wird als Effizienz bezeichnet. Das System sollte allerdings leicht zu merken und einprägsam sein, so dass auch der Gelegenheitsbenutzer in der Lage ist, nach einer gewissen Zeit ohne Verwendung der Anwendung, in das Spiel zurückzukehren, ohne alles nochmals neu lernen zu müssen. Nielsen weißt zudem darauf hin, dass Fehler für den Benutzer sehr frustrierend sein können. Daher sollte das System eine geringe Fehlerquote haben, so dass Benutzer bei der Verwendung nur wenig Fehler machen und falls Probleme auftauchen, diese den Spaß am Spielen nicht einschränken. Das letzte Attribut beschreibt den Gesamteindruck\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 27ff.}.
+		Ein Usability Test wird durchgeführt, um die Gebrauchstauglichkeit einer Software oder Hardware mit den potenziellen Benutzern zu überprüfen. Usability wird durch die Attribute Erlernbarkeit, Effizienz, Einprägsamkeit, Fehlerrate und Zufriedenheit\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 26} beschrieben. Unter dem Attribut Erlernbarkeit beschreibt Nielsen in seinem Buch, dass die Anwendung leicht zu erlernen sein muss, damit der Benutzer in kurzer Zeit beginnen kann das Spiel zu spielen. Dazu zählt beispielsweise die Steuerung. Diese ist wichtig, damit der Benutzer sich im Spiel intuitiv bewegen kann. So bald der Spieler das System gelernt und verstanden hat, soll ein hohes Maß an Produktivität möglich sein. Dies wird als Effizienz bezeichnet. Das System sollte allerdings leicht zu merken und einprägsam sein, so dass auch der Gelegenheitsbenutzer in der Lage ist, nach einer gewissen Zeit ohne Verwendung der Anwendung, in das Spiel zurückzukehren, ohne alles nochmals neu lernen zu müssen. Nielsen weißt zudem darauf hin, dass Fehler für den Benutzer sehr frustrierend sein können. Daher sollte das System eine geringe Fehlerquote haben, so dass Benutzer bei der Verwendung nur wenig Fehler machen und falls Probleme auftauchen, diese den Spaß am Spielen nicht einschränken\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 27ff.}. Das letzte Attribut beschreibt den Gesamteindruck.
 		
 		Es wird zwischen formativem und summativem Usability Test unterschieden. Foramtive Tests werden während der Entwicklung durchgeführt. Die Aufgabe ist es ein spezielles Problem bzw. Szenario zu testen. Es handelt sich dabei um eine kleine Studie für schnelles Feedback, welche wiederholt durchgeführt werden kann\footnote{Vgl. Rubin und Chisnell \cite{handbookUsability} Seite 29f.}. Der summative Test findet einmalig nach der Entwicklung statt, bevor das fertige Produkt ausgeliefert wird. Dabei handelt es sich um eine umfangreiche Studie, die alle Funktionen der Benutzeroberfläche bewertet\footnote{Vgl. Rubin und Chisnell \cite{handbookUsability} Seite 34f.}.
 		
@@ -108,7 +104,11 @@
 		
 			Das Ziel dieser Evaluation ist das Testen der Benutzeroberfläche, da es sich bei einer mobilen Anwendung um die einzige Interaktionsschnittstelle für die Benutzer handelt. Aus diesem Grund ist eine fehlerfreie, intuitive und gleichzeitig gut aussehende Benutzeroberfläche sehr wichtig. Zu den abzubildenden Szenarios gehört zum Beispiel die Registrierung, der Log-In oder die Liste der heruntergeladenen Spiele. Alle User Interface Elemente sollen in diesem summativen Test geprüft und evaluiert werden und aus diesem Grund ist der Umfang dieser Evaluation größer. Diese findet in dem Zeitraum 24.04.2017 bis 30.04.2017 statt.
 		
+<<<<<<< HEAD
 			Für die Evaluation wurde ein Dokument für die Tester erstellt. Dieses beinhaltet alle notwendigen Information und ist zugleich eine Schrittanleitung, um alle UI Elemente testen zu können. Ein ausgefülltes Formular\ref{ueMarcel}, dessen Publikation von dem Tester genehmigt wurde, befindet sich im Anhang dieser Arbeit. Neben den Informationen gibt es mehrere Spalten, die für die Bewertung dienen. Bewertet werden kann ein Szenario mit "++", "+", "0", "\-" und "\--". 
+=======
+			Für die Evaluation wurde ein Dokument für die Tester erstellt. Dieses beinhaltet alle notwendigen Information und ist zugleich eine Schrittanleitung, um alle UI Elemente testen zu können. Ein ausgefülltes Formular\ref{ueMarcel}, dessen Publikation von dem Tester genehmigt wurde, befindet sich im Anhang dieser Arbeit. Neben den Informationen gibt es mehrere Spalten, die für die Bewertung dienen. 
+>>>>>>> 8fe80366cb856ab7f4813d238513c206cb6929ef
 		
 		\subsubsection{Bewertung}
 			Für die Evaluation von NoRPG wurde an alle potenzielle Tester eine Prerelease Version der App und der auszufüllende Bewertungsbogen verteilt. Weitere Anweisungen wurden nicht mitgeteilt.
@@ -132,9 +132,8 @@
 				\includegraphics[width=\textwidth]{pics/SmartphoneAuswertung.png}
 				\caption{Evaluation Auswertung - Die durchschnittliche Hard- und Software}
 			\end{figure}
-			
-			
-			
+		
+			Im folgenden Abschnitt dieses Kapitels wird nun das Ergebnis der Evaluation behandelt und ausgewertet. Der einzelnen Szenarien konnten von den Testern von "\-- -"\ bis "++" bewertet werden, während "++" die beste Bewertung darstellt. Damit das Ergebnis die Bewertung von allen Testern widerspiegelt, wurde "\-- -"\ mit -2 und "++" mit +2 verrechnet. Dies kann in Tabelle \ref{tab:ergbnisOverall} betrachtet werden. Diese entspricht dem des Bewertungsbogens, allerdings ohne nähere Beschreibung der einzelnen Szenarien. Die Punktzahl in der letzten Spalte spiegelt den genauen Durchschnitt von allen Testern wider.
 			
 			\begin{table}[htbp]
 				\begin{tabular}{|l|l|c|c|c|c|c|c|}
@@ -165,17 +164,15 @@
 				\label{tab:ergbnisOverall}
 			\end{table}
 		
-		Ergebnis Kinder und Teenager wurde zusammengefasst, da der Anteil an Kindern im Vergleich sehr klein ist.
-		Ergebnis  + Erwachsene (da Teenager Anteil gering)
-		
-		Bewertung der beiden + unterschiede und häufige Anmerkung
-		
-		Ergebnis weiblich
-		Ergebnis männlich
-		
-		Bewertung der beiden + unterschiede und häufige Anmerkungen
-		
-		
-		Ergebnis alle zusammen
-		Bewertung insgesamt - was fällt auf
+			Zunächst kann behauptet werden, dass die Auswertung positiv ausgefallen ist. Wenn alle Punkte von den einzelnen Szenarien zusammen betrachtet werden, ergibt es das Ergebnis von 1,1, welches in der Bewertungsmatrix unter "+" fallen würde.
+			
+			Positives aufzählen: Clean und Simple, wenig Text sondern mit Symbolen Aktion darstellen
+			
+			Häufige Punkte die angemerkt wurden - Register hervorheben, beim Abmelden erstmal warnen das man sich abmelden soll - dialog und nicht direkt und view games und progress besser gestalten - man merkt das es beim komplexen Informationen schwerer wird mit einfachen Gestaltungsprinzipien diese zu umzusetzen - Problem !
+
+			Bewertung insgesamt - was fällt auf
+			
+			Auffällige - wenn man einzelne Gruppen betrachtet 
+			
+			Jüngere haben eher bei komplexeren wie registrierung oder view Progress schlechtere Bewertungen abgegeben, da diese Informationen eher weniger relevant war - schneller anfangen zu spielen nicht erst umständlich registriern 
 			
