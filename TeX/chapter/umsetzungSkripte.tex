@@ -4,8 +4,8 @@
 \subsection{Player}
 	Der Player setzt sich aus mehreren einzelnen Objekten zusammen, darunter die Textur für den Spieler, ein Teil deiner Minimap und ein weiteres leeres Objekt, welches für die Kamera wichtig ist. An dem Player selbst befinden sich wiederum die Skripte und von Unity vorgefertigten Objekte. Ein sogenannter Rigedbody sorgt dafür, dass der Player Gravitation erfährt und nicht einfach durch die Luft schweben kann. Ein Character Controller fügt Eigenschaften wie eine Größe und höhe ein. Darüber hinaus besitzt der Player einen Animatoir. Dieser ist zusammen mit dem ThirdPersonController dafür verantwortlich, dass sich der Player in der Szene bewegt und die Animationen korrekt ausgeführt werden. Damit dies passiert, wird diesem Controller der Wert speed und direction übergeben. Daraus resultieren folgene Möglichkeiten der Animation
 
- \begin{table}[htpb]
- \begin{tabular}{|l|l|l|}
+ \begin{table}[htbp]
+ \begin{tabular}{|c|c|l|}
  \hline
   speed & direction & Ergebnis \\
  \hline
@@ -148,7 +148,8 @@ void LateUpdate() {
 }
 
 private void smoothPosition(Vector3 fromPos, Vector3 toPos) {
-  this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmopth, camSmoothDampTime);
+  this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmopth, 
+  	camSmoothDampTime);
 }
 
 private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget) {
@@ -169,7 +170,54 @@ Nach dem ersten Starten des Spieles startet eine kurze geskriptete Szene, in der
 
 
 \subsection{Interaktionsmöglichkeiten}
-Chests, Händler, etc....
+
+Im Spiel kann der Spieler mit verschiedenen Objekten interagieren. Zu den Hauptkategorien gehören die Händler, die dem Spieler die Spiele der Standards verkaufen, und die Chests aus denen der Spieler Objekte zum Sammeln erhält. Darüber hinaus kann der Spieler mit verschiedenen Charakteren interagieren. Es wird nun auf die Händler und auf die Chests eingegangen, da die Charaktere ähnlich den Händlern funktionieren.
+
+\subsubsection{Händler}
+
+In jeder Welt befinden sich bis zu elf Händler. Die Funktionsweise wird hier an einem Händler aus der ersten Welt dargestellt. Die Händler sind in jeder welt identisch und unterschieden sich nur im Namen. Anhand dessen wird entschieden was dieser Händler für eine Funktion hat und welche Spiele und Standards er representiert. Dabei setzt sich der Name aus drei Teilen zusammen: Der Klasse, dem Fach und dem Themengebiet. Dabei sind die einzelnen Teile durch einen Unterstrich getrennt. Ein Beipsiel für das Themengebiet Schreiben in Englisch der ersten Klasse sieht wie folgt aus: 1\_English\_W
+
+
+Um nun einen Händler zu finden, wird das Skript FindNearestHandler.cs genutzt. In diesem gibt es die Methode GetClosestObject (siehe Listing\ref{lst:getclosest}), welches das dichteste Objekt am Spieler findet.
+\begin{scriptsize}
+\lstset{
+	float,
+	caption=Methode GetClosestObject aus FindNearestHandler.cs, 
+	language=[Sharp]C, 
+	frame=single,  
+	showstringspaces=false, 
+	showspaces=false, 
+	numbers=left, 
+	captionpos=b, 
+	belowcaptionskip=4pt,
+	basicstyle=\ttfamily
+} 
+\begin{lstlisting}[label=lst:getclosest]
+public GameObject GetClosestObject(string tag, GameObject player) {
+  GameObject[] haendler = GameObject.FindGameObjectsWithTag(tag);
+
+  foreach (GameObject h in haendler) {
+    if (!closest) {
+      closest = h;
+    }
+           
+    if(Vector3.Distance(player.transform.position, h.transform.position) < 
+    	Vector3.Distance(player.transform.position, closest.transform.position)) {
+      closest = h;
+    }
+  }
+  return closest;
+} 
+\end{lstlisting}
+\end{scriptsize}
+
+Hier wird jedes Objekt, welches einen bestimmten Tag hat, in einem Array gespeichert und anschließend wird für jedes Objekt geprüft wie weit es entfernt ist. Das dichteste Objekt wird am Schluss zurück gegeben.
+
+Nachdem der dichteste Händler gefunden wurde, wird der Richtige Dialog gestartet, sobald der Spieler in der Nähe eines Händlers auf den A-Knopf klickt. Dabei wird die Methode StartCommunication() aus dem Skript NPCCommunication gestartet. In diesem wird geschaut, ob sich der Spieler dicht genug am Händler befindet. Ist das der Fall, wird der Dialog geöffnet und die korrekten Daten werden aus einer JSON-Datei geladen(siehe Kapitel \ref{npctext}). Anschließend wird die Funktion OpenGameList() ausgeführt, in der die richtigen Spiele angezeigt werden. Wenn der Spieler nun auf ein Spiel klickt, wird er zu der Downloadseite des Spieles weitergeleitet und er kann dieses herunterladen.
+
+\subsubsection{Chests}
+
+Bei den Chests wird nur über den Tag entschieden, was getan wird. Dazu wird zusatzlich zu dem NPCCommunication Skript das Skript ChestHandle.cs benötigt. In diesem wird überprüft, welche Chest der Spieler öffnen will. Danach wird das einsammeln von den sammelbaren Objekten gestartet.
 
 
 \subsection{Pfadfindungssystem Schiff}
@@ -329,18 +377,23 @@ public void moveShip () {
  //if player is on the ship
  if (playerOnShip) {
   //get the distance between ship and the first point
-  float distance = Vector3.Distance(path.path_objs[currentWayPointId].position, transform.position);
+  float distance = Vector3.Distance(path.path_objs[currentWayPointId].position, 
+  		transform.position);
   //set the ship to the first point
-  transform.position = Vector3.MoveTowards(transform.position, path.path_objs[currentWayPointId].position, Time.deltaTime * speed);
+  transform.position = Vector3.MoveTowards(transform.position, 
+  		path.path_objs[currentWayPointId].position, Time.deltaTime * speed);
   //set the player on ship
   player.transform.position = transform.position;
 
   //rotate the ship in direction to the next point
-  var rotation = Quaternion.LookRotation(path.path_objs[currentWayPointId].position - transform.position);
-  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+  var rotation = Quaternion.LookRotation(
+  		path.path_objs[currentWayPointId].position - transform.position);
+  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 
+  		Time.deltaTime * rotationSpeed);
   player.transform.rotation = ship.transform.rotation;
 
-  //if the distance between the ship and the point is less then reachDistance raise the currentwaypointid
+  //if the distance between the ship and the point is less then reachDistance 
+  //raise the currentwaypointid
   if (distance <= reachDistance) {
    currentWayPointId++;
   }
@@ -359,7 +412,8 @@ public void moveShip () {
    follow.transform.position = player.transform.position;
 
    minidot.SetActive(true);
-   player.transform.position = new Vector3(path.path_objs[path.path_objs.Count - 1].position.x, 6.3f, path.path_objs[path.path_objs.Count - 1].position.z);
+   player.transform.position = new Vector3(path.path_objs[path.path_objs.Count - 1].position.x, 
+   		6.3f, path.path_objs[path.path_objs.Count - 1].position.z);
                 
    currentWayPointId = 0;
   }
