@@ -1,24 +1,37 @@
 \chapter{Umsetzung}
 
-\section{Architektur}
-
-In diesem Kapitel - lokal Speicher der Daten, JSON files (npc kommunikations und standards), sync prozess, 
 	
-Nachdem im vorherigen Kapitel die technischen Grundlagen erläutert wurden, wird jetzt auf die Umsetzung eingegangen. Dabei wird diese in drei Teile unterteilt
+Nachdem im vorherigen Kapitel die technischen Grundlagen erläutert wurden, wird nun auf die Umsetzung eingegangen. Es wird mit der Umgesetzten Architektur begonnen, um einen groben Überblick über die einzelnen Komponenten zu bekommen. Anschließend wird genauer auf zwei wesendliche Teile eingegangen:
 	
-\paragraph{App}
-Google Anmeldung wird nicht genutzt, da wir nur ein paar spezielle Informationen von den Spielern brauchen und Google Daten geben??
-Vorteil an Android und Google Play Store: Google Play Store: große Anzahl an vielfältigen Apps, Schutz durch Google Play, da Apps Kriterien erfüllen müssen um aufgenommen zu werden
-	
-\paragraph{Datenbank auf dem Handy}
-Wieso haben wir das gemacht? Vorteile? Nachteile?
-Speicherung von Daten --> wieso nicht PlayerPrefs von Unity benutzen sondern Serialisieren? Doku, Paper, ... begründen und Beispiel zeigen. Gespeichert wird in einer .dat anstatt .txt, nicht einfach lesbar bearbeitbar (daten lesen etc.)
+\paragraph{Datenhaltung und Anbindung an eine Datenbank}
+In diesem Abschnitt wird die Datenhaltung auf dem Handy beschrieben. Dabei wird auf zwei unterschiedliche Methoden eingegangen, die bei der Umsetzung zum Einsatz kamen.
+In diesem Kapitel wird auf die Datenbankanbindung an den Server eingegangen. Besonders wird hier auf die verschiedenen Tabellen der Datenbank bezug genommen und das allgemeine vorgehen beschrieben, Daten vom Server zu Laden und dort zu Speichern.
 		
-\paragraph{Datenbank auf dem Server}
-Bei der Datenbank auf dem Server handelt es sich um eine MySQL Datenbank. In dieser sind die Daten der Registrierten User und deren Fortschritt in den Tabellen accounts und spielfortschritt gespeichert.
+\paragraph{Bestandteile der App}
+In diesem Abschnitt wird sich mit den generellem Aufbau der App befasst und teilt sich in zwei weitere Teile auf. in Teil eins wir auf die Benutzerschnittstelle eingegangen und die Benutzeroberfläche von NoRPG erklärt. Im zweiten Teil wird auf weitere wichtige Bestandteile der App eingegangen, darunter wichtige Klassen, welche für die App unverzichtbar sind.
+	
+\section{Architektur}
+	
+Die Architektur entspricht dem Controller Prinzip, bei dem es eine zentrale Schnittstelle einen Controller gibt. In diesem Fall ist das die Klasse GameControl.cs, welche den Datenzugriff
+zwischen App und Server regelt und innerhalb der App alle wichtigen Abhängigkeiten wiederspiegelt. Diese Klasse ist darüber hinaus auch die zentrale Stelle zum speichern und laden von Daten. In Abbildung \ref{architecture} ist die Architektur grafisch dargestellt.
 
-\subsection{Datenimport aus JSON}
-Der Datenimport aus einer JSON-Datei wird genau zwei mal im Spiel verwendet. Die Standards und die Texte der NPCs stehen in JSOn-Notation bereit. Dabei werden beide Dateien unterschiedlich ausgelesen und genutzt. Zuerst wird auf die Standards eingegangen und anschleißend auf die Verarbeitung der Datei mit Text. 
+
+			\begin{figure}[htbp]
+				\centering 
+				\label{architecture}
+				\includegraphics[width=13cm]{pics/archtecture.png}
+				\caption{Softwarearchitektur}
+			\end{figure}	
+			
+Darauf ist zu erkennen, dass die Klasse GameController.cs eine zentralle Rolle in der App spielt und im Mittelpunkt steht. Auf dem Server steht eine MySql Datenbank bereit, welche sich um die persistente Datenhaltung kümmert. Neben GameController.cs ist der NPCCommunicationController die einzige Klasse, welche außerhalb der eigentlichen Applikation kommuniziert. Das tut sie mit einem JSON Parser Plugin, welches beim auslesen der JSON Dateinen hilfe(siehe Kapitel \ref{npctext}).	
+
+\section{Datenhaltung und Anbindung an eine Datenbank}
+
+In diesem Kapitel wird die Datenhaltung auf dem Handy und dem Server erläutert. Begonnen wird dabei mit der Beschreibung der Datenhaltung auf dem Handy. Dabei wird auf verschiedene Aspekte der Speicherung eingegangen.
+
+\subsection{Datenhaltung auf dem Handy}
+
+Die Daten auf dem Handy werden im JSON-File Format gespeichert. Es gibt zwei verschiedene JSON Dateien in der App, eines für die Standards, welches vom Server geladen wird, und eines für die Texte der NPCs. Beide Dateien werden unterschiedlich ausgelesen und genutzt. Zuerst wird auf die Standards eingegangen und anschleißend auf die Verarbeitung der Datei mit Texten der NPCs. 
 	
 \subsubsection{Standards JSON}
 Die JSON für die Standards ist ein wichtiger Bestandteil des Spieles. In dieser Datei befinden sich alle wichtigen Infos zu den Standards und deren dazugehörigen Spiele. Diese Datei liegt Zentral auf einem Server und kann dort gewartet und gepflegt werden. Dadurch ist es möglich, zusätzliche Standards und Spiele einzufügen, ohne das der Nutzer die App aktuallisieren muss. Nun wird der grobe Ablauf, gefolgt von einer detailierten Beschreibung, erklärt und beschrieben.
@@ -107,8 +120,9 @@ In dieser wird zu Beginn ein neues WWW Objekt erstellt. Dieses baut eine Verbind
 
 \label{npctext}
 \subsubsection{NPCText JSON}
+ALI TEXT PLS 
 
-\subsection{Datenimport aus / in Datenbank}
+\subsection{Anbindung an einen Server}
 Zum Senden der Daten der Registrierung wird das Skript SendDataToServer.cs genutzt. In diesem werden die Daten der Registrierung zwischengespeichert und am Ende an den Server gesendet. Dazu wird die Methode SendRegister() genutzt. In dieser wird die Methode RegisterUser() als Coroutine gestartet. Dazu werden zehn Parameter übergeben, der Username, die Email, das Passwort, der Vorname, der Nachname, das Geburtsdatum, das Geschlecht, der Herkunftsstaat, die native Sprache und der gewählte Charakter. Bei einer Coroutine handelt es sich um einen Thread, welcher beliebig gestarte, pausiert und beendet werden kann.
 	
 Innerhalb dieser Methode wird zu Beginn ein Hash erstellt, welcher am Server genutzt wird, um zu überprüfen, ob die Anfrage gültig ist. Dieser besteht dabei aus teilen der Eingabe und einem zusätzlichen geheimen Schlüssel, welchem nur der App und dem Server bekannt sind. Dadurch wird die Sicherheit gesteigert und es wird Angreifern erschwert unberechtigte Zugriffe auf die Datenbank zu tätigen. Bei dm Hash handelt es sich dabei um die MD5 verschlüsselten Eingabedaten. Dadurch ist es fast nicht möglich, einen Validen Hash zu bilden, ohne diese Daten zu kennen.
