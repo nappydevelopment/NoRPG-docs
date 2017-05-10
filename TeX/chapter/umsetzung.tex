@@ -12,8 +12,7 @@ In diesem Abschnitt wird sich mit den generellem Aufbau der App befasst und teil
 	
 \section{Architektur}
 	
-Die Architektur entspricht dem Controller Prinzip, bei dem es eine zentrale Schnittstelle einen Controller gibt. In diesem Fall ist das die Klasse GameControl.cs, welche den Datenzugriff
-zwischen App und Server regelt und innerhalb der App alle wichtigen Abhängigkeiten wiederspiegelt. Diese Klasse ist darüber hinaus auch die zentrale Stelle zum speichern und laden von Daten. In Abbildung \ref{architecture} ist die Architektur grafisch dargestellt.
+Die Architektur entspricht dem Model View Controller Prinzip, bei dem es eine zentrale Schnittstelle einen Controller gibt. In diesem Fall ist das die Klasse „GameControl.cs”, welche den Datenzugriff  zwischen App und Server regelt und innerhalb der App alle wichtigen Abhängigkeiten wiederspiegelt. Diese Klasse ist darüber hinaus auch die zentrale Stelle zum speichern und laden von Daten. In Abbildung \ref{architecture} ist die Architektur grafisch dargestellt.
 
 
 			\begin{figure}[htbp]
@@ -23,7 +22,7 @@ zwischen App und Server regelt und innerhalb der App alle wichtigen Abhängigkei
 				\caption{Softwarearchitektur}
 			\end{figure}	
 			
-Darauf ist zu erkennen, dass die Klasse GameController.cs eine zentralle Rolle in der App spielt und im Mittelpunkt steht. Auf dem Server steht eine MySql Datenbank bereit, welche sich um die persistente Datenhaltung kümmert. Neben GameController.cs ist der NPCCommunicationController die einzige Klasse, welche außerhalb der eigentlichen Applikation kommuniziert. Das tut sie mit einem JSON Parser Plugin, welches beim auslesen der JSON Dateinen hilfe(siehe Kapitel \ref{npctext}).	
+Darauf ist zu erkennen, dass die Klasse „GameController.cs” eine zentralle Rolle in der App spielt und im Mittelpunkt steht. Auf dem Server steht eine MySql Datenbank bereit, welche sich um die persistente Datenhaltung kümmert. Neben GameController.cs” ist der NPCCommunicationController die einzige Klasse, welche außerhalb der eigentlichen Applikation kommuniziert. Das tut sie mit einem \ac{JSON} Parser Plugin, welches beim auslesen der \ac{JSON} Dateien hilft (siehe Kapitel \ref{npctext}).	
 
 \section{Datenhaltung und Anbindung an eine Datenbank}
 
@@ -31,18 +30,18 @@ In diesem Kapitel wird die Datenhaltung auf dem Handy und dem Server erläutert.
 
 \subsection{Datenhaltung auf dem Handy}
 
-Die Daten auf dem Handy werden im JSON-File Format gespeichert. Es gibt zwei verschiedene JSON Dateien in der App, eines für die Standards, welches vom Server geladen wird, und eines für die Texte der NPCs. Beide Dateien werden unterschiedlich ausgelesen und genutzt. Zuerst wird auf die Standards eingegangen und anschleißend auf die Verarbeitung der Datei mit Texten der NPCs. 
+Die Daten auf dem Handy werden im \ac{JSON}-File Format gespeichert. Es gibt zwei verschiedene \ac{JSON} Dateien in der App, eines für die Standards, welches vom Server geladen wird, und eines für die Texte der \acp{NPC}. Beide Dateien werden unterschiedlich ausgelesen und genutzt. Zuerst wird auf die Standards eingegangen und anschleißend auf die Verarbeitung der Datei mit Texten der \acp{NPC}. 
 	
-\subsubsection{Standards JSON}
-Die JSON für die Standards ist ein wichtiger Bestandteil des Spieles. In dieser Datei befinden sich alle wichtigen Infos zu den Standards und deren dazugehörigen Spiele. Diese Datei liegt Zentral auf einem Server und kann dort gewartet und gepflegt werden. Dadurch ist es möglich, zusätzliche Standards und Spiele einzufügen, ohne das der Nutzer die App aktuallisieren muss. Nun wird der grobe Ablauf, gefolgt von einer detailierten Beschreibung, erklärt und beschrieben.
+\subsubsection{Standards \ac{JSON}}
+Die \ac{JSON} für die Standards ist ein wichtiger Bestandteil des Spieles. In dieser Datei befinden sich alle wichtigen Infos zu den Standards und deren dazugehörigen Spiele. Diese Datei liegt Zentral auf einem Server und kann dort gewartet und gepflegt werden. Dadurch ist es möglich, zusätzliche Standards und Spiele einzufügen, ohne das der Nutzer die App aktuallisieren muss. Nun wird der grobe Ablauf, gefolgt von einer detailierten Beschreibung, erklärt und beschrieben.
 	
-			Damit der Nutzer die aktuelle Datei zur Verfügung hat, versucht das Spiel eine zu Beginn eine Verbindung zu dem Server aufzubauen. Gelingt dies, wird die Datei von Server geladen und auf dem Handy gespeichert. Nachdem die Datei gespeichert wurde, wird sie in das Spiel geladen. Dazu wird aus dem JSON eine Liste erstellt, welche überall im Spiel nutzbar ist.
+			Damit der Nutzer die aktuelle Datei zur Verfügung hat, versucht das Spiel eine zu Beginn eine Verbindung zu dem Server aufzubauen. Gelingt dies, wird die Datei von Server geladen und auf dem Handy gespeichert. Nachdem die Datei gespeichert wurde, wird sie in das Spiel geladen. Dazu wird aus dem \ac{JSON} eine Liste erstellt, welche überall im Spiel nutzbar ist.
 	
-			Für das Laden und verarbeiten sind fünf Klassen verantwortlich. Im Folgenden wird nur deatiliert auf die Klasse WebJSONConfigReader eingegangen. Die anderen Klassen sind im Anhang abgebildet und werden nur erwähnt.
+			Für das Laden und verarbeiten sind fünf Klassen verantwortlich. Im Folgenden wird nur deatiliert auf die Klasse „WebJSONConfigReader” eingegangen. Die anderen Klassen sind im Anhang abgebildet und werden nur erwähnt.
 	
-			Die Klasse MappingStandardsToCourses ist die Datenhaltungsklasse. In dieser ist die Struktur der einzelnen Objekte geregelt. In der Klasse MappingStandardsToCoursesBean spiegelt die Struktur der JSON-Datei wieder. 
+			Die Klasse „MappingStandardsToCourses” ist die Datenhaltungsklasse. In dieser ist die Struktur der einzelnen Objekte geregelt. In der Klasse „MappingStandardsToCoursesBean” spiegelt die Struktur der \ac{JSON}-Datei wieder. 
 	
-			Der WebJSONConfigReader wird in der Klasse LoadingScreen genutzt. Dort wird eine Instanz dieser Klasse erzeugt und es wird die Methode LoadSettings ausgeführt und in der Variable Settings gespeichert. Diese Methode ist in Listing \ref{lst:methode3} zu sehen.
+			Der „WebJSONConfigReader” wird in der Klasse „LoadingScreen” genutzt. Dort wird eine Instanz dieser Klasse erzeugt und es wird die Methode „LoadSettings” ausgeführt und in der Variable „Settings” gespeichert. Diese Methode ist in Listing \ref{lst:methode3} zu sehen.
 
 \begin{scriptsize}
 \lstset{
@@ -116,14 +115,14 @@ public MappingStandardsToCourses LoadSettings() {
 \end{lstlisting}
 \end{scriptsize}
 
-In dieser wird zu Beginn ein neues WWW Objekt erstellt. Dieses baut eine Verbindung zum Server auf. Anschließend wird in Zeile 9 überprüft, ob es zu einem Fehler beim Verbindungsaufbau gekommen ist. Wenn es zu keinem Fehler gekommen ist, wird der Inhalt des WWW Objekts in eine Datei geschrieben und gespeichert. Für den Fall das ein Fehler aufgetretten ist und das WWW Objekt keine Verbindung zum Server aufgebaut werden kann, wird geprüft ob bereits eine ältere Datei vorhanden ist, wenn ja, wird der Text aus dieser Datei zum Erzeugen des Objektes genutzt. Anschlißend wird in Zeile 19 aus dem Text eine JSON Struktur erzeugt. Aus dieser wird anschließend in mehreren Schritten ein mehrdimensionaler Array erzeugt und zurückgegeben.
+In dieser wird zu Beginn ein neues WWW Objekt erstellt. Dieses baut eine Verbindung zum Server auf. Anschließend wird in Zeile 9 überprüft, ob es zu einem Fehler beim Verbindungsaufbau gekommen ist. Wenn es zu keinem Fehler gekommen ist, wird der Inhalt des WWW Objekts in eine Datei geschrieben und gespeichert. Für den Fall das ein Fehler aufgetretten ist und das WWW Objekt keine Verbindung zum Server aufgebaut werden kann, wird geprüft ob bereits eine ältere Datei vorhanden ist, wenn ja, wird der Text aus dieser Datei zum Erzeugen des Objektes genutzt. Anschlißend wird in Zeile 19 aus dem Text eine \ac{JSON} Struktur erzeugt. Aus dieser wird anschließend in mehreren Schritten ein mehrdimensionaler Array erzeugt und zurückgegeben.
 
 \label{npctext}
-\subsubsection{NPCText JSON}
+\subsubsection{NPCText \ac{JSON}}
 ALI TEXT PLS 
 
 \subsection{Anbindung an einen Server}
-Zum Senden der Daten der Registrierung wird das Skript SendDataToServer.cs genutzt. In diesem werden die Daten der Registrierung zwischengespeichert und am Ende an den Server gesendet. Dazu wird die Methode SendRegister() genutzt. In dieser wird die Methode RegisterUser() als Coroutine gestartet. Dazu werden zehn Parameter übergeben, der Username, die Email, das Passwort, der Vorname, der Nachname, das Geburtsdatum, das Geschlecht, der Herkunftsstaat, die native Sprache und der gewählte Charakter. Bei einer Coroutine handelt es sich um einen Thread, welcher beliebig gestarte, pausiert und beendet werden kann.
+Zum Senden der Daten der Registrierung wird das Skript „SendDataToServer.cs” genutzt. In diesem werden die Daten der Registrierung zwischengespeichert und am Ende an den Server gesendet. Dazu wird die Methode „SendRegister()” genutzt. In dieser wird die Methode „RegisterUser()” als Coroutine gestartet. Dazu werden zehn Parameter übergeben, der Username, die Email, das Passwort, der Vorname, der Nachname, das Geburtsdatum, das Geschlecht, der Herkunftsstaat, die native Sprache und der gewählte Charakter. Bei einer Coroutine handelt es sich um einen Thread, welcher beliebig gestarte, pausiert und beendet werden kann.
 	
 Innerhalb dieser Methode wird zu Beginn ein Hash erstellt, welcher am Server genutzt wird, um zu überprüfen, ob die Anfrage gültig ist. Dieser besteht dabei aus teilen der Eingabe und einem zusätzlichen geheimen Schlüssel, welchem nur der App und dem Server bekannt sind. Dadurch wird die Sicherheit gesteigert und es wird Angreifern erschwert unberechtigte Zugriffe auf die Datenbank zu tätigen. Bei dm Hash handelt es sich dabei um die MD5 verschlüsselten Eingabedaten. Dadurch ist es fast nicht möglich, einen Validen Hash zu bilden, ohne diese Daten zu kennen.
 	
@@ -197,6 +196,6 @@ public class SendDataToServer : MonoBehaviour {
 
 \end{lstlisting}
 \end{scriptsize}
-Auf dem Server läuft für die Datenannahme das PHP Skript register.php. Dieses nimmt die Daten aus der URL entgegen und speichert diese zunächst in Variablen ab. Anschließend wird auch in diesem Skript ein Hash gebildet und anschließend mit dem Mitgesendetem abgegleicht. Sollte es hier einen Fehler geben, sendet der Server einen Error zurück, wenn die Hashes identisch sind, wird eine Verbindung zu der Datenbank aufgabenaut und ein Eintrag in der accounts Tabelle erstellt. Anschließend wird eine erfolgreich Meldung an den Client gesendet.
+Auf dem Server läuft für die Datenannahme das PHP Skript „register.php”. Dieses nimmt die Daten aus der URL entgegen und speichert diese zunächst in Variablen ab. Anschließend wird auch in diesem Skript ein Hash gebildet und anschließend mit dem Mitgesendetem abgegleicht. Sollte es hier einen Fehler geben, sendet der Server einen Error zurück, wenn die Hashes identisch sind, wird eine Verbindung zu der Datenbank aufgabenaut und ein Eintrag in der accounts Tabelle erstellt. Anschließend wird eine erfolgreich Meldung an den Client gesendet.
 
 Für den login innerhalb der App wird identisch vorgegangen. Dabei wird jedoch ein Datensatz in die Datenbank geschrieben, sondern nur gelsen. Des weiteren wird der Hash aus nicht so vielen Werten gebildet, da nur der Username und das verschlüsselte Passwort übermittelt werden.

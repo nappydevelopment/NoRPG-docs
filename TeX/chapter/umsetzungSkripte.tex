@@ -2,7 +2,7 @@
 	Nachfolgend wird auf die einzelnen C\# Skripte eingegangen, welche für die App benötigt werden. Darüber hinaus wird auf weitere, für die Skripte essentielle umgesetzte Teile der App eingegangen.
 
 \subsection{Player}
-	Der Player setzt sich aus mehreren einzelnen Objekten zusammen, darunter die Textur für den Spieler, ein Teil deiner Minimap und ein weiteres leeres Objekt, welches für die Kamera wichtig ist. An dem Player selbst befinden sich wiederum die Skripte und von Unity vorgefertigten Objekte. Ein sogenannter Rigedbody sorgt dafür, dass der Player Gravitation erfährt und nicht einfach durch die Luft schweben kann. Ein Character Controller fügt Eigenschaften wie eine Größe und höhe ein. Darüber hinaus besitzt der Player einen Animatoir. Dieser ist zusammen mit dem ThirdPersonController dafür verantwortlich, dass sich der Player in der Szene bewegt und die Animationen korrekt ausgeführt werden. Damit dies passiert, wird diesem Controller der Wert speed und direction übergeben. Daraus resultieren folgene Möglichkeiten der Animation
+	Der Player setzt sich aus mehreren einzelnen Objekten zusammen, darunter die Textur für den Spieler, ein Teil deiner Minimap und ein weiteres leeres Objekt, welches für die Kamera wichtig ist. An dem Player selbst befinden sich wiederum die Skripte und von Unity vorgefertigten Objekte. Ein sogenannter „Rigedbody” sorgt dafür, dass der Player Gravitation erfährt und nicht einfach durch die Luft schweben kann. Ein „Character Controller” fügt Eigenschaften wie eine Größe und höhe ein. Darüber hinaus besitzt der Player einen „Animatoir”. Dieser ist zusammen mit dem „ThirdPersonController” dafür verantwortlich, dass sich der Player in der Szene bewegt und die Animationen korrekt ausgeführt werden. Damit dies passiert, wird diesem Controller der Wert speed und direction übergeben. Daraus resultieren folgene Möglichkeiten der Animation:
 
  \begin{table}[htbp]
  \begin{tabular}{|c|c|l|}
@@ -25,11 +25,11 @@
  \label{tab:tabspeeddirection}
  \end{table}
  
-	Durch diese vielzahl an Animationen ist gewährleistet, dass der Player zu jeder Zeit die richtige Animation ausführt und die Bewegung nicht unnatürlich aussieht. Die Werte speed und direction für diese Animation kommen dabei aus dem Skript CharacterControll.cs . Diese ist für die Steuerung des Players zuständig. Hier wird die Toucheingabe über den Joystick in Weltkoordinaten umgewandelt und der Player beginnt sich zu bewegen. Dazu ist die Update Methode genutzt worden. In dieser wird, sofern ein Animator an dem Player vorhanden ist, die horizontale und vertikale Bewegung des Joysticks in die direction und den speed umgewandelt. Das ganze passiert dabei in der Methode StickToWorldspace, welche die Transform vom Player, der Kamera, die direction und den speed, übergeben bekommt. Nachdem die Methode aufgerufen wurde und abgeschlossen ist, werden die Werte von direction und speed an den ThridPersonController übergeben und die Animation startet, wie zuvor beschrieben.
+	Durch diese vielzahl an Animationen ist gewährleistet, dass der Player zu jeder Zeit die richtige Animation ausführt und die Bewegung nicht unnatürlich aussieht. Die Werte „speed” und „direction” für diese Animation kommen dabei aus dem Skript „CharacterControll.cs”. Diese ist für die Steuerung des Players zuständig. Hier wird die Toucheingabe über den Joystick in Weltkoordinaten umgewandelt und der Player beginnt sich zu bewegen. Dazu ist die Update Methode genutzt worden. In dieser wird, sofern ein Animator an dem Player vorhanden ist, die horizontale und vertikale Bewegung des Joysticks in die Werte für „direction” und „speed” umgewandelt. Das ganze passiert dabei in der Methode „StickToWorldspace”, welche die Transform vom Player, der Kamera, die „direction” und den „speed”, übergeben bekommt. Nachdem die Methode aufgerufen wurde und abgeschlossen ist, werden die Werte von „direction” und „speed” an den „ThridPersonController” übergeben und die Animation startet, wie zuvor beschrieben.
 
-	In der StickToWorldspace Methode wird zu Begin die rootDirection gesetzt, welche sich dabei aus der Z-Achsen Koordinate zusammensetzt. Anschließend wird die stickDirection gesetzt, durch den horizontalen und vertikalen Wert des Joysticks. Nun wird durch das quadrieren der beiden Werte der speed berechnet. Dieser liegt dabei zwischen Null und Eins.
+	In der „StickToWorldspace” Methode wird zu Begin die „rootDirection” gesetzt, welche sich dabei aus der Z-Achsen Koordinate zusammensetzt. Anschließend wird die „stickDirection” gesetzt, durch den horizontalen und vertikalen Wert des Joysticks. Nun wird durch das quadrieren der beiden Werte der „speed” berechnet. Dieser liegt dabei zwischen Null und Eins.
 
-	Danach das ganze in bezug zu der Positionsrichtung der Kamera gesetzt, um die Bewegungsrichtung zu erhalten, um anschließend das Kreutzprodukt aus diesen beiden Werten zu berechen. Mit hilfe dessen kann bestimmt werden, ob sich der Player nach Rechts oder nach Links bewegen soll.
+	Danach wird das ganze in Bezug zu der Positionsrichtung der Kamera gesetzt, um die Bewegungsrichtung zu erhalten, um anschließend das Kreutzprodukt aus diesen beiden Werten zu berechen. Mit hilfe dessen kann bestimmt werden, ob sich der Player nach Rechts oder nach Links bewegen soll.
 
 \begin{scriptsize}
 \lstset{
@@ -106,7 +106,7 @@ public class CharacterControll : MonoBehaviour {
 \end{scriptsize}
 
 \subsection{Kamera}
-	Bei der Kamera handelt es sich um ein Gameobject, welches dem Spieler folgt. Dafür ist an dem Spieler ein Objekt namens follow angehängt, auf das die Kamera ziegt und die Kamera hat eine Referenz auf das Skript ThirdPersonCamera.cs. In diesem wird das Verhalten der Kamera gesteuert. Dazu werden die Methoden aus dem Listing \ref{lst:lateupdate} verwendet. In LateUpdate wird dabei die Position der Kamera in bezug zum Spieler gesetzt. Dabei befindet sich die Kamera immer in einem Kreis, um dem Spieler herum, wodurch die Sicht nicht eingeschränkt wird.
+	Bei der Kamera handelt es sich um ein „Gameobject”, welches dem Spieler folgt. Dafür ist an dem Spieler ein Objekt namens „follow” angehängt, auf das die Kamera ziegt und die Kamera hat eine Referenz auf das Skript „ThirdPersonCamera.cs”. In diesem wird das Verhalten der Kamera gesteuert. Dazu werden die Methoden aus dem Listing \ref{lst:lateupdate} verwendet. In LateUpdate wird dabei die Position der Kamera in bezug zum Spieler gesetzt. Dabei befindet sich die Kamera immer in einem Kreis, um dem Spieler herum, wodurch die Sicht nicht eingeschränkt wird.
 
 \begin{scriptsize}
 \lstset{
@@ -149,12 +149,13 @@ private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget) {
 \end{lstlisting}
 \end{scriptsize}
 
-Darüber hinaus wird in LateUpdate unterbunden, dass die Kamera in Wänden verschwindet und durch Objekte geschaut werden kann. Dazu wird die Methode CompensateForWalls ausgeführt. In dieser wird getestet, ob zwischen der Kamera und dem Spieler ein Objekt vorhanden ist. Wenn das der Fall ist, wird die Kamera vor dieses Objekt gesetzt.
+Darüber hinaus wird in LateUpdate unterbunden, dass die Kamera in Wänden verschwindet und durch Objekte geschaut werden kann. Dazu wird die Methode „CompensateForWalls” ausgeführt. In dieser wird getestet, ob zwischen der Kamera und dem Spieler ein Objekt vorhanden ist. Wenn das der Fall ist, wird die Kamera vor dieses Objekt gesetzt.
 
 Nach dem ersten Starten des Spieles startet eine kurze geskriptete Szene, in der der Spiele kurz in die Geschichte geführt wird. Dabei wird die Farbe der Startwelt entfernt  (siehe Kapitel \ref{geschichte}). Dazu wird ein Shader genutzt, welcher die Farbintensität von jedem Pixel verändert. Dieser Shader hat das Attribut intensität, welches die Stärke der Graustufen bestimmt. Dieser wird zu Beginn auf eins gesetzt und für jeden gefundenen Diamanten in den anderen Welten minimiert.
     
 \subsection{Portale}
 
+ALIS PART
 
 \subsection{Interaktionsmöglichkeiten}
 
@@ -162,10 +163,10 @@ Im Spiel kann der Spieler mit verschiedenen Objekten interagieren. Zu den Hauptk
 
 \subsubsection{Händler}
 
-In jeder Welt befinden sich bis zu elf Händler. Die Funktionsweise wird hier an einem Händler aus der ersten Welt dargestellt. Die Händler sind in jeder welt identisch und unterschieden sich nur im Namen. Anhand dessen wird entschieden was dieser Händler für eine Funktion hat und welche Spiele und Standards er representiert. Dabei setzt sich der Name aus drei Teilen zusammen: Der Klasse, dem Fach und dem Themengebiet. Dabei sind die einzelnen Teile durch einen Unterstrich getrennt. Ein Beipsiel für das Themengebiet Schreiben in Englisch der ersten Klasse sieht wie folgt aus: 1\_English\_W
+In jeder Welt befinden sich bis zu elf Händler. Die Funktionsweise wird hier an einem Händler aus der ersten Welt dargestellt. Die Händler sind in jeder welt identisch und unterschieden sich nur im Namen. Anhand dessen wird entschieden was dieser Händler für eine Funktion hat und welche Spiele und Standards er representiert. Dabei setzt sich der Name aus drei Teilen zusammen: Der Klasse, dem Fach und dem Themengebiet. Dabei sind die einzelnen Teile durch einen Unterstrich getrennt. Ein Beipsiel für das Themengebiet Schreiben in Englisch der ersten Klasse sieht wie folgt aus: „1\_English\_W”. 
 
+Um nun einen Händler zu finden, wird das Skript „FindNearestHandler.cs” genutzt. In diesem gibt es die Methode „GetClosestObject” (siehe Listing\ref{lst:getclosest}), welches das dichteste Objekt am Spieler findet.
 
-Um nun einen Händler zu finden, wird das Skript FindNearestHandler.cs genutzt. In diesem gibt es die Methode GetClosestObject (siehe Listing\ref{lst:getclosest}), welches das dichteste Objekt am Spieler findet.
 \begin{scriptsize}
 \lstset{
 	float,
@@ -200,15 +201,15 @@ public GameObject GetClosestObject(string tag, GameObject player) {
 
 Hier wird jedes Objekt, welches einen bestimmten Tag hat, in einem Array gespeichert und anschließend wird für jedes Objekt geprüft wie weit es entfernt ist. Das dichteste Objekt wird am Schluss zurück gegeben.
 
-Nachdem der dichteste Händler gefunden wurde, wird der Richtige Dialog gestartet, sobald der Spieler in der Nähe eines Händlers auf den A-Knopf klickt. Dabei wird die Methode StartCommunication() aus dem Skript NPCCommunication gestartet. In diesem wird geschaut, ob sich der Spieler dicht genug am Händler befindet. Ist das der Fall, wird der Dialog geöffnet und die korrekten Daten werden aus einer JSON-Datei geladen(siehe Kapitel \ref{npctext}). Anschließend wird die Funktion OpenGameList() ausgeführt, in der die richtigen Spiele angezeigt werden. Wenn der Spieler nun auf ein Spiel klickt, wird er zu der Downloadseite des Spieles weitergeleitet und er kann dieses herunterladen.
+Nachdem der dichteste Händler gefunden wurde, wird der Richtige Dialog gestartet, sobald der Spieler in der Nähe eines Händlers auf den A-Knopf klickt. Dabei wird die Methode „StartCommunication()” aus dem Skript „NPCCommunication” gestartet. In diesem wird geschaut, ob sich der Spieler dicht genug am Händler befindet. Ist das der Fall, wird der Dialog geöffnet und die korrekten Daten werden aus einer \ac{JSON}-Datei geladen(siehe Kapitel \ref{npctext}). Anschließend wird die Funktion „OpenGameList()” ausgeführt, in der die richtigen Spiele angezeigt werden. Wenn der Spieler nun auf ein Spiel klickt, wird er zu der Downloadseite des Spieles weitergeleitet und er kann dieses herunterladen.
 
 \subsubsection{Chests}
 
-Bei den Chests wird nur über den Tag entschieden, was getan wird. Dazu wird zusatzlich zu dem NPCCommunication Skript das Skript ChestHandle.cs benötigt. In diesem wird überprüft, welche Chest der Spieler öffnen will. Danach wird das einsammeln von den sammelbaren Objekten gestartet.
+Bei den Chests wird nur über den Tag entschieden, was getan wird. Dazu wird zusatzlich zu dem „NPCCommunication” Skript das Skript „ChestHandle.cs” benötigt. In diesem wird überprüft, welche Chest der Spieler öffnen will. Danach wird das einsammeln von den sammelbaren Objekten gestartet.
 
 
 \subsection{Pfadfindungssystem Schiff}
-Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript EditorPathScript. (siehe Listing \ref{lst:c_patheditor})
+Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript „EditorPathScript”. (siehe Listing \ref{lst:c_patheditor})
 
 \begin{scriptsize}
 \lstset{
@@ -267,7 +268,7 @@ public class EditorPathScript : MonoBehaviour {
 Dieses sorgt dafür, das die Pfade grafisch im Unity Editor angezeigt werden. Dieses Skript zeichnet dabei von einem Startpunkt zum nächsten eine Linie, solange, bis der letzte Punkt erreicht wird. Dadurch wird es möglich die Pfade grafisch zu bearbeiten und erleichtert so die Arbeit. 
 Nun wird beschrieben, wie das Schiff dem Pfad folgt, sobald der Player den Pfad ausgewählt hat. Dabei wird auf den Pfad von Insel eins zu zwei eingegangen. Für alle anderen Pfade ist das vorgehen identisch.
 
-Über ein Userinterface wählt der Player den betroffenen Pfad aus. Dabei wird dieser über einen Button ausgewählt. Sobald dieser geklickt wurde wird eine Funktion in Listing \ref{lst:methode} ausgeführt. Diese selektiert den gewünschten Pfad aus den verfügbaren Pfaden und setzt den boolean playerOnShip auf true. 
+Über ein \ac{UI} wählt der Player den betroffenen Pfad aus. Dabei wird dieser über einen Button ausgewählt. Sobald dieser geklickt wurde wird eine Funktion in Listing \ref{lst:methode} ausgeführt. Diese selektiert den gewünschten Pfad aus den verfügbaren Pfaden und setzt den boolean „playerOnShip” auf true. 
 
 \begin{scriptsize}
 \lstset{
@@ -298,7 +299,7 @@ public void selectFirstClass () {
 \end{lstlisting}
 \end{scriptsize}
 
-Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode playerGetOnShip ausgeführt. Der Code ist in Listing \ref{lst:methode1} zu sehen. Durch diese Methode bewegt sich der Player mit dem Schiff in der selben Geschwindigkeit. Darüberhinaus blokiert diese Funktion die Eingabemöglichkeiten des Players während der Fahrt.
+Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode „playerGetOnShip” ausgeführt. Der Code ist in Listing \ref{lst:methode1} zu sehen. Durch diese Methode bewegt sich der Player mit dem Schiff in der selben Geschwindigkeit. Darüberhinaus blokiert diese Funktion die Eingabemöglichkeiten des Players während der Fahrt.
 
 \begin{scriptsize}
 \lstset{
@@ -338,7 +339,7 @@ public void playerGetOnShip () {
 \end{lstlisting}
 \end{scriptsize}
 
-Des Weiteren wird die Funktion moveShip ausgeführt. Diese ist für die eigentliche Bewegung des Schiffes verantwortlich. Sobald playerOnShip auf true gesetzt ist, wird zuerst die Distanz zwischen dem ersten Punkt des Pfades und des Schiffes gespeichert und die Position des Schiffes an diese stelle verschoben. Anschließend wird die drehung des Schiffes an die Fahrtrichtung angepasst und gedreht. Sobald die Distanz zwischen der aktuellen Position des Schiffes und dem nächsten Punkt des Pfades kleiner ist wie eine minimale Distanz, wird die currentWayPointId um eins erhöhrt. Solange dieser Wert nicht größer ist wie die Anzahl der Punkte des Pfades werden diese Schritte wiedserholt und das Schiff bewegt sich entlang des Pfades.
+Des Weiteren wird die Funktion „moveShip” ausgeführt. Diese ist für die eigentliche Bewegung des Schiffes verantwortlich. Sobald „playerOnShip” auf true gesetzt ist, wird zuerst die Distanz zwischen dem ersten Punkt des Pfades und des Schiffes gespeichert und die Position des Schiffes an diese stelle verschoben. Anschließend wird die drehung des Schiffes an die Fahrtrichtung angepasst und gedreht. Sobald die Distanz zwischen der aktuellen Position des Schiffes und dem nächsten Punkt des Pfades kleiner ist wie eine minimale Distanz, wird die „currentWayPointId” um eins erhöhrt. Solange dieser Wert nicht größer ist wie die Anzahl der Punkte des Pfades werden diese Schritte wiedserholt und das Schiff bewegt sich entlang des Pfades.
 
 \begin{scriptsize}
 \lstset{
