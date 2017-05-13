@@ -99,8 +99,7 @@
 				\caption{Mockup: Login-Screen}
 			\end{figure}
 			
-			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies den Namen, das Geschlecht und Aussehen seines Charakters.
-			irekt in der App zu machen. Dazu klickt der Benutzer den Register-Button auf der Login-Oberfläche. Anschließend öffnet sich die Register-Oberfläche. Der vollständige Registrierungsprozess (siehe Abbildung \ref{mockupsRegistrierung}) setzt sich aus zwei Schritten zusammen. Im ersten Schritt muss der Spieler das Registrierungsformular ausfüllen und bestätigen. Die Elemente des Formulars sind als Tabellen-Layout angeordnet, welches die Lesbarkeit verbessert. Felder, die nicht der erwarteten Eingabe entsprechen, werden als Falsch markiert und visuell hervorgehoben. Wenn das Anlegen des Accounts erfolgreich war, hat der Anwender die Möglichkeit im zweiten Schritt seinen persönlichen Charakter zu erstellen. Dafür bestimmt der Benutzer d
+			Falls sich der Benutzer bei NoRPG registrieren möchte, hat er die Möglichkeit dies direkt in der App zu machen. Dazu klickt der Benutzer den Register-Button auf der Login-Oberfläche. Anschließend öffnet sich die Register-Oberfläche. Der vollständige Registrierungsprozess (siehe Abbildung \ref{mockupsRegistrierung}) setzt sich aus zwei Schritten zusammen. Im ersten Schritt muss der Spieler das Registrierungsformular ausfüllen und bestätigen. Die Elemente des Formulars sind als Tabellen-Layout angeordnet, welches die Lesbarkeit verbessert. Felder, die nicht der erwarteten Eingabe entsprechen, werden als Falsch markiert und visuell hervorgehoben. Wenn das Anlegen des Accounts erfolgreich war, hat der Anwender die Möglichkeit im zweiten Schritt seinen persönlichen Charakter zu erstellen. Dafür bestimmt der Benutzer den Namen, das Geschlecht und Aussehen seines Charakters.
 			\begin{figure}[htbp]
 				\centering 
 				\label{mockupsRegistrierung}
@@ -134,13 +133,13 @@
 				\centering 
 				\label{mockupFenster}
 				\includegraphics[width=\textwidth]{pics/NewWindows.png}
-				\caption{Mockups: Spielliste, Fortschrittanzeige, Karte und Erfolgsübersicht}
+				\caption{Mockups: Spielliste, Fortschrittsanzeige, Karte und Erfolgsübersicht}
 			\end{figure}
 		
 		\subsubsection{Hardwareschnittstellen}
 			Schnittstellen zwischen NoRPG und Hardwarekomponenten werden als Hardwareschnittstellen des Systems bezeichnet. Dieses Kapitel dient zur Spezifikation der logischen Eigenschaften dieser Schnittstellen.
 			
-			Ein Smartphone besteht aus sehr vielen Hardwarekomponenten. Jede einzelne Komponente wird benötigt, damit das Smartphone mit seinem kompletten Funktionsumfang lauffähig ist. Jedoch spielen einige Hardwarekomponenten eine besondere Rolle für NoRPG. Neben unverzichtbaren Komponenten wie den Prozessor, Speicher oder Akku zählen zu den Kernkomponenten der Touchscreen und der WLAN-Adapter. Der Touchscreen wird benötigt um die Eingaben des Spielers an das Spiel zu kommunizieren. Se es die Steuerung des Charakters, das Ausfüllen des Registrierungsformulars oder das einfache betätigen eines Buttons. Ohne den Touchscreen können keine Eingaben ohne zusätzliche Peripherie an das Spiel kommuniziert werden. Der WLAN-Adapter ist zuständig für die Verbindung mit dem Internet. Ohne eine Internetverbindung ist nicht einmal der Login funktionsfähig bzw. es wäre nicht ohne Umstände möglich NoRPG aus dem Google Play Store herunterzuladen.
+			Ein Smartphone besteht aus sehr vielen Hardwarekomponenten. Jede einzelne Komponente wird benötigt, damit das Smartphone mit seinem kompletten Funktionsumfang lauffähig ist. Jedoch spielen einige Hardwarekomponenten eine besondere Rolle für NoRPG. Neben unverzichtbaren Komponenten wie den Prozessor, Speicher oder Akku zählen zu den Kernkomponenten der Touchscreen und der WLAN-Adapter. Der Touchscreen wird benötigt um die Eingaben des Spielers an das Spiel zu kommunizieren. Sei es die Steuerung des Charakters, das Ausfüllen des Registrierungsformulars oder das einfache betätigen eines Buttons. Ohne den Touchscreen können keine Eingaben ohne zusätzliche Peripherie an das Spiel kommuniziert werden. Der WLAN-Adapter ist zuständig für die Verbindung mit dem Internet. Ohne eine Internetverbindung ist nicht einmal der Login funktionsfähig bzw. es wäre nicht ohne Umstände möglich NoRPG aus dem Google Play Store herunterzuladen.
 			
 			Obwohl es sich bei dem Server um einen virtuellen bzw. simulierten Server handelt, weiß NoRPG nicht, dass keine physische Hardware direkt benutzt wird. Für die App scheint es, als ob sie mit einem physischen Server kommuniziert. Auch hier sind alle Komponenten des Server, auch wenn diese Simuliert sind, Teil der Hardwareschnittstelle.
 			
@@ -234,7 +233,7 @@
 			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} Interaktion sein und das Menü ist vorher offen.
 	
 		\subsubsection{View achievements}
-			Dieser use Case beschreibt den Anwendungsfalls, dass der Spieler seine Sammelgegenstände betrachten will. Neben den Standards kann der Anwender im Spiel Gegenstände finden, die ihn in der in Kapitel 2 beschriebenen Story weiterbringen. Diese Collectables sind auf den einzelnen Spielwelten verteilt und können dann, nachdem diese gefunden sind in der Ansicht zusammen mit den anderen betrachtet werden.
+			Dieser Use Case beschreibt den Anwendungsfalls, dass der Spieler seine Sammelgegenstände betrachten will. Neben den Standards kann der Anwender im Spiel Gegenstände finden, die ihn in der in Kapitel 2 beschriebenen Story weiterbringen. Diese Collectables sind auf den einzelnen Spielwelten verteilt und können dann, nachdem diese gefunden sind in der Ansicht zusammen mit den anderen betrachtet werden.
 			
 			Im Prinzip ist dieses Activity Diagramm der gleiche wie der von Use Case "View progress". Der Spieler will seinen Fortschritt betrachten. Dieses mal allerdings seinen Fortschritt in NoRPG. Hier kann der Spieler zwischen den Welten wechseln anstatt zwischen den Fächern und es wird keine Baumstruktur präsentiert.
 			
@@ -248,7 +247,7 @@
 			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} Interaktion sein und das Menü ist vorher offen.
 		
 		\subsubsection{Change settings}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer Einstellungen ändern möchte. In dem Rahmen dieser Studienarbeit wird es zwei Einstellungsmöglichkeiten geben. Der Spieler kann die Qualität des Spieles verändern. Ist die Option "High Quality" an, wird alles in höchster Qualität wiedergegeben. Ist jedoch diese Option aus, werden Hintergrundanimationen, die ressourcenaufwändig sind, nicht wiedergegeben. Diese Option ermöglicht es Smartphones mit schlechterer Hardwareausführung das Spiel ohne Probleme spielen zu können, bietet jedoch für neuere Smartphones die Möglichkeit NoRPG in vollen zu genießen.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer Einstellungen ändern möchte. In dem Rahmen dieser Studienarbeit wird es zwei Einstellungsmöglichkeiten geben. Der Spieler kann die Qualität des Spieles verändern. Ist die Option "High Quality" an, wird alles in höchster Qualität wiedergegeben. Ist jedoch diese Option aus, werden Hintergrundanimationen, die ressourcenintensiv sind, nicht wiedergegeben. Diese Option ermöglicht es Smartphones mit schlechterer Hardwareausführung das Spiel ohne Probleme spielen zu können, bietet jedoch für neuere Smartphones die Möglichkeit NoRPG in vollen zu genießen.
 			
 			Die zweite Einstellungsmöglichkeit ist, dass der Spieler die Audioausgaben des Spieles verändern kann. Zu einem Spielerlebnis gehört die Musik und Soundeffekte. Diese kann der Spieler je nach Wunsch ein- oder ausschalten.
 
@@ -348,7 +347,7 @@
 	
 		Für die kindgerechte Gestaltung gibt es allerdings noch weitere Kriterien. Es dürfen keine In-App-Käufe angeboten, keine Werbung platziert oder zu Social Media oder ähnlichen Seiten verlinkt werden. Diese Gegenstände haben in einem kindgerechten Spiel nichts zu tun. Für die Installation gilt es zu beachten, das so wenig Berechtigungen wie notwendig verlangt werden\footnote{vgl. klick-tipps.net \cite{appsforkids}}.
 		
-		Es gilt, desto einfach die App gestaltet ist, desto mehr Kinder verstehen diese. Ein Beispiel dafür ist die Charaktersteuerung. Moderne Spiele haben keine sichtbaren Steuerkreuz, der Spieler muss nur eine Ziehbewegung in die Richtung machen, in der er sich bewegen möchte. In NoRPG allerdings wird ein sichtbares Steuerkreuz gewählt, wie dies schon von vielen Geräten wie vom klassischen Gameboy oder von Playstation verwedent wird. Navigation soll schnell erkennbar und nachvollziehbar sein.
+		Es gilt, desto einfach die App gestaltet ist, desto mehr Kinder verstehen diese. Ein Beispiel dafür ist die Charaktersteuerung. Moderne Spiele haben keine sichtbaren Steuerkreuz, der Spieler muss nur eine Wischbewegung in die Richtung machen, in der er sich bewegen möchte. In NoRPG allerdings wird ein sichtbares Steuerkreuz gewählt, wie dies schon von vielen Geräten wie vom klassischen Gameboy oder von Playstation verwendet wird. Navigation soll schnell erkennbar und nachvollziehbar sein.
 		
 		Schließlich gilt es die erwachsenen Nutzer nicht zu vergessen! Gemeint sind Eltern, Erziehungsberechtigte, Lehrer und jeder, der mit der App interagieren kann. Erwachsene spielen genauso eine wichtige Rolle. Egal ob diese die Kinder unterstützen, überwachen oder selbst spielen. Es ist wichtig, dass sich Eltern an die Entwickler melden können, wenn sie etwas nicht kindgerecht halten oder wenn es Probleme gibt\footnote{vgl. Becky White \cite{smashMagazin}}.	
 
