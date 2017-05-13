@@ -2,7 +2,7 @@
 	Nachdem im vorherigen Kapitel die technischen Grundlagen erläutert wurden, wird nun auf die Umsetzung eingegangen. Es wird mit der Umgesetzten Architektur begonnen, um einen groben Überblick über die einzelnen Komponenten zu bekommen. Anschließend wird genauer auf zwei wesentliche Teile eingegangen:
 
 	\paragraph{Datenhaltung und Anbindung an eine Datenbank}
-		In diesem Abschnitt wird die Datenhaltung auf dem Handy beschrieben. Dabei wird auf zwei unterschiedliche Methoden eingegangen, die bei der Umsetzung zum Einsatz kamen. In diesem Kapitel wird auf die Datenbankanbindung an den Server eingegangen. Besonders wird hier auf die verschiedenen Tabellen der Datenbank Bezug genommen und das allgemeine vorgehen beschrieben, Daten vom Server zu Laden und dort zu Speichern.
+		In diesem Abschnitt wird die Datenhaltung auf dem Handy beschrieben. Dabei wird auf zwei unterschiedliche Methoden eingegangen, die bei der Umsetzung zum Einsatz kamen. In dem ersten Abschnitt wird auf die Datenbankanbindung an den Server eingegangen. Besonders wird hier auf die verschiedenen Tabellen der Datenbank Bezug genommen und das allgemeine vorgehen beschrieben, Daten vom Server zu Laden und dort zu Speichern. Im Zweiten wird mehr auf die lokale Speicherung und Datenhaltung Bezug genommen und die verschiedenen Verfahren erläutert.
 
 	\paragraph{Bestandteile der App}
 		In diesem Abschnitt wird sich mit den generellem Aufbau der App befasst und teilt sich in zwei weitere Teile auf. in Teil eins wir auf die Benutzerschnittstelle eingegangen und die Benutzeroberfläche von NoRPG erklärt. Im zweiten Teil wird auf weitere wichtige Bestandteile der App eingegangen, darunter wichtige Klassen, welche für die App unverzichtbar sind.
@@ -21,8 +21,83 @@
 
 	\section{Datenhaltung und Anbindung an eine Datenbank}
 		In diesem Kapitel wird die Datenhaltung auf dem Handy und dem Server erläutert. Begonnen wird dabei mit der Beschreibung der Datenhaltung auf dem Handy. Dabei wird auf verschiedene Aspekte der Speicherung eingegangen.
+		
+\subsection{Anbindung an einen Server}
+			Zum Senden der Daten der Registrierung wird das Skript „SendDataToServer.cs” genutzt. In diesem werden die Daten der Registrierung zwischengespeichert und am Ende an den Server gesendet. Dazu wird die Methode „SendRegister()” genutzt. In dieser wird die Methode „RegisterUser()” als Coroutine gestartet. Dazu werden zehn Parameter übergeben, der Username, die Email, das Passwort, der Vorname, der Nachname, das Geburtsdatum, das Geschlecht, der Herkunftsstaat, die native Sprache und der gewählte Charakter. Bei einer Coroutine handelt es sich um einen Thread, welcher beliebig gestartet, pausiert und beendet werden kann.
+
+			Innerhalb dieser Methode wird zu Beginn ein Hash erstellt, welcher am Server genutzt wird, um zu überprüfen, ob die Anfrage gültig ist. Dieser besteht dabei aus teilen der Eingabe und einem zusätzlichen geheimen Schlüssel, welchem nur der App und dem Server bekannt sind. Dadurch wird die Sicherheit gesteigert und es wird Angreifern erschwert unberechtigte Zugriffe auf die Datenbank zu tätigen. Bei dm Hash handelt es sich dabei um die MD5 verschlüsselten Eingabedaten. Dadurch ist es fast nicht möglich, einen Validen Hash zu bilden, ohne diese Daten zu kennen.
+
+			Nachdem der Hash erstellt wurde, werden alle Parameter in Form einer URL aneinander gehängt. Anschließend wird die URL an ein WWW Objekt übergeben und solange gewartet, bis es eine Antwort gibt. Sofern es keinen Fehler gab, wird ein Text ausgegeben, welche vom Server gesendet wird, andernfalls eine Fehlermeldung.
+
+			\begin{scriptsize}
+				\lstset{
+					float,
+					caption=Skript SendDataToServer.cs, 
+					language=[Sharp]C, 
+					frame=single,  
+					showstringspaces=false, 
+					showspaces=false, 
+					numbers=left, 
+					captionpos=b, 
+					belowcaptionskip=4pt,
+					basicstyle=\ttfamily
+				} 
+				\begin{lstlisting}[label=lst:c_SendDataToServer]
+public class SendDataToServer : MonoBehaviour {
+  private static string secretKey = "*****";
+  public static string registerURL = "http://norpg.it.dh-karlsruhe.de/register.php?";
+  public static string loginURL = "http://norpg.it.dh-karlsruhe.de/login.php?";
+
+  [...]
+	
+  private void SendRegister() {
+    StartCoroutine(RegisterUser(userText, emailText, MD5Test.Md5Sum(passwordText), 
+    firstnameText, lastnameText, birthdayText, genderText, 
+    countryText, native_languageText, selected_characterText));
+  }
+	
+  IEnumerator RegisterUser(string user, string email, string password, string firstname, 
+    string lastname, string birthday, string gender, string country, 
+    string native_language, string selected_character) {
+	
+    string hash = MD5Test.Md5Sum(user + email + password 
+    + firstname + country 
+    + selected_character + secretKey);
+
+    string post_url = registerURL
+    + "user=" + WWW.EscapeURL(user)
+    + "&email=" + WWW.EscapeURL(email)
+    + "&password=" + WWW.EscapeURL(password)
+    + "&firstname=" + WWW.EscapeURL(firstname)
+    + "&lastname=" + WWW.EscapeURL(lastname)
+    + "&birthday=" + WWW.EscapeURL(birthday)
+    + "&gender=" + WWW.EscapeURL(gender)
+    + "&country=" + WWW.EscapeURL(country)
+    + "&native_language=" + WWW.EscapeURL(native_language)
+    + "&selected_character=" + WWW.EscapeURL(selected_character)
+    + "&hash=" + hash;
+    
+    WWW hs_post = new WWW(post_url);
+    yield return hs_post;
+
+    if (hs_post.error != null) {
+      print("There was an error posting the high score: " + hs_post.error);
+    } else {
+      status.text = hs_post.text;
+    }
+  }
+}
+				\end{lstlisting}
+			\end{scriptsize}
+
+			Auf dem Server läuft für die Datenannahme das PHP Skript „register.php”. Dieses nimmt die Daten aus der URL entgegen und speichert diese zunächst in Variablen ab. Anschließend wird auch in diesem Skript ein Hash gebildet und anschließend mit dem Mitgesendetem abgeglichen. Sollte es hier einen Fehler geben, sendet der Server einen Error zurück, wenn die Hashes identisch sind, wird eine Verbindung zu der Datenbank aufgebaut und ein Eintrag in der accounts Tabelle erstellt. Anschließend wird eine erfolgreich Meldung an den Client gesendet.
+
+			Für den Login innerhalb der App wird identisch vorgegangen. Dabei wird jedoch ein Datensatz in die Datenbank geschrieben, sondern nur gelesen. Des weiteren wird der Hash aus weniger Werten gebildet, da nur der Username und das verschlüsselte Passwort übermittelt werden.
+			
+			Auf dem Server läuft eine MySQL Datenbank. Diese sorgt für eine permanente Datenhaltung und die Synchronisation zwischen den Clients. Die Datenbank besteht dabei aus den  Tabellen „accounts” und „player\_data”. In „accounts” sind alle Informationen zu einem User hinterlegt, darunter auch die Daten für den Login. In der Tabelle „player\_data” wird der Fortschritt von jedem Spieler gespeichert, damit dieser von jedem Gerät aus erreichbar ist.
 
 		\subsection{Datenhaltung auf dem Handy}
+		
 			Die Daten auf dem Handy werden im \ac{JSON}-File Format gespeichert. Es gibt zwei verschiedene \ac{JSON} Dateien in der App, eines für die Standards, welches vom Server geladen wird, und eines für die Texte der \acp{NPC}. Beide Dateien werden unterschiedlich ausgelesen und genutzt. Zuerst wird auf die Standards eingegangen und anschließend auf die Verarbeitung der Datei mit Texten der \acp{NPC}. 
 
 			\subsubsection{Standards \ac{JSON}}
@@ -107,79 +182,7 @@ public MappingStandardsToCourses LoadSettings() {
 
 				In dieser wird zu Beginn ein neues WWW Objekt erstellt. Dieses baut eine Verbindung zum Server auf. Anschließend wird in Zeile 9 überprüft, ob es zu einem Fehler beim Verbindungsaufbau gekommen ist. Wenn es zu keinem Fehler gekommen ist, wird der Inhalt des WWW Objekts in eine Datei geschrieben und gespeichert. Für den Fall das ein Fehler aufgetreten ist und das WWW Objekt keine Verbindung zum Server aufgebaut werden kann, wird geprüft ob bereits eine ältere Datei vorhanden ist, wenn ja, wird der Text aus dieser Datei zum Erzeugen des Objektes genutzt. Anschließend wird in Zeile 19 aus dem Text eine \ac{JSON} Struktur erzeugt. Aus dieser wird anschließend in mehreren Schritten ein mehrdimensionaler Array erzeugt und zurückgegeben.
 
-		\subsection{Anbindung an einen Server}
-			Zum Senden der Daten der Registrierung wird das Skript „SendDataToServer.cs” genutzt. In diesem werden die Daten der Registrierung zwischengespeichert und am Ende an den Server gesendet. Dazu wird die Methode „SendRegister()” genutzt. In dieser wird die Methode „RegisterUser()” als Coroutine gestartet. Dazu werden zehn Parameter übergeben, der Username, die Email, das Passwort, der Vorname, der Nachname, das Geburtsdatum, das Geschlecht, der Herkunftsstaat, die native Sprache und der gewählte Charakter. Bei einer Coroutine handelt es sich um einen Thread, welcher beliebig gestartet, pausiert und beendet werden kann.
-
-			Innerhalb dieser Methode wird zu Beginn ein Hash erstellt, welcher am Server genutzt wird, um zu überprüfen, ob die Anfrage gültig ist. Dieser besteht dabei aus teilen der Eingabe und einem zusätzlichen geheimen Schlüssel, welchem nur der App und dem Server bekannt sind. Dadurch wird die Sicherheit gesteigert und es wird Angreifern erschwert unberechtigte Zugriffe auf die Datenbank zu tätigen. Bei dm Hash handelt es sich dabei um die MD5 verschlüsselten Eingabedaten. Dadurch ist es fast nicht möglich, einen Validen Hash zu bilden, ohne diese Daten zu kennen.
-
-			Nachdem der Hash erstellt wurde, werden alle Parameter in Form einer URL aneinander gehängt. Anschließend wird die URL an ein WWW Objekt übergeben und solange gewartet, bis es eine Antwort gibt. Sofern es keinen Fehler gab, wird ein Text ausgegeben, welche vom Server gesendet wird, andernfalls eine Fehlermeldung.
-
-			\begin{scriptsize}
-				\lstset{
-					float,
-					caption=Skript SendDataToServer.cs, 
-					language=[Sharp]C, 
-					frame=single,  
-					showstringspaces=false, 
-					showspaces=false, 
-					numbers=left, 
-					captionpos=b, 
-					belowcaptionskip=4pt,
-					basicstyle=\ttfamily
-				} 
-				\begin{lstlisting}[label=lst:c_SendDataToServer]
-public class SendDataToServer : MonoBehaviour {
-  private static string secretKey = "*****";
-  public static string registerURL = "http://norpg.it.dh-karlsruhe.de/register.php?";
-  public static string loginURL = "http://norpg.it.dh-karlsruhe.de/login.php?";
-
-  [...]
-	
-  private void SendRegister() {
-    StartCoroutine(RegisterUser(userText, emailText, MD5Test.Md5Sum(passwordText), 
-    firstnameText, lastnameText, birthdayText, genderText, 
-    countryText, native_languageText, selected_characterText));
-  }
-	
-  IEnumerator RegisterUser(string user, string email, string password, string firstname, 
-    string lastname, string birthday, string gender, string country, 
-    string native_language, string selected_character) {
-	
-    string hash = MD5Test.Md5Sum(user + email + password 
-    + firstname + country 
-    + selected_character + secretKey);
-
-    string post_url = registerURL
-    + "user=" + WWW.EscapeURL(user)
-    + "&email=" + WWW.EscapeURL(email)
-    + "&password=" + WWW.EscapeURL(password)
-    + "&firstname=" + WWW.EscapeURL(firstname)
-    + "&lastname=" + WWW.EscapeURL(lastname)
-    + "&birthday=" + WWW.EscapeURL(birthday)
-    + "&gender=" + WWW.EscapeURL(gender)
-    + "&country=" + WWW.EscapeURL(country)
-    + "&native_language=" + WWW.EscapeURL(native_language)
-    + "&selected_character=" + WWW.EscapeURL(selected_character)
-    + "&hash=" + hash;
-    
-    WWW hs_post = new WWW(post_url);
-    yield return hs_post;
-
-    if (hs_post.error != null) {
-      print("There was an error posting the high score: " + hs_post.error);
-    } else {
-      status.text = hs_post.text;
-    }
-  }
-}
-				\end{lstlisting}
-			\end{scriptsize}
-
-			Auf dem Server läuft für die Datenannahme das PHP Skript „register.php”. Dieses nimmt die Daten aus der URL entgegen und speichert diese zunächst in Variablen ab. Anschließend wird auch in diesem Skript ein Hash gebildet und anschließend mit dem Mitgesendetem abgeglichen. Sollte es hier einen Fehler geben, sendet der Server einen Error zurück, wenn die Hashes identisch sind, wird eine Verbindung zu der Datenbank aufgebaut und ein Eintrag in der accounts Tabelle erstellt. Anschließend wird eine erfolgreich Meldung an den Client gesendet.
-
-			Für den Login innerhalb der App wird identisch vorgegangen. Dabei wird jedoch ein Datensatz in die Datenbank geschrieben, sondern nur gelesen. Des weiteren wird der Hash aus nicht so vielen Werten gebildet, da nur der Username und das verschlüsselte Passwort übermittelt werden.
-
-	\section{Benutzerschnittstelle}
+			\section{Benutzerschnittstelle}
 		In diesem Abschnitt dieses Kapitels wird auf die Umsetzung der Benutzerschnittstelle eingegangen. Wie schon bereits im \ac{SRS} erwähnt handelt es sich bei der Benutzerschnittstelle um die grafische Oberfläche der Anwendung. Dafür wird zunächst auf die Umsetzung der verschiedenen \ac{UI} Elemente eingegangen sowie relevante Funktionalitäten beschrieben. Abschließend wird die Evaluation des Usability Tests behandelt. 
 
 		\subsection{Benutzeroberfläche}	
