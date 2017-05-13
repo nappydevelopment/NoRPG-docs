@@ -62,7 +62,7 @@
 			\paragraph{Die Interaktionbuttons}
 				Bei den Interaktionsbuttons handelt es sich um die Buttons, die für die Steuerung der Interaktionen in NoRPG zuständig sind. Diese sind an der unteren rechten Ecke positioniert. Es wird zwischen zwei Buttons mit unterschiedlichen Zuständigkeiten unterschiedenen. Der rechte Button, der A-Button, ist für das Starten einer Interaktion und für das Akzeptieren bei Entscheidungsfällen verantwortlich. Der zweite Button, der B-Button, wird zum Abbrechen von Interaktionen benötigt. Allerdings gibt es Situationen, in denen beide Buttons die gleiche Funktionalität abbilden, beispielsweise am Ende einer Konversation kann der Spieler mit beiden Buttons diese beenden. Eine Konversation ist in Abbildung \ref{userInterfaces} im oberen linken Teil abgebildet.
 				
-				Damit jedoch nicht immer irgendeine Interaktion gestartet wird, wenn der Spieler die Taste verwendet, wurde ein Skript implementiert, der den Abstand vom Spieler zum nächsten Objekt im Spiel bestimmt. Erst wenn der Spieler sich in der Nähe des Objektes befindet, wird eine Interaktion gestartet.
+				Damit jedoch nicht immer irgendeine Interaktion gestartet wird, wenn der Spieler die Taste verwendet, wurde ein Skript implementiert, der den Abstand vom Spieler zum nächsten Objekt im Spiel bestimmt. Erst wenn der Spieler sich in der Nähe des Objektes befindet, wird eine Interaktion gestartet. Dies wird später im Kapitel 5.4.4 genauer behandelt.
 				
 				Bei den Buttons handelt es sich um standardmäßige Buttons von Unity. Allerdings sind diese mit einer animierbaren Textur überzogen. Die Textur verändert das aussehen des Buttons und ermöglicht visuelles Feedback zurückzugeben, falls der Button geklickt wird oder für einen Moment nicht benutzbar ist.
 				
@@ -133,9 +133,10 @@
 			Im folgenden Abschnitt dieses Kapitels wird nun das Ergebnis der Evaluation behandelt und ausgewertet. Der einzelnen Szenarien konnten von den Testern von "\-- -"\ bis "++" bewertet werden, während "++" die beste Bewertung darstellt. Damit das Ergebnis die Bewertung von allen Testern widerspiegelt, wurde "\-- -"\ mit -2 und "++" mit +2 verrechnet. Dies kann in Tabelle \ref{tab:ergbnisOverall} betrachtet werden. Diese entspricht dem des Bewertungsbogens, allerdings ohne nähere Beschreibung der einzelnen Szenarien. Die Punktzahl in der letzten Spalte spiegelt den genauen Durchschnitt von allen Testern wider.
 			
 			\begin{table}[htbp]
+				\centering
 				\begin{tabular}{|l|l|c|c|c|c|c|c|}
 					\hline
-					\multirow{2}{*}{Szene} & \multirow{2}{*}{Szenario} &\multicolumn{5}{c}{Bewertung} \vline & \multirow{2}{*}{Punktzahl} \\ 
+					\multirow{2}{*}{Szene} & \multirow{2}{*}{Szenario} &\multicolumn{5}{c}{Bewertung} \vline & \multirow{2}{*}{Punkte} \\ 
 					& & -- & - & 0 & + & ++ & \\ \hline
 					\multirow{3}{*}{Startscreen (Logged Out User)} & Log-In &  &  &  & x &  & 1,4 \\ 
 					& Change Settings &  &  &  & x &  & 1,32 \\ 
