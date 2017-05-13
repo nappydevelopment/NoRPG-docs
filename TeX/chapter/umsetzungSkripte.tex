@@ -1,10 +1,15 @@
 \section{C\# Skripte}
-	Nachfolgend wird auf die einzelnen C\# Skripte eingegangen, welche für die App benötigt werden. Darüber hinaus wird auf weitere, für die Skripte essentielle umgesetzte Teile der App eingegangen.
+	Nachfolgend wird auf einzelne C\# Skripte eingegangen, welche essentiell für die korrekte Ausführung der App benötigt werden. Neben den Skripten wird auch auf weitere Komponenten für die Skripte eingegangen.
 
 \subsection{Player}
-	Der Player setzt sich aus mehreren einzelnen Objekten zusammen, darunter die Textur für den Spieler, ein Teil deiner Minimap und ein weiteres leeres Objekt, welches für die Kamera wichtig ist. An dem Player selbst befinden sich wiederum die Skripte und von Unity vorgefertigten Objekte. Ein sogenannter „Rigedbody” sorgt dafür, dass der Player Gravitation erfährt und nicht einfach durch die Luft schweben kann. Ein „Character Controller” fügt Eigenschaften wie eine Größe und höhe ein. Darüber hinaus besitzt der Player einen „Animatoir”. Dieser ist zusammen mit dem „ThirdPersonController” dafür verantwortlich, dass sich der Player in der Szene bewegt und die Animationen korrekt ausgeführt werden. Damit dies passiert, wird diesem Controller der Wert speed und direction übergeben. Daraus resultieren folgene Möglichkeiten der Animation:
+	Der Player ist das Objekt, welches vom Spieler bewegt wird und ist für die Interaktion mit der kompletten Umgebung zuständig. Das Objekt setzt sich aus mehreren einzelnen Unterkomponenten zusammen, darunter fällt zum einen die Textur des Charakters, ein Teil der Minimap und ein Objekt für die Kamera. 
+	
+	An dem Elternobjekt Player sind Skripte und von Unity zur Verfügung gestellt Objekte angebracht. Zu diesen Objekten gehören der Rigidbody, CharacterController, Animator und ThridPersonController. Der Rigidbody sorgt dafür, dass der Player Gravitation erfährt und nicht einfach durch die Luft schweben kann. Der CharacterController implementiert verschiedene Eigenschaften, wie beispielsweise die Breite, Höhe und den Schrittversatz. Der Schrittversatz bestimmt über welche Höhen und Objekte, wie beispielsweise Treppenstufen, der Player laufen kann. Der Animator ist zusammen mit dem ThirdPersonController dafür verantwortlich, dass sich der Player in der Szene bewegt und die Bewegungsanimationen korrekt ausgeführt werden. 
+	
+	Daraus resultieren folgende Möglichkeiten der Animation:
 
  \begin{table}[htbp]
+ \centering
  \begin{tabular}{|c|c|l|}
  \hline
   speed & direction & Ergebnis \\
@@ -25,16 +30,18 @@
  \label{tab:tabspeeddirection}
  \end{table}
  
-	Durch diese vielzahl an Animationen ist gewährleistet, dass der Player zu jeder Zeit die richtige Animation ausführt und die Bewegung nicht unnatürlich aussieht. Die Werte „speed” und „direction” für diese Animation kommen dabei aus dem Skript „CharacterControll.cs”. Diese ist für die Steuerung des Players zuständig. Hier wird die Toucheingabe über den Joystick in Weltkoordinaten umgewandelt und der Player beginnt sich zu bewegen. Dazu ist die Update Methode genutzt worden. In dieser wird, sofern ein Animator an dem Player vorhanden ist, die horizontale und vertikale Bewegung des Joysticks in die Werte für „direction” und „speed” umgewandelt. Das ganze passiert dabei in der Methode „StickToWorldspace”, welche die Transform vom Player, der Kamera, die „direction” und den „speed”, übergeben bekommt. Nachdem die Methode aufgerufen wurde und abgeschlossen ist, werden die Werte von „direction” und „speed” an den „ThridPersonController” übergeben und die Animation startet, wie zuvor beschrieben.
+	Erst durch diese Vielzahl an Animationen wird gewährleistet, dass der Player zu jeder Zeit die richtige Animation ausführt und die Bewegungen nicht unnatürlich aussehen. Damit dies passiert, werden die Werte speed und direction vom in Kapitel 5.3.1 besprochenen Joystick im Skript CharacterControll.cs an den Charakter übergeben. Diese ist für die Steuerung des Players zuständig. Hier wird die Toucheingabe über den Joystick in Weltkoordinaten umgewandelt und der Player beginnt sich zu bewegen. Das Skript ist in Listing \ref{lst:charactercontroller} aufgeführt.
+	
+	Dazu wird die Methode Update genutzt. In dieser wird, sofern ein Animator an dem Player vorhanden ist, die horizontale und vertikale Bewegung des Joysticks in die Werte für direction und speed umgewandelt. Das ganze passiert dabei in der Methode StickToWorldspace in Zeile 32. 
 
-	In der „StickToWorldspace” Methode wird zu Begin die „rootDirection” gesetzt, welche sich dabei aus der Z-Achsen Koordinate zusammensetzt. Anschließend wird die „stickDirection” gesetzt, durch den horizontalen und vertikalen Wert des Joysticks. Nun wird durch das quadrieren der beiden Werte der „speed” berechnet. Dieser liegt dabei zwischen Null und Eins.
-
-	Danach wird das ganze in Bezug zu der Positionsrichtung der Kamera gesetzt, um die Bewegungsrichtung zu erhalten, um anschließend das Kreutzprodukt aus diesen beiden Werten zu berechen. Mit hilfe dessen kann bestimmt werden, ob sich der Player nach Rechts oder nach Links bewegen soll.
+	In der Methode wird zu Beginn die rootDirection gesetzt, welche sich dabei aus der Z-Achsen Koordinate zusammensetzt. Anschließend wird die stickDirection durch den horizontalen und vertikalen Wert des Joysticks gesetzt. Abschließend wird der Wert von speed durch die Quadrierung der beiden Werte berechnet. Dieser liegt dabei zwischen Null und Eins. Danach wird das ganze in Bezug zu der Positionsrichtung der Kamera gesetzt, um die Bewegungsrichtung zu erhalten und anschließend das Kreuzprodukt aus diesen beiden Werten zu berechnen. Mit Hilfe des Wertes kann bestimmt werden, ob sich der Player nach Rechts oder nach Links bewegen soll.
+	
+	Nachdem diese aufgerufen wurde und abgeschlossen ist, werden die Werte von direction und speed an den ThridPersonController übergeben und die korrekte Animation wird startet.
 
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=Skript CharacterController.cs, 
+	caption=CharacterController.cs, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
@@ -44,69 +51,52 @@
 	belowcaptionskip=4pt,
 	basicstyle=\ttfamily
 } 
-\newpage
-\begin{lstlisting}[label=lst:c_charactercontroller]
+\begin{lstlisting}[label=lst:charactercontroller]
 public class CharacterControll : MonoBehaviour {
-
-	...	
+  [...]	
 	
-    void FixedUpdate() {
-        if(IsInLocomotion() && ((direction>=0 && horizontal>=0) 
-        	|| (direction <0 && horizontal < 0))) {
-        	
-            Vector3 rotationAmount = Vector3.Lerp(Vector3.zero, new Vector3(0f, 
-            rotationDegreePerSecound * (horizontal < 0f ? -1f : 1f), 0f), 
-            Mathf.Abs(horizontal));
-            	
-            Quaternion deltaRotation = Quaternion.Euler(rotationAmount * Time.deltaTime);
-            this.transform.rotation = (this.transform.rotation * deltaRotation);
-        }
+  void Update() {  
+    if (animator) {
+      stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+      horizontal = CnInputManager.GetAxis("Horizontal");
+      vertical = CnInputManager.GetAxis("Vertical");
+      
+      StickToWorldspace(this.transform, gamecam.transform, ref direction, ref speed);
+      animator.SetFloat("speed", speed);
+      animator.SetFloat("direction", direction, directionDumpTime, Time.deltaTime);
     }
-
-    public bool IsInLocomotion() {
-        return stateInfo.nameHash == m_LocomotionID;
-    }
-
-    void Update() {
+  }
     
-        if (animator) {
-            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-            horizontal = CnInputManager.GetAxis("Horizontal");
-            vertical = CnInputManager.GetAxis("Vertical");
-            StickToWorldspace(this.transform, gamecam.transform, ref direction, ref speed);
-            animator.SetFloat("speed", speed);
-            animator.SetFloat("direction", direction, directionDumpTime, Time.deltaTime);
-        }
-    }
-    
-    ...
+  [...]
 
-    public void StickToWorldspace(Transform root, Transform camera, 
-    	ref float directionOut, ref float speedOut) {
-    	
-        Vector3 rootDirection = root.forward;
-        Vector3 stickDirection = new Vector3(horizontal, 0, vertical);
-        speedOut = stickDirection.sqrMagnitude;
-        Vector3 CameraDirection = camera.forward;
-        CameraDirection.y = 0.0f;
-        Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, 
-        	Vector3.Normalize(CameraDirection));
+  public void StickToWorldspace(Transform root, Transform camera, 
+    ref float directionOut, ref float speedOut) {
+    
+    Vector3 rootDirection = root.forward;
+    Vector3 stickDirection = new Vector3(horizontal, 0, vertical);
+    speedOut = stickDirection.sqrMagnitude;
+    Vector3 CameraDirection = camera.forward;
+    CameraDirection.y = 0.0f;
+    
+    Quaternion referentialShift = Quaternion.FromToRotation(Vector3.forward, 
+      Vector3.Normalize(CameraDirection));
         	
-        Vector3 moveDirection = referentialShift * stickDirection;
-        Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
-        float angleRootToMove = Vector3.Angle(rootDirection, moveDirection) * 
-        	(axisSign.y >= 0 ? -1f : 1f);      
+    Vector3 moveDirection = referentialShift * stickDirection;
+    Vector3 axisSign = Vector3.Cross(moveDirection, rootDirection);
+    float angleRootToMove = Vector3.Angle(rootDirection, moveDirection) 
+      * axisSign.y >= 0 ? -1f : 1f);      
         	
-        angleRootToMove /= 180f;
-        directionOut = angleRootToMove * directionSpeed;
-    }
+    angleRootToMove /= 180f;
+    directionOut = angleRootToMove * directionSpeed;
+  }
 }
-
 \end{lstlisting}
 \end{scriptsize}
 
 \subsection{Kamera}
-	Bei der Kamera handelt es sich um ein „Gameobject”, welches dem Spieler folgt. Dafür ist an dem Spieler ein Objekt namens „follow” angehängt, auf das die Kamera ziegt und die Kamera hat eine Referenz auf das Skript „ThirdPersonCamera.cs”. In diesem wird das Verhalten der Kamera gesteuert. Dazu werden die Methoden aus dem Listing \ref{lst:lateupdate} verwendet. In LateUpdate wird dabei die Position der Kamera in bezug zum Spieler gesetzt. Dabei befindet sich die Kamera immer in einem Kreis, um dem Spieler herum, wodurch die Sicht nicht eingeschränkt wird.
+	Bei der Kamera handelt es sich um ein Objekt, welches dem Charakter folgt. Dafür ist an dem Player ein Objekt mit dem Namen „follow” angehängt, auf das die Kamera zeigt. 
+	
+	Die Kamera referenziert das Skript ThirdPersonCamera.cs. In diesem wird das Verhalten der Kamera gesteuert. Dazu werden die Methoden aus dem Listing \ref{lst:lateupdate} verwendet. In LateUpdate in Zeile 4 wird dabei die Position der Kamera in Bezug zum Spieler gesetzt. Dabei befindet sich die Kamera immer in einem Kreis um dem Spieler herum, wodurch die Sicht nicht eingeschränkt wird.
 
 \begin{scriptsize}
 \lstset{
@@ -122,50 +112,210 @@ public class CharacterControll : MonoBehaviour {
 	basicstyle=\ttfamily
 } 
 \begin{lstlisting}[label=lst:lateupdate]
+public class ThirdPersonCamera : MonoBehaviour {
+  [...]
+  
+  void LateUpdate() {
+    Vector3 characterOffset = follow.position +  new Vector3(0f, distanceUp, 0f);
+    lookDir = characterOffset - this.transform.position;
+    lookDir.y = 0;
+    
+    lookDir.Normalize();
+    targetPosition = characterOffset + follow.up * distanceUp - lookDir * distanceAway;
+    CompensateForWalls(characterOffset, ref targetPosition);
+    smoothPosition(this.transform.position, targetPosition);
+    transform.LookAt(follow);
+  }
 
-void LateUpdate() {
-  Vector3 characterOffset = follow.position +  new Vector3(0f, distanceUp, 0f);
-  lookDir = characterOffset - this.transform.position;
-  lookDir.y = 0;
-  lookDir.Normalize();
-  targetPosition = characterOffset + follow.up * distanceUp - lookDir * distanceAway;
-  CompensateForWalls(characterOffset, ref targetPosition);
-  smoothPosition(this.transform.position, targetPosition);
-  transform.LookAt(follow);
-}
-
-private void smoothPosition(Vector3 fromPos, Vector3 toPos) {
-  this.transform.position = Vector3.SmoothDamp(fromPos, toPos, ref velocityCamSmopth, 
-  	camSmoothDampTime);
-}
-
-private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget) {
-  RaycastHit wallHit = new RaycastHit();
-  if(Physics.Linecast(fromObject, toTarget, out wallHit)) {
+  [...]
+  
+  private void CompensateForWalls(Vector3 fromObject, ref Vector3 toTarget) {
+    RaycastHit wallHit = new RaycastHit();
+    if(Physics.Linecast(fromObject, toTarget, out wallHit)) {
       toTarget = new Vector3(wallHit.point.x, toTarget.y, wallHit.point.z);
+    }
   }
 }
-
 \end{lstlisting}
 \end{scriptsize}
 
-Darüber hinaus wird in LateUpdate unterbunden, dass die Kamera in Wänden verschwindet und durch Objekte geschaut werden kann. Dazu wird die Methode „CompensateForWalls” ausgeführt. In dieser wird getestet, ob zwischen der Kamera und dem Spieler ein Objekt vorhanden ist. Wenn das der Fall ist, wird die Kamera vor dieses Objekt gesetzt.
+	Darüber hinaus wird in LateUpdate unterbunden, dass die Kamera in Wänden verschwindet und durch Objekte geschaut werden kann. Dazu wird die Methode CompensateForWalls in Zeile 21 ausgeführt. In dieser wird getestet, ob zwischen der Kamera und dem Spieler ein Objekt vorhanden ist. Wenn das der Fall ist, wird die Kamera vor dieses Objekt gesetzt.
 
-Nach dem ersten Starten des Spieles startet eine kurze geskriptete Szene, in der der Spiele kurz in die Geschichte geführt wird. Dabei wird die Farbe der Startwelt entfernt  (siehe Kapitel \ref{geschichte}). Dazu wird ein Shader genutzt, welcher die Farbintensität von jedem Pixel verändert. Dieser Shader hat das Attribut intensität, welches die Stärke der Graustufen bestimmt. Dieser wird zu Beginn auf eins gesetzt und für jeden gefundenen Diamanten in den anderen Welten minimiert.
+	Beim aller ersten Start des Spieles gibt es eine geskriptete Szene, in der der Spieler kurz in die Geschichte von NoRPG geführt wird. Dabei wird die Farbe der Startwelt entfernt (siehe Kapitel \ref{geschichte}). Dazu wird ein Shader genutzt, welcher die Farbintensität von jedem Pixel verändert. Das Attribut Intensität des Shaders bestimmt über die Stärke der Graustufen. Dieser wird zu Beginn auf eins gesetzt und für jeden gefundenen Diamanten in den anderen Welten minimiert.
     
 \subsection{Portale}
+	Die Portale verbinden die einzelnen Szenen, in denen die verschiedenen Welten abgebildet sind. Diese sind separiert jeweils in einer Szene implementiert, da eine riesige Szene sehr viel Performance benötigen würde.
+	
+	In der Startwelt sind fünf verschiedene Portale platziert, mit denen der Spieler in die Welten kommt. Dadurch wird uns ermöglicht die einzelnen Klassen voneinander zu separieren. Jede dieser Welten hat ein Portal, welches den Spieler zurück zur Startwelt bringt. Jedes 3D Objekt in der Szene, dargestellt durch ein Steinbogen mit Partikeln, implementiert das Skript \ref{lst:portal}. Dieses Listing sind enthält nur die zwei wichtigsten Methoden für die Portale.
 
-ALIS PART
+\begin{scriptsize}
+	\lstset{
+		float,
+		caption=PortalToTargetScene, 
+		language=[Sharp]C, 
+		frame=single,  
+		showstringspaces=false, 
+		showspaces=false, 
+		numbers=left, 
+		captionpos=b, 
+		belowcaptionskip=4pt,
+		basicstyle=\ttfamily
+	} 
+	\begin{lstlisting}[label=lst:portal]
+public class PortalToTargetScene : MonoBehaviour{
+  [...]
+	
+  void OnTriggerEnter(){
+    string currentScene = SceneManager.GetActiveScene().name;
+    PortalControl.control.cameFrom = currentScene;
+    PortalControl.control.currentScene = targetSceneName;
+	
+    loadingScreen.gameObject.SetActive(true);
+
+    StartCoroutine(LoadLevelWithRealProgress());
+  }
+	
+  [...]
+
+  IEnumerator LoadLevelWithRealProgress(){
+    yield return new WaitForSeconds(1);
+	
+    ao = SceneManager.LoadSceneAsync("Scenes/" + targetSceneName, LoadSceneMode.Single);
+    ao.allowSceneActivation = false;
+
+    while (!ao.isDone){
+      progBar.value = ao.progress;
+	
+      if (ao.progress == 0.9f){
+        progBar.value = 1f;
+        ao.allowSceneActivation = true;
+      }
+	
+      yield return null;
+    }
+  }
+}
+	\end{lstlisting}
+\end{scriptsize}
+
+	Die erste Methode OnTriggerEnter() wird ausgeführt, sobald der Spieler mit seinem Charakter durch das Portal geht. Dabei kollidiert der Hüllkörper des Charakters mit dem Hüllkörper des Portals und lösen die Funktion aus. Der Hüllkörper in Unity ist als Collider bezeichnet, und umschließt komplexe (nicht Polygone) Objekte, um die Kollisionserkennung zu vereinfachen. Wenn die beiden Objekte jetzt kollidieren wird zunächst der Ladebildschirm für die folgende Szene angezeigt, dies passiert in Zeile 12 von Listing \ref{lst:portal}. 
+	
+	Anschließend wird die asynchrone Ladefunktion LoadLevelWithRealProgress() ausgeführt. Das Laden einer Szene wird vom SceneManager von Unity durchgeführt und kann synchron oder asynchron ausgeführt werden. Bei der asynchronen Variante wird die Szene im Hintergrund geladen und das Spiel kann in dieser Zeit weitergespielt werden. In der anderen Variante kann der Spieler das Spiel nicht mehr steuern bis der Ladeprozess fertig ist. Neben der Synchronisationsvariante wird in Zeile 23 noch neben der zu ladenden Szene der Lademodus angegeben. Der Lademodus bestimmt, was mit der aktuellen Szene passieren soll. Mit dem Modus Single wird die alte Szene mit der neuen ersetzt, wodurch das Laden länger dauert aber weniger Performance benötigt wird.	
+	
+	Durch die asynchrone Ladung kann ein Ladebildschirm implementiert werden, welcher den Fortschritt des Ladeprozesses anzeigt. Dieser Ladeprozess wird in Zeile 28 berechnet. Erst wenn der asynchrone Prozess fertig ist wird die Aktivierung der Szene erlaubt. Damit die Position des Spielers in der geladenen Szene fest ist, gibt es in jeder Welt Spawnpunkte. Diese legen fest wo in der Welt der Charakter des Spielers positioniert wird.
+	
+	Neben diesen eigentlichen Ladeprozess wird zudem noch der neue Standort des Spielers gespeichert, damit der Spieler nach Beendigung des Spieles automatisch wieder in der korrekten Welt startet. 
+	
+	Durch die häufigen Szenenwechsel dürfen keine Daten und Objekte verloren gehen. So muss der Charakter des Spielers auch in der anderen Szene noch mit seiner Auswahl stimmen oder die Einstellungen dürfen sich nicht ändern. Es gibt Objekte, wie beispielsweise das  GameControl, welches alle Informationen über den Spieler hält und am Anfang erstellt wird, beim Szenenwechsel nicht zerstört sondern in diese mit übernommen wird.
 
 \subsection{Interaktionsmöglichkeiten}
+	Im Spiel kann der Spieler mit verschiedenen Objekten interagieren. Zu den Hauptkategorien gehören Händler, die dem Spieler Lernspiele der Standards anbieten, und Truhen, die die Edelsteine beinhalten. Darüber hinaus kann der Spieler mit verschiedenen \ac{NPC} und weiteren Objekten interagieren. In diesem Unterkapitel wird auf die Händler und auf Truhen eingegangen, da das Prinzip auch für die anderen Objekten das selbe ist.
+	
+	Gesteuert werden alle möglichen Interaktionen mit den Objekten in der Klasse NPCCommunication und entspricht damit einem Controller. Das folgende Listing \ref{lst:npcComm} beinhaltet nur den für die Erklärung notwendigen Teil und bildet nur einen kleinen Abschnitt des vollständigen Skriptes ab.
+	
+	\begin{scriptsize}
+		\lstset{
+			float,
+			caption=NPCCommunication.cs, 
+			language=[Sharp]C, 
+			frame=single,  
+			showstringspaces=false, 
+			showspaces=false, 
+			numbers=left, 
+			captionpos=b, 
+			belowcaptionskip=4pt,
+			basicstyle=\ttfamily
+		} 
+		\begin{lstlisting}[label=lst:npcComm]
+public class NPCCommunication : MonoBehaviour {
+  [...]
+	
+  void Start(){
+    string fileName = "npcList";
+    TextAsset textAsset = Resources.Load<TextAsset>(fileName);
+    json = textAsset.text;
+  }
+		
+  [...]
+		
+  public void StartCommunication(){
+    if (Vector3.Distance(player.transform.position, trader.GetClosestObject
+      ("InteractionObject", player).transform.position) < distance){
+		
+      string interactableObjectName = trader.closest.name;
+      string npcType = dialogue.GetNpcType(interactableObjectName, json);
+		
+      [...]
+		
+      npcName.text = dialogue.GetNpcName(interactableObjectName, json);
+      npcText.text = dialogue.GetNpcText(interactableObjectName, json);
 
-Im Spiel kann der Spieler mit verschiedenen Objekten interagieren. Zu den Hauptkategorien gehören die Händler, die dem Spieler die Spiele der Standards verkaufen, und die Chests aus denen der Spieler Objekte zum Sammeln erhält. Darüber hinaus kann der Spieler mit verschiedenen Charakteren interagieren. Es wird nun auf die Händler und auf die Chests eingegangen, da die Charaktere ähnlich den Händlern funktionieren.
+      if (npcType == "Trader"){
+        acceptButton.onClick.AddListener(delegate(){OpenGameList(interactableObjectName);});
+        cancelButton.onClick.AddListener(delegate(){CancelCommunication();});
+      }
+      [...]
+      else if (npcType == "Chest"){
+        acceptButton.onClick.AddListener(delegate(){OpenChest(interactableObjectName);});
+        cancelButton.onClick.AddListener(delegate(){OpenChest(interactableObjectName);});
+      }
+      else{
+        acceptButton.onClick.AddListener(delegate(){CancelCommunication();});
+        cancelButton.onClick.AddListener(delegate(){CancelCommunication();});
+      }
+    }
+  }
+		
+  [...]
+}
+		\end{lstlisting}
+	\end{scriptsize}
+	
+	\label{npctext}
+	In der Funktion Start wird die \ac{JSON} Datei für die Inhalte der Interaktionen mit den Objekten geladen. Durch die Implementierung als \ac{JSON} wird der modulare Aufbau von NoRPG gewährleistet. Dadurch ist es immer möglich diese Datei anzupassen und beispielsweise neue Sprachen zu integrieren oder Inhalte auszuwechseln. Im folgenden Listing \ref{lst:npcJSON} ist der Aufbau skizziert.
+	
+	\begin{scriptsize}
+	\lstset{
+		float,
+		caption=NPC JSON, 
+		language=[Sharp]C, 
+		frame=single,  
+		showstringspaces=false, 
+		showspaces=false, 
+		numbers=left, 
+		captionpos=b, 
+		belowcaptionskip=4pt,
+		basicstyle=\ttfamily
+	} 
+	\begin{lstlisting}[label=lst:npcJSON]
+{
+  "1_Math_OA" : { 
+    "npcName" : "Alfred",
+    "npcText" : "Some Text...",
+    "gamelistTitle" : "Math, First Class, Operations and Algebraic Thinking",
+    "gamelistDescription" : "Some Description...",
+    "npcType" : "Trader"
+  },
+  [...]
+  "1_Chest" : {
+    "npcText" : "You found a chest!",
+    "npcType" : "Chest"
+  },
+  [...]
+}
+	\end{lstlisting}
+	\end{scriptsize}
+	
+	Das Integrieren dieser \ac{JSON} Datei ist insofern anders, dass alle Informationen aus der Datei nicht jederzeit benötigt werden. Daher wird das \ac{JSON} nicht vollständig durchlaufen, sondern es werden konkrete Anfragen gesendet. Für diesen Zweck wurde ein eigener Parser implementiert. So wird beispielsweise in Zeile 17 im Listing \ref{lst:npcComm} der Typ des Objektes aus dem \ac{JSON} mit Hilfe des Objektnamens ausgelesen und in die Variable geschrieben. Nach diesem Prinzip werden alle Informationen einzeln, genau und nur dann wenn sie benötigt werden, in das Spiel geladen.
+	
+	Der NPC Typ in Zeile 7 \ref{lst:npcJSON} ist besonders wichtig, da anhand dieser Variable entschieden wird, welche Aktionen die beiden Interaktionsbuttons ausführen sollen. So steht beispielsweise der Typ Trader für die Spielehändler. Neben dem Typ sind hier auch die Namen, die Texte und alle anderen Informationen gespeichert.
+	
+	Im folgenden wird auf die Händler und auf die Truhen eingegangen.
+	
+	\subsubsection{Händler}
+		In jeder Welt befinden sich bis zu elf Händler. Die Funktionsweise wird hier anhand einem Händler aus der ersten Welt dargestellt. Die Händler in den verschiedenen Welten unterscheiden sich im wesentlichen nur mit dem Objektnamen. Anhand dessen wird entschieden was dieser Händler für eine Funktion hat und welche Spiele und Standards er repräsentiert. Dabei setzt sich der Name aus drei Teilen zusammen: Der Klasse, dem Fach und dem Themengebiet. Dabei sind die einzelnen Teile durch einen Unterstrich getrennt. Ein Beispiel für das Themengebiet Schreiben in Englisch der ersten Klasse sieht wie folgt aus: „1\_English\_W”. 
 
-\subsubsection{Händler}
-
-In jeder Welt befinden sich bis zu elf Händler. Die Funktionsweise wird hier an einem Händler aus der ersten Welt dargestellt. Die Händler sind in jeder welt identisch und unterschieden sich nur im Namen. Anhand dessen wird entschieden was dieser Händler für eine Funktion hat und welche Spiele und Standards er representiert. Dabei setzt sich der Name aus drei Teilen zusammen: Der Klasse, dem Fach und dem Themengebiet. Dabei sind die einzelnen Teile durch einen Unterstrich getrennt. Ein Beipsiel für das Themengebiet Schreiben in Englisch der ersten Klasse sieht wie folgt aus: „1\_English\_W”. 
-
-Um nun einen Händler zu finden, wird das Skript „FindNearestHandler.cs” genutzt. In diesem gibt es die Methode „GetClosestObject” (siehe Listing\ref{lst:getclosest}), welches das dichteste Objekt am Spieler findet.
+		Um nun einen Händler zu finden, wird das Skript FindNearestHandler.cs genutzt. In diesem gibt es die Methode GetClosestObject (siehe Listing\ref{lst:getclosest}), welches das dichteste Objekt zum Player findet.
 
 \begin{scriptsize}
 \lstset{
@@ -181,35 +331,37 @@ Um nun einen Händler zu finden, wird das Skript „FindNearestHandler.cs” gen
 	basicstyle=\ttfamily
 } 
 \begin{lstlisting}[label=lst:getclosest]
+public class FindNearestHandler : MonoBehaviour {
 public GameObject GetClosestObject(string tag, GameObject player) {
-  GameObject[] haendler = GameObject.FindGameObjectsWithTag(tag);
+    GameObject[] haendler = GameObject.FindGameObjectsWithTag(tag);
 
-  foreach (GameObject h in haendler) {
-    if (!closest) {
-      closest = h;
-    }
+    foreach (GameObject h in haendler) {
+      if (!closest) {
+        closest = h;
+      }
            
-    if(Vector3.Distance(player.transform.position, h.transform.position) < 
-    	Vector3.Distance(player.transform.position, closest.transform.position)) {
-      closest = h;
+      if(Vector3.Distance(player.transform.position, h.transform.position) < 
+    	  Vector3.Distance(player.transform.position, closest.transform.position)) {
+        closest = h;
+      }
     }
-  }
-  return closest;
-} 
+    
+    return closest;
+  } 
+}
 \end{lstlisting}
 \end{scriptsize}
 
-Hier wird jedes Objekt, welches einen bestimmten Tag hat, in einem Array gespeichert und anschließend wird für jedes Objekt geprüft wie weit es entfernt ist. Das dichteste Objekt wird am Schluss zurück gegeben.
+		Hier wird jedes Objekt, welches den Tag "InteractionObject" hat, in einem Array gespeichert und anschließend wird für jedes Objekt geprüft wie weit es entfernt ist. Das Objekt, welches die kleinste Distanz zum Spieler hat, wird am Schluss zurück] gegeben.
 
-Nachdem der dichteste Händler gefunden wurde, wird der Richtige Dialog gestartet, sobald der Spieler in der Nähe eines Händlers auf den A-Knopf klickt. Dabei wird die Methode „StartCommunication()” aus dem Skript „NPCCommunication” gestartet. In diesem wird geschaut, ob sich der Spieler dicht genug am Händler befindet. Ist das der Fall, wird der Dialog geöffnet und die korrekten Daten werden aus einer \ac{JSON}-Datei geladen(siehe Kapitel \ref{npctext}). Anschließend wird die Funktion „OpenGameList()” ausgeführt, in der die richtigen Spiele angezeigt werden. Wenn der Spieler nun auf ein Spiel klickt, wird er zu der Downloadseite des Spieles weitergeleitet und er kann dieses herunterladen.
+		Nachdem der dichteste Händler gefunden wurde, wird der richtige Dialog gestartet, sobald der Spieler in der Nähe eines Händlers auf den A-Knopf klickt. Dies wird dabei für alle Interaktionen in dem Controller „NPCCommunication” gesteuert. Ist der Spieler nah genug am Händler, wird der Dialog geöffnet und die korrekten Daten werden aus einer \ac{JSON}-Datei geladen(siehe Kapitel \ref{npctext}). Anschließend wird in der Funktion OpenGameList(), die richtigen Spiele für den Standard angezeigt. Wenn der Spieler nun auf ein Spiel klickt, wird er zu der Google Play Store Seite des Spieles weitergeleitet und kann sich dieses Lernspiel herunterladen.
 
-\subsubsection{Chests}
-
-Bei den Chests wird nur über den Tag entschieden, was getan wird. Dazu wird zusatzlich zu dem „NPCCommunication” Skript das Skript „ChestHandle.cs” benötigt. In diesem wird überprüft, welche Chest der Spieler öffnen will. Danach wird das einsammeln von den sammelbaren Objekten gestartet.
+	\subsubsection{Truhen}
+		Bei den Truhen wird nur über den Tag entschieden, was getan wird. Dazu wird zusatzlich zu dem „NPCCommunication” Skript das Skript „ChestHandle.cs” benötigt. In diesem wird überprüft, welche Chest der Spieler öffnen will. Danach wird das einsammeln von den sammelbaren Objekten gestartet.
 
 
 \subsection{Pfadfindungssystem Schiff}
-Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript „EditorPathScript”. (siehe Listing \ref{lst:c_patheditor})
+	Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Dabei kann der Spieler aus fünf verschiedenen Inseln auswählen, und je nach Insel fährt das Schiff einen anderen Pfad. Diese Pfade sind dabei statisch und festgelegt. Es gibt dabei 20 Pfade, vier von jeder Insel. Jeder dieser Pfade ist ein Gameobject mit dem Skript „EditorPathScript”. (siehe Listing \ref{lst:c_patheditor})
 
 \begin{scriptsize}
 \lstset{
@@ -224,51 +376,40 @@ Die tropischen Inseln von Galapagos werden im Spiel mit einem Schiff bereist. Da
 	belowcaptionskip=4pt,
 	basicstyle=\ttfamily
 } 
-\newpage
 \begin{lstlisting}[label=lst:c_patheditor]
 public class EditorPathScript : MonoBehaviour {
 
-    //Color of the lines betwwen the single points
-    public Color rayColor = Color.white;
-    //List of all points of the path
-    public List<Transform> path_objs = new List<Transform>();
-    //List of all transformobjects of every point in path
-    Transform[] transforms;
+  public Color rayColor = Color.white;
+  public List<Transform> path_objs = new List<Transform>();
+  Transform[] transforms;
 
-    //Method to draw in the Unity Editor
-    void OnDrawGizmos () {
-        //Set Color of lines to selected color
-        Gizmos.color = rayColor;
-        //Get all transformobjects of childrends
-        transforms = GetComponentsInChildren<Transform>();
-        //Clear the list
-        path_objs.Clear();
+  void OnDrawGizmos () {
+    Gizmos.color = rayColor;
+    transforms = GetComponentsInChildren<Transform>();
+    path_objs.Clear();
 
-        //Foreach transformobject at it to list if it is not the parentobject
-        foreach (Transform path_obj in transforms) {
-            if (path_obj != this.transform) {
-                path_objs.Add(path_obj);
-            }
-        }
-        //Draw lines between every Point
-        for(int i = 0; i < path_objs.Count; i++) {
-            Vector3 position = path_objs[i].position;
-            if (i > 0) {
-                Vector3 previos = path_objs[i - 1].position;
-                Gizmos.DrawLine(previos, position);
-                Gizmos.DrawWireSphere(position, 0.3f);
-            }
-        }
+    foreach (Transform path_obj in transforms) {
+      if (path_obj != this.transform) {
+        path_objs.Add(path_obj);
+      }
     }
-}
 
+    for(int i = 0; i < path_objs.Count; i++) {
+      Vector3 position = path_objs[i].position;
+        if (i > 0) {
+          Vector3 previos = path_objs[i - 1].position;
+          Gizmos.DrawLine(previos, position);
+          Gizmos.DrawWireSphere(position, 0.3f);
+        }
+      }
+   }
+}
 \end{lstlisting}
 \end{scriptsize}
 
-Dieses sorgt dafür, das die Pfade grafisch im Unity Editor angezeigt werden. Dieses Skript zeichnet dabei von einem Startpunkt zum nächsten eine Linie, solange, bis der letzte Punkt erreicht wird. Dadurch wird es möglich die Pfade grafisch zu bearbeiten und erleichtert so die Arbeit. 
-Nun wird beschrieben, wie das Schiff dem Pfad folgt, sobald der Player den Pfad ausgewählt hat. Dabei wird auf den Pfad von Insel eins zu zwei eingegangen. Für alle anderen Pfade ist das vorgehen identisch.
+	Dieses sorgt dafür, das die Pfade grafisch im Unity Editor angezeigt werden. Dieses Skript zeichnet dabei von einem Startpunkt zum nächsten eine Linie, solange, bis der letzte Punkt erreicht wird. Dadurch wird es möglich die Pfade grafisch zu bearbeiten und erleichtert so die Arbeit. Nun wird beschrieben, wie das Schiff dem Pfad folgt, sobald der Player den Pfad ausgewählt hat. Dabei wird auf den Pfad von Insel eins zu zwei eingegangen. Für alle anderen Pfade ist das vorgehen identisch.
 
-Über ein \ac{UI} wählt der Player den betroffenen Pfad aus. Dabei wird dieser über einen Button ausgewählt. Sobald dieser geklickt wurde wird eine Funktion in Listing \ref{lst:methode} ausgeführt. Diese selektiert den gewünschten Pfad aus den verfügbaren Pfaden und setzt den boolean „playerOnShip” auf true. 
+	Über ein \ac{UI} wählt der Player den betroffenen Pfad aus. Dabei wird dieser über einen Button ausgewählt. Sobald dieser geklickt wurde wird eine Funktion in Listing \ref{lst:methode} ausgeführt. Diese selektiert den gewünschten Pfad aus den verfügbaren Pfaden und setzt den boolean „playerOnShip” auf true. 
 
 \begin{scriptsize}
 \lstset{
@@ -284,22 +425,19 @@ Nun wird beschrieben, wie das Schiff dem Pfad folgt, sobald der Player den Pfad 
 	basicstyle=\ttfamily
 } 
 \begin{lstlisting}[label=lst:methode]
-
 public void selectFirstClass () {
-//if player is not on the same Island
- if (lastButtonClicked != "1") {
+  if (lastButtonClicked != "1") {
   hud.SetActive(false);
-  // set path to the island on that the player is to island 1
+  
   path = GameObject.Find("Path" + lastButtonClicked + "_1").GetComponent<EditorPathScript>();
   lastButtonClicked = "1";
   playerOnShip = true;
  }
 }
-
 \end{lstlisting}
 \end{scriptsize}
 
-Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode „playerGetOnShip” ausgeführt. Der Code ist in Listing \ref{lst:methode1} zu sehen. Durch diese Methode bewegt sich der Player mit dem Schiff in der selben Geschwindigkeit. Darüberhinaus blokiert diese Funktion die Eingabemöglichkeiten des Players während der Fahrt.
+	Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode „playerGetOnShip” ausgeführt. Der Code ist in Listing \ref{lst:methode1} zu sehen. Durch diese Methode bewegt sich der Player mit dem Schiff in der selben Geschwindigkeit. Darüberhinaus blokiert diese Funktion die Eingabemöglichkeiten des Players während der Fahrt.
 
 \begin{scriptsize}
 \lstset{
@@ -315,31 +453,29 @@ Da dieser boolean nun auf true gesetzt ist, wird der Code der Methode „playerG
 	basicstyle=\ttfamily
 } 
 \begin{lstlisting}[label=lst:methode1]
-
 public void playerGetOnShip () {
- if (!playerOnShip) {
-  cc.enabled = false;
+  if (!playerOnShip) {
+    cc.enabled = false;
 
-  player.GetComponent<Animator>().SetFloat("speed", 0.0f);
-  player.GetComponent<Animator>().SetFloat("direction", 0.0f);
-  player.transform.position = ship.transform.position;
+    player.GetComponent<Animator>().SetFloat("speed", 0.0f);
+    player.GetComponent<Animator>().SetFloat("direction", 0.0f);
+    player.transform.position = ship.transform.position;
 
-  player_mesh.SetActive(false);
-  player_text.SetActive(false);
+    player_mesh.SetActive(false);
+    player_text.SetActive(false);
 
-  follow.transform.parent = ship.transform;
-  follow.transform.position = ship.transform.position + new Vector3(2.25f, 18.07f, -7.07f);
+    follow.transform.parent = ship.transform;
+    follow.transform.position = ship.transform.position + new Vector3(2.25f, 18.07f, -7.07f);
 
-  minidot.SetActive(false);
+    minidot.SetActive(false);
 
-  hud.SetActive(true);
- }
+    hud.SetActive(true);
+  }
 }
-
 \end{lstlisting}
 \end{scriptsize}
 
-Des Weiteren wird die Funktion „moveShip” ausgeführt. Diese ist für die eigentliche Bewegung des Schiffes verantwortlich. Sobald „playerOnShip” auf true gesetzt ist, wird zuerst die Distanz zwischen dem ersten Punkt des Pfades und des Schiffes gespeichert und die Position des Schiffes an diese stelle verschoben. Anschließend wird die drehung des Schiffes an die Fahrtrichtung angepasst und gedreht. Sobald die Distanz zwischen der aktuellen Position des Schiffes und dem nächsten Punkt des Pfades kleiner ist wie eine minimale Distanz, wird die „currentWayPointId” um eins erhöhrt. Solange dieser Wert nicht größer ist wie die Anzahl der Punkte des Pfades werden diese Schritte wiedserholt und das Schiff bewegt sich entlang des Pfades.
+	Des Weiteren wird die Funktion „moveShip” ausgeführt. Diese ist für die eigentliche Bewegung des Schiffes verantwortlich. Sobald „playerOnShip” auf true gesetzt ist, wird zuerst die Distanz zwischen dem ersten Punkt des Pfades und des Schiffes gespeichert und die Position des Schiffes an diese stelle verschoben. Anschließend wird die drehung des Schiffes an die Fahrtrichtung angepasst und gedreht. Sobald die Distanz zwischen der aktuellen Position des Schiffes und dem nächsten Punkt des Pfades kleiner ist wie eine minimale Distanz, wird die „currentWayPointId” um eins erhöhrt. Solange dieser Wert nicht größer ist wie die Anzahl der Punkte des Pfades werden diese Schritte wiedserholt und das Schiff bewegt sich entlang des Pfades.
 
 \begin{scriptsize}
 \lstset{
@@ -355,52 +491,41 @@ Des Weiteren wird die Funktion „moveShip” ausgeführt. Diese ist für die ei
 	basicstyle=\ttfamily
 } 
 \begin{lstlisting}[label=lst:methode2]
-
 public void moveShip () {
- //if player is on the ship
- if (playerOnShip) {
-  //get the distance between ship and the first point
-  float distance = Vector3.Distance(path.path_objs[currentWayPointId].position, 
-  		transform.position);
-  //set the ship to the first point
-  transform.position = Vector3.MoveTowards(transform.position, 
-  		path.path_objs[currentWayPointId].position, Time.deltaTime * speed);
-  //set the player on ship
-  player.transform.position = transform.position;
+  if (playerOnShip) {
+    float distance = Vector3.Distance(path.path_objs[currentWayPointId].position, 
+  	     transform.position);
+    transform.position = Vector3.MoveTowards(transform.position, 
+  	     path.path_objs[currentWayPointId].position, Time.deltaTime * speed);
+    player.transform.position = transform.position;
 
-  //rotate the ship in direction to the next point
-  var rotation = Quaternion.LookRotation(
-  		path.path_objs[currentWayPointId].position - transform.position);
-  transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 
-  		Time.deltaTime * rotationSpeed);
-  player.transform.rotation = ship.transform.rotation;
+    var rotation = Quaternion.LookRotation(
+         path.path_objs[currentWayPointId].position - transform.position);
+    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 
+         Time.deltaTime * rotationSpeed);
+    player.transform.rotation = ship.transform.rotation;
 
-  //if the distance between the ship and the point is less then reachDistance 
-  //raise the currentwaypointid
-  if (distance <= reachDistance) {
-   currentWayPointId++;
-  }
+    if (distance <= reachDistance) {
+      currentWayPointId++;
+    }
 
-  //if the currentwaypoint is greater equal the size of the list
-  if (currentWayPointId >= path.path_objs.Count) {
-   //set ship to the last position
-   this.transform.position = path.path_objs[path.path_objs.Count-1].position;
-   //set playershipped status to true and make some other things
-   playerShipped = true;
-   cc.enabled = true;
-   playerOnShip = false;
-   player_mesh.SetActive(true);
-   player_text.SetActive(true);
-   follow.transform.parent = player.transform;
-   follow.transform.position = player.transform.position;
+    if (currentWayPointId >= path.path_objs.Count) {
+      this.transform.position = path.path_objs[path.path_objs.Count-1].position;
+      playerShipped = true;
+      cc.enabled = true;
+      playerOnShip = false;
+      player_mesh.SetActive(true);
+      player_text.SetActive(true);
+      follow.transform.parent = player.transform;
+      follow.transform.position = player.transform.position;
 
-   minidot.SetActive(true);
-   player.transform.position = new Vector3(path.path_objs[path.path_objs.Count - 1].position.x, 
-   		6.3f, path.path_objs[path.path_objs.Count - 1].position.z);
+      minidot.SetActive(true);
+      player.transform.position = new Vector3(path.path_objs[path.path_objs.Count - 1].position.x, 
+         6.3f, path.path_objs[path.path_objs.Count - 1].position.z);
                 
-   currentWayPointId = 0;
+      currentWayPointId = 0;
+    }
   }
- }
 }
     
 \end{lstlisting}
