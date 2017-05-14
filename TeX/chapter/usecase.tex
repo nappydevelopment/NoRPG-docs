@@ -231,12 +231,12 @@
 				\caption{Activity Diagramm: View Progress}
 			\end{figure}
 	
-			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} Interaktion sein und das Menü ist vorher offen.
+			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige Use Case. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} Interaktion sein und das Menü ist vorher offen.
 	
 		\subsubsection{View achievements}
 			Dieser Use Case beschreibt den Anwendungsfalls, dass der Spieler seine Sammelgegenstände betrachten will. Neben den Standards kann der Anwender im Spiel Gegenstände finden, die ihn in der in Kapitel 2 beschriebenen Story weiterbringen. Diese Collectables sind auf den einzelnen Spielwelten verteilt und können dann, nachdem diese gefunden sind in der Ansicht zusammen mit den anderen betrachtet werden.
 			
-			Im Prinzip ist dieses Activity Diagramm der gleiche wie der von Use Case "View progress". Der Spieler will seinen Fortschritt betrachten. Dieses mal allerdings seinen Fortschritt in NoRPG. Hier kann der Spieler zwischen den Welten wechseln anstatt zwischen den Fächern und es wird keine Baumstruktur präsentiert.
+			Im Prinzip ähnelt dieses Activity Diagramm dem vom Use Case "View progress". Der Spieler will seinen Fortschritt betrachten. Dieses mal allerdings seinen Fortschritt in NoRPG. Hier kann der Spieler zwischen den Welten wechseln anstatt zwischen den Fächern und es wird eine andere Darstellungsart verwendet.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -245,14 +245,14 @@
 				\caption{Activity Diagramm: Achievements}
 			\end{figure}
 			
-			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} Interaktion sein und das Menü ist vorher offen.
+			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige.
 		
 		\subsubsection{Change settings}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer Einstellungen ändern möchte. In dem Rahmen dieser Studienarbeit wird es zwei Einstellungsmöglichkeiten geben. Der Spieler kann die Qualität des Spieles verändern. Ist die Option "High Quality" an, wird alles in höchster Qualität wiedergegeben. Ist jedoch diese Option aus, werden Hintergrundanimationen, die ressourcenintensiv sind, nicht wiedergegeben. Diese Option ermöglicht es Smartphones mit schlechterer Hardwareausführung das Spiel ohne Probleme spielen zu können, bietet jedoch für neuere Smartphones die Möglichkeit NoRPG in vollen zu genießen.
 			
 			Die zweite Einstellungsmöglichkeit ist, dass der Spieler die Audioausgaben des Spieles verändern kann. Zu einem Spielerlebnis gehört die Musik und Soundeffekte. Diese kann der Spieler je nach Wunsch ein- oder ausschalten.
 
-			Die Vorbedingung zur Änderung der Spieleinstellungen sind, dass der Anwender sich im Spiel und sich in keiner aktiven \ac{NPC} Interaktion befindet. Bei erfolgreicher Änderung sollten diese Einstellungen für diesen Account gespeichert werden, damit diese bei jedem Login, auch auf verschiedene Geräte, übernommen werden. Im Fehlerfall werden die Default-Optionen angewendet. 
+			Die Vorbedingung zur Änderung der Spieleinstellungen sind, dass der Anwender sich im Spiel und sich in keiner aktiven \ac{NPC} Interaktion befindet. Bei erfolgreicher Änderung sollten diese Einstellungen für diesen Account gespeichert werden, damit diese bei jedem Login, auch auf verschiedene Geräte, übernommen werden. Im Fehlerfall werden die Default-Werte der Einstellungen angewendet. 
 	
 		\subsubsection{Save local}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen aktuellen Fortschritt manuell speichern möchte. NoRPG speichert bei bestimmten Ereignissen automatisch. Beispielsweise wenn der Spieler in eine andere Welt reist oder eine Truhe findet. Allerdings kann der Spieler seinen aktuellen Stand speichern. Es werden neben Fortschritt, Erfolge oder Charaktereigenschaften noch die Spieleinstellungen und sogar der aktuelle Standort des Spielers gespeichert. Der Spieler kann diese Funktion direkt im Menü durchführen.
@@ -260,14 +260,14 @@
 			Wenn das Speichern erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Im Fehlerfall muss die Aktion erneut durchgeführt werden.
 		
 		\subsubsection{Synchronize}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen lokalen Speicherstand mit dem Server manuell synchronisieren möchte. NoRPG synchronisiert automatisch, wenn eine aktive Internetverbindung vorhanden ist beim Einloggen und vor dem Ausloggen. Die Synchronisation wird nicht so oft wie das Speichern ausgeführt, da der Vorgang länger dauert. Ebenfalls wird die Synchronisation nicht so häufig benötigt, da der Server als eine Art Back-Up verwendet wird. Also für den Fall, dass der Spieler sich mit einem anderen Gerät anmelden möchte. Der Spieler kann diese Funktion direkt im Menü durchführen.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer seinen lokalen Speicherstand mit dem Server manuell synchronisieren möchte. NoRPG synchronisiert automatisch, wenn eine aktive Internetverbindung vorhanden ist beim Einloggen und vor dem Ausloggen. Die Synchronisation wird nicht so oft wie das Speichern ausgeführt, da der Vorgang länger dauern kann. Ebenfalls wird die Synchronisation nicht so häufig benötigt, da der Server als eine Art Back-Up Medium fungiert. Also für den Fall, dass der Spieler sich mit einem anderen Gerät anmelden möchte oder der lokale Spielstand nicht mehr vorhanden ist. Der Spieler kann diese Funktion direkt im Menü durchführen.
 	
 			Wenn das Synchronisieren erfolgreich war, wird der Spieler durch eine kurze Nachricht informiert. Wenn keine Information erscheint kann davon ausgegangen werden, dass der Vorgang fehlgeschlagen ist. Eine häufige Ursache für den Fehlschlag kann die fehlende Internetverbindung sein.
 		
 		\subsubsection{Control character}
 			Dieser Use Case beschreibt den Anwendungsfall, dass der Spieler seinen Charakter in NoRPG durch die Spielwelt kontrollieren möchte. Dafür verwendet der Spieler das Steuerkreuz, welches sich in der linken unteren Ecke des \ac{HUD} befindet (vgl. Abbildung \ref{mockupHUD}).
 			
-			Das Activity Diagramm dieses Use Cases in Abbildung \ref{umlControl} ist im Vergleich zu den bisherigen Diagrammen besonders, denn es existiert keinen Endpunkt. 
+			Das Activity Diagramm dieses Use Cases in Abbildung \ref{umlControl} ist im Vergleich zu den bisherigen Diagrammen besonders, denn es existiert keinen Endpunkt. Dieser ist zugleich der Startpunkt des Diagramms.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -281,7 +281,7 @@
 			Die Vorbedingung für diesen Use Case ist, dass der Spieler sich im Spiel befindet und das Menü geschlossen ist.
 	
 		\subsubsection{Interact with elements}
-			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer mit einen Element im Spiel interagieren möchte. Dafür hat der Spieler 2 Tasten auf dem \ac{HUD} (vgl. Abbildung \ref{mockupHUD}), die dem Spieler die Möglichkeit gibt die Interaktion zu starten oder zu beenden.
+			Dieser Use Case beschreibt den Anwendungsfall, dass der Benutzer mit einen Element im Spiel interagieren möchte. Dafür hat der Spieler zwei Tasten auf dem \ac{HUD} (vgl. Abbildung \ref{mockupHUD}), die dem Spieler die Möglichkeit gibt die Interaktion zu starten oder zu beenden.
 			
 			In NoRPG wird es verschiedene Elemente geben, mit denen der Spieler interagieren kann.
 			
@@ -289,10 +289,10 @@
 				\item {\textbf{\acp{NPC}:} Der Spieler kann sich mit unterschiedlichsten \acp{NPC} unterhalten, die überall in allen Spielen vorkommen. Die \acp{NPC} helfen dem Spieler, indem diese Tipps und Hinweise in den Unterhaltungen nennen.}
 				\item {\textbf{Truhen:} Der Spieler kann mit Truhen interagieren. Die Truhen sind in den einzelnen Welten verteilt und enthalten die Sammelgegenstände. Durch die Interaktion öffnet sich die Truhe und der Sammelgegenstand erscheint. Nachdem die Truhe geöffnet wurde bleibt die Truhe offen und es kann nicht weiter mit ihr interagiert werden. Es handelt sich um eine einmalige Aktion.}
 				\item {\textbf{Spielehändler:} Spielehändler tauchen überall auf. Diese bieten die verschiedenen Lernspiele für Standards an. Die Spielehändler können menschliche Händler oder andere Formen annehmen um die verschiedene Welten zu repräsentieren. Durch die Interaktion startet der Spieler eine Unterhaltung in dem der Spieler Informationen über den Standard erhält und das Spiel freischaltet.}
-				\item {Die Interaktion mit der Umwelt (Bäume, Tiere, Gebäude) starten zunächst keine Aktion.}
+				\item {Die Interaktion mit der Umwelt (Bäume, Tiere, Gebäude) starten zunächst keine Interaktion.}
 			\end{itemize}
 			
-			Eine Interaktion kann nur dem "A" Button gestartet werden. Wenn ein Element zur Interaktion vorhanden ist startet erst die Interaktion. Anschließend kann der Spieler mit dem "A" oder "B" Button reagieren. Der "B" Button ist zum Abbrechen der Interaktion und beendet diesen Prozess bzw. überspringt ihn. Zum Beispiel in der Interaktion mit dem Händler sorgt der "B" Button dafür, dass die Unterhaltung übersprungen wird und direkt die Spiele angezeigt werden. Mit dem "A" Button wird die Interaktion fortgeführt bis keine Aktion mehr vorhanden ist, also in unserem Händlerbeispiel keine Unterhaltung mehr gibt.
+			Eine Interaktion kann nur dem "A" Button gestartet werden. Wenn ein Element zur Interaktion vorhanden ist, wird erst die Interaktion gestartet. Anschließend kann der Spieler mit dem "A" oder "B" Button reagieren. Der "B" Button ist zum Abbrechen der Interaktion und beendet diesen Prozess bzw. überspringt ihn. Zum Beispiel in der Interaktion mit dem Händler sorgt der "B" Button dafür, dass die Unterhaltung übersprungen wird und direkt die Spiele angezeigt werden. Mit dem "A" Button wird die Interaktion fortgeführt bis keine Aktion mehr vorhanden ist, also in unserem Händlerbeispiel keine Unterhaltung mehr gibt. Der Ablauf ist in Abbildung \ref{umlInteraction} visualisiert dargestellt.
 			
 			\begin{figure}[htbp]
 				\centering 
@@ -303,14 +303,15 @@
 			
 			Die Vorbedingungen für diesen Use Case sind, dass der Spieler sich im Spiel befindet und das Menü sowie die Karte geschlossen sind. Je nach Element wird ein anderes Ergebnis erwartet. Beispielsweise wird bei einer Interaktion mit der Truhe das Ergebnis erwartet, dass die Truhe offen bleibt, der Sammelgegenstand in die Liste übernommen wurde und der Spielstand automatisch lokal gespeichert wird.
 	
+	\pagebreak
 	\subsection{Performanz Anforderungen}
 		Dieser Abschnitt des \ac{SRS} legt sowohl die statischen als auch die dynamischen numerischen Anforderungen an die Software. 
 	
-		Ein sehr wichtige Anforderung betrifft die Antwortzeit des Systems. Diese Anforderung ist besonders wichtig, da der Nutzer die direkten Auswirkungen in der App mitbekommt. Eine Antwortzeit von 0,1 Sekunden gibt dem Benutzer das Gefühl, dass das System sofort reagiert. Bei einer Sekunden denkt der Benutzer immer noch, dass die Aktion ununterbrochen durchgeführt wird, jedoch bemerkt der Benutzer ein Verzögern. Im Worst-Case liegt die Grenze für die Aufmerksamkeit des Benutzers bei zehn Sekunden\footnote{vgl. Andrew Lee \cite{performance1}}.
+		Ein sehr wichtige Anforderung betrifft die Antwortzeit des Systems. Diese Anforderung ist besonders wichtig, da der Nutzer die direkten Auswirkungen in der App mitbekommt. Eine Antwortzeit von 0,1 Sekunden gibt dem Benutzer das Gefühl, dass das System sofort reagiert. Bei einer Sekunden denkt der Benutzer immer noch, dass die Aktion ununterbrochen durchgeführt wird, jedoch bemerkt der Benutzer ein Verzögern. Im Worst Case liegt die Grenze für die Aufmerksamkeit des Benutzers bei zehn Sekunden\footnote{vgl. Andrew Lee \cite{performance1}}.
 		
 		Für die Performanz Anforderungen wird zwischen der App und dem Server unterschieden. 95\% der Transaktionen in der App sollten in weniger als einer Sekunde verarbeitet werden. Aufwändigere Prozesse wie die Synchronisation oder das wechseln der Spielwelten dürfen minimal länger brauchen. Für den Server gilt, dass 80\% der Transaktionen in weniger als einer Sekunde verarbeitet werden. Es sind nur 80\% notwendig, da der Server nur für die Synchronisation und Speicherung verwendet wird. Der prozentuale Anteil der Synchronisation auf dem Server ist wesentlich größer als die in der App. 
 		
-		Der Workload ist die Anzahl an Verarbeitungen, die das System in einer gegeben Zeit durchführen kann. Die App selbst hat keine hohe Arbeitsbelastung, da diese nur einen Benutzer gleichzeitig zulässt und von der Hardware des Spielers abhängt. Vielmehr gilt es zu betrachten, mit wie viel Belastung der Server umgehen kann. Der Anzahl an Spielern ist mehr oder weniger keine Grenze gesetzt, da für jeden einzelnen Spieler zunächst eine Zeile in der Datenbank hinterlegt wird. Die Anzahl an gleichzeitigen Benutzern, die mit dem Server kommunizieren wollen, ist allerdings begrenzt. Da der Server auch sein Hardwarebegrenzungen hat kann es nur eine bestimmte Anzahl an gleichen Synchronisationsanfragen entgegennehmen. Wenn diese Anzahl übersteigt wird arbeitet der Server nach dem First In First Out (FIFO) Prinzip. Die Clients, die als erste eine Synchronisationsanfrage senden, werden auch als erstes bearbeitet. Als eine Art der Erweiterung spezifiziert die Lastskalierbarkeit die Menge an Daten, die innerhalb bestimmter Zeitperioden sowohl bei normaler als auch bei maximaler Belastung verarbeitet werden sollen.
+		Der Workload ist die Anzahl an Verarbeitungen, die das System in einer gegeben Zeit durchführen kann. Die App selbst hat keine hohe Arbeitsbelastung, da diese nur einen Benutzer gleichzeitig zulässt und von der Hardware des Spielers abhängt. Vielmehr gilt es zu betrachten, mit wie viel Belastung der Server umgehen kann. Der Anzahl an Spielern ist mehr oder weniger keine Grenze gesetzt, da für jeden einzelnen Spieler zunächst eine Zeile in der Datenbank hinterlegt wird. Die Anzahl an gleichzeitigen Benutzern, die mit dem Server kommunizieren wollen, ist allerdings begrenzt. Da der Server auch sein Hardwarebegrenzungen hat kann es nur eine bestimmte Anzahl an gleichen Synchronisationsanfragen entgegennehmen. Wenn diese Anzahl übersteigt wird, arbeitet der Server nach dem First In First Out (FIFO) Prinzip. Die Clients, die als erste eine Synchronisationsanfrage senden, werden auch als erstes bearbeitet. Als eine Art der Erweiterung spezifiziert die Lastskalierbarkeit die Menge an Daten, die innerhalb bestimmter Zeitperioden sowohl bei normaler als auch bei maximaler Belastung verarbeitet werden sollen.
 
 	\subsection{Datenbank Anforderungen}
 		Die beiden eingesetzten Datenbanken unterscheiden sich von ihren Anforderungen.
@@ -321,7 +322,7 @@
 		
 		Die Integrität der Datenbank muss immer gewährleistet werden, damit die Benutzer den eigenen Fortschritt nicht fälschen können. Dies kann mit Prüfsummen und Versionierung gewährleistet werden.
 		
-		Die Datenbank auf dem Server enthält alle Spielerdaten und Spieldaten. Bei den Spieldaten handelt es sich um die gleichen Daten, die auf den lokalen Datenbanken gespeichert sind.  Allerdings sind auf dem Server alle Spielerdaten gespeichert, damit die Benutzer von unterschiedlichen Geräten spielen können. 
+		Die Datenbank auf dem Server enthält alle Spielerdaten und Spieldaten. Bei den Spieldaten handelt es sich um die gleichen Daten, die auf den lokalen Datenbanken gespeichert sind. Allerdings sind auf dem Server alle Spielerdaten gespeichert, damit die Benutzer von unterschiedlichen Geräten spielen können. 
 		
 		Diese Datenbank wird nicht oft verändert bzw. aktualisiert, da die Datenbank nur bei der Synchronisation verändert wird oder wenn neue Standards oder Spiele eingefügt werden. Das hat den Vorteil das nicht sehr viele Anfragen an den Server gestellt werden, wodurch der Workload gering gehalten wird. Zugegriffen kann der Spieler nur über die App. Administratoren haben die Möglichkeit den Server über eine Virtual Machine zu erreichen und Änderungen durchzuführen. 
 		
@@ -346,7 +347,7 @@
 			\item{Kontrolle: Kinder wollen das Gefühl, dass sie etwas vollbringen wenn sie in der App interagieren. Es werden Ziele gesetzt und Entscheidungen getroffen.}
 		\end{enumerate}
 	
-		Für die kindgerechte Gestaltung gibt es allerdings noch weitere Kriterien. Es dürfen keine In-App-Käufe angeboten, keine Werbung platziert oder zu Social Media oder ähnlichen Seiten verlinkt werden. Diese Gegenstände haben in einem kindgerechten Spiel nichts zu tun. Für die Installation gilt es zu beachten, das so wenig Berechtigungen wie notwendig verlangt werden\footnote{vgl. klick-tipps.net \cite{appsforkids}}.
+		Für die kindgerechte Gestaltung gibt es allerdings noch weitere Kriterien. Es dürfen keine In-App-Käufe angeboten, keine Werbung platziert oder zu Social Media, wie beispielsweise Facebook oder Twitter, oder ähnlichen Seiten verlinkt werden. Diese Gegenstände haben in einem kindgerechten Spiel nichts zu tun. Für die Installation gilt es zu beachten, das so wenig Berechtigungen wie notwendig verlangt werden\footnote{vgl. klick-tipps.net \cite{appsforkids}}.
 		
 		Es gilt, desto einfach die App gestaltet ist, desto mehr Kinder verstehen diese. Ein Beispiel dafür ist die Charaktersteuerung. Moderne Spiele haben keine sichtbaren Steuerkreuz, der Spieler muss nur eine Wischbewegung in die Richtung machen, in der er sich bewegen möchte. In NoRPG allerdings wird ein sichtbares Steuerkreuz gewählt, wie dies schon von vielen Geräten wie vom klassischen Gameboy oder von Playstation verwendet wird. Navigation soll schnell erkennbar und nachvollziehbar sein.
 		
@@ -372,7 +373,7 @@
 		Die gespeicherte Daten dürfen an andere Tools nur anonymisiert weitergegeben werden, für beispielsweise Analysezwecke. Diese Kommunikation mit anderen System oder Applikationen darf nur verschlüsselt geschehen.
 		
 	\subsection{Wartbarkeit}
-		Der Code von NoRPG sollte so geschrieben werden, dass der Code die Umsetzung neuer Funktionen begünstigt. Deshalb sollte die Komplexität des Quellcodes so gering wie möglich gehalten werden, indem entsprechende Methoden wie das Model-View-Controller (MVC) Pattern umgesetzt werden. Des Weiteren sollte das System von NoRPG Schnittstellen jeglicher Art anbieten, um das System durch weitere Komponenten wie ein Web-Tool für Administratoren zu erweitern.
+		Der Code von NoRPG sollte so geschrieben werden, dass der Code die Umsetzung neuer Funktionen begünstigt. Deshalb sollte die Komplexität des Quellcodes so gering wie möglich gehalten werden, indem entsprechende Methoden wie das Model-View-Controller (\ac{MVC}) Pattern umgesetzt werden. Des Weiteren sollte das System von NoRPG Schnittstellen jeglicher Art anbieten, um das System durch weitere Komponenten wie ein Web-Tool für Administratoren zu erweitern.
 		
 		Neben der Erweiterbarkeit sollte NoRPG für Fehlerfälle eine Testumgebung anbieten, um das Testen der Anwendung auf unterschiedliche Funktionen zu ermöglichen und gegebenenfalls Fehler wiederholen und simulieren zu können.
 		
