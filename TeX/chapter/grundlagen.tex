@@ -30,7 +30,7 @@
 			Bei Prefabs handelt es sich um fertige Objekte, die in Szenen verwendet werden können\footnote{vgl. Unity3D \cite{unity7} (2017)}. Diese können dabei als Vorlage gesehen werden, damit nicht jedes Objekt mit gleichen Eigenschaften erneut erstellt werden müssen. 
 			
 		\subsubsection{Skripte}
-			In Skripten befindet sich die Logik von Objekten\footnote{vgl. Unity3D \cite{unity8} (2017)}. Ein Beispiel dafür ist das Öffnen einer Truhe. Wenn der Benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, das sie sich öffnen soll. 
+			In Skripten befindet sich die Logik von Objekten\footnote{vgl. Unity3D \cite{unity8} (2017)}. Ein Beispiel dafür ist das Öffnen einer Truhe. Wenn der Benutzer die Truhe anklickt und öffnen will, steht in einem Skript, was die Truhe zu tun hat. In diesem Beispiel also, dass sie sich öffnen soll. 
 
 	\subsection{Grafische Oberflächen mit Unity}
 		Die grafische Oberfläche wird mit Unity's zur Verfügung gestelltem \ac{UI} System implementiert. Der Canvas, zu deutsch Leinwand, stellt dabei die Hauptkomponente bzw. Elternkomponente dar. Alle \ac{UI} Elemente sind Kinder des Canvas und erben somit die Eigenschaften des Canvas. Unity bietet standardmäßig eine große Anzahl an \ac{UI} Elementen, wie beispielsweise Buttons, Toggle-Buttons, Dropdown-Listen und Eingabefelder\footnote{Vgl. \url{https://docs.unity3d.com/Manual/UIInteractionComponents.html}}. Der Canvas verwendet das EventSystem Objekt von Unity. Das Event System ermöglicht es, alle Touchscreen-Eingaben an die korrekten \ac{UI} Elemente in der App weiterzuleiten\footnote{Vgl. \url{https://docs.unity3d.com/Manual/EventSystem.html}}.
@@ -54,7 +54,7 @@
 			Auf der Gegenseite können keine \ac{UI} Elemente oder wichtige Informationen von den Gegenständen im Spiel verdeckt werden und ein weiterer Vorteil ist, dass die Position auf dem Bildschirm immer an die Auflösung angepasst wird und sich nicht ändert, unabhängig davon welche Aktionen der Spieler im Spiel ausführt oder auf welcher Hardware NoRPG gespielt wird.
 
 		\subsubsection{Screen Space - Camera}
-			Dieser Modus ähnelt dem ersten Modus sehr, aber in diesem Render-Modus wird der Canvas eine vorgegebene Distanz vor einer bestimmten Kamera platziert. Die \ac{UI} Elemente werden von der bestimmen Kamera gerendert, was bedeutet, dass die Kameraeinstellungen das Erscheinungsbild der Benutzeroberfläche beeinflussen. Wenn sich die Auflösung des Bildschirms verkleinert, oder die Kameraposition und -winkel sich ändern, ändert sich der Canvas automatisch mit und passt die Größe der Elemente an.
+			Dieser Modus ähnelt dem ersten Modus sehr, aber in diesem Render-Modus wird der Canvas einer vorgegebenen Distanz vor einer bestimmten Kamera platziert. Die \ac{UI} Elemente werden von der bestimmen Kamera gerendert, was bedeutet, dass die Kameraeinstellungen das Erscheinungsbild der Benutzeroberfläche beeinflussen. Wenn sich die Auflösung des Bildschirms verkleinert, oder die Kameraposition und -winkel sich ändern, ändert sich der Canvas automatisch mit und passt die Größe der Elemente an.
 
 			Der größte Unterschied ist allerdings, wenn 3D-Objekte in der Szene näher an der Kamera sind als die \ac{UI} Elemente, werden diese auch auf dem Bildschirm vor der Benutzeroberfläche platziert. Dieses Verhalten wird in der folgenden Grafik\footnote{Bild entnommen von \url{https://docs.unity3d.com/Manual/class-Canvas.html}} \ref{renderCamera} deutlich.
 
@@ -81,7 +81,7 @@
 			
 \section{Visual Studio}
 
-	Mit Microsoft Visual Studio ist es möglich in verschiedenen Programmiersprachen zu programmieren\footnote{vgl. Microsoft \cite{microsoft1} (2015)}. Bei der Installation von Unity wird dieses dabei zusätzlich installiert. Dadurch können die Skripte aus Unity in Visual Studio geöffnet und bearbeitet werden. Zusätzlich zu Visual Studio werden auch verschiedene Plug-Ins für die IDE installiert. Dabei handelt es sich unter anderem um eine ausführliche Dokumentation von allen in Unity zur Verfügung stehenden Methoden und Klassen sowie um Testtools, um verschiedene Tests auszuführen. 
+	Mit Microsoft Visual Studio ist es möglich in verschiedenen Programmiersprachen zu programmieren\footnote{vgl. Microsoft \cite{microsoft1} (2015)}. Bei der Installation von Unity wird dieses dabei zusätzlich installiert. Dadurch können die Skripte aus Unity in Visual Studio geöffnet und bearbeitet werden. Zusätzlich zu Visual Studio werden auch verschiedene Plug-Ins für die IDE installiert. Dabei handelt es sich unter anderem um eine ausführliche Dokumentation, von allen in Unity zur Verfügung stehenden Methoden und Klassen, sowie um Testtools, um verschiedene Tests auszuführen. 
 
 \section{C Sharp}
 
