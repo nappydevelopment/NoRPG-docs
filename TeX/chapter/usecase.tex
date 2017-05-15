@@ -9,7 +9,7 @@
 	\subsection{Zweck}
 		Das \ac{SRS} beschreibt den kompletten Projektumfang und die Anforderungen an die Software NoRPG. Es illustriert den Zweck und die vollständige Erklärung für die Entwicklung der Software. Dabei werden unter anderem Systemeinschränkungen, Schnittstellen und Interaktionen mit externen Schnittstellen thematisiert\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 3}. 
 	
-		Die Zielgruppe des \ac{SRS}, bzw. die Stakeholder des Projektes, sind alle Personen und Personengruppen, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben\footnote{vgl. Rozanski \cite{rozanski2011}(2011) Seite 6}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholdern und Entwicklern.
+		Die Zielgruppe des \ac{SRS}, bzw. die Stakeholder des Projektes, sind alle Personen und Personengruppen, die in irgendeiner Verbindung mit NoRPG stehen oder jene, die Interesse an der Umsetzung haben\footnote{vgl. Rozanski \cite{rozanski2011} (2011) Seite 6}. Zudem dient die Spezifikation zur Kommunikation zwischen Stakeholdern und Entwicklern.
 		
 	\subsection{Umfang}
 		Dieses \ac{SRS} handelt von der in Kapitel 2 beschrieben Software NoRPG. 
@@ -31,7 +31,7 @@
 		
 		Das vollständige System von NoRPG besteht aus zwei Kernkomponenten. Die erste Kernkomponente ist die Android App, welche sich aus dem Quellcode des Spieles und einer eingebetteten lokalen Datenbank zusammensetzt. Die zweite Kernkomponente ist eine Datenbank, die sich auf einem virtualisierten Server befindet.
 		
-		Die Schnittstelle zwischen der App und dem Betriebssystem des Smartphones ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE}(1998) Seite 13}.
+		Die Schnittstelle zwischen der App und dem Betriebssystem des Smartphones ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE} (1998) Seite 13}.
 		
 		Bei der App NoRPG handelt es sich um die Benutzerschnittstelle des Systems. Benutzerschnittstellen beschreiben die Kommunikation zwischen dem System und dem User. Die Benutzeroberfläche der App ist die einzige Möglichkeit für den Anwender mit dem System zu interagieren.
 		
@@ -83,7 +83,7 @@
 			
 			Der Gültigkeitsbereich der Systemschnittstelle ist auf die App begrenzt und hat keine direkte Auswirkungen auf den Server. 
 			
-			Das Datenformat von Android ist das \ac{APK} und wird für die Distribution und Installation von mobilen Apps auf Android Smartphones verwendet. Eine \ac{APK}-Datei enthält den gesamten Programmcode, Ressourcen, Assets, Zertifikate und Metadaten. Verglichen kann das Datenformat von Google mit einem ZIP-Archiv\footnote{vgl. Dan Morrill (Google) \cite{google1}}. Dieses Format muss NoRPG erfüllen, um unabhängig von den zu implementierenden Produktfunktionen auf einem Android Smartphone laufen zu können.
+			Das Datenformat von Android ist das \ac{APK} und wird für die Distribution und Installation von mobilen Apps auf Android Smartphones verwendet. Eine \ac{APK}-Datei enthält den gesamten Programmcode, Ressourcen, Assets, Zertifikate und Metadaten. Verglichen kann das Datenformat von Google mit einem ZIP-Archiv\footnote{vgl. Morrill \cite{google1} (2008)}. Dieses Format muss NoRPG erfüllen, um unabhängig von den zu implementierenden Produktfunktionen auf einem Android Smartphone laufen zu können.
 			
 		\subsubsection{Benutzerschnittstellen}
 			Die Benutzerschnittstellen bzw. \ac{UI} sind der Punkt, an dem die Benutzer mit der Software interagieren. Zur Beschreibung der Benutzerschnittstellen werden logische Eigenschaften und Aspekte zur Optimierung formuliert. Für die Veranschaulichung werden Mockups verwendet. Diese stellen dar, wie die Oberfläche aussehen kann. Die am Projektende implementierte Benutzeroberfläche kann sich von den Mockups unterscheiden.
@@ -307,7 +307,7 @@
 	\subsection{Performanz Anforderungen}
 		Dieser Abschnitt des \ac{SRS} legt sowohl die statischen als auch die dynamischen numerischen Anforderungen an die Software. 
 	
-		Ein sehr wichtige Anforderung betrifft die Antwortzeit des Systems. Diese Anforderung ist besonders wichtig, da der Nutzer die direkten Auswirkungen in der App mitbekommt. Eine Antwortzeit von 0,1 Sekunden gibt dem Benutzer das Gefühl, dass das System sofort reagiert. Bei einer Sekunde denkt der Benutzer immer noch, dass die Aktion ununterbrochen durchgeführt wird, jedoch bemerkt der Benutzer ein Verzögern. Im Worst Case liegt die Grenze für die Aufmerksamkeit des Benutzers bei zehn Sekunden\footnote{vgl. Andrew Lee \cite{performance1}}.
+		Ein sehr wichtige Anforderung betrifft die Antwortzeit des Systems. Diese Anforderung ist besonders wichtig, da der Nutzer die direkten Auswirkungen in der App mitbekommt. Eine Antwortzeit von 0,1 Sekunden gibt dem Benutzer das Gefühl, dass das System sofort reagiert. Bei einer Sekunde denkt der Benutzer immer noch, dass die Aktion ununterbrochen durchgeführt wird, jedoch bemerkt der Benutzer ein Verzögern. Im Worst Case liegt die Grenze für die Aufmerksamkeit des Benutzers bei zehn Sekunden\footnote{vgl. Lee \cite{performance1} (2015)}.
 		
 		Für die Performanz Anforderungen wird zwischen der App und dem Server unterschieden. 95\% der Transaktionen in der App sollten in weniger als einer Sekunde verarbeitet werden. Aufwändigere Prozesse wie die Synchronisation oder das wechseln der Spielwelten dürfen minimal länger brauchen. Für den Server gilt, dass 80\% der Transaktionen in weniger als einer Sekunde verarbeitet werden. Es sind nur 80\% notwendig, da der Server nur für die Synchronisation und Speicherung verwendet wird. Der prozentuale Anteil der Synchronisation auf dem Server ist wesentlich größer als die in der App. 
 		
@@ -331,14 +331,14 @@
 	\subsection{Entwurfsbeschränkungen}
 		Bei der Entwicklung der App gilt es zu beachten, dass die Hardware-Anforderungen nicht zu hoch sind. Als Maßstab für die Hardware wird das Smartphone Samsung Galaxy S4 genommen. Grund dafür ist das Preis-Leistungsverhältnis des S4 und die Tatsache, dass Samsung eine sehr verbreitete Marke ist.
 		
-		Das Samsung Galaxy S4 kostet auf Amazon (Stand 27.01.2017) ungefähr 225 Euro. Das S4 hat vorinstalliert Android 4.2 Jelly Bean und die Samsung Touchwiz 4.0 Oberfläche. Ein Update auf Android 5.0 Lollipop ist allerdings möglich. Das S4 hat 2 GByte Arbeitsspeicher und 16 GByte internen Speicher, welcher durch eine Speicherkarte erweitert werden kann. Bei dem Prozessor handelt es sich um einen Qualcomm Snapdragon 600 mit vier Kernen, einer Taktfrequenz von 1,9 GHz und einer 32-bit Architektur\footnote{vgl. Google \cite{s4Google}}. Für eine Internetverbindung bietet Samsungs Galaxy S4 eine drahtlose Schnittstelle, die nach IEEE 802.11a/ac/b/g/n funktioniert.
+		Das Samsung Galaxy S4 kostet auf Amazon (Stand 27.01.2017) ungefähr 225 Euro. Das S4 hat vorinstalliert Android 4.2 Jelly Bean und die Samsung Touchwiz 4.0 Oberfläche. Ein Update auf Android 5.0 Lollipop ist allerdings möglich. Das S4 hat 2 GByte Arbeitsspeicher und 16 GByte internen Speicher, welcher durch eine Speicherkarte erweitert werden kann. Bei dem Prozessor handelt es sich um einen Qualcomm Snapdragon 600 mit vier Kernen, einer Taktfrequenz von 1,9 GHz und einer 32-bit Architektur\footnote{vgl. Wiesmüller \cite{s4Google} (2015)}. Für eine Internetverbindung bietet Samsungs Galaxy S4 eine drahtlose Schnittstelle, die nach IEEE 802.11a/ac/b/g/n funktioniert.
 		
 		Der Speicherbedarf darf nicht größer als 200MB sein, geplant sind allerdings 150MB. Beim RAM dürfen nicht mehr als 1GB sein, geplant sind allerdings 500MB.
 	
 	\subsection{Benutzerfreundlichkeit}
 		Das Ziel der Benutzerfreundlichkeit ist eine hohe Ergonomie. Die Software-Ergonomie bezeichnet die Anpassung an die kognitiven und physischen Fähigkeiten bzw. Eigenschaften des Benutzers, also seine Möglichkeiten zur Verarbeitung von komplexen Informationen aber auch die Anpassung softwaregesteuerten Merkmale der Darstellung, wie Farben und Schriftgröße.
 		
-		Damit die Benutzeroberfläche freundlich für den Benutzer ist, muss sie in das Profil des Benutzers passen. Da NoRPG sich grundsätzlich an Kinder richtet muss die Bedienung und Gestaltung der App kindgerecht sein. Damit eine App als kindgerecht bezeichnet werden kann muss es nach Wendy B. von Intel vier Prinzipien erfüllen \footnote{vgl. Wendy B. \cite{intelKids}}.
+		Damit die Benutzeroberfläche freundlich für den Benutzer ist, muss sie in das Profil des Benutzers passen. Da NoRPG sich grundsätzlich an Kinder richtet muss die Bedienung und Gestaltung der App kindgerecht sein. Damit eine App als kindgerecht bezeichnet werden kann muss es nach Wendy B. von Intel vier Prinzipien erfüllen \footnote{vgl. Wendy B. \cite{intelKids} (2013)}.
 		
 		\begin{enumerate}
 			\item{Freiheit: Die Fähigkeit, sich in der App innerhalb einer kontrollierten Umgebung frei bewegen zu können. Dieses Prinzip verfolgen auch Rollenspiele. Durch die offene Spielwelt kann der Spieler selbst entscheiden wohin er als nächstes hin möchte. Allerdings gilt es bei Kindern diese Umgebung zu kontrollieren, indem bestimmte Bereiche festgelegt werden müssen.}
@@ -347,11 +347,11 @@
 			\item{Kontrolle: Kinder wollen das Gefühl, dass sie etwas vollbringen wenn sie in der App interagieren. Es werden Ziele gesetzt und Entscheidungen getroffen.}
 		\end{enumerate}
 	
-		Für die kindgerechte Gestaltung gibt es allerdings noch weitere Kriterien. Es dürfen keine In-App-Käufe angeboten, keine Werbung platziert oder zu Social Media, wie beispielsweise Facebook oder Twitter, oder ähnlichen Seiten verlinkt werden. Diese Gegenstände haben in einem kindgerechten Spiel nichts zu tun. Für die Installation gilt es zu beachten, das so wenig Berechtigungen wie notwendig verlangt werden\footnote{vgl. klick-tipps.net \cite{appsforkids}}.
+		Für die kindgerechte Gestaltung gibt es allerdings noch weitere Kriterien. Es dürfen keine In-App-Käufe angeboten, keine Werbung platziert oder zu Social Media, wie beispielsweise Facebook oder Twitter, oder ähnlichen Seiten verlinkt werden. Diese Gegenstände haben in einem kindgerechten Spiel nichts zu tun. Für die Installation gilt es zu beachten, das so wenig Berechtigungen wie notwendig verlangt werden\footnote{vgl. klick-tipps.net \cite{appsforkids} (2015)}.
 		
 		Es gilt, desto einfach die App gestaltet ist, desto mehr Kinder verstehen diese. Ein Beispiel dafür ist die Charaktersteuerung. Moderne Spiele haben keine sichtbaren Steuerkreuz, der Spieler muss nur eine Wischbewegung in die Richtung machen, in der er sich bewegen möchte. In NoRPG allerdings wird ein sichtbares Steuerkreuz gewählt, wie dies schon von vielen Geräten wie vom klassischen Gameboy oder von Playstation verwendet wird. Navigation soll schnell erkennbar und nachvollziehbar sein.
 		
-		Schließlich gilt es die erwachsenen Nutzer nicht zu vergessen! Gemeint sind Eltern, Erziehungsberechtigte, Lehrer und jeder, der mit der App interagieren kann. Erwachsene spielen genauso eine wichtige Rolle. Egal ob diese die Kinder unterstützen, überwachen oder selbst spielen. Es ist wichtig, dass sich Eltern an die Entwickler melden können, wenn sie etwas nicht kindgerecht halten oder wenn es Probleme gibt\footnote{vgl. Becky White \cite{smashMagazin}}.	
+		Schließlich gilt es die erwachsenen Nutzer nicht zu vergessen! Gemeint sind Eltern, Erziehungsberechtigte, Lehrer und jeder, der mit der App interagieren kann. Erwachsene spielen genauso eine wichtige Rolle. Egal ob diese die Kinder unterstützen, überwachen oder selbst spielen. Es ist wichtig, dass sich Eltern an die Entwickler melden können, wenn sie etwas nicht kindgerecht halten oder wenn es Probleme gibt\footnote{vgl. White \cite{smashMagazin} (2016)}.	
 
 	\subsection{Zuverlässigkeit}
 		Alle implementierten Produktfunktionen sollten zur Auslieferung korrekt und zuverlässig funktionieren. Dazu zählt auch, dass die Funktionen in vertretbaren Zeiten terminieren. Beispielsweise sollte die Anmeldung funktionieren, wenn der Spieler registriert ist und die richtigen Benutzerdaten eingegeben hat, oder die Benutzereingaben für die Charaktersteuerung sollen korrekt interpretiert werden.
@@ -380,6 +380,6 @@
 	\subsection{Portabilität}
 		Die App NoRPG ist zunächst nur für Android geplant. Andere Betriebssysteme, wie Windows Phone von Microsoft oder iOS von Apple, sind vorerst nicht vorgesehen. 
 		
-		Bei der vorhanden Breite an Varianten von Android-Smartphones ist sehr wichtig, dass die Portabilität innerhalb von Android Smartphones gewährleistet wird. Neben bekannten Smartphoneherstellern wie Samsung, LG oder HTC gibt es zahlreiche weitere Hersteller die auf das Android Betriebssystem setzen. Jeder Hersteller hat dabei eine große Palette an Smartphone-Modellen, wie bei Samsung die Samsung Galaxy S-Reihe, welches aktuell in der siebten Genration erhältlich ist\footnote{vgl. Philippe Fischer, Michael Huch \cite{computerBildSamsung}}, oder die Samsung Galaxy Note-Reihe. Die App NoRPG muss auf allen Android-Smartphones funktionieren, solange diese die Mindestanforderungen an Software und Hardware erfüllen. Dabei muss sich die App beispielsweise an die Auflösung des Smartphones anpassen.
+		Bei der vorhanden Breite an Varianten von Android-Smartphones ist sehr wichtig, dass die Portabilität innerhalb von Android Smartphones gewährleistet wird. Neben bekannten Smartphoneherstellern wie Samsung, LG oder HTC gibt es zahlreiche weitere Hersteller die auf das Android Betriebssystem setzen. Jeder Hersteller hat dabei eine große Palette an Smartphone-Modellen, wie bei Samsung die Samsung Galaxy S-Reihe, welches aktuell in der siebten Genration erhältlich ist\footnote{vgl. Fischer und Huch \cite{computerBildSamsung} (2016)}, oder die Samsung Galaxy Note-Reihe. Die App NoRPG muss auf allen Android-Smartphones funktionieren, solange diese die Mindestanforderungen an Software und Hardware erfüllen. Dabei muss sich die App beispielsweise an die Auflösung des Smartphones anpassen.
 		
 		Die Portabilität beschreibt nicht nur die technische Sicht sondern auch in welchen Ländern und in welchen Sprachen NoRPG verfügbar sein wird. Der Release findet in allen Ländern statt, in denen der Google Play Store verfügbar ist. Zunächst wird NoRPG nur in Englisch verfügbar sein.

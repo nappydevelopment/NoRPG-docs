@@ -2,7 +2,7 @@
 	Nachdem im vorherigen Kapitel die technischen Grundlagen erläutert wurden, wird nun auf die Umsetzung eingegangen. Dabei wird mit der umgesetzten Architektur begonnen, um einen groben Überblick über die einzelnen Komponenten zu bekommen. Anschließend wird die Datenhaltung und Anbindung an eine Datenbank und die Bestandteile der App behandelt.
 
 	\section{Architektur}
-		Die Architektur entspricht dem \ac{MVC} Prinzip, bei dem der Controller für die Steuerung und Koordination zwischen Model, also Daten, und View, also Darstellung. In Abbildung \ref{architecture} ist die Architektur grafisch dargestellt.
+		Die Architektur entspricht dem \ac{MVC} Prinzip, bei dem der Controller für die Steuerung und Koordination zwischen Model und View zuständig. Dieser koordiniert welche Daten wie angezeigt werden. In Abbildung \ref{architecture} ist die Architektur grafisch dargestellt.
 
 		\begin{figure}[htbp]
 			\centering 
@@ -13,7 +13,7 @@
 	
 		Das GameControl ist die zentrale Komponente in NoRPG. Diese regelt den Datenzugriff zwischen App und Server, und ist innerhalb der App mit allen weiteren Komponenten verbunden. 
 		
-		Innerhalb der App ist die Architektur wie eine Art Stern-Schema aufgebaut. Das GameControl fungiert als eine zentrale Steuereinheit. Dieser steuert weitere Controller, die für die Steuerung einzelner Bereiche und ihre Komponenten zuständig ist. So ist beispielsweise das HUDControl verantwortlich für die Verarbeitung der Benutzereingaben über das Touchscreen an die einzelnen UI Komponenten, so dass die richtigen Informationen angezeigt werden. Neben der Steuerung von Controllern ist das GameControl darüber hinaus auch die zentrale Stelle zum Speichern und Laden der lokalen Daten.
+		Innerhalb der App ist die Architektur wie eine Art Stern-Schema aufgebaut. Das GameControl fungiert als eine zentrale Steuereinheit. Dieser steuert weitere Controller, die für die Steuerung einzelner Bereiche und ihre Komponenten zuständig sind. So ist beispielsweise das HUDControl verantwortlich für die Verarbeitung der Benutzereingaben über das Touchscreen an die einzelnen UI Komponenten, so dass die richtigen Informationen angezeigt werden. Neben der Steuerung von Controllern ist das GameControl darüber hinaus auch die zentrale Stelle zum Speichern und Laden der lokalen Daten.
 		
 		Außerhalb der App steht auf dem Server eine MySql Datenbank bereit, welche sich um die persistente Datenhaltung kümmert. Diese wird mit dem GameControl über ein Apache Web Server angesprochen und gesteuert.
 		
@@ -32,7 +32,7 @@
 			\begin{scriptsize}
 				\lstset{
 					float,
-					caption=Skript SendDataToServer.cs, 
+					caption=Skript: SendDataToServer.cs, 
 					language=[Sharp]C, 
 					frame=single,  
 					showstringspaces=false, 
@@ -97,11 +97,11 @@ public class SendDataToServer : MonoBehaviour {
 			Die Daten auf dem Handy werden im \ac{JSON}-File Format gespeichert. Die \ac{JSON} Datei für die Standards wird vom Server geladen.
 
 			\subsubsection{Standards \ac{JSON}}
-				Die \ac{JSON} für die Standards ist ein wichtiger Bestandteil des Spieles. In dieser Datei befinden sich alle wichtigen Informationen zu den Standards und deren dazugehörigen Spiele. Diese Datei liegt zentral auf einem Server und kann dort gewartet und gepflegt werden. Dadurch ist es möglich, zusätzliche Standards und Spiele einzufügen, ohne das der Nutzer die App aktualisieren muss.
+				Die \ac{JSON} für die Standards ist ein wichtiger Bestandteil des Spieles. In dieser Datei befinden sich alle wichtigen Informationen zu den Standards und die dazugehörigen Lernspiele. Diese Datei liegt zentral auf dem Server und kann dort gewartet und gepflegt werden. Dadurch ist es möglich, zusätzliche Standards und Spiele einzufügen, ohne das der Nutzer die App aktualisieren muss.
 
 				Damit der Nutzer die aktuelle Datei zur Verfügung hat, versucht das Spiel zu Beginn eine Verbindung zu dem Server aufzubauen. Gelingt dies, wird die Datei von Server geladen und auf dem Handy gespeichert. Nachdem die Datei lokale gespeichert wurde, wird sie in das Spiel geladen. Dazu wird aus dem \ac{JSON} eine Liste erstellt, welche überall im Spiel nutzbar ist.
 
-				Für das Laden und verarbeiten sind fünf Klassen verantwortlich. Im Folgenden wird nur detailliert auf die Klasse „WebJSONConfigReader” eingegangen. Die anderen Klassen sind im Anhang (s. Anhang \ref{anhang4}) abgebildet und werden nur erwähnt.
+				Für das Laden und verarbeiten sind fünf Klassen verantwortlich. Im Folgenden wird nur detailliert auf die Klasse „WebJSONConfigReader” eingegangen. Die anderen Klassen sind im Anhang \ref{anhang4} abgebildet und werden nur erwähnt.
 
 				Die Klasse „MappingStandardsToCourses” ist die Datenhaltungsklasse. In dieser ist die Struktur der einzelnen Objekte geregelt. In der Klasse „MappingStandardsToCoursesBean” spiegelt die Struktur der \ac{JSON}-Datei wieder. 
 
@@ -110,7 +110,7 @@ public class SendDataToServer : MonoBehaviour {
 			\begin{scriptsize}
 				\lstset{
 					float,
-					caption=Methode LoadSettings, 
+					caption=Methode: LoadSettings, 
 					language=[Sharp]C, 
 					frame=single,  
 					showstringspaces=false, 
@@ -274,11 +274,11 @@ public MappingStandardsToCourses LoadSettings() {
 					Während die Karte offen ist kann der Spieler nicht das Menü öffnen oder eine Interaktion starten, allerdings kann sich der Spieler mit dem Joystick bewegen. Die Kamera dient zur Orientierung in der Spielwelt, deshalb darf der Spieler sich bewegen. Die Karte kann während dem Laufen geöffnet und geschlossen werden.
 
 		\subsection{Usability Evaluation}
-			Ein Usability Test wird durchgeführt, um die Gebrauchstauglichkeit einer Software oder Hardware mit den potenziellen Benutzern zu überprüfen. Usability wird durch die Attribute Erlernbarkeit, Effizienz, Einprägsamkeit, Fehlerrate und Zufriedenheit\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 26} beschrieben. Unter dem Attribut Erlernbarkeit beschreibt Nielsen in seinem Buch, dass die Anwendung leicht zu erlernen sein muss, damit der Benutzer in kurzer Zeit beginnen kann das Spiel zu spielen. Dazu zählt beispielsweise die Steuerung. Diese ist wichtig, damit der Benutzer sich im Spiel intuitiv bewegen kann. So bald der Spieler das System gelernt und verstanden hat, soll ein hohes Maß an Produktivität möglich sein. Dies wird als Effizienz bezeichnet. Das System sollte allerdings leicht zu merken und einprägsam sein, so dass auch der Gelegenheitsbenutzer in der Lage ist, nach einer gewissen Zeit ohne Verwendung der Anwendung, in das Spiel zurückzukehren, ohne alles nochmals neu lernen zu müssen. Nielsen weißt zudem darauf hin, dass Fehler für den Benutzer sehr frustrierend sein können. Daher sollte das System eine geringe Fehlerquote haben, so dass Benutzer bei der Verwendung nur wenig Fehler machen und falls Probleme auftauchen, diese den Spaß am Spielen nicht einschränken\footnote{Vgl. Nielsen \cite{NielsenUI} Seite 27ff.}. Das letzte Attribut beschreibt den Gesamteindruck.
+			Ein Usability Test wird durchgeführt, um die Gebrauchstauglichkeit einer Software oder Hardware mit den potenziellen Benutzern zu überprüfen. Usability wird durch die Attribute Erlernbarkeit, Effizienz, Einprägsamkeit, Fehlerrate und Zufriedenheit\footnote{vgl. Nielsen \cite{NielsenUI} (1993) Seite 26} beschrieben. Unter dem Attribut Erlernbarkeit beschreibt Nielsen in seinem Buch, dass die Anwendung leicht zu erlernen sein muss, damit der Benutzer in kurzer Zeit beginnen kann das Spiel zu spielen. Dazu zählt beispielsweise die Steuerung. Diese ist wichtig, damit der Benutzer sich im Spiel intuitiv bewegen kann. So bald der Spieler das System gelernt und verstanden hat, soll ein hohes Maß an Produktivität möglich sein. Dies wird als Effizienz bezeichnet. Das System sollte allerdings leicht zu merken und einprägsam sein, so dass auch der Gelegenheitsbenutzer in der Lage ist, nach einer gewissen Zeit ohne Verwendung der Anwendung, in das Spiel zurückzukehren, ohne alles nochmals neu lernen zu müssen. Nielsen weißt zudem darauf hin, dass Fehler für den Benutzer sehr frustrierend sein können. Daher sollte das System eine geringe Fehlerquote haben, so dass Benutzer bei der Verwendung nur wenig Fehler machen und falls Probleme auftauchen, diese den Spaß am Spielen nicht einschränken\footnote{vgl. Ebenda Seite 27ff.}. Das letzte Attribut beschreibt den Gesamteindruck.
 
-			Es wird zwischen formativem und summativem Usability Test unterschieden. Foramtive Tests werden während der Entwicklung durchgeführt. Die Aufgabe ist es ein spezielles Problem bzw. Szenario zu testen. Es handelt sich dabei um eine kleine Studie für schnelles Feedback, welche wiederholt durchgeführt werden kann\footnote{Vgl. Rubin und Chisnell \cite{handbookUsability} Seite 29f.}. Der summative Test findet einmalig nach der Entwicklung statt, bevor das fertige Produkt ausgeliefert wird. Dabei handelt es sich um eine umfangreiche Studie, die alle Funktionen der Benutzeroberfläche bewertet\footnote{Vgl. Rubin und Chisnell \cite{handbookUsability} Seite 34f.}.
+			Es wird zwischen formativem und summativem Usability Test unterschieden. Foramtive Tests werden während der Entwicklung durchgeführt. Die Aufgabe ist es ein spezielles Problem bzw. Szenario zu testen. Es handelt sich dabei um eine kleine Studie für schnelles Feedback, welche wiederholt durchgeführt werden kann\footnote{vgl. Rubin und Chisnell \cite{handbookUsability} (2008) Seite 29f.}. Der summative Test findet einmalig nach der Entwicklung statt, bevor das fertige Produkt ausgeliefert wird. Dabei handelt es sich um eine umfangreiche Studie, die alle Funktionen der Benutzeroberfläche bewertet\footnote{vgl. Ebenda Seite 34f.}.
 
-			Ein Usabilty Test kann in verschiedenen Testumgebungen durchgeführt werden. Es wird zwischen Labortest, Feldtest und Remotetest unterschieden. Bei einem Labortest handelt es sich entweder um ein Usability Labor oder um einen allgemein nutzbaren Raum. Der ausschlaggebende Unterschied zwischen diesen beiden ist, dass das Usability Labor nur für Usabilty Tests und Evaluationen verwendet wird. Die potenziellen Tester werden eingeladen und führen die Auswertung in diesem Raum durch. Zu den Basisutensilien gehört neben Nahrung und Verpflegung die notwendige Hardware und Software, sowie ein Moderator bzw. Experte für Fragen und Probleme\footnote{Vgl. Rubin und Chisnell \cite{handbookUsability} Seite 101f.}. Der Feldtest oder auch Mobiler Test kann potentiell überall durchgeführt werden, sei es beim Kunden, in einem öffentlichen Gebäude oder in einem Café. Der Vorteil im Vergleich zu einem Labortest ist, dass der Benutzer sich einer gewohnten und reale Umgebung mit echten Lichtverhältnissen befindet. Allerdings ist es wahrscheinlicher das der Tester durch die Umwelt abgelenkt wird\footnote{Vgl. Rubin und Chisnell \cite{handbookUsability} Seite 98f.} und der Experte mit zum Kunden. Bei der letzten Möglichkeit ist der Benutzer und Moderator örtlich voneinander getrennt. Der Remotetest kann synchron, indem der Moderator und die Teilnehmer per Audio- oder Videokonferenz verbunden sind, oder asynchron stattfinden. Der wesentliche Vorteil ist, dass dadurch potenziell mehr Testpersonen teilnehmen und es günstiger ist. Allerdings können keine komplexen Anforderungen gestellt werden und bei Fragen ist der Tester mehr oder weniger auf sich gestellt.
+			Ein Usabilty Test kann in verschiedenen Testumgebungen durchgeführt werden. Es wird zwischen Labortest, Feldtest und Remotetest unterschieden. Bei einem Labortest handelt es sich entweder um ein Usability Labor oder um einen allgemein nutzbaren Raum. Der ausschlaggebende Unterschied zwischen diesen beiden ist, dass das Usability Labor nur für Usabilty Tests und Evaluationen verwendet wird. Die potenziellen Tester werden eingeladen und führen die Auswertung in diesem Raum durch. Zu den Basisutensilien gehört neben Nahrung und Verpflegung die notwendige Hardware und Software, sowie ein Moderator bzw. Experte für Fragen und Probleme\footnote{vgl. Ebenda Seite 101f.}. Der Feldtest oder auch Mobiler Test kann potentiell überall durchgeführt werden, sei es beim Kunden, in einem öffentlichen Gebäude oder in einem Café. Der Vorteil im Vergleich zu einem Labortest ist, dass der Benutzer sich einer gewohnten und reale Umgebung mit echten Lichtverhältnissen befindet. Allerdings ist es wahrscheinlicher das der Tester durch die Umwelt abgelenkt wird\footnote{vgl. Rubin und Chisnell \cite{handbookUsability} (2008) Seite 98f.} und der Experte mit zum Kunden. Bei der letzten Möglichkeit ist der Benutzer und Moderator örtlich voneinander getrennt. Der Remotetest kann synchron, indem der Moderator und die Teilnehmer per Audio- oder Videokonferenz verbunden sind, oder asynchron stattfinden. Der wesentliche Vorteil ist, dass dadurch potenziell mehr Testpersonen teilnehmen und es günstiger ist. Allerdings können keine komplexen Anforderungen gestellt werden und bei Fragen ist der Tester mehr oder weniger auf sich gestellt.
 
 			\subsubsection{Vorbereitung und Durchführung}
 				Bei der in diesem Kapitel beschrieben Evaluation handelt es sich um einen summativen Remotetest. Der Usability Test findet erst nach der Entwicklung von NoRPG statt und nachdem alle Funktionen implementiert wurden. Die Gründe für einen Remotetest sind, da eine es sich bei NoRPG um eine mobile Anwendung handelt und diese am besten auf dem eigenen Smartphone getestet werden kann. Dadurch werden auch verschiedenste Hardware und Android Versionen geprüft und validiert. Ein weiterer essentieller Punkt sind die Kosten. In dem Umfang dieser Studienarbeit ist es nicht möglich ein Feldtest oder Labortest durchzuführen.
@@ -300,7 +300,7 @@ public MappingStandardsToCourses LoadSettings() {
 					\centering 
 					\label{auswertungTester}
 					\includegraphics[width=\textwidth]{pics/TesterAuswertung.png}
-					\caption{Evaluation Auswertung - Der durchschnittliche Teste}
+					\caption{Evaluation: Der durchschnittliche Tester}
 				\end{figure}
 
 				Neben dem Alter, Geschlecht und Herkunftsland konnten die Tester zudem auch die Marke des Smartphone-Herstellers und die installierte Android Version angeben. Dies hat den Zweck, ob die Einschränkungen im \ac{SRS} im Vorhinein korrekt und sinnvoll waren. Das Ergebnis ist in der Abbildung \ref{auswertungSmartphones} zu sehen. Mit einem Anteil von 50\% ist die am häufigste verbreitete Smartphone Marke die des Herstellers Samsung. Auf den Smartphones war im Durchschnitt am meisten Android 7 installiert. Allerdings gibt es ein Unterschied zwischen den installierten Android Versionen. Die Testen in Deutschland hatten überwiegend die Version 7.x installiert, wohingegen in der Türkei diese Version auf keinem Testgerät installiert war.
@@ -309,7 +309,7 @@ public MappingStandardsToCourses LoadSettings() {
 					\centering 
 					\label{auswertungSmartphones}
 					\includegraphics[width=\textwidth]{pics/SmartphoneAuswertung.png}
-					\caption{Evaluation Auswertung - Die durchschnittliche Hard- und Software}
+					\caption{Evaluation: Die durchschnittliche Hard- und Software}
 				\end{figure}
 
 				Im folgenden Abschnitt dieses Kapitels wird nun das Ergebnis der Evaluation behandelt und ausgewertet. Der einzelnen Szenarien konnten von den Testern von "\-- -"\ bis "++" bewertet werden, während "++" die beste Bewertung darstellt. Damit das Ergebnis die Bewertung von allen Testern widerspiegelt, wurde "\-- -"\ mit -2 und "++" mit +2 verrechnet. Dies kann in Tabelle \ref{tab:ergbnisOverall} betrachtet werden. Diese entspricht dem des Bewertungsbogens, allerdings ohne nähere Beschreibung der einzelnen Szenarien. Die Punktzahl in der letzten Spalte spiegelt den genauen Durchschnitt von allen Testern wider.
@@ -340,7 +340,7 @@ public MappingStandardsToCourses LoadSettings() {
 		& Log-Out &  &  &  & x &  & 1 \\ 
 		\hline
 	\end{tabular}
-	\caption{Ergebnis der Evaluation - Die Bewertung}
+	\caption{Evaluation: Die Bewertungsmatrix}
 	\label{tab:ergbnisOverall}
 \end{table}
 
@@ -352,9 +352,7 @@ public MappingStandardsToCourses LoadSettings() {
 
 				Im Gegensatz dazu haben die älteren Tester zudem neben dem Aussehen auch beispielsweise die Eignung und eher kritischer bewertet. Es wurde häufig angemerkt, das wichtige Informationen farblich hervorgehoben werden sollten und das zum Beispiel vor der Abmeldung der Spieler darauf hingewiesen werden.
 
-				Große Unterschiede zwischen den Bewertungen von männlichen und weiblichen Testern gab es keine. Jedoch konnten Unterschiede zwischen den Ländern festgestellt werden. So wurde das User Interface eher besser von deutschen Testern verstanden.
-
-				Viele dieser Anmerkungen, wie beispielsweise ein Dialog bei der Abmeldung oder andere eher kleinere Vorschläge wurden nach der Evaluation implementiert.
+				Große Unterschiede zwischen den Bewertungen von männlichen und weiblichen Testern gab es keine. Jedoch konnten Unterschiede zwischen den Ländern festgestellt werden. So wurde das User Interface eher besser von deutschen Testern verstanden. Viele dieser Anmerkungen, wie beispielsweise ein Dialog bei der Abmeldung oder andere eher kleinere Vorschläge wurden nach der Evaluation implementiert.
 
 	\section{C\# Skripte}
 		Nachfolgend wird auf einzelne C\# Skripte eingegangen, welche essentiell für die korrekte Ausführung der App benötigt werden. Neben den Skripten wird auch auf weitere Komponenten für die Skripte eingegangen.
@@ -384,10 +382,11 @@ public MappingStandardsToCourses LoadSettings() {
   >0.5 & -0.3 & Animation Run Left Medium \\
   >0.5 & -0.5 & Animation Run Left Wide \\ \hline
  \end{tabular}
-  \caption{Mögliche Animationen je nach Wert speed und direction}
+  \caption{Mögliche Animationen des Players}
  \label{tab:tabspeeddirection}
  \end{table}
  
+			\pagebreak
 			Erst durch diese Vielzahl an Animationen wird gewährleistet, dass der Player zu jeder Zeit die richtige Animation ausführt und die Bewegungen nicht unnatürlich aussehen. Damit dies passiert, werden die Werte speed und direction, vom in Kapitel \ref{joystik} besprochenen Joystick, im Skript CharacterControll.cs an den Charakter übergeben. Diese ist für die Steuerung des Players zuständig. Hier wird die Toucheingabe über den Joystick in Weltkoordinaten umgewandelt und der Player beginnt sich zu bewegen. Das Skript ist in Listing \ref{lst:charactercontroller} aufgeführt.
 	
 			Dazu wird die Methode Update genutzt. In dieser wird, sofern ein Animator an dem Player vorhanden ist, die horizontale und vertikale Bewegung des Joysticks in die Werte für direction und speed umgewandelt. Das ganze passiert dabei in der Methode StickToWorldspace in Zeile 32. 
@@ -399,7 +398,7 @@ public MappingStandardsToCourses LoadSettings() {
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=CharacterController.cs, 
+	caption=Skript: CharacterControll.cs, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
@@ -459,7 +458,7 @@ public class CharacterControll : MonoBehaviour {
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=Methode LateUpdate aus ThirdPersonCamera.cs, 
+	caption=Skript: ThirdPersonCamera.cs, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
@@ -509,7 +508,7 @@ public class ThirdPersonCamera : MonoBehaviour {
 \begin{scriptsize}
 	\lstset{
 		float,
-		caption=PortalToTargetScene, 
+		caption=Skript: PortalToTargetScene.cs, 
 		language=[Sharp]C, 
 		frame=single,  
 		showstringspaces=false, 
@@ -574,7 +573,7 @@ public class PortalToTargetScene : MonoBehaviour{
 	\begin{scriptsize}
 		\lstset{
 			float,
-			caption=NPCCommunication.cs, 
+			caption=Skript: NPCCommunication.cs, 
 			language=[Sharp]C, 
 			frame=single,  
 			showstringspaces=false, 
@@ -633,7 +632,7 @@ public class NPCCommunication : MonoBehaviour {
 	\begin{scriptsize}
 		\lstset{
 			float,
-			caption=NPC JSON, 
+			caption=JSON: NPC Informationen, 
 			language=[Sharp]C, 
 			frame=single,  
 			showstringspaces=false, 
@@ -674,7 +673,7 @@ public class NPCCommunication : MonoBehaviour {
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=Skript EditorPathScript.cs, 
+	caption=Skript: EditorPathScript.cs, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
@@ -722,7 +721,7 @@ public class EditorPathScript : MonoBehaviour {
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=Methode selectFirstClass, 
+	caption=Methode: selectFirstClass, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
@@ -750,7 +749,7 @@ public void selectFirstClass () {
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=Methode playerGetOnShip, 
+	caption=Methode: playerGetOnShip, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
@@ -788,7 +787,7 @@ public void playerGetOnShip () {
 \begin{scriptsize}
 \lstset{
 	float,
-	caption=Methode moveShip, 
+	caption=Methode: moveShip, 
 	language=[Sharp]C, 
 	frame=single,  
 	showstringspaces=false, 
