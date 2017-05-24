@@ -28,7 +28,7 @@
 			\includegraphics[width=12cm]{pics/HighLevelView.png}
 			\caption{High-Level-View von NoRPG}
 		\end{figure}
-		
+		\newpage
 		Das vollständige System von NoRPG besteht aus zwei Kernkomponenten. Die erste Kernkomponente ist die Android App, welche sich aus dem Quellcode des Spieles und einer eingebetteten lokalen Datenbank zusammensetzt. Die zweite Kernkomponente ist eine Datenbank, die sich auf einem virtualisierten Server befindet.
 		
 		Die Schnittstelle zwischen der App und dem Betriebssystem des Smartphones ist eine Systemschnittstelle. Systemschnittstellen identifizieren die Funktionalität der Software, um die Systemanforderung und Schnittstellenbeschreibung zu erfüllen, damit die Software mit dem System übereinstimmt\footnote{vgl. Tripp \cite{srsIEEE} (1998) Seite 13}.
@@ -71,7 +71,7 @@
 		
 	\subsection{Aufteilung der Anforderungen}
 		In dem Fall, dass das Projekt verzögert wird, gibt es einige Anforderungen, die auf die nächste Version der Anwendung übertragen werden könnten.
-
+\newpage
 \section{Spezifische Anforderungen}
 	Das letzte Kapitel des \ac{SRS} dient dazu alle Anforderungen an die Software detailliert zu beschreiben. Dies ermöglicht es Entwicklern ein System zu entwickeln, welches allen Anforderungen entspricht, und Testern, NoRPG ausreichend zu testen.
 	
@@ -110,6 +110,8 @@
 		
 			NoRPG startet erst, nachdem alles geladen wurde und der Benutzer angemeldet ist. Der Bildschirm von NoRPG besteht aus der Spielwelt (Grafik) und dem \ac{HUD}. Das \ac{HUD} ist eine Methode, mit der Informationen visuell als Teil der Benutzeroberfläche eines Spiels vermittelt werden. Während die Informationen, die auf dem \ac{HUD} angezeigt werden, stark vom Spiel abhängen, gibt es viele Eigenschaften, die Spieler über viele Spiele erkennen. Die meisten von ihnen sind statisch auf dem Bildschirm, so dass sie während des Spiels sichtbar bleiben.  
 			
+			Das Mockup in Abbildung \ref{mockupHUD} enthält alle direkt sichtbaren \ac{HUD} Elemente, die während des Spieles aktiv sind. Diese Elemente sind an die Ecken des Bildschirmes gebunden, so befinden sich beispielsweise die Pfeiltasten zur Bewegung des Charakters in der linken unteren Ecke des Bildschirms und die Buttons zur Interaktion mit dem Spiel in der unteren rechten Ecke. 			
+			
 			\begin{figure}[htbp]
 				\centering 
 				\label{mockupHUD}
@@ -117,7 +119,7 @@
 				\caption{Mockup: Head-Up Display}
 			\end{figure}
 			
-			Das Mockup in Abbildung \ref{mockupHUD} enthält alle direkt sichtbaren \ac{HUD} Elemente, die während des Spieles aktiv sind. Diese Elemente sind an die Ecken des Bildschirmes gebunden, so befinden sich beispielsweise die Pfeiltasten zur Bewegung des Charakters in der linken unteren Ecke des Bildschirms und die Buttons zur Interaktion mit dem Spiel in der unteren rechten Ecke. 
+
 			
 			Das Menü (siehe Abbildung \ref{mockupMenu}), welches sich in der oberen linken Ecke befindet, kann geöffnet werden. Dadurch verändert sich das \ac{HUD} von NoRPG und es erscheinen neue Elemente, die der Spieler sehen und benutzen kann. NoRPG ist derweil pausiert. Die anderen Elemente hingegen werden überdeckt oder reagieren nicht solange das Menü offen ist. Deshalb ergeben sich neue Optionen bzw. Möglichkeiten für den Spieler um mit NoRPG zu interagieren.
 			
@@ -231,7 +233,7 @@
 				\caption{Activity Diagramm: View Progress}
 			\end{figure}
 	
-			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige Use Case. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} Interaktion sein und das Menü ist vorher offen.
+			Dieser Use Case hat die gleichen Vorbedingungen wie der vorherige Use Case. Der Spieler muss sich im Spiel befinden, darf in keiner aktiven \ac{NPC} InteraktionDie  sein.
 	
 		\subsubsection{View achievements}
 			Dieser Use Case beschreibt den Anwendungsfalls, dass der Spieler seine Sammelgegenstände betrachten will. Neben den Standards kann der Anwender im Spiel Gegenstände finden, die ihn in der in Kapitel 2 beschriebenen Story weiterbringen. Diese Collectables sind auf den einzelnen Spielwelten verteilt und können dann, nachdem diese gefunden sind in der Ansicht zusammen mit den anderen betrachtet werden.
@@ -376,7 +378,7 @@
 		Der Code von NoRPG sollte so geschrieben werden, dass der Code die Umsetzung neuer Funktionen begünstigt. Deshalb sollte die Komplexität des Quellcodes so gering wie möglich gehalten werden, indem entsprechende Methoden wie das Model-View-Controller (\ac{MVC}) Pattern umgesetzt werden. Des Weiteren sollte das System von NoRPG Schnittstellen jeglicher Art anbieten, um das System durch weitere Komponenten wie ein Web-Tool für Administratoren zu erweitern.
 		
 		Neben der Erweiterbarkeit sollte NoRPG für Fehlerfälle eine Testumgebung anbieten, um das Testen der Anwendung auf unterschiedliche Funktionen zu ermöglichen und gegebenenfalls Fehler wiederholen und simulieren zu können.
-		
+		\newpage
 	\subsection{Portabilität}
 		Die App NoRPG ist zunächst nur für Android geplant. Andere Betriebssysteme, wie Windows Phone von Microsoft oder iOS von Apple, sind vorerst nicht vorgesehen. 
 		
